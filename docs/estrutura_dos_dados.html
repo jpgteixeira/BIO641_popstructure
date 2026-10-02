@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>estrutura_dos_dados</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="estrutura_dos_dados_files/libs/clipboard/clipboard.min.js"></script>
+<script src="estrutura_dos_dados_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="estrutura_dos_dados_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="estrutura_dos_dados_files/libs/quarto-html/popper.min.js"></script>
+<script src="estrutura_dos_dados_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="estrutura_dos_dados_files/libs/quarto-html/anchor.min.js"></script>
+<link href="estrutura_dos_dados_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="estrutura_dos_dados_files/libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="estrutura_dos_dados_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="estrutura_dos_dados_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="estrutura_dos_dados_files/libs/bootstrap/bootstrap-df0e59ebaf493df9cc83ff8671404433.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+
+
+
+<section id="estrutura-dos-dados-bio641-estrutura-de-populações" class="level1">
+<h1>Estrutura dos dados — BIO641, Estrutura de Populações</h1>
+<p>Visão geral do banco de dados que vamos usar para a análise com o STRUCTURE.</p>
+<section id="origem" class="level2">
+<h2 class="anchored" data-anchor-id="origem">Origem</h2>
+<p>Os dados vêm do projeto europeu <strong>CornFed</strong>, com populações multiparentais de milho (<em>Zea mays</em> L.):</p>
+<ul>
+<li><strong>Bauer et al.&nbsp;2013</strong>, <em>Genome Biology</em> 14:R103 — desenho das populações e genotipagem (estudo de taxa de recombinação).</li>
+<li><strong>Lehermeier et al.&nbsp;2014</strong>, <em>Genetics</em> 198(1):3 — predição genômica; fornece os fenótipos (Supporting File S1).</li>
+<li>Genótipos públicos no NCBI GEO: <strong>GSE50558</strong>.</li>
+</ul>
+</section>
+<section id="artigos-de-referência-do-trabalho" class="level2">
+<h2 class="anchored" data-anchor-id="artigos-de-referência-do-trabalho">Artigos de referência do trabalho</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Artigo</th>
+<th>Assunto</th>
+<th>Papel no trabalho</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Caniato et al.&nbsp;2011, <em>PLoS ONE</em></td>
+<td>Estrutura populacional e tolerância ao alumínio em sorgo (38 SSRs)</td>
+<td>Modelo de uso do STRUCTURE: K = 1–13, burn-in 100.000, MCMC 1.000.000, 5 réplicas, modelo <em>admixture</em> com frequências correlacionadas, ΔK de Evanno</td>
+</tr>
+<tr class="even">
+<td>Yu et al.&nbsp;2006, <em>Nature Genetics</em> 38:203</td>
+<td>Modelo misto unificado Q + K</td>
+<td>Base conceitual: Q (estrutura, vinda do STRUCTURE) × K (parentesco)</td>
+</tr>
+<tr class="odd">
+<td>Lehermeier et al.&nbsp;2014, <em>Genetics</em></td>
+<td>Populações multiparentais de milho</td>
+<td>Fonte dos dados; usou PCA, parentesco e LD, mas <strong>não</strong> STRUCTURE</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="desenho-experimental" class="level2">
+<h2 class="anchored" data-anchor-id="desenho-experimental">Desenho experimental</h2>
+<p>O desenho é do tipo NAM (<em>nested association mapping</em>), com dois <em>pools</em> heteróticos:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th>Dent</th>
+<th>Flint</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Linha central</td>
+<td><strong>F353</strong></td>
+<td><strong>UH007</strong></td>
+</tr>
+<tr class="even">
+<td>Prefixo das famílias</td>
+<td>CFD</td>
+<td>CFF</td>
+</tr>
+<tr class="odd">
+<td>Testador (fenótipo)</td>
+<td>UH007</td>
+<td>F353</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Cada família vem do cruzamento <strong>linha central × linha fundadora</strong>.</li>
+<li>Das F1 foram geradas <strong>linhas duplo-haploides (DH)</strong>, que são totalmente homozigotas.</li>
+<li>Em média, cada linha DH tem <strong>50% do genoma da linha central e 50% da fundadora</strong>.</li>
+<li>Assim, as famílias de um mesmo <em>pool</em> são <strong>meio-irmãs</strong>, porque todas compartilham a linha central.</li>
+</ul>
+<section id="famílias-e-pedigrees-segundo-os-arquivos-de-fenótipo" class="level3">
+<h3 class="anchored" data-anchor-id="famílias-e-pedigrees-segundo-os-arquivos-de-fenótipo">Famílias e pedigrees (segundo os arquivos de fenótipo)</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Dent</th>
+<th>Cruzamento</th>
+<th>Flint</th>
+<th>Cruzamento</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>CFD02</td>
+<td>F353 × B73</td>
+<td>CFF02</td>
+<td>UH007 × <strong>B73</strong> (fundadora dent!)</td>
+</tr>
+<tr class="even">
+<td>CFD03</td>
+<td>F353 × D06</td>
+<td>CFF03</td>
+<td>UH007 × D152</td>
+</tr>
+<tr class="odd">
+<td>CFD04</td>
+<td>F353 × D09</td>
+<td>CFF04</td>
+<td>UH007 × EC49A</td>
+</tr>
+<tr class="even">
+<td>CFD05</td>
+<td>F353 × EC169</td>
+<td>CFF05</td>
+<td>UH007 × EP44</td>
+</tr>
+<tr class="odd">
+<td>CFD06</td>
+<td>F353 × F252</td>
+<td>CFF06</td>
+<td>UH007 × EZ5</td>
+</tr>
+<tr class="even">
+<td>CFD07</td>
+<td>F353 × F618</td>
+<td>CFF07</td>
+<td>UH007 × F03802</td>
+</tr>
+<tr class="odd">
+<td>CFD08</td>
+<td>F353 × F98902</td>
+<td>CFF08</td>
+<td>UH007 × F2</td>
+</tr>
+<tr class="even">
+<td>CFD09</td>
+<td>F353 × Mo17</td>
+<td>CFF09</td>
+<td>UH007 × F283</td>
+</tr>
+<tr class="odd">
+<td>CFD10</td>
+<td>F353 × UH250</td>
+<td>CFF10</td>
+<td>UH007 × F64</td>
+</tr>
+<tr class="even">
+<td>CFD11</td>
+<td>F353 × UH304</td>
+<td>CFF12</td>
+<td>UH007 × UH006</td>
+</tr>
+<tr class="odd">
+<td>CFD12</td>
+<td>F353 × W117</td>
+<td>CFF13</td>
+<td>UH007 × UH009</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>CFF15</td>
+<td>UH007 × DK105</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="linhas-parentais-tabela-s1-de-bauer-et-al.-2013-as-mesmas-23-do-geo" class="level3">
+<h3 class="anchored" data-anchor-id="linhas-parentais-tabela-s1-de-bauer-et-al.-2013-as-mesmas-23-do-geo">Linhas parentais (Tabela S1 de Bauer et al.&nbsp;2013 — as mesmas 23 do GEO)</h3>
+<ul>
+<li><strong>Dent (11):</strong> B73, D06, D09, EC169, F252, <strong>F353</strong> (central), F618, Mo17, UH250, UH304, W117</li>
+<li><strong>Flint (12):</strong> D152, DK105, EC49A, EP44, EZ5, F03802, F2, F64, F283, UH006, <strong>UH007</strong> (central), UH009</li>
+</ul>
+</section>
+</section>
+<section id="arquivos" class="level2">
+<h2 class="anchored" data-anchor-id="arquivos">Arquivos</h2>
+<pre><code>data/
+├── GSE50558_Parental_matrix_GEO.txt.gz      14 MB   23 parentais   — genótipos
+├── GSE50558_CFD_matrix_GEO.txt.gz          530 MB   1.005 DH dent  — genótipos
+├── GSE50558_CFF_matrix_GEO.txt.gz          657 MB   1.262 DH flint — genótipos
+├── GSE50558_*_intensities_GEO.txt.gz       ~1,7 GB  intensidades brutas (não necessárias)
+├── gb-2013-14-9-r103-S1.xlsx                        Tabela S1 de Bauer et al. 2013 (parentais)
+├── gb-2013-14-9-r103-S4.xlsx                        Suplemento S4 de Bauer et al. 2013
+└── genetics.114.161943-17/
+    ├── SupportingFileS1_Readme.txt
+    ├── PhenotypicDataDent.csv                       4.800 parcelas
+    └── PhenotypicDataFlint.csv                      7.680 parcelas</code></pre>
+<section id="arquivos-de-genótipo-_matrix_geo.txt.gz" class="level3">
+<h3 class="anchored" data-anchor-id="arquivos-de-genótipo-_matrix_geo.txt.gz">Arquivos de genótipo (<code>*_matrix_GEO.txt.gz</code>)</h3>
+<ul>
+<li>Chip <strong>Illumina MaizeSNP50</strong>, com <strong>56.110 SNPs</strong> (uma linha por SNP).</li>
+<li>A primeira coluna (<code>ID_REF</code>) é o nome do SNP (ex.: <code>abph1.15</code>). <strong>Não há posição cromossômica nesses arquivos</strong>; ela está na anotação da plataforma (GPL) no GEO ou no <em>manifest</em> do chip.</li>
+<li>Para cada amostra existem 5 colunas:</li>
+</ul>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Coluna</th>
+<th>Conteúdo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>&lt;amostra&gt;.GType</code></td>
+<td>Genótipo: <code>AA</code>, <code>AB</code>, <code>BB</code> ou <code>NC</code> (sem chamada)</td>
+</tr>
+<tr class="even">
+<td><code>&lt;amostra&gt;.Top Alleles</code></td>
+<td>Alelos em nucleotídeos (fita TOP da Illumina), ex.: <code>GG</code>; <code>--</code> = sem chamada</td>
+</tr>
+<tr class="odd">
+<td><code>&lt;amostra&gt;.Score</code></td>
+<td>GenTrain score do SNP (qualidade do <em>cluster</em>; igual para todas as amostras)</td>
+</tr>
+<tr class="even">
+<td><code>&lt;amostra&gt;.Theta</code></td>
+<td>Ângulo normalizado da intensidade (0 ≈ AA, 1 ≈ BB)</td>
+</tr>
+<tr class="odd">
+<td><code>&lt;amostra&gt;.R</code></td>
+<td>Intensidade total normalizada</td>
+</tr>
+</tbody>
+</table>
+<p>Nos 23 parentais, cerca de <strong>16% das chamadas são <code>NC</code></strong> e apenas <strong>0,8% são heterozigotas (<code>AB</code>)</strong>, como se espera de linhas endogâmicas.</p>
+</section>
+<section id="amostras-genotipadas-por-família-geo" class="level3">
+<h3 class="anchored" data-anchor-id="amostras-genotipadas-por-família-geo">Amostras genotipadas por família (GEO)</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Dent</th>
+<th>n</th>
+<th>Flint</th>
+<th>n</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>CFD01</td>
+<td>86</td>
+<td>CFF01</td>
+<td>99</td>
+</tr>
+<tr class="even">
+<td>CFD02</td>
+<td>73</td>
+<td>CFF02</td>
+<td>120</td>
+</tr>
+<tr class="odd">
+<td>CFD03</td>
+<td>103</td>
+<td>CFF03</td>
+<td>112</td>
+</tr>
+<tr class="even">
+<td>CFD04</td>
+<td>105</td>
+<td>CFF04</td>
+<td>53</td>
+</tr>
+<tr class="odd">
+<td>CFD05</td>
+<td>77</td>
+<td>CFF05</td>
+<td>34</td>
+</tr>
+<tr class="even">
+<td>CFD06</td>
+<td>105</td>
+<td>CFF06</td>
+<td>50</td>
+</tr>
+<tr class="odd">
+<td>CFD07</td>
+<td>108</td>
+<td>CFF07</td>
+<td>129</td>
+</tr>
+<tr class="even">
+<td>CFD09</td>
+<td>63</td>
+<td>CFF08</td>
+<td>77</td>
+</tr>
+<tr class="odd">
+<td>CFD10</td>
+<td>99</td>
+<td>CFF09</td>
+<td>134</td>
+</tr>
+<tr class="even">
+<td>CFD11</td>
+<td>86</td>
+<td>CFF10</td>
+<td>108</td>
+</tr>
+<tr class="odd">
+<td>CFD12</td>
+<td>100</td>
+<td>CFF12</td>
+<td>114</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>CFF13</td>
+<td>117</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>CFF15</td>
+<td>115</td>
+</tr>
+<tr class="even">
+<td><strong>Total</strong></td>
+<td><strong>1.005</strong></td>
+<td><strong>Total</strong></td>
+<td><strong>1.262</strong></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="arquivos-de-fenótipo-phenotypicdata.csv" class="level3">
+<h3 class="anchored" data-anchor-id="arquivos-de-fenótipo-phenotypicdata.csv">Arquivos de fenótipo (<code>PhenotypicData*.csv</code>)</h3>
+<p>Uma linha por parcela de campo (<em>testcross</em>). As colunas principais são <code>Genotype</code> (código da linha DH, igual ao GEO), <code>Population</code> (família), <code>Pedigree</code>, <code>Tester</code>, <code>LOC</code> (local), <code>Rep</code> e as características DMY, DMC, PH, DtTAS, DtSILK e NBPL.</p>
+<p><strong>Para o STRUCTURE, o fenótipo não é usado.</strong> Esses arquivos servem só para mapear família → fundadora na interpretação dos resultados.</p>
+</section>
+<section id="controle-de-qualidade-aplicado-no-artigo-lehermeier-et-al.-2014" class="level3">
+<h3 class="anchored" data-anchor-id="controle-de-qualidade-aplicado-no-artigo-lehermeier-et-al.-2014">Controle de qualidade aplicado no artigo (Lehermeier et al.&nbsp;2014)</h3>
+<p>Foram removidos os SNPs com GenTrain &lt; 0,7, <em>call frequency</em> &lt; 0,9, MAF &lt; 0,01 ou mais de 10% de dados faltantes. Restaram <strong>34.116 SNPs</strong>. O artigo analisou 841 linhas DH dent e 811 flint.</p>
+</section>
+</section>
+<section id="pontos-de-atenção" class="level2">
+<h2 class="anchored" data-anchor-id="pontos-de-atenção">Pontos de atenção</h2>
+<ol type="1">
+<li><strong>CFF02 (UH007 × B73)</strong> — uma fundadora dent dentro do painel flint. É um controle natural: o STRUCTURE deve atribuir ~50% de ancestralidade dent a essas linhas.</li>
+<li><strong>Divergências entre GEO e fenótipos</strong>:
+<ul>
+<li><strong>CFD01</strong> e <strong>CFF01</strong> estão no GEO, mas não nos fenótipos, então o pedigree delas não consta nos nossos arquivos.</li>
+<li><strong>CFD08</strong> (F353 × F98902) está nos fenótipos, mas não no GEO, e F98902 não está entre os parentais genotipados.</li>
+</ul></li>
+<li><strong>Premissas do STRUCTURE</strong> (equilíbrio de Hardy-Weinberg e equilíbrio de ligação dentro dos <em>clusters</em>) são violadas:
+<ul>
+<li>As linhas DH não vêm de cruzamento aleatório e são homozigotas.</li>
+<li>As famílias são aparentadas (meio-irmãs).</li>
+<li>Houve só uma rodada de recombinação, então o LD se estende por blocos longos.</li>
+</ul></li>
+<li><strong>Ploidia</strong>: as linhas DH podem ser codificadas como diploides homozigotas ou como haploides (<code>PLOIDY=1</code>).</li>
+<li><strong>Custo computacional</strong>: ~2.300 indivíduos × ~34 mil SNPs é inviável no STRUCTURE com os parâmetros do Caniato. Será preciso selecionar SNPs (espaçados no genoma) e possivelmente subamostrar linhas.</li>
+</ol>
+</section>
+<section id="expectativa-de-resultado" class="level2">
+<h2 class="anchored" data-anchor-id="expectativa-de-resultado">Expectativa de resultado</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Nível</th>
+<th>O que esperamos ver</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Dent × Flint</td>
+<td>K = 2 separando os <em>pools</em> (diferenciação histórica, estrutura “clássica”)</td>
+</tr>
+<tr class="even">
+<td>Dentro de cada <em>pool</em></td>
+<td><em>Clusters</em> que reproduzem as famílias/fundadoras (estrutura de pedigree, ou seja, parentesco)</td>
+</tr>
+<tr class="odd">
+<td>CFF02</td>
+<td>Ancestralidade mista, ~50% dent</td>
+</tr>
+</tbody>
+</table>
+<p>A pergunta central do trabalho: <strong>o que o STRUCTURE detecta quando a “população” foi construída por melhoristas?</strong></p>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
