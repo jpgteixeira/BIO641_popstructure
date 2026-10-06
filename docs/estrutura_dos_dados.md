@@ -33,10 +33,11 @@ O desenho é do tipo NAM (*nested association mapping*), com dois *pools* heter�
 - Em média, cada linha DH tem **50% do genoma da linha central e 50% da fundadora**.
 - Assim, as famílias de um mesmo *pool* são **meio-irmãs**, porque todas compartilham a linha central.
 
-### Famílias e pedigrees (segundo os arquivos de fenótipo)
+### Famílias e pedigrees (segundo o GEO e os arquivos de fenótipo)
 
 | Dent | Cruzamento | Flint | Cruzamento |
 |---|---|---|---|
+| CFD01 | F353 × **UH007** (central flint!) | CFF01 | UH007 × **F353** (central dent!) |
 | CFD02 | F353 × B73 | CFF02 | UH007 × **B73** (fundadora dent!) |
 | CFD03 | F353 × D06 | CFF03 | UH007 × D152 |
 | CFD04 | F353 × D09 | CFF04 | UH007 × EC49A |
@@ -70,6 +71,19 @@ data/
     ├── PhenotypicDataDent.csv                       4.800 parcelas
     └── PhenotypicDataFlint.csv                      7.680 parcelas
 ```
+
+### O que existe no GEO e o que usar
+
+| Arquivo no GEO | Tamanho | Conteúdo | Usar? |
+|---|---|---|---|
+| **Series Matrix** (`GSE50558_series_matrix.txt.gz`) | 12 MB | Genótipos (`AA`/`AB`/`BB`/`NC`) das **2.290 amostras em uma única tabela** + metadados (nome, *pool*, pedigree dos parentais) | ✅ **fonte principal** |
+| **Plataforma GPL17677** | — | Anotação dos 56.110 SNPs: **cromossomo e posição** (B73 v2), alelos, GenTrain | ✅ necessária para o `.map` do PLINK |
+| Supplementary `*_matrix_GEO` | 1,2 GB | Mesmos genótipos, separados em 3 arquivos, + GenTrain, Theta e R por amostra | Só para pegar o GenTrain usado no artigo |
+| Supplementary `*_intensities_GEO` | 1,6 GB | Intensidades brutas X/Y | ❌ |
+| SOFT / MINiML | ~400 MB cada | Os mesmos dados em outros formatos (texto/XML) | ❌ redundante |
+| BioProject PRJNA218068 | — | Registro de referência do projeto, sem dados novos | ❌ |
+
+Conferimos: para os 23 parentais, os genótipos do Series Matrix e do `Parental_matrix` são **idênticos** (1.290.530 chamadas, 0 diferenças).
 
 ### Arquivos de genótipo (`*_matrix_GEO.txt.gz`)
 
@@ -119,15 +133,16 @@ Foram removidos os SNPs com GenTrain < 0,7, *call frequency* < 0,9, MAF < 0,01 o
 ## Pontos de atenção
 
 1. **CFF02 (UH007 × B73)** — uma fundadora dent dentro do painel flint. É um controle natural: o STRUCTURE deve atribuir ~50% de ancestralidade dent a essas linhas.
-2. **Divergências entre GEO e fenótipos**:
-   - **CFD01** e **CFF01** estão no GEO, mas não nos fenótipos, então o pedigree delas não consta nos nossos arquivos.
+2. **CFD01 e CFF01 são cruzamentos entre as duas linhas centrais** (F353 × UH007 e o recíproco), ou seja, dent × flint. A informação está nos metadados das amostras no GEO. Não aparecem nos fenótipos do Lehermeier, que trabalhou dentro de cada *pool*. Na análise global, essas linhas devem ter ~50% de cada *pool*.
+3. **Divergências entre GEO e fenótipos**:
    - **CFD08** (F353 × F98902) está nos fenótipos, mas não no GEO, e F98902 não está entre os parentais genotipados.
-3. **Premissas do STRUCTURE** (equilíbrio de Hardy-Weinberg e equilíbrio de ligação dentro dos *clusters*) são violadas:
+   - O resumo do GEO fala em 2.233 linhas DH, mas os arquivos têm 2.267 (1.005 + 1.262).
+4. **Premissas do STRUCTURE** (equilíbrio de Hardy-Weinberg e equilíbrio de ligação dentro dos *clusters*) são violadas:
    - As linhas DH não vêm de cruzamento aleatório e são homozigotas.
    - As famílias são aparentadas (meio-irmãs).
    - Houve só uma rodada de recombinação, então o LD se estende por blocos longos.
-4. **Ploidia**: as linhas DH podem ser codificadas como diploides homozigotas ou como haploides (`PLOIDY=1`).
-5. **Custo computacional**: ~2.300 indivíduos × ~34 mil SNPs é inviável no STRUCTURE com os parâmetros do Caniato. Será preciso selecionar SNPs (espaçados no genoma) e possivelmente subamostrar linhas.
+5. **Ploidia**: as linhas DH podem ser codificadas como diploides homozigotas ou como haploides (`PLOIDY=1`).
+6. **Custo computacional**: ~2.300 indivíduos × ~34 mil SNPs é inviável no STRUCTURE com os parâmetros do Caniato. Será preciso selecionar SNPs (espaçados no genoma) e possivelmente subamostrar linhas.
 
 ## Expectativa de resultado
 
@@ -136,5 +151,6 @@ Foram removidos os SNPs com GenTrain < 0,7, *call frequency* < 0,9, MAF < 0,01 o
 | Dent × Flint | K = 2 separando os *pools* (diferenciação histórica, estrutura "clássica") |
 | Dentro de cada *pool* | *Clusters* que reproduzem as famílias/fundadoras (estrutura de pedigree, ou seja, parentesco) |
 | CFF02 | Ancestralidade mista, ~50% dent |
+| CFD01 e CFF01 | Ancestralidade mista, ~50% dent e ~50% flint |
 
 A pergunta central do trabalho: **o que o STRUCTURE detecta quando a "população" foi construída por melhoristas?**

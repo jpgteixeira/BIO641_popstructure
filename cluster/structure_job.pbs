@@ -1,0 +1,38 @@
+#!/bin/bash
+#
+# Uma execução do STRUCTURE (um conjunto, um K, uma réplica).
+# Não submeter direto: quem submete é o submeter.sh, que passa as variáveis
+# CONJ, K, REP, SEMENTE, NIND e NLOC com "qsub -v" e define nome e walltime.
+#
+# Recursos: o STRUCTURE usa 1 processador; com 2.290 indivíduos x ~2.200 SNPs
+# ocupa ~100 MB de RAM (medido localmente: 29 MB para 743 x 2.255).
+
+#PBS -l nodes=1:ppn=1,mem=1gb
+#PBS -q qtime
+#PBS -m a
+#PBS -M <seu_email>@ufv.br
+
+# Altera o diretorio corrente para o diretorio de onde foi submetido o script
+# Nao remova a linha abaixo
+cd $PBS_O_WORKDIR
+
+# Habilita o carregamento de modulos
+# Nao remova a linha abaixo
+source /etc/profile.d/modules.sh
+
+SAIDA=resultados/${CONJ}/${CONJ}_K$(printf "%02d" ${K})_r${REP}
+mkdir -p resultados/${CONJ}
+
+# Execução já concluída? (permite ressubmeter sem refazer)
+if [ -f "${SAIDA}_f" ]; then
+  echo "Já existe ${SAIDA}_f; nada a fazer."
+  exit 0
+fi
+
+./bin/structure \
+  -m params/mainparams \
+  -e params/extraparams \
+  -i dados/${CONJ}.recode.strct_in \
+  -o ${SAIDA} \
+  -N ${NIND} -L ${NLOC} -K ${K} -D ${SEMENTE} \
+  > ${SAIDA}.log 2>&1

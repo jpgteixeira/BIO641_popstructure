@@ -1,2 +1,6 @@
 data/
 !data/.gitkeep
+cluster/pacote/
+results/
+seed.txt
+.Rhistory
