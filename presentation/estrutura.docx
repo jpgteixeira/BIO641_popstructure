@@ -1,0 +1,28 @@
+Roteiro da Apresentação
+Structure: o que é?
+ Falar de maneira Geral 
+importância? tipo falar do erro tipo 1, editar falsa associação, para que é utilizada no melhoramento, biologia…
+
+Explicar os dados:
+Contextualizar bem breve sobre os dados
+Origem do DH e qual estágio saiu o DH dos dados que vamos utilizar?
+Grupo heterótico, DH, dent, flint
+Como trabalhar com os dados (com mais calma):
+MAF, LD (fazer um gráfico p/ mostrar no slide) a quantidade de SNP que consegue reduzir e importancia disso?
+Explicar bem explicado
+2. Parte de Programação dos Dados (o que foi realizado)
+PLINK:
+P/ que serve isso?
+Saída?
+STRUCTURE:
+E o que utilizamos do Structure
+Saída? K e Q 
+Teoria: explicar direto
+
+R:
+Falar também do R: p/ que utilizamos
+3. Resultados
+Colocar o plot: Structure cluster plot
+PCA
+K estatística
+FST, f estatistica
