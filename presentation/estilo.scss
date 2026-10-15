@@ -1,0 +1,29 @@
+/*-- scss:defaults --*/
+$font-family-sans-serif: "Lato", "DejaVu Sans", sans-serif;
+$presentation-font-size-root: 44px;
+$presentation-heading-font-weight: 700;
+$presentation-heading-color: #1F3A5F;
+$link-color: #1F78B4;
+$code-block-font-size: 0.8em;
+
+/*-- scss:rules --*/
+.reveal .slide-title, .reveal h2 {
+  font-size: 1.35em;
+}
+
+/* frase de efeito no fim de um slide */
+.reveal .destaque {
+  font-size: 1.1em;
+  font-weight: 700;
+  color: #B22222;
+  text-align: center;
+  margin-top: 0.4em;
+}
+
+.reveal table {
+  font-size: 0.95em;
+}
+
+.reveal .columns h3 {
+  font-size: 1.3em;
+}

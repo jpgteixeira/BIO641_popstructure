@@ -1,0 +1,1494 @@
+<!DOCTYPE html>
+<html lang="pt"><head>
+<script src="apresentacao_files/libs/clipboard/clipboard.min.js"></script>
+<script src="apresentacao_files/libs/quarto-html/tabby.min.js"></script>
+<script src="apresentacao_files/libs/quarto-html/popper.min.js"></script>
+<script src="apresentacao_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="apresentacao_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="apresentacao_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="apresentacao_files/libs/quarto-html/quarto-syntax-highlighting-9c925c400f0beafda73b2fad52ffb06b.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.33">
+
+  <meta name="author" content="Nomes dos autores">
+  <title>Estrutura de populações</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="apresentacao_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="apresentacao_files/libs/revealjs/dist/reveal.css">
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #24292e;  }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #24292e; } /* Normal */
+    code span.al { color: #ff5555; font-weight: bold; } /* Alert */
+    code span.an { color: #6a737d; } /* Annotation */
+    code span.at { color: #d73a49; } /* Attribute */
+    code span.bn { color: #005cc5; } /* BaseN */
+    code span.bu { color: #d73a49; } /* BuiltIn */
+    code span.cf { color: #d73a49; } /* ControlFlow */
+    code span.ch { color: #032f62; } /* Char */
+    code span.cn { color: #005cc5; } /* Constant */
+    code span.co { color: #6a737d; } /* Comment */
+    code span.cv { color: #6a737d; } /* CommentVar */
+    code span.do { color: #6a737d; } /* Documentation */
+    code span.dt { color: #d73a49; } /* DataType */
+    code span.dv { color: #005cc5; } /* DecVal */
+    code span.er { color: #ff5555; text-decoration: underline; } /* Error */
+    code span.ex { color: #d73a49; font-weight: bold; } /* Extension */
+    code span.fl { color: #005cc5; } /* Float */
+    code span.fu { color: #6f42c1; } /* Function */
+    code span.im { color: #032f62; } /* Import */
+    code span.in { color: #6a737d; } /* Information */
+    code span.kw { color: #d73a49; } /* Keyword */
+    code span.op { color: #24292e; } /* Operator */
+    code span.ot { color: #6f42c1; } /* Other */
+    code span.pp { color: #d73a49; } /* Preprocessor */
+    code span.re { color: #6a737d; } /* RegionMarker */
+    code span.sc { color: #005cc5; } /* SpecialChar */
+    code span.ss { color: #032f62; } /* SpecialString */
+    code span.st { color: #032f62; } /* String */
+    code span.va { color: #e36209; } /* Variable */
+    code span.vs { color: #032f62; } /* VerbatimString */
+    code span.wa { color: #ff5555; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="apresentacao_files/libs/revealjs/dist/theme/quarto-92e710ee575827e2187ca8c7f5d8a379.css">
+  <link href="apresentacao_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="apresentacao_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="apresentacao_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="apresentacao_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Estrutura de populações</h1>
+  <p class="subtitle">O que o STRUCTURE enxerga em populações feitas por melhoristas</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Nomes dos autores 
+</div>
+        <p class="quarto-title-affiliation">
+            BIO641 · Genética de Populações · UFV
+          </p>
+    </div>
+</div>
+
+</section>
+<section>
+<section id="o-que-é-estrutura-de-populações" class="title-slide slide level1 center">
+<h1>O que é estrutura de populações?</h1>
+
+</section>
+<section id="populações-não-se-cruzam-ao-acaso" class="slide level2">
+<h2>Populações não se cruzam ao acaso</h2>
+
+<img data-src="apresentacao_files/figure-revealjs/g-panmixia-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1950"><div class="destaque">
+<p>Subpopulações → frequências alélicas diferentes</p>
+</div>
+<aside class="notes">
+<p>Numa população panmítica, qualquer indivíduo pode cruzar com qualquer outro e as frequências alélicas são as mesmas em todo lugar. Quando há barreiras (geografia, seleção, o melhorista escolhendo os cruzamentos), cada subpopulação deriva para frequências próprias. Isso é estrutura: os genótipos não estão distribuídos ao acaso.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="por-que-isso-importa" class="slide level2">
+<h2>Por que isso importa?</h2>
+<div class="columns">
+<div class="column" style="width:33%;">
+<h3 id="melhoramento">Melhoramento</h3>
+<p>grupos heteróticos</p>
+</div><div class="column" style="width:33%;">
+<h3 id="gwas">GWAS</h3>
+<p>associação falsa</p>
+</div><div class="column" style="width:33%;">
+<h3 id="biologia">Biologia</h3>
+<p>história, fluxo gênico, conservação</p>
+</div></div>
+<aside class="notes">
+<p>No melhoramento de milho, saber a qual grupo uma linha pertence define com quem ela deve ser cruzada para ter heterose. Em estudos de associação, ignorar a estrutura gera falsos positivos (próximo slide). Em biologia evolutiva e conservação, a estrutura conta a história das populações: migração, isolamento, gargalos.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="associação-falsa-erro-tipo-i" class="slide level2">
+<h2>Associação falsa: erro tipo I</h2>
+
+<img data-src="apresentacao_files/figure-revealjs/g-associacao-falsa-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1950"><div class="destaque">
+<p>O SNP não tem efeito: a diferença vem da população</p>
+</div>
+<aside class="notes">
+<p>Simulação: o SNP não afeta a altura. A população 1 é mais alta e tem mais o alelo A. Juntando tudo (linha preta), parece que o alelo A aumenta a altura. Dentro de cada população (linhas tracejadas), não há efeito nenhum. É por isso que GWAS corrige pela estrutura (matriz Q do STRUCTURE ou PCs como covariáveis).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section id="os-dados-painéis-cornfed" class="title-slide slide level1 center">
+<h1>Os dados: painéis CornFed</h1>
+
+</section>
+<section id="dent-flint-dois-grupos-heteróticos" class="slide level2">
+<h2>Dent × Flint: dois grupos heteróticos</h2>
+
+<img data-src="apresentacao_files/figure-revealjs/g-heterose-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1500"><aside class="notes">
+<p>Os dois grupos foram mantidos separados por décadas para maximizar a heterose no híbrido dent × flint. Esperamos que essa seja a divisão mais forte nos dados (K = 2).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="uma-linha-central-10-a-12-fundadoras" class="slide level2">
+<h2>Uma linha central × 10 a 12 fundadoras</h2>
+
+<img data-src="apresentacao_files/figure-revealjs/g-desenho-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1950"><aside class="notes">
+<p>Cada família vem do cruzamento da linha central do pool (F353 no dent, UH007 no flint) com uma fundadora. Por isso as famílias de um pool são meio-irmãs. Três famílias têm pais dos dois pools (em laranja): CFD01 e CFF01 são o cruzamento entre as duas centrais e CFF02 tem B73 (dent) como fundadora. São os nossos controles: devem aparecer com ~50% de cada pool.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="linhas-duplo-haploides-dh" class="slide level2">
+<h2>Linhas duplo-haploides (DH)</h2>
+
+<img data-src="apresentacao_files/figure-revealjs/g-dh-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1800"><div class="destaque">
+<p>Uma meiose · 50% central + 50% fundadora</p>
+</div>
+<aside class="notes">
+<p>A planta F1 é polinizada por um indutor de haploidia; os embriões haploides têm o cromossomo duplicado com colchicina. Resultado: linhas totalmente homozigotas em uma geração. Como houve só uma meiose (na F1), cada DH é um mosaico de grandes blocos da central e da fundadora. Isso vai aparecer no LD e no STRUCTURE.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="os-dados" class="slide level2">
+<h2>Os dados</h2>
+
+<img data-src="apresentacao_files/figure-revealjs/g-numeros-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1950"><p>GEO <strong>GSE50558</strong> · Bauer et al.&nbsp;2013 · Lehermeier et al.&nbsp;2014</p>
+</section></section>
+<section>
+<section id="dos-snps-aos-dados-limpos" class="title-slide slide level1 center">
+<h1>Dos SNPs aos dados limpos</h1>
+
+</section>
+<section id="o-chip-lê-dois-alelos-a-e-b" class="slide level2">
+<h2>O chip lê dois alelos: A e B</h2>
+
+<img data-src="apresentacao_files/figure-revealjs/g-codigos-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1950"><div class="destaque">
+<p>DH quase sem AB → heterozigoto = erro → dado faltante</p>
+</div>
+<aside class="notes">
+<p>SNP = uma posição do genoma com dois alelos. O chip Illumina chama AA, AB ou BB. Linhas DH e parentais endogâmicos deveriam ser 100% homozigotos; o pouco AB que aparece (0,3% nas DH) é erro de chamada ou heterozigose residual. Por isso tratamos AB como dado faltante.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="snps-têm-erros-filtragem" class="slide level2">
+<h2>SNPs têm erros: filtragem</h2>
+
+<img data-src="apresentacao_files/figure-revealjs/g-funil-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1950"><aside class="notes">
+<p>GenTrain: nota de qualidade do agrupamento das intensidades no chip (SNPs com nota &lt; 0,7 têm chamadas pouco confiáveis). Call rate: SNP sem genótipo em mais de 10% das amostras sai. MAF: SNP quase monomórfico não informa sobre estrutura e é mais sujeito a erro. Mesmos critérios de Lehermeier et al.&nbsp;2014 (eles ficaram com 34.116 SNPs; nós com 33.430). Também saíram 21 DH com mais de 10% de dados faltantes.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="maf-frequência-do-alelo-raro" class="slide level2">
+<h2>MAF: frequência do alelo raro</h2>
+
+<img data-src="apresentacao_files/figure-revealjs/g-maf-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1950"><div class="destaque">
+<p>Filtros refeitos dentro de cada conjunto</p>
+</div>
+<aside class="notes">
+<p>MAF = frequência do alelo menos comum. Um SNP que separa dent de flint é comum no total, mas pode ser fixo dentro de um pool (quase 2 mil no dent e 2,6 mil no flint). Por isso MAF e call rate foram recalculados em cada conjunto analisado.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="desequilíbrio-de-ligação-ld" class="slide level2">
+<h2>Desequilíbrio de ligação (LD)</h2>
+
+<img data-src="apresentacao_files/figure-revealjs/g-ld-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1950"><aside class="notes">
+<p>LD = associação entre alelos de locos próximos: eles são herdados juntos. r² mede essa associação (0 = independentes, 1 = sempre juntos). Nas DH o LD é maior e cai devagar com a distância, porque houve uma única meiose. O STRUCTURE supõe locos independentes dentro de cada grupo; SNPs em LD contam a mesma informação várias vezes e deixam o resultado confiante demais.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="poda-por-ld" class="slide level2">
+<h2>Poda por LD</h2>
+
+<img data-src="apresentacao_files/figure-revealjs/g-poda-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1950"><div class="destaque">
+<p>Janela de 50 SNPs: de cada par com r² &gt; 0,2, um sai</p>
+</div>
+<aside class="notes">
+<p>A poda anda pelo genoma em janelas de 50 SNPs (passo de 5). Dentro da janela, para cada par com r² &gt; 0,2, um dos SNPs é removido. Sobram poucos SNPs, principalmente dentro dos pools, onde o LD das DH é mais forte. Bônus: o STRUCTURE fica muito mais rápido.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section id="na-prática-plink" class="title-slide slide level1 center">
+<h1>Na prática: PLINK</h1>
+
+</section>
+<section id="plink-o-canivete-suíço-dos-snps" class="slide level2">
+<h2>PLINK: o canivete suíço dos SNPs</h2>
+<div class="columns">
+<div class="column" style="width:45%;">
+<ul>
+<li>formatos</li>
+<li>filtros (CQ)</li>
+<li>LD e poda</li>
+<li>PCA, F<sub>ST</sub></li>
+</ul>
+</div><div class="column" style="width:55%;">
+<p>Feito para <strong>humanos</strong>: 22 autossomos + X, Y</p>
+<p><strong>Milho</strong>: 10 cromossomos, sem sexuais</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="fu">c</span>(<span class="st">"--chr-set"</span>, <span class="st">"10"</span>, <span class="st">"no-xy"</span>)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</div></div>
+<aside class="notes">
+<p>O PLINK é o programa padrão para manipular dados de SNP. Por padrão ele supõe genoma humano e trataria os cromossomos de outro jeito (por exemplo, cromossomos sexuais). –chr-set 10 no-xy diz que são 10 autossomos e nenhum cromossomo sexual. Chamamos o PLINK de dentro do R com system2(), na função rodar_plink(), para todo o fluxo ficar num script só.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="filtros-no-plink" class="slide level2">
+<h2>Filtros no PLINK</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a><span class="fu">rodar_plink</span>(</span>
+<span id="cb2-2"><a href=""></a>  <span class="st">"--bfile"</span>,   <span class="st">"cornfed_bruto"</span>,</span>
+<span id="cb2-3"><a href=""></a>  <span class="st">"--exclude"</span>, <span class="st">"gentrain_baixo.txt"</span>,  <span class="co"># GenTrain &lt; 0,7</span></span>
+<span id="cb2-4"><a href=""></a>  <span class="st">"--remove"</span>,  <span class="st">"dh_faltantes.txt"</span>,    <span class="co"># DH &gt; 10% NA</span></span>
+<span id="cb2-5"><a href=""></a>  <span class="st">"--geno"</span>,    <span class="st">"0.1"</span>,                 <span class="co"># call rate ≥ 90%</span></span>
+<span id="cb2-6"><a href=""></a>  <span class="st">"--maf"</span>,     <span class="st">"0.01"</span>,                <span class="co"># MAF ≥ 1%</span></span>
+<span id="cb2-7"><a href=""></a>  <span class="st">"--make-bed"</span>, <span class="st">"--out"</span>, <span class="st">"cornfed_cq"</span>)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<pre><code>2950 variants removed (--geno)
+2069 variants removed (--maf)
+33430 variants and 2269 samples pass</code></pre>
+</section>
+<section id="poda-por-ld-e-exportação" class="slide level2">
+<h2>Poda por LD e exportação</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a><span class="co"># 1. quais SNPs ficam (janela 50, passo 5, r² 0,2)</span></span>
+<span id="cb4-2"><a href=""></a><span class="fu">rodar_plink</span>(<span class="st">"--bfile"</span>, <span class="st">"cornfed_cq"</span>,</span>
+<span id="cb4-3"><a href=""></a>            <span class="st">"--keep"</span>, <span class="st">"dent.txt"</span>,</span>
+<span id="cb4-4"><a href=""></a>            <span class="st">"--maf"</span>, <span class="st">"0.01"</span>, <span class="st">"--geno"</span>, <span class="st">"0.1"</span>,</span>
+<span id="cb4-5"><a href=""></a>            <span class="st">"--indep-pairwise"</span>, <span class="st">"50"</span>, <span class="st">"5"</span>, <span class="st">"0.2"</span>,</span>
+<span id="cb4-6"><a href=""></a>            <span class="st">"--out"</span>, <span class="st">"dent"</span>)</span>
+<span id="cb4-7"><a href=""></a></span>
+<span id="cb4-8"><a href=""></a><span class="co"># 2. exporta no formato do STRUCTURE</span></span>
+<span id="cb4-9"><a href=""></a><span class="fu">rodar_plink</span>(<span class="st">"--bfile"</span>, <span class="st">"cornfed_cq"</span>,</span>
+<span id="cb4-10"><a href=""></a>            <span class="st">"--keep"</span>, <span class="st">"dent.txt"</span>,</span>
+<span id="cb4-11"><a href=""></a>            <span class="st">"--extract"</span>, <span class="st">"dent.prune.in"</span>,</span>
+<span id="cb4-12"><a href=""></a>            <span class="st">"--recode"</span>, <span class="st">"structure"</span>, <span class="st">"--out"</span>, <span class="st">"dent"</span>)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<aside class="notes">
+<p>Três conjuntos de análise: global (todas as famílias), dent e flint. Para a exploração usamos 30 DH por família mais os 23 parentais (743 amostras no global), porque o tempo do STRUCTURE cresce com o número de indivíduos.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section id="structure" class="title-slide slide level1 center">
+<h1>STRUCTURE</h1>
+
+</section>
+<section id="a-ideia-do-modelo" class="slide level2">
+<h2>A ideia do modelo</h2>
+
+<img data-src="apresentacao_files/figure-revealjs/g-modelo-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1500"><div class="destaque">
+<p>K grupos em Hardy-Weinberg · Q = fração de cada grupo</p>
+</div>
+<aside class="notes">
+<p>O STRUCTURE (Pritchard et al.&nbsp;2000) supõe que existem K populações ancestrais, cada uma com suas frequências alélicas, em equilíbrio de Hardy-Weinberg e de ligação. Ele procura a divisão dos indivíduos (ou de partes do genoma deles, no modelo com mistura) que deixa cada grupo o mais próximo possível desse equilíbrio. Estima ao mesmo tempo as frequências de cada grupo (P) e as proporções de cada indivíduo (Q).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="como-ler-o-gráfico" class="slide level2">
+<h2>Como ler o gráfico</h2>
+
+<img data-src="apresentacao_files/figure-revealjs/g-como-ler-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1950"><div class="destaque">
+<p>Uma barra = um indivíduo · cores = fração do genoma</p>
+</div>
+</section>
+<section id="parâmetros" class="slide level2">
+<h2>Parâmetros</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Parâmetro</th>
+<th>Valor</th>
+<th>Para quê</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>K</td>
+<td>1–6 · 1–12 · 1–14</td>
+<td>grupos testados</td>
+</tr>
+<tr class="even">
+<td>réplicas</td>
+<td>3 por K</td>
+<td>mesma resposta?</td>
+</tr>
+<tr class="odd">
+<td>BURNIN</td>
+<td>10.000</td>
+<td>descartadas</td>
+</tr>
+<tr class="even">
+<td>NUMREPS</td>
+<td>20.000</td>
+<td>usadas</td>
+</tr>
+<tr class="odd">
+<td>NOADMIX</td>
+<td>0</td>
+<td>com mistura</td>
+</tr>
+<tr class="even">
+<td>FREQSCORR</td>
+<td>1</td>
+<td>freq. correlacionadas</td>
+</tr>
+<tr class="odd">
+<td>RANDOMIZE</td>
+<td>0 + <code>-D</code></td>
+<td>reprodutível</td>
+</tr>
+</tbody>
+</table>
+<aside class="notes">
+<p>Modelo com mistura e frequências correlacionadas, como em Caniato et al. 2011. K vai além do número esperado de grupos (no dent há 11 famílias, testamos até 12). Atenção: com RANDOMIZE 1 (o padrão) o STRUCTURE ignora a semente. Outro detalhe: no arquivo de parâmetros 100000 não pode virar 1e+05, que o STRUCTURE leria como 1.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="mcmc-burn-in-e-convergência" class="slide level2">
+<h2>MCMC: burn-in e convergência</h2>
+
+<img data-src="apresentacao_files/figure-revealjs/g-traco-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1950"><div class="destaque">
+<p>Réplica instável → fora do cálculo</p>
+</div>
+<aside class="notes">
+<p>O STRUCTURE é uma cadeia de Markov (MCMC): começa num ponto aleatório e vai melhorando. O burn-in é a fase inicial, descartada. Depois dele, o ln da verossimilhança deveria oscilar em torno de um valor estável. A réplica 1 do K = 4 global mudou de patamar no meio da amostragem (iteração ~18 mil): a variância foi 2,4 milhões contra ~4 mil das outras. Critério usado: variância &gt; 3× a mediana das réplicas do mesmo K; foram 3 casos em 96 execuções. Note também que as réplicas 2 e 3 pararam em patamares diferentes: com K = 4 há mais de uma solução parecida. Cadeias mais longas e mais réplicas (produção no cluster) ajudam a ver isso melhor.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="rodando-96-execuções" class="slide level2">
+<h2>Rodando: 96 execuções</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a>rodar_structure <span class="ot">&lt;-</span> <span class="cf">function</span>(i) {</span>
+<span id="cb5-2"><a href=""></a>  e <span class="ot">&lt;-</span> execucoes[i]</span>
+<span id="cb5-3"><a href=""></a>  <span class="fu">system2</span>(structure,</span>
+<span id="cb5-4"><a href=""></a>    <span class="fu">c</span>(<span class="st">"-m"</span>, <span class="st">"mainparams"</span>, <span class="st">"-e"</span>, <span class="st">"extraparams"</span>,</span>
+<span id="cb5-5"><a href=""></a>      <span class="st">"-i"</span>, arquivo, <span class="st">"-o"</span>, e<span class="sc">$</span>saida,</span>
+<span id="cb5-6"><a href=""></a>      <span class="st">"-K"</span>, e<span class="sc">$</span>K, <span class="st">"-D"</span>, e<span class="sc">$</span>semente))</span>
+<span id="cb5-7"><a href=""></a>}</span>
+<span id="cb5-8"><a href=""></a>parallel<span class="sc">::</span><span class="fu">mclapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">96</span>, rodar_structure,</span>
+<span id="cb5-9"><a href=""></a>                   <span class="at">mc.cores =</span> <span class="dv">10</span>)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="destaque">
+<p>10 núcleos · 6,5 horas</p>
+</div>
+<aside class="notes">
+<p>Cada execução do STRUCTURE usa um único núcleo. Por isso rodamos várias em paralelo com mclapply. As mais demoradas (conjunto global, K alto) começam primeiro. A produção final, com todas as 2.269 amostras e cadeias 5 vezes mais longas, vai para o cluster da UFV.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="a-saída-matriz-q" class="slide level2">
+<h2>A saída: matriz Q</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">indivíduo</th>
+<th style="text-align: left;">família</th>
+<th style="text-align: center;">Q grupo 1</th>
+<th style="text-align: center;">Q grupo 2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">B73</td>
+<td style="text-align: left;">Parental</td>
+<td style="text-align: center;">0,19</td>
+<td style="text-align: center;">0,81</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CFD01-003</td>
+<td style="text-align: left;">CFD01</td>
+<td style="text-align: center;">0,56</td>
+<td style="text-align: center;">0,44</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CFD03-005</td>
+<td style="text-align: left;">CFD03</td>
+<td style="text-align: center;">0,00</td>
+<td style="text-align: center;">1,00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CFF09-005</td>
+<td style="text-align: left;">CFF09</td>
+<td style="text-align: center;">1,00</td>
+<td style="text-align: center;">0,00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">UH007</td>
+<td style="text-align: left;">Parental</td>
+<td style="text-align: center;">1,00</td>
+<td style="text-align: center;">0,00</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="destaque">
+<p>Uma linha por indivíduo · soma = 1</p>
+</div>
+</section></section>
+<section>
+<section id="r-costurando-tudo" class="title-slide slide level1 center">
+<h1>R: costurando tudo</h1>
+
+</section>
+<section id="um-fluxo-um-script" class="slide level2">
+<h2>Um fluxo, um script</h2>
+
+<img data-src="apresentacao_files/figure-revealjs/g-fluxo-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1950"><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a>q  <span class="ot">&lt;-</span> <span class="fu">readQ</span>(arquivos_f)              <span class="co"># lê as matrizes Q</span></span>
+<span id="cb6-2"><a href=""></a>ev <span class="ot">&lt;-</span> <span class="fu">evannoMethodStructure</span>(</span>
+<span id="cb6-3"><a href=""></a>        <span class="fu">summariseQ</span>(<span class="fu">tabulateQ</span>(q)))    <span class="co"># ΔK de Evanno</span></span>
+<span id="cb6-4"><a href=""></a>q  <span class="ot">&lt;-</span> <span class="fu">alignK</span>(q, <span class="at">type =</span> <span class="st">"within"</span>)     <span class="co"># alinha as réplicas</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<aside class="notes">
+<p>O R faz a leitura dos dados do GEO (data.table), chama o PLINK e o STRUCTURE e analisa os resultados com o pacote pophelper. Um detalhe: os grupos do STRUCTURE não têm nome, e o “grupo 1” de uma réplica pode ser o “grupo 3” de outra. Por isso alinhamos as réplicas antes de tirar a média.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section id="resultados" class="title-slide slide level1 center">
+<h1>Resultados</h1>
+
+</section>
+<section id="quantos-grupos-δk-de-evanno" class="slide level2">
+<h2>Quantos grupos? ΔK de Evanno</h2>
+
+<img data-src="apresentacao_files/figure-revealjs/g-evanno-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1950"><div class="destaque">
+<p>ΔK aponta K = 2 nos três conjuntos</p>
+</div>
+<aside class="notes">
+<p>ln P(D|K) sobe sempre com K: mais grupos sempre explicam melhor os dados. Evanno et al.&nbsp;2005 propuseram olhar onde essa subida muda de ritmo: ΔK é a segunda derivada dividida pelo desvio-padrão entre réplicas. O pico em K = 2 é comum: o ΔK pega o nível mais alto da hierarquia. Picos secundários: K = 3 (nos três) e K = 9 no flint. Por isso olhamos também os gráficos de barras.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="global-k-2-dent-flint" class="slide level2">
+<h2>Global, K = 2: dent × flint</h2>
+
+<img data-src="apresentacao_files/figure-revealjs/g-global-k2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1950"><div class="destaque">
+<p>CFD01, CFF01, CFF02: ~60/40, os pais vêm dos dois pools</p>
+</div>
+<aside class="notes">
+<p>Cada coluna é uma família, com 30 DH. O grupo vermelho reúne as famílias dent e o azul as flint. As três famílias de controle aparecem misturadas, como esperado pelo pedigree (a mistura fica perto de 60/40, não 50/50). Algumas famílias flint (CFF04, 05, 06, 10) têm parte vermelha: as fundadoras delas não são tão “flint” quanto a central UH007.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="global-k-2-a-5" class="slide level2">
+<h2>Global, K = 2 a 5</h2>
+
+<img data-src="apresentacao_files/figure-revealjs/g-global-k2-5-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1950"><aside class="notes">
+<p>Ao aumentar K, os novos grupos não aparecem como “populações”, e sim como famílias ou conjuntos de famílias que compartilham a mesma fundadora ou fundadoras parecidas. Exemplo: em K = 4, CFD03, CFD04 e CFD10 formam um grupo próprio (verde).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="os-parentais" class="slide level2">
+<h2>Os parentais</h2>
+
+<img data-src="apresentacao_files/figure-revealjs/g-parentais-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1950"><div class="destaque">
+<p>UH007 é 100% “flint”; várias fundadoras flint, não</p>
+</div>
+<aside class="notes">
+<p>O grupo “flint” do K = 2 é, na prática, o grupo da linha central UH007: metade do genoma de toda DH flint vem dela. Fundadoras flint mais distantes dela (EP44, EZ5, F64) aparecem com quase 50% de “dent”. O STRUCTURE está enxergando o pedigree montado pelo melhorista, não só a história dos pools.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="dentro-do-pool-k-2-é-a-linha-central" class="slide level2">
+<h2>Dentro do pool, K = 2 é a linha central</h2>
+
+<img data-src="apresentacao_files/figure-revealjs/g-centrais-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1950"><div class="destaque">
+<p>F353 (dent) e UH007 (flint) × as fundadoras</p>
+</div>
+<aside class="notes">
+<p>Dentro de cada pool, o primeiro grupo que o STRUCTURE separa não é um grupo de fundadoras: é a linha central. No dent, F353 (e UH304, muito parecida com ela) formam um grupo; todas as outras fundadoras, o outro. No flint, UH007 (com UH009 e UH006). Como toda DH tem metade do genoma da central, toda DH aparece com ~50% de cada grupo no K = 2.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="dentro-do-pool-dent" class="slide level2">
+<h2>Dentro do pool Dent</h2>
+
+<img data-src="apresentacao_files/figure-revealjs/g-dent-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1950"><aside class="notes">
+<p>K = 2: azul = F353 (central), vermelho = fundadoras. CFD11 é toda azul porque a fundadora dela (UH304) é muito parecida com F353. A cada K a mais, outra família ou grupo de famílias ganha uma cor própria, e o azul da central continua em todas. Acima de K ≈ 10 as réplicas discordam muito entre si (ver exploração): sinal de que não há mais estrutura real para separar, ou de que as cadeias precisam ser mais longas.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="dentro-do-pool-flint" class="slide level2">
+<h2>Dentro do pool Flint</h2>
+
+<img data-src="apresentacao_files/figure-revealjs/g-flint-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1950"><aside class="notes">
+<p>Mesma leitura do dent. K = 9 foi um pico secundário de ΔK no flint. CFF01 (UH007 × F353, a central dent) e CFF02 (UH007 × B73) aparecem com grupos próprios: são as fundadoras mais diferentes da central.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="pca-outra-forma-de-ver" class="slide level2">
+<h2>PCA: outra forma de ver</h2>
+
+<img data-src="apresentacao_files/figure-revealjs/g-pca-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1950"><aside class="notes">
+<p>A PCA não supõe modelo genético nenhum: resume a variação dos SNPs em poucos eixos. PC1 separa dent e flint, como o K = 2 do STRUCTURE. Os pontos laranja (famílias com pais dos dois pools) ficam no meio. As DH formam “nuvens” em torno do ponto médio entre a central e a sua fundadora. Todas as 2.269 amostras, com os 2.255 SNPs podados do conjunto global.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section id="estatísticas-f" class="title-slide slide level1 center">
+<h1>Estatísticas F</h1>
+
+</section>
+<section id="efeito-wahlund" class="slide level2">
+<h2>Efeito Wahlund</h2>
+
+<img data-src="apresentacao_files/figure-revealjs/g-wahlund-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1950"><div class="destaque">
+<p>Juntar subpopulações → “falta” de heterozigotos</p>
+</div>
+<aside class="notes">
+<p>Cada subpopulação em Hardy-Weinberg tem 2pq = 0,32 de heterozigotos. Se juntarmos as duas e calcularmos com a frequência média (0,5), esperaríamos 0,5. Mas os heterozigotos reais continuam 0,32. Esse déficit, causado só pela subdivisão, é o efeito Wahlund. F_ST mede exatamente isso: 1 − H_S/H_T = 1 − 0,32/0,5 = 0,36.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="f-de-wright-três-níveis" class="slide level2">
+<h2>F de Wright: três níveis</h2>
+<p><span class="math display">\[
+\underbrace{F_{IS} = 1 - \frac{H_O}{H_S}}_{\text{dentro}} \qquad
+\underbrace{F_{ST} = 1 - \frac{H_S}{H_T}}_{\text{entre}} \qquad
+\underbrace{F_{IT} = 1 - \frac{H_O}{H_T}}_{\text{total}}
+\]</span></p>
+<p><br></p>
+<p><span class="math display">\[
+(1 - F_{IT}) = (1 - F_{IS})\,(1 - F_{ST})
+\]</span></p>
+<aside class="notes">
+<p>H_O: heterozigosidade observada (fração de AB). H_S: esperada em Hardy-Weinberg dentro de cada subpopulação, média entre elas. H_T: esperada no total, com a frequência média. F_IS mede endogamia dentro das subpopulações, F_ST a diferenciação entre elas e F_IT a endogamia total.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="f-nos-dados-cornfed" class="slide level2">
+<h2>F nos dados CornFed</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">subpopulações</th>
+<th style="text-align: center;">H<sub>O</sub></th>
+<th style="text-align: center;">H<sub>S</sub></th>
+<th style="text-align: center;">H<sub>T</sub></th>
+<th style="text-align: center;">F<sub>IS</sub></th>
+<th style="text-align: center;">F<sub>ST</sub></th>
+<th style="text-align: center;">F<sub>IT</sub></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Pools (dent x flint)</td>
+<td style="text-align: center;">0,001</td>
+<td style="text-align: center;">0,247</td>
+<td style="text-align: center;">0,310</td>
+<td style="text-align: center;">0,998</td>
+<td style="text-align: center;">0,202</td>
+<td style="text-align: center;">0,998</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Famílias dent</td>
+<td style="text-align: center;">0,001</td>
+<td style="text-align: center;">0,187</td>
+<td style="text-align: center;">0,291</td>
+<td style="text-align: center;">0,997</td>
+<td style="text-align: center;">0,356</td>
+<td style="text-align: center;">0,998</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Famílias flint</td>
+<td style="text-align: center;">0,001</td>
+<td style="text-align: center;">0,161</td>
+<td style="text-align: center;">0,247</td>
+<td style="text-align: center;">0,996</td>
+<td style="text-align: center;">0,348</td>
+<td style="text-align: center;">0,998</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>F<sub>IS</sub> ≈ 1: DH são homozigotas</p>
+</div><div class="column" style="width:50%;">
+<p>F<sub>ST</sub> famílias <strong>&gt;</strong> F<sub>ST</sub> pools</p>
+</div></div>
+<aside class="notes">
+<p>F_IS ≈ 1 não é surpresa: DH são 100% homozigotas por construção (H_O ≈ 0,001). O interessante é o F_ST. Entre dent e flint ele é 0,20 (o PLINK, com o estimador de Weir &amp; Cockerham, dá 0,22). Entre famílias dentro de um pool ele é maior, ~0,35: as famílias são mais diferentes entre si do que os dois pools heteróticos. Cada família é um cruzamento de dois pais, então tem só dois “haplótipos” possíveis em cada loco.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section id="para-levar" class="title-slide slide level1 center">
+<h1>Para levar</h1>
+
+</section>
+<section id="o-que-o-structure-encontrou" class="slide level2">
+<h2>O que o STRUCTURE encontrou</h2>
+<ol type="1">
+<li><strong>K = 2</strong>: dent × flint, a divisão histórica</li>
+<li>Dentro do pool: <strong>linha central</strong> × fundadoras</li>
+<li>Acima disso: <strong>famílias</strong>, ou seja, o pedigree</li>
+<li>Em população feita por melhorista, <strong>não existe “K verdadeiro”</strong></li>
+</ol>
+<div class="destaque">
+<p>Estrutura ≠ só populações naturais: parentesco também é estrutura</p>
+</div>
+<aside class="notes">
+<p>A pergunta do trabalho era: o que o STRUCTURE detecta quando a “população” foi construída por melhoristas? Resposta: no nível mais alto, a separação dos grupos heteróticos; abaixo dele, a estrutura de parentesco das famílias. O F_ST entre famílias maior que entre pools reforça isso. Próximo passo: rodar o conjunto completo (2.269 amostras, 5 réplicas, cadeias 5× mais longas) no cluster da UFV.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="referências" class="slide level2 smaller">
+<h2>Referências</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="small">
+<ul>
+<li>Pritchard et al.&nbsp;2000, <em>Genetics</em></li>
+<li>Falush et al.&nbsp;2003, <em>Genetics</em></li>
+<li>Evanno et al.&nbsp;2005, <em>Mol. Ecol.</em></li>
+<li>Weir &amp; Cockerham 1984, <em>Evolution</em></li>
+<li>Yu et al.&nbsp;2006, <em>Nat. Genet.</em></li>
+</ul>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="small">
+<ul>
+<li>Bauer et al.&nbsp;2013, <em>Genome Biol.</em></li>
+<li>Lehermeier et al.&nbsp;2014, <em>Genetics</em></li>
+<li>Caniato et al.&nbsp;2011, <em>PLoS ONE</em></li>
+<li>Chang et al.&nbsp;2015, <em>GigaScience</em> (PLINK 1.9)</li>
+<li>Francis 2017, <em>Mol. Ecol. Resour.</em> (pophelper)</li>
+</ul>
+</div>
+</div></div>
+
+</section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="apresentacao_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="apresentacao_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="apresentacao_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="apresentacao_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="apresentacao_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="apresentacao_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="apresentacao_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="apresentacao_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="apresentacao_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="apresentacao_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'fade',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1600,
+
+        height: 900,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 6.0e-2,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copiada");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copiada");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>
