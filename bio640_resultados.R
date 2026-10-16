@@ -10,8 +10,8 @@
 #   - ancestralidade média por família
 #
 # Pré-requisito: execuções do STRUCTURE já terminadas, seja a exploração local
-# (seção 10 do bio640_popstructure.R) ou a produção no cluster
-# (results/structure/producao/, ver docs/cluster_ufv.md). Este script só lê os
+# (seção 10 do bio640_popstructure.R) ou a produção no cluster da UFV
+# (exportada em data/exportacao_structure_R_20261015/). Este script só lê os
 # arquivos *_f; não roda o STRUCTURE de novo.
 #
 # Rodar a partir da raiz do projeto (BIO641_popstructure/).
@@ -19,19 +19,32 @@
 
 library(data.table)
 library(pophelper)   # remotes::install_github("royfrancis/pophelper")
+source("funcoes_popstructure.R")   # ler_traco()
 
 # -----------------------------------------------------------------------------
 # 0. Qual fase analisar
 # -----------------------------------------------------------------------------
-# "exploracao": 743 amostras (30 DH por família + parentais), 3 réplicas
-# "producao":   todas as amostras, 5 réplicas (resultados trazidos do cluster)
+# "exploracao": 743 amostras (30 DH por família + parentais), 3 réplicas,
+#               10 mil de burn-in + 20 mil iterações (rodada local)
+# "producao":   todas as 2.269 amostras, 5 réplicas, 50 mil + 100 mil
+#               (cluster da UFV). O cluster levaria ~14 dias para terminar
+#               tudo; usamos o que ficou pronto: dent e flint completos e o
+#               global sem 2 réplicas de K = 6 e 4 de K = 7.
 
-fase <- "exploracao"
+fase <- "producao"
 
-dir_str   <- file.path("results", "structure")
-dir_fase  <- file.path(dir_str, fase)
-dir_saida <- file.path(dir_fase, "analise")
-dir.create(dir_saida, showWarnings = FALSE)
+dir_str <- file.path("results", "structure")
+dir_exportacao <- file.path("data", "exportacao_structure_R_20261015")
+
+if (fase == "exploracao") {
+  dir_resultados <- file.path(dir_str, "exploracao")      # <conjunto>/*_f
+  dir_ordem      <- dir_str                               # <conjunto>/<conjunto>_ordem.tsv
+} else {
+  dir_resultados <- file.path(dir_exportacao, "resultados_completos")
+  dir_ordem      <- file.path(dir_exportacao, "metadados", "dados")
+}
+dir_saida <- file.path(dir_str, fase, "analise")
+dir.create(dir_saida, showWarnings = FALSE, recursive = TRUE)
 
 conjuntos <- c("global", "dent", "flint")
 
@@ -40,9 +53,9 @@ conjuntos <- c("global", "dent", "flint")
 # quem é quem.
 arq_ordem <- function(nome) {
   if (fase == "exploracao") {
-    file.path(dir_str, nome, paste0(nome, "_ordem.tsv"))
+    file.path(dir_ordem, nome, paste0(nome, "_ordem.tsv"))
   } else {
-    file.path("cluster", "pacote", "dados", paste0(nome, "_ordem.tsv"))
+    file.path(dir_ordem, paste0(nome, "_ordem.tsv"))
   }
 }
 
@@ -59,7 +72,7 @@ arq_ordem <- function(nome) {
 q <- list()
 execucoes <- list()
 for (nome in conjuntos) {
-  arqs <- list.files(file.path(dir_fase, nome), pattern = "_f$",
+  arqs <- list.files(file.path(dir_resultados, nome), pattern = "_f$",
                      full.names = TRUE)
   q[[nome]] <- readQ(arqs)
   execucoes[[nome]] <- as.data.table(tabulateQ(q[[nome]]))
@@ -67,7 +80,8 @@ for (nome in conjuntos) {
 execucoes <- rbindlist(execucoes, idcol = "conjunto")
 execucoes[, rep := as.integer(sub(".*_r(\\d+)_f$", "\\1", file))]
 
-# Quantas execuções por conjunto e K (deve ser o número de réplicas em todos)
+# Quantas execuções por conjunto e K (deve ser o número de réplicas em todos;
+# na produção faltam réplicas de K = 6 e 7 no global)
 dcast(execucoes, conjunto ~ k, value.var = "rep", fun.aggregate = length)
 
 # -----------------------------------------------------------------------------
@@ -80,7 +94,8 @@ dcast(execucoes, conjunto ~ k, value.var = "rep", fun.aggregate = length)
 # enorme derruba o ln P(D|K) e distorce o ΔK de Evanno.
 #
 # Critério: réplica instável se vll > 3 x a mediana das réplicas do mesmo K.
-# Com 3 réplicas, a mediana não é afetada por uma única réplica ruim.
+# Com 3 ou mais réplicas, a mediana não é afetada por uma única réplica ruim.
+# (Com uma réplica só, como o K = 7 global da produção, não há o que comparar.)
 
 execucoes[, instavel := vll > 3 * median(vll), by = .(conjunto, k)]
 execucoes[(instavel), .(conjunto, K = k, rep, elpd, vll)]
@@ -102,7 +117,8 @@ for (nome in conjuntos) {
 #   L''(K) = |L(K+1) - 2 L(K) + L(K-1)|   mudança desse ganho
 #   ΔK     = L''(K) / dp(L(K))
 # O ΔK é alto onde a curva de ln P(D|K) "faz um cotovelo". Ele não existe para
-# o primeiro e o último K testados.
+# o primeiro e o último K testados, nem para um K com uma única réplica (sem
+# desvio-padrão; o pophelper avisa, mas calcula os demais).
 #
 # Cuidado na interpretação: o ΔK tende a apontar o nível mais alto da
 # hierarquia (aqui, dent x flint em K = 2). Os picos secundários e os gráficos
@@ -130,8 +146,13 @@ evanno[!is.na(deltaK)][order(-deltaK), head(.SD, 3), by = conjunto][
 # "grupo 3" de outra (troca de rótulos, ou label switching). Antes de tirar a
 # média das réplicas, é preciso alinhá-las.
 #   a) dentro de cada K: alignK(type = "within"), semelhante ao CLUMPP;
-#   b) média das réplicas alinhadas;
-#   c) entre K: cada K é alinhado ao K anterior, para que um mesmo grupo
+#   b) modo principal: réplicas podem chegar a soluções diferentes (no dent,
+#      K = 2, três réplicas dividem as fundadoras de um jeito e duas de
+#      outro). A média de soluções diferentes "borra" o gráfico. Por isso
+#      ficam só as réplicas parecidas com a de maior ln P(D|K), como faz o
+#      CLUMPAK ("major mode");
+#   c) média das réplicas do modo principal;
+#   d) entre K: cada K é alinhado ao K anterior, para que um mesmo grupo
 #      mantenha a mesma cor nos gráficos.
 #
 # Para (b) não usamos o mergeQ() do pophelper: na versão 2.3.1 ele falha no
@@ -160,11 +181,28 @@ alinhar_ao_anterior <- function(q, ref) {
   saida
 }
 
-media_por_K <- function(qlista) {
+# Semelhança entre duas matrizes Q já alinhadas: fração do genoma atribuída
+# ao mesmo grupo, em média entre os indivíduos (1 = idênticas).
+semelhanca <- function(a, b) mean(rowSums(pmin(as.matrix(a), as.matrix(b))))
+
+# Limite para duas réplicas estarem no mesmo modo
+limite_modo <- 0.9
+
+modos <- list()   # registro: quantas réplicas ficaram no modo principal
+
+media_por_K <- function(qlista, nome) {
   k <- sapply(qlista, ncol)
   medias <- lapply(split(qlista, k), function(reps) {
     reps <- alignK(as.qlist(reps), type = "within")
-    Reduce(`+`, reps) / length(reps)
+    elpd <- sapply(reps, attr, "elpd")
+    melhor <- reps[[which.max(elpd)]]
+    sem <- sapply(reps, semelhanca, melhor)
+    principal <- reps[sem >= limite_modo]
+    modos[[length(modos) + 1]] <<- data.table(
+      conjunto = nome, K = ncol(melhor), replicas = length(reps),
+      no_modo_principal = length(principal),
+      semelhanca_minima = round(min(sem), 3))
+    Reduce(`+`, principal) / length(principal)
   })
   medias <- medias[order(as.integer(names(medias)))]
   for (i in seq_along(medias)[-1]) {
@@ -174,7 +212,12 @@ media_por_K <- function(qlista) {
   as.qlist(medias)
 }
 
-q_media <- lapply(q, media_por_K)
+q_media <- lapply(conjuntos, function(nome) media_por_K(q[[nome]], nome))
+names(q_media) <- conjuntos
+
+modos <- rbindlist(modos)
+modos[no_modo_principal < replicas]   # os K com mais de uma solução
+fwrite(modos, file.path(dir_saida, "modos.tsv"), sep = "\t")
 
 # Matrizes Q médias em formato longo: uma linha por indivíduo, K e grupo
 amostras <- lapply(conjuntos, function(nome) fread(arq_ordem(nome)))
@@ -198,7 +241,7 @@ fwrite(q_longo, file.path(dir_saida, "q_medio.tsv.gz"), sep = "\t")
 # ficam agrupadas por família e, dentro da família, ordenadas pelo grupo
 # majoritário (sortind = "all"). Um painel por K, de K = 2 ao maior testado.
 # Os parentais vão num gráfico separado, com o nome de cada linha, porque são
-# poucos (23) e se perdem no meio das 720 DH.
+# poucos (23) e se perdem no meio das DH.
 #
 # Paleta fixa: o pophelper troca de paleta quando K passa de 12, e aí a mesma
 # cor deixaria de indicar o mesmo grupo entre gráficos. Como os K estão
@@ -264,5 +307,29 @@ fwrite(anc_familia, file.path(dir_saida, "ancestralidade_familias.tsv"),
 dcast(anc_familia[conjunto == "global" & K == 2],
       familia ~ grupo, value.var = "fracao")[
   , lapply(.SD, function(x) if (is.numeric(x)) round(x, 2) else x)]
+
+# -----------------------------------------------------------------------------
+# 7. Traços da MCMC
+# -----------------------------------------------------------------------------
+# O .log de cada execução tem, a cada 100 iterações, o alfa e (depois do
+# burn-in) o ln da verossimilhança. Juntamos tudo numa tabela pequena, usada
+# nos gráficos de convergência da apresentação (os .log da produção somam ~110 MB
+# e não vão para o git).
+
+tracos <- rbindlist(lapply(conjuntos, function(nome) {
+  logs <- list.files(file.path(dir_resultados, nome), pattern = "_r\\d+\\.log$",
+                     full.names = TRUE)
+  rbindlist(lapply(logs, function(arq) {
+    ler_traco(arq)[, `:=`(
+      conjunto = nome,
+      K   = as.integer(sub(".*_K(\\d+)_r.*", "\\1", basename(arq))),
+      rep = as.integer(sub(".*_r(\\d+)\\.log$", "\\1", basename(arq))))]
+  }))
+}))
+# só as execuções que terminaram (as interrompidas não têm *_f)
+tracos <- tracos[execucoes[, .(conjunto, K = k, rep)], on = .(conjunto, K, rep),
+                 nomatch = NULL]
+setcolorder(tracos, c("conjunto", "K", "rep"))
+fwrite(tracos, file.path(dir_saida, "tracos.tsv.gz"), sep = "\t")
 
 cat("\nResultados em", dir_saida, "\n")

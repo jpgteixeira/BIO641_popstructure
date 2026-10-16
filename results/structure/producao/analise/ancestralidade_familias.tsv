@@ -1,0 +1,3695 @@
+conjunto	K	familia	grupo	fracao
+global	1	Par. Dent	Cluster1	1
+global	1	Par. Flint	Cluster1	1
+global	1	CFD01	Cluster1	1
+global	1	CFD02	Cluster1	1
+global	1	CFD03	Cluster1	1
+global	1	CFD04	Cluster1	1
+global	1	CFD05	Cluster1	1
+global	1	CFD06	Cluster1	1
+global	1	CFD07	Cluster1	1
+global	1	CFD09	Cluster1	1
+global	1	CFD10	Cluster1	1
+global	1	CFD11	Cluster1	1
+global	1	CFD12	Cluster1	1
+global	1	CFF01	Cluster1	1
+global	1	CFF02	Cluster1	1
+global	1	CFF03	Cluster1	1
+global	1	CFF04	Cluster1	1
+global	1	CFF05	Cluster1	1
+global	1	CFF06	Cluster1	1
+global	1	CFF07	Cluster1	1
+global	1	CFF08	Cluster1	1
+global	1	CFF09	Cluster1	1
+global	1	CFF10	Cluster1	1
+global	1	CFF12	Cluster1	1
+global	1	CFF13	Cluster1	1
+global	1	CFF15	Cluster1	1
+global	2	Par. Dent	Cluster1	0.0965454545454545
+global	2	Par. Flint	Cluster1	0.722966666666667
+global	2	CFD01	Cluster1	0.623369411764706
+global	2	CFD02	Cluster1	0.0959369863013698
+global	2	CFD03	Cluster1	0.000209803921568627
+global	2	CFD04	Cluster1	0.000255238095238095
+global	2	CFD05	Cluster1	0.0892675324675325
+global	2	CFD06	Cluster1	0.0169409523809524
+global	2	CFD07	Cluster1	0.0720814814814815
+global	2	CFD09	Cluster1	0.185174603174603
+global	2	CFD10	Cluster1	0.00188282828282828
+global	2	CFD11	Cluster1	0.000731764705882354
+global	2	CFD12	Cluster1	0.077422
+global	2	CFF01	Cluster1	0.598932653061224
+global	2	CFF02	Cluster1	0.633126050420168
+global	2	CFF03	Cluster1	0.976067272727273
+global	2	CFF04	Cluster1	0.80488679245283
+global	2	CFF05	Cluster1	0.771129411764706
+global	2	CFF06	Cluster1	0.7252
+global	2	CFF07	Cluster1	0.988601550387597
+global	2	CFF08	Cluster1	0.96451948051948
+global	2	CFF09	Cluster1	0.99124060150376
+global	2	CFF10	Cluster1	0.731169523809524
+global	2	CFF12	Cluster1	0.993539285714285
+global	2	CFF13	Cluster1	0.99918407079646
+global	2	CFF15	Cluster1	0.989856140350877
+global	2	Par. Dent	Cluster2	0.903454545454546
+global	2	Par. Flint	Cluster2	0.277033333333333
+global	2	CFD01	Cluster2	0.376630588235294
+global	2	CFD02	Cluster2	0.90406301369863
+global	2	CFD03	Cluster2	0.999790196078431
+global	2	CFD04	Cluster2	0.999744761904762
+global	2	CFD05	Cluster2	0.910732467532467
+global	2	CFD06	Cluster2	0.983059047619048
+global	2	CFD07	Cluster2	0.927918518518519
+global	2	CFD09	Cluster2	0.814825396825397
+global	2	CFD10	Cluster2	0.998117171717171
+global	2	CFD11	Cluster2	0.999268235294118
+global	2	CFD12	Cluster2	0.922578
+global	2	CFF01	Cluster2	0.401067346938776
+global	2	CFF02	Cluster2	0.366873949579832
+global	2	CFF03	Cluster2	0.0239327272727273
+global	2	CFF04	Cluster2	0.19511320754717
+global	2	CFF05	Cluster2	0.228870588235294
+global	2	CFF06	Cluster2	0.2748
+global	2	CFF07	Cluster2	0.0113984496124031
+global	2	CFF08	Cluster2	0.0354805194805195
+global	2	CFF09	Cluster2	0.00875939849624059
+global	2	CFF10	Cluster2	0.268830476190476
+global	2	CFF12	Cluster2	0.00646071428571429
+global	2	CFF13	Cluster2	0.000815929203539823
+global	2	CFF15	Cluster2	0.0101438596491228
+global	3	Par. Dent	Cluster1	0.00898181818181818
+global	3	Par. Flint	Cluster1	0.6158
+global	3	CFD01	Cluster1	0.572785882352941
+global	3	CFD02	Cluster1	0.015386301369863
+global	3	CFD03	Cluster1	0
+global	3	CFD04	Cluster1	0
+global	3	CFD05	Cluster1	0.0164675324675325
+global	3	CFD06	Cluster1	0.000407619047619048
+global	3	CFD07	Cluster1	0.000546296296296296
+global	3	CFD09	Cluster1	0.0048
+global	3	CFD10	Cluster1	9.8989898989899e-05
+global	3	CFD11	Cluster1	1.88235294117647e-05
+global	3	CFD12	Cluster1	0.00017
+global	3	CFF01	Cluster1	0.548893877551021
+global	3	CFF02	Cluster1	0.597556302521008
+global	3	CFF03	Cluster1	0.973858181818182
+global	3	CFF04	Cluster1	0.677879245283019
+global	3	CFF05	Cluster1	0.693958823529412
+global	3	CFF06	Cluster1	0.614948936170213
+global	3	CFF07	Cluster1	0.989370542635658
+global	3	CFF08	Cluster1	0.894218181818182
+global	3	CFF09	Cluster1	0.992386466165413
+global	3	CFF10	Cluster1	0.617055238095238
+global	3	CFF12	Cluster1	0.991932142857143
+global	3	CFF13	Cluster1	0.999419469026548
+global	3	CFF15	Cluster1	0.98760701754386
+global	3	Par. Dent	Cluster2	0.582454545454545
+global	3	Par. Flint	Cluster2	0.0430333333333333
+global	3	CFD01	Cluster2	0.427122352941177
+global	3	CFD02	Cluster2	0.699219178082192
+global	3	CFD03	Cluster2	1
+global	3	CFD04	Cluster2	1
+global	3	CFD05	Cluster2	0.71665974025974
+global	3	CFD06	Cluster2	0.66976380952381
+global	3	CFD07	Cluster2	0.592188888888889
+global	3	CFD09	Cluster2	0.423587301587302
+global	3	CFD10	Cluster2	0.999773737373737
+global	3	CFD11	Cluster2	0.962070588235295
+global	3	CFD12	Cluster2	0.559354
+global	3	CFF01	Cluster2	0.451014285714286
+global	3	CFF02	Cluster2	0.151053781512605
+global	3	CFF03	Cluster2	0.0254709090909091
+global	3	CFF04	Cluster2	0.000471698113207547
+global	3	CFF05	Cluster2	0.00180588235294118
+global	3	CFF06	Cluster2	0.00127234042553192
+global	3	CFF07	Cluster2	0.00810697674418604
+global	3	CFF08	Cluster2	0.000774025974025975
+global	3	CFF09	Cluster2	0.00487518796992481
+global	3	CFF10	Cluster2	0.000733333333333334
+global	3	CFF12	Cluster2	0.00774285714285714
+global	3	CFF13	Cluster2	0.000410619469026549
+global	3	CFF15	Cluster2	0.0026719298245614
+global	3	Par. Dent	Cluster3	0.408654545454545
+global	3	Par. Flint	Cluster3	0.34125
+global	3	CFD01	Cluster3	0
+global	3	CFD02	Cluster3	0.285339726027397
+global	3	CFD03	Cluster3	0
+global	3	CFD04	Cluster3	0
+global	3	CFD05	Cluster3	0.266864935064935
+global	3	CFD06	Cluster3	0.329769523809524
+global	3	CFD07	Cluster3	0.4072
+global	3	CFD09	Cluster3	0.571634920634921
+global	3	CFD10	Cluster3	0
+global	3	CFD11	Cluster3	0.0376729411764706
+global	3	CFD12	Cluster3	0.44024
+global	3	CFF01	Cluster3	0
+global	3	CFF02	Cluster3	0.251326050420168
+global	3	CFF03	Cluster3	0.00056
+global	3	CFF04	Cluster3	0.321615094339623
+global	3	CFF05	Cluster3	0.304323529411765
+global	3	CFF06	Cluster3	0.383851063829787
+global	3	CFF07	Cluster3	0.0023968992248062
+global	3	CFF08	Cluster3	0.10505974025974
+global	3	CFF09	Cluster3	0.00265563909774436
+global	3	CFF10	Cluster3	0.382253333333333
+global	3	CFF12	Cluster3	0.000173214285714286
+global	3	CFF13	Cluster3	1.23893805309735e-05
+global	3	CFF15	Cluster3	0.00962280701754386
+global	4	Par. Dent	Cluster1	0.000181818181818182
+global	4	Par. Flint	Cluster1	0.593333333333333
+global	4	CFD01	Cluster1	0.571658823529412
+global	4	CFD02	Cluster1	0
+global	4	CFD03	Cluster1	0
+global	4	CFD04	Cluster1	0
+global	4	CFD05	Cluster1	0
+global	4	CFD06	Cluster1	9.52380952380953e-06
+global	4	CFD07	Cluster1	0.00037962962962963
+global	4	CFD09	Cluster1	0.000301587301587302
+global	4	CFD10	Cluster1	0.000101010101010101
+global	4	CFD11	Cluster1	1.17647058823529e-05
+global	4	CFD12	Cluster1	0
+global	4	CFF01	Cluster1	0.548122448979592
+global	4	CFF02	Cluster1	0.452302521008403
+global	4	CFF03	Cluster1	0.963381818181818
+global	4	CFF04	Cluster1	0.681698113207547
+global	4	CFF05	Cluster1	0.697911764705883
+global	4	CFF06	Cluster1	0.622063829787234
+global	4	CFF07	Cluster1	0.984217054263565
+global	4	CFF08	Cluster1	0.890701298701299
+global	4	CFF09	Cluster1	0.990172932330827
+global	4	CFF10	Cluster1	0.622980952380952
+global	4	CFF12	Cluster1	0.990883928571428
+global	4	CFF13	Cluster1	0.999265486725663
+global	4	CFF15	Cluster1	0.904350877192982
+global	4	Par. Dent	Cluster2	0.533909090909091
+global	4	Par. Flint	Cluster2	0.033
+global	4	CFD01	Cluster2	0.428152941176471
+global	4	CFD02	Cluster2	0.409191780821918
+global	4	CFD03	Cluster2	0.999950980392157
+global	4	CFD04	Cluster2	1
+global	4	CFD05	Cluster2	0.596792207792208
+global	4	CFD06	Cluster2	0.687447619047619
+global	4	CFD07	Cluster2	0.568814814814815
+global	4	CFD09	Cluster2	0.435761904761905
+global	4	CFD10	Cluster2	0.998050505050505
+global	4	CFD11	Cluster2	0.999082352941176
+global	4	CFD12	Cluster2	0.58333
+global	4	CFF01	Cluster2	0.451663265306122
+global	4	CFF02	Cluster2	0
+global	4	CFF03	Cluster2	0.0334727272727273
+global	4	CFF04	Cluster2	0.000188679245283019
+global	4	CFF05	Cluster2	0.00244117647058824
+global	4	CFF06	Cluster2	0.00112765957446809
+global	4	CFF07	Cluster2	0.00653488372093023
+global	4	CFF08	Cluster2	0.000428571428571429
+global	4	CFF09	Cluster2	0.00552631578947369
+global	4	CFF10	Cluster2	0.000314285714285714
+global	4	CFF12	Cluster2	0.0080625
+global	4	CFF13	Cluster2	0.00047787610619469
+global	4	CFF15	Cluster2	0.000377192982456141
+global	4	Par. Dent	Cluster3	0.278181818181818
+global	4	Par. Flint	Cluster3	0.321583333333333
+global	4	CFD01	Cluster3	0
+global	4	CFD02	Cluster3	0
+global	4	CFD03	Cluster3	0
+global	4	CFD04	Cluster3	0
+global	4	CFD05	Cluster3	0
+global	4	CFD06	Cluster3	0.311914285714286
+global	4	CFD07	Cluster3	0.304638888888889
+global	4	CFD09	Cluster3	0.56368253968254
+global	4	CFD10	Cluster3	0
+global	4	CFD11	Cluster3	0.000470588235294118
+global	4	CFD12	Cluster3	0.41601
+global	4	CFF01	Cluster3	0
+global	4	CFF02	Cluster3	0
+global	4	CFF03	Cluster3	0.000118181818181818
+global	4	CFF04	Cluster3	0.306924528301887
+global	4	CFF05	Cluster3	0.296617647058824
+global	4	CFF06	Cluster3	0.375042553191489
+global	4	CFF07	Cluster3	0.00062015503875969
+global	4	CFF08	Cluster3	0.107896103896104
+global	4	CFF09	Cluster3	0.0026015037593985
+global	4	CFF10	Cluster3	0.369171428571429
+global	4	CFF12	Cluster3	1.78571428571429e-05
+global	4	CFF13	Cluster3	1.76991150442478e-05
+global	4	CFF15	Cluster3	0.0941666666666668
+global	4	Par. Dent	Cluster4	0.187818181818182
+global	4	Par. Flint	Cluster4	0.0520833333333333
+global	4	CFD01	Cluster4	0
+global	4	CFD02	Cluster4	0.590712328767124
+global	4	CFD03	Cluster4	0
+global	4	CFD04	Cluster4	0
+global	4	CFD05	Cluster4	0.402831168831169
+global	4	CFD06	Cluster4	0.000219047619047619
+global	4	CFD07	Cluster4	0.126083333333333
+global	4	CFD09	Cluster4	0
+global	4	CFD10	Cluster4	0.00157575757575758
+global	4	CFD11	Cluster4	4.70588235294118e-05
+global	4	CFD12	Cluster4	0.00019
+global	4	CFF01	Cluster4	0
+global	4	CFF02	Cluster4	0.547470588235294
+global	4	CFF03	Cluster4	0.00276363636363636
+global	4	CFF04	Cluster4	0.0108679245283019
+global	4	CFF05	Cluster4	0.00302941176470588
+global	4	CFF06	Cluster4	0.00174468085106383
+global	4	CFF07	Cluster4	0.00842635658914729
+global	4	CFF08	Cluster4	0.00077922077922078
+global	4	CFF09	Cluster4	0.00145112781954887
+global	4	CFF10	Cluster4	0.0072952380952381
+global	4	CFF12	Cluster4	0.0006875
+global	4	CFF13	Cluster4	0
+global	4	CFF15	Cluster4	0.000842105263157895
+global	5	Par. Dent	Cluster1	9.09090909090909e-05
+global	5	Par. Flint	Cluster1	0.331333333333333
+global	5	CFD01	Cluster1	0.5858
+global	5	CFD02	Cluster1	0
+global	5	CFD03	Cluster1	0
+global	5	CFD04	Cluster1	0
+global	5	CFD05	Cluster1	0
+global	5	CFD06	Cluster1	0
+global	5	CFD07	Cluster1	0.000333333333333334
+global	5	CFD09	Cluster1	0.000190476190476191
+global	5	CFD10	Cluster1	6.06060606060606e-05
+global	5	CFD11	Cluster1	1.17647058823529e-05
+global	5	CFD12	Cluster1	1e-05
+global	5	CFF01	Cluster1	0.562408163265306
+global	5	CFF02	Cluster1	0.451310924369748
+global	5	CFF03	Cluster1	0.680527272727273
+global	5	CFF04	Cluster1	0.411415094339623
+global	5	CFF05	Cluster1	0.462264705882353
+global	5	CFF06	Cluster1	0.430702127659574
+global	5	CFF07	Cluster1	0.077
+global	5	CFF08	Cluster1	0.712376623376624
+global	5	CFF09	Cluster1	0.037406015037594
+global	5	CFF10	Cluster1	0.33387619047619
+global	5	CFF12	Cluster1	0.999616071428571
+global	5	CFF13	Cluster1	0.999690265486725
+global	5	CFF15	Cluster1	0.0435438596491228
+global	5	Par. Dent	Cluster2	0.534818181818182
+global	5	Par. Flint	Cluster2	0.0155
+global	5	CFD01	Cluster2	0.413670588235294
+global	5	CFD02	Cluster2	0.424232876712329
+global	5	CFD03	Cluster2	0.999941176470588
+global	5	CFD04	Cluster2	1
+global	5	CFD05	Cluster2	0.60974025974026
+global	5	CFD06	Cluster2	0.685838095238095
+global	5	CFD07	Cluster2	0.575638888888889
+global	5	CFD09	Cluster2	0.434095238095238
+global	5	CFD10	Cluster2	0.997222222222222
+global	5	CFD11	Cluster2	0.998952941176471
+global	5	CFD12	Cluster2	0.58454
+global	5	CFF01	Cluster2	0.437163265306123
+global	5	CFF02	Cluster2	0
+global	5	CFF03	Cluster2	0.0226818181818182
+global	5	CFF04	Cluster2	0.000132075471698113
+global	5	CFF05	Cluster2	0.00161764705882353
+global	5	CFF06	Cluster2	0.00074468085106383
+global	5	CFF07	Cluster2	0
+global	5	CFF08	Cluster2	9.09090909090909e-05
+global	5	CFF09	Cluster2	3.00751879699248e-05
+global	5	CFF10	Cluster2	0.000285714285714286
+global	5	CFF12	Cluster2	3.57142857142857e-05
+global	5	CFF13	Cluster2	0
+global	5	CFF15	Cluster2	2.63157894736842e-05
+global	5	Par. Dent	Cluster3	0.277181818181818
+global	5	Par. Flint	Cluster3	0.2785
+global	5	CFD01	Cluster3	0
+global	5	CFD02	Cluster3	0
+global	5	CFD03	Cluster3	0
+global	5	CFD04	Cluster3	0
+global	5	CFD05	Cluster3	0
+global	5	CFD06	Cluster3	0.313323809523809
+global	5	CFD07	Cluster3	0.306333333333333
+global	5	CFD09	Cluster3	0.564984126984127
+global	5	CFD10	Cluster3	0
+global	5	CFD11	Cluster3	0.000458823529411765
+global	5	CFD12	Cluster3	0.41478
+global	5	CFF01	Cluster3	0
+global	5	CFF02	Cluster3	0
+global	5	CFF03	Cluster3	0.000163636363636364
+global	5	CFF04	Cluster3	0.30311320754717
+global	5	CFF05	Cluster3	0.300764705882353
+global	5	CFF06	Cluster3	0.38431914893617
+global	5	CFF07	Cluster3	0
+global	5	CFF08	Cluster3	0.113896103896104
+global	5	CFF09	Cluster3	0
+global	5	CFF10	Cluster3	0.36627619047619
+global	5	CFF12	Cluster3	0
+global	5	CFF13	Cluster3	0
+global	5	CFF15	Cluster3	0
+global	5	Par. Dent	Cluster4	0.187
+global	5	Par. Flint	Cluster4	0.0326666666666667
+global	5	CFD01	Cluster4	0
+global	5	CFD02	Cluster4	0.575575342465753
+global	5	CFD03	Cluster4	0
+global	5	CFD04	Cluster4	0
+global	5	CFD05	Cluster4	0.389818181818182
+global	5	CFD06	Cluster4	0.000123809523809524
+global	5	CFD07	Cluster4	0.11712037037037
+global	5	CFD09	Cluster4	0
+global	5	CFD10	Cluster4	0.00217171717171717
+global	5	CFD11	Cluster4	7.05882352941177e-05
+global	5	CFD12	Cluster4	0.00017
+global	5	CFF01	Cluster4	0
+global	5	CFF02	Cluster4	0.545235294117647
+global	5	CFF03	Cluster4	0.0025
+global	5	CFF04	Cluster4	0.0122452830188679
+global	5	CFF05	Cluster4	0.00238235294117647
+global	5	CFF06	Cluster4	0.00134042553191489
+global	5	CFF07	Cluster4	0
+global	5	CFF08	Cluster4	0.000493506493506494
+global	5	CFF09	Cluster4	7.5187969924812e-06
+global	5	CFF10	Cluster4	0.00663809523809524
+global	5	CFF12	Cluster4	0
+global	5	CFF13	Cluster4	0
+global	5	CFF15	Cluster4	0
+global	5	Par. Dent	Cluster5	0.000636363636363636
+global	5	Par. Flint	Cluster5	0.342
+global	5	CFD01	Cluster5	4.70588235294118e-05
+global	5	CFD02	Cluster5	0
+global	5	CFD03	Cluster5	0
+global	5	CFD04	Cluster5	0
+global	5	CFD05	Cluster5	0
+global	5	CFD06	Cluster5	0
+global	5	CFD07	Cluster5	0.00012962962962963
+global	5	CFD09	Cluster5	0.000253968253968254
+global	5	CFD10	Cluster5	0.000111111111111111
+global	5	CFD11	Cluster5	1.17647058823529e-05
+global	5	CFD12	Cluster5	1e-05
+global	5	CFF01	Cluster5	9.18367346938776e-05
+global	5	CFF02	Cluster5	0.00321848739495798
+global	5	CFF03	Cluster5	0.293854545454545
+global	5	CFF04	Cluster5	0.272943396226415
+global	5	CFF05	Cluster5	0.232911764705882
+global	5	CFF06	Cluster5	0.182851063829787
+global	5	CFF07	Cluster5	0.922589147286821
+global	5	CFF08	Cluster5	0.172688311688312
+global	5	CFF09	Cluster5	0.962150375939849
+global	5	CFF10	Cluster5	0.292714285714286
+global	5	CFF12	Cluster5	0
+global	5	CFF13	Cluster5	8.84955752212389e-06
+global	5	CFF15	Cluster5	0.95598245614035
+global	6	Par. Dent	Cluster1	0
+global	6	Par. Flint	Cluster1	0.305583333333333
+global	6	CFD01	Cluster1	0.598505882352941
+global	6	CFD02	Cluster1	0
+global	6	CFD03	Cluster1	0
+global	6	CFD04	Cluster1	0
+global	6	CFD05	Cluster1	0
+global	6	CFD06	Cluster1	0
+global	6	CFD07	Cluster1	0.000222222222222222
+global	6	CFD09	Cluster1	1.58730158730159e-05
+global	6	CFD10	Cluster1	0
+global	6	CFD11	Cluster1	1.17647058823529e-05
+global	6	CFD12	Cluster1	0
+global	6	CFF01	Cluster1	0.575081632653061
+global	6	CFF02	Cluster1	0.45581512605042
+global	6	CFF03	Cluster1	0.706336363636364
+global	6	CFF04	Cluster1	0.429566037735849
+global	6	CFF05	Cluster1	0.432470588235294
+global	6	CFF06	Cluster1	0.389468085106383
+global	6	CFF07	Cluster1	0.114697674418605
+global	6	CFF08	Cluster1	0.692584415584416
+global	6	CFF09	Cluster1	0.0575639097744361
+global	6	CFF10	Cluster1	0.362104761904762
+global	6	CFF12	Cluster1	0.9998125
+global	6	CFF13	Cluster1	0.999823008849557
+global	6	CFF15	Cluster1	0.061421052631579
+global	6	Par. Dent	Cluster2	0.397
+global	6	Par. Flint	Cluster2	0.0100833333333333
+global	6	CFD01	Cluster2	0.401058823529412
+global	6	CFD02	Cluster2	0.416054794520548
+global	6	CFD03	Cluster2	1
+global	6	CFD04	Cluster2	1
+global	6	CFD05	Cluster2	0.588038961038961
+global	6	CFD06	Cluster2	0.0271523809523809
+global	6	CFD07	Cluster2	0.0596944444444444
+global	6	CFD09	Cluster2	0.0386031746031746
+global	6	CFD10	Cluster2	0.999808080808081
+global	6	CFD11	Cluster2	0.299941176470588
+global	6	CFD12	Cluster2	0.01778
+global	6	CFF01	Cluster2	0.424397959183674
+global	6	CFF02	Cluster2	0
+global	6	CFF03	Cluster2	0.00143636363636364
+global	6	CFF04	Cluster2	0.00164150943396227
+global	6	CFF05	Cluster2	0.00229411764705882
+global	6	CFF06	Cluster2	0.016063829787234
+global	6	CFF07	Cluster2	0
+global	6	CFF08	Cluster2	0
+global	6	CFF09	Cluster2	7.5187969924812e-06
+global	6	CFF10	Cluster2	0.000247619047619048
+global	6	CFF12	Cluster2	0
+global	6	CFF13	Cluster2	0
+global	6	CFF15	Cluster2	8.7719298245614e-06
+global	6	Par. Dent	Cluster3	0.382181818181818
+global	6	Par. Flint	Cluster3	0.0478333333333333
+global	6	CFD01	Cluster3	0
+global	6	CFD02	Cluster3	0
+global	6	CFD03	Cluster3	0
+global	6	CFD04	Cluster3	0
+global	6	CFD05	Cluster3	0.000311688311688312
+global	6	CFD06	Cluster3	0.972199999999999
+global	6	CFD07	Cluster3	0.793055555555556
+global	6	CFD09	Cluster3	0.686714285714286
+global	6	CFD10	Cluster3	0
+global	6	CFD11	Cluster3	0.699658823529412
+global	6	CFD12	Cluster3	0.98145
+global	6	CFF01	Cluster3	0
+global	6	CFF02	Cluster3	0
+global	6	CFF03	Cluster3	1.81818181818182e-05
+global	6	CFF04	Cluster3	0.00783018867924528
+global	6	CFF05	Cluster3	0.0594117647058823
+global	6	CFF06	Cluster3	0.0144468085106383
+global	6	CFF07	Cluster3	0
+global	6	CFF08	Cluster3	0
+global	6	CFF09	Cluster3	0
+global	6	CFF10	Cluster3	9.52380952380953e-06
+global	6	CFF12	Cluster3	0
+global	6	CFF13	Cluster3	0
+global	6	CFF15	Cluster3	0
+global	6	Par. Dent	Cluster4	0.179090909090909
+global	6	Par. Flint	Cluster4	0.0138333333333333
+global	6	CFD01	Cluster4	0
+global	6	CFD02	Cluster4	0.583698630136987
+global	6	CFD03	Cluster4	0
+global	6	CFD04	Cluster4	0
+global	6	CFD05	Cluster4	0.411142857142857
+global	6	CFD06	Cluster4	0
+global	6	CFD07	Cluster4	0.146583333333333
+global	6	CFD09	Cluster4	0
+global	6	CFD10	Cluster4	4.04040404040404e-05
+global	6	CFD11	Cluster4	0
+global	6	CFD12	Cluster4	4e-05
+global	6	CFF01	Cluster4	0
+global	6	CFF02	Cluster4	0.543319327731093
+global	6	CFF03	Cluster4	0.000109090909090909
+global	6	CFF04	Cluster4	0.0179245283018868
+global	6	CFF05	Cluster4	0.00211764705882353
+global	6	CFF06	Cluster4	0.000361702127659575
+global	6	CFF07	Cluster4	0
+global	6	CFF08	Cluster4	0
+global	6	CFF09	Cluster4	0
+global	6	CFF10	Cluster4	9.52380952380953e-05
+global	6	CFF12	Cluster4	0
+global	6	CFF13	Cluster4	0
+global	6	CFF15	Cluster4	0
+global	6	Par. Dent	Cluster5	9.09090909090909e-05
+global	6	Par. Flint	Cluster5	0.2495
+global	6	CFD01	Cluster5	0
+global	6	CFD02	Cluster5	0
+global	6	CFD03	Cluster5	0
+global	6	CFD04	Cluster5	0
+global	6	CFD05	Cluster5	0
+global	6	CFD06	Cluster5	0
+global	6	CFD07	Cluster5	8.33333333333333e-05
+global	6	CFD09	Cluster5	4.76190476190476e-05
+global	6	CFD10	Cluster5	0
+global	6	CFD11	Cluster5	0
+global	6	CFD12	Cluster5	0
+global	6	CFF01	Cluster5	0
+global	6	CFF02	Cluster5	0.00038655462184874
+global	6	CFF03	Cluster5	0.0412
+global	6	CFF04	Cluster5	0.0931132075471698
+global	6	CFF05	Cluster5	0.0751470588235294
+global	6	CFF06	Cluster5	0.00974468085106383
+global	6	CFF07	Cluster5	0.884976744186046
+global	6	CFF08	Cluster5	0.00567532467532468
+global	6	CFF09	Cluster5	0.942105263157895
+global	6	CFF10	Cluster5	0.00251428571428571
+global	6	CFF12	Cluster5	0
+global	6	CFF13	Cluster5	0
+global	6	CFF15	Cluster5	0.938105263157894
+global	6	Par. Dent	Cluster6	0.0413636363636364
+global	6	Par. Flint	Cluster6	0.373166666666667
+global	6	CFD01	Cluster6	0
+global	6	CFD02	Cluster6	0
+global	6	CFD03	Cluster6	0
+global	6	CFD04	Cluster6	0
+global	6	CFD05	Cluster6	0
+global	6	CFD06	Cluster6	0
+global	6	CFD07	Cluster6	0
+global	6	CFD09	Cluster6	0.274190476190476
+global	6	CFD10	Cluster6	0
+global	6	CFD11	Cluster6	0
+global	6	CFD12	Cluster6	0
+global	6	CFF01	Cluster6	0
+global	6	CFF02	Cluster6	0
+global	6	CFF03	Cluster6	0.250418181818182
+global	6	CFF04	Cluster6	0.449811320754717
+global	6	CFF05	Cluster6	0.428529411764706
+global	6	CFF06	Cluster6	0.569829787234043
+global	6	CFF07	Cluster6	0
+global	6	CFF08	Cluster6	0.301311688311688
+global	6	CFF09	Cluster6	0
+global	6	CFF10	Cluster6	0.634447619047619
+global	6	CFF12	Cluster6	0
+global	6	CFF13	Cluster6	0
+global	6	CFF15	Cluster6	0
+global	7	Par. Dent	Cluster1	9.09090909090909e-05
+global	7	Par. Flint	Cluster1	0.301833333333333
+global	7	CFD01	Cluster1	1.17647058823529e-05
+global	7	CFD02	Cluster1	0
+global	7	CFD03	Cluster1	0
+global	7	CFD04	Cluster1	0
+global	7	CFD05	Cluster1	0
+global	7	CFD06	Cluster1	0
+global	7	CFD07	Cluster1	8.33333333333333e-05
+global	7	CFD09	Cluster1	0
+global	7	CFD10	Cluster1	0
+global	7	CFD11	Cluster1	0
+global	7	CFD12	Cluster1	0
+global	7	CFF01	Cluster1	0
+global	7	CFF02	Cluster1	9.2436974789916e-05
+global	7	CFF03	Cluster1	0.958899999999999
+global	7	CFF04	Cluster1	0.224811320754717
+global	7	CFF05	Cluster1	0.190911764705882
+global	7	CFF06	Cluster1	0.0541489361702128
+global	7	CFF07	Cluster1	0
+global	7	CFF08	Cluster1	0.571259740259741
+global	7	CFF09	Cluster1	0.000533834586466166
+global	7	CFF10	Cluster1	0.00241904761904762
+global	7	CFF12	Cluster1	0.963062499999999
+global	7	CFF13	Cluster1	0.878097345132743
+global	7	CFF15	Cluster1	5.26315789473684e-05
+global	7	Par. Dent	Cluster2	0.389909090909091
+global	7	Par. Flint	Cluster2	0.00258333333333333
+global	7	CFD01	Cluster2	0.407788235294118
+global	7	CFD02	Cluster2	0.423232876712329
+global	7	CFD03	Cluster2	1
+global	7	CFD04	Cluster2	1
+global	7	CFD05	Cluster2	0.594766233766234
+global	7	CFD06	Cluster2	0.0131904761904762
+global	7	CFD07	Cluster2	0.0394722222222222
+global	7	CFD09	Cluster2	0.0828095238095238
+global	7	CFD10	Cluster2	0.999777777777778
+global	7	CFD11	Cluster2	0.179729411764706
+global	7	CFD12	Cluster2	0.00925
+global	7	CFF01	Cluster2	0.427591836734694
+global	7	CFF02	Cluster2	0
+global	7	CFF03	Cluster2	4.54545454545455e-05
+global	7	CFF04	Cluster2	0.001
+global	7	CFF05	Cluster2	0.00902941176470588
+global	7	CFF06	Cluster2	0.01
+global	7	CFF07	Cluster2	7.75193798449612e-06
+global	7	CFF08	Cluster2	1.2987012987013e-05
+global	7	CFF09	Cluster2	0
+global	7	CFF10	Cluster2	0
+global	7	CFF12	Cluster2	0
+global	7	CFF13	Cluster2	0
+global	7	CFF15	Cluster2	0
+global	7	Par. Dent	Cluster3	0.369363636363636
+global	7	Par. Flint	Cluster3	0.0388333333333333
+global	7	CFD01	Cluster3	0
+global	7	CFD02	Cluster3	0
+global	7	CFD03	Cluster3	0
+global	7	CFD04	Cluster3	0
+global	7	CFD05	Cluster3	0.000454545454545455
+global	7	CFD06	Cluster3	0.98615238095238
+global	7	CFD07	Cluster3	0.813648148148148
+global	7	CFD09	Cluster3	0.548777777777778
+global	7	CFD10	Cluster3	0
+global	7	CFD11	Cluster3	0.819894117647059
+global	7	CFD12	Cluster3	0.989809999999999
+global	7	CFF01	Cluster3	0
+global	7	CFF02	Cluster3	0
+global	7	CFF03	Cluster3	0
+global	7	CFF04	Cluster3	0.00124528301886793
+global	7	CFF05	Cluster3	0.0267352941176471
+global	7	CFF06	Cluster3	0.00576595744680851
+global	7	CFF07	Cluster3	7.75193798449612e-06
+global	7	CFF08	Cluster3	0.000103896103896104
+global	7	CFF09	Cluster3	0
+global	7	CFF10	Cluster3	0
+global	7	CFF12	Cluster3	0
+global	7	CFF13	Cluster3	0
+global	7	CFF15	Cluster3	0
+global	7	Par. Dent	Cluster4	0.178636363636364
+global	7	Par. Flint	Cluster4	0.0135
+global	7	CFD01	Cluster4	0
+global	7	CFD02	Cluster4	0.576356164383562
+global	7	CFD03	Cluster4	0
+global	7	CFD04	Cluster4	0
+global	7	CFD05	Cluster4	0.404142857142857
+global	7	CFD06	Cluster4	0
+global	7	CFD07	Cluster4	0.145898148148148
+global	7	CFD09	Cluster4	0
+global	7	CFD10	Cluster4	3.03030303030303e-05
+global	7	CFD11	Cluster4	0
+global	7	CFD12	Cluster4	4e-05
+global	7	CFF01	Cluster4	0
+global	7	CFF02	Cluster4	0.537798319327731
+global	7	CFF03	Cluster4	0
+global	7	CFF04	Cluster4	0.00850943396226415
+global	7	CFF05	Cluster4	0.00155882352941177
+global	7	CFF06	Cluster4	0.000212765957446809
+global	7	CFF07	Cluster4	0
+global	7	CFF08	Cluster4	0.000233766233766234
+global	7	CFF09	Cluster4	0
+global	7	CFF10	Cluster4	0
+global	7	CFF12	Cluster4	0
+global	7	CFF13	Cluster4	0
+global	7	CFF15	Cluster4	0
+global	7	Par. Dent	Cluster5	0.000181818181818182
+global	7	Par. Flint	Cluster5	0.183083333333333
+global	7	CFD01	Cluster5	0
+global	7	CFD02	Cluster5	0
+global	7	CFD03	Cluster5	0
+global	7	CFD04	Cluster5	0
+global	7	CFD05	Cluster5	0
+global	7	CFD06	Cluster5	0
+global	7	CFD07	Cluster5	0.00012037037037037
+global	7	CFD09	Cluster5	1.58730158730159e-05
+global	7	CFD10	Cluster5	0
+global	7	CFD11	Cluster5	0
+global	7	CFD12	Cluster5	0
+global	7	CFF01	Cluster5	0
+global	7	CFF02	Cluster5	0
+global	7	CFF03	Cluster5	3.63636363636364e-05
+global	7	CFF04	Cluster5	0.211094339622641
+global	7	CFF05	Cluster5	0.0205588235294118
+global	7	CFF06	Cluster5	0.00119148936170213
+global	7	CFF07	Cluster5	1.55038759689923e-05
+global	7	CFF08	Cluster5	0.00312987012987013
+global	7	CFF09	Cluster5	0.875624060150376
+global	7	CFF10	Cluster5	8.57142857142857e-05
+global	7	CFF12	Cluster5	0
+global	7	CFF13	Cluster5	8.84955752212389e-06
+global	7	CFF15	Cluster5	0.919535087719298
+global	7	Par. Dent	Cluster6	0.0615454545454546
+global	7	Par. Flint	Cluster6	0.29775
+global	7	CFD01	Cluster6	0
+global	7	CFD02	Cluster6	0
+global	7	CFD03	Cluster6	0
+global	7	CFD04	Cluster6	0
+global	7	CFD05	Cluster6	0
+global	7	CFD06	Cluster6	0
+global	7	CFD07	Cluster6	0
+global	7	CFD09	Cluster6	0.367793650793651
+global	7	CFD10	Cluster6	0
+global	7	CFD11	Cluster6	0
+global	7	CFD12	Cluster6	9e-05
+global	7	CFF01	Cluster6	0
+global	7	CFF02	Cluster6	0
+global	7	CFF03	Cluster6	0
+global	7	CFF04	Cluster6	0.33877358490566
+global	7	CFF05	Cluster6	0.356411764705882
+global	7	CFF06	Cluster6	0.483829787234043
+global	7	CFF07	Cluster6	0
+global	7	CFF08	Cluster6	0.144675324675325
+global	7	CFF09	Cluster6	0
+global	7	CFF10	Cluster6	0.537990476190476
+global	7	CFF12	Cluster6	0
+global	7	CFF13	Cluster6	0
+global	7	CFF15	Cluster6	0
+global	7	Par. Dent	Cluster7	0
+global	7	Par. Flint	Cluster7	0.162333333333333
+global	7	CFD01	Cluster7	0.591717647058824
+global	7	CFD02	Cluster7	0
+global	7	CFD03	Cluster7	0
+global	7	CFD04	Cluster7	0
+global	7	CFD05	Cluster7	0
+global	7	CFD06	Cluster7	0
+global	7	CFD07	Cluster7	8.33333333333333e-05
+global	7	CFD09	Cluster7	0
+global	7	CFD10	Cluster7	0
+global	7	CFD11	Cluster7	2.35294117647059e-05
+global	7	CFD12	Cluster7	0
+global	7	CFF01	Cluster7	0.571826530612245
+global	7	CFF02	Cluster7	0.461579831932773
+global	7	CFF03	Cluster7	0.0402818181818182
+global	7	CFF04	Cluster7	0.21422641509434
+global	7	CFF05	Cluster7	0.394411764705882
+global	7	CFF06	Cluster7	0.444659574468085
+global	7	CFF07	Cluster7	0.999837209302325
+global	7	CFF08	Cluster7	0.280116883116883
+global	7	CFF09	Cluster7	0.123345864661654
+global	7	CFF10	Cluster7	0.458790476190476
+global	7	CFF12	Cluster7	0.0365089285714286
+global	7	CFF13	Cluster7	0.121495575221239
+global	7	CFF15	Cluster7	0.0799824561403509
+global	8	Par. Dent	Cluster1	0
+global	8	Par. Flint	Cluster1	0.247666666666667
+global	8	CFD01	Cluster1	0.542470588235294
+global	8	CFD02	Cluster1	0
+global	8	CFD03	Cluster1	0
+global	8	CFD04	Cluster1	0
+global	8	CFD05	Cluster1	0
+global	8	CFD06	Cluster1	0
+global	8	CFD07	Cluster1	1.85185185185185e-05
+global	8	CFD09	Cluster1	0
+global	8	CFD10	Cluster1	0
+global	8	CFD11	Cluster1	0
+global	8	CFD12	Cluster1	0
+global	8	CFF01	Cluster1	0.520173469387755
+global	8	CFF02	Cluster1	0.474302521008403
+global	8	CFF03	Cluster1	0.0696
+global	8	CFF04	Cluster1	0.28077358490566
+global	8	CFF05	Cluster1	0.293323529411765
+global	8	CFF06	Cluster1	0.213936170212766
+global	8	CFF07	Cluster1	0.0736589147286822
+global	8	CFF08	Cluster1	0.480363636363636
+global	8	CFF09	Cluster1	0.0367368421052632
+global	8	CFF10	Cluster1	0.130314285714286
+global	8	CFF12	Cluster1	0.999544642857142
+global	8	CFF13	Cluster1	0.999672566371681
+global	8	CFF15	Cluster1	0.0394824561403509
+global	8	Par. Dent	Cluster2	0.355090909090909
+global	8	Par. Flint	Cluster2	0.00691666666666667
+global	8	CFD01	Cluster2	0
+global	8	CFD02	Cluster2	0
+global	8	CFD03	Cluster2	0.842833333333334
+global	8	CFD04	Cluster2	0.819790476190476
+global	8	CFD05	Cluster2	0.00728571428571429
+global	8	CFD06	Cluster2	0.000114285714285714
+global	8	CFD07	Cluster2	0.952796296296296
+global	8	CFD09	Cluster2	3.17460317460317e-05
+global	8	CFD10	Cluster2	0.921686868686868
+global	8	CFD11	Cluster2	0
+global	8	CFD12	Cluster2	5e-05
+global	8	CFF01	Cluster2	0
+global	8	CFF02	Cluster2	0
+global	8	CFF03	Cluster2	0
+global	8	CFF04	Cluster2	0.000188679245283019
+global	8	CFF05	Cluster2	0.00347058823529412
+global	8	CFF06	Cluster2	0.00170212765957447
+global	8	CFF07	Cluster2	0
+global	8	CFF08	Cluster2	3.8961038961039e-05
+global	8	CFF09	Cluster2	0
+global	8	CFF10	Cluster2	0
+global	8	CFF12	Cluster2	0
+global	8	CFF13	Cluster2	0
+global	8	CFF15	Cluster2	0
+global	8	Par. Dent	Cluster3	0.272727272727273
+global	8	Par. Flint	Cluster3	0.0931666666666667
+global	8	CFD01	Cluster3	0
+global	8	CFD02	Cluster3	0
+global	8	CFD03	Cluster3	0
+global	8	CFD04	Cluster3	0
+global	8	CFD05	Cluster3	0
+global	8	CFD06	Cluster3	0.573295238095238
+global	8	CFD07	Cluster3	0
+global	8	CFD09	Cluster3	0.875952380952381
+global	8	CFD10	Cluster3	0
+global	8	CFD11	Cluster3	0.000505882352941176
+global	8	CFD12	Cluster3	0.70497
+global	8	CFF01	Cluster3	0
+global	8	CFF02	Cluster3	0
+global	8	CFF03	Cluster3	0
+global	8	CFF04	Cluster3	0.11722641509434
+global	8	CFF05	Cluster3	0.124117647058824
+global	8	CFF06	Cluster3	0.127297872340426
+global	8	CFF07	Cluster3	0
+global	8	CFF08	Cluster3	7.79220779220779e-05
+global	8	CFF09	Cluster3	0
+global	8	CFF10	Cluster3	0
+global	8	CFF12	Cluster3	0
+global	8	CFF13	Cluster3	0
+global	8	CFF15	Cluster3	0
+global	8	Par. Dent	Cluster4	0.171818181818182
+global	8	Par. Flint	Cluster4	0.01325
+global	8	CFD01	Cluster4	0
+global	8	CFD02	Cluster4	0.54345205479452
+global	8	CFD03	Cluster4	0
+global	8	CFD04	Cluster4	0
+global	8	CFD05	Cluster4	0.438194805194805
+global	8	CFD06	Cluster4	0
+global	8	CFD07	Cluster4	0.00736111111111111
+global	8	CFD09	Cluster4	0
+global	8	CFD10	Cluster4	0
+global	8	CFD11	Cluster4	0
+global	8	CFD12	Cluster4	1e-05
+global	8	CFF01	Cluster4	0
+global	8	CFF02	Cluster4	0.523655462184874
+global	8	CFF03	Cluster4	0
+global	8	CFF04	Cluster4	0.00879245283018868
+global	8	CFF05	Cluster4	0.000823529411764706
+global	8	CFF06	Cluster4	0.000212765957446809
+global	8	CFF07	Cluster4	0
+global	8	CFF08	Cluster4	3.8961038961039e-05
+global	8	CFF09	Cluster4	0
+global	8	CFF10	Cluster4	0
+global	8	CFF12	Cluster4	0
+global	8	CFF13	Cluster4	0
+global	8	CFF15	Cluster4	0
+global	8	Par. Dent	Cluster5	0
+global	8	Par. Flint	Cluster5	0.18875
+global	8	CFD01	Cluster5	0
+global	8	CFD02	Cluster5	0
+global	8	CFD03	Cluster5	0
+global	8	CFD04	Cluster5	0
+global	8	CFD05	Cluster5	0
+global	8	CFD06	Cluster5	0
+global	8	CFD07	Cluster5	0
+global	8	CFD09	Cluster5	1.58730158730159e-05
+global	8	CFD10	Cluster5	0
+global	8	CFD11	Cluster5	0
+global	8	CFD12	Cluster5	0
+global	8	CFF01	Cluster5	0
+global	8	CFF02	Cluster5	4.20168067226891e-05
+global	8	CFF03	Cluster5	0.929863636363636
+global	8	CFF04	Cluster5	0.12288679245283
+global	8	CFF05	Cluster5	0.0734117647058823
+global	8	CFF06	Cluster5	0.0157446808510638
+global	8	CFF07	Cluster5	0
+global	8	CFF08	Cluster5	0.187701298701299
+global	8	CFF09	Cluster5	3.00751879699248e-05
+global	8	CFF10	Cluster5	0.000514285714285714
+global	8	CFF12	Cluster5	0
+global	8	CFF13	Cluster5	0
+global	8	CFF15	Cluster5	0.959771929824561
+global	8	Par. Dent	Cluster6	9.09090909090909e-05
+global	8	Par. Flint	Cluster6	0.2835
+global	8	CFD01	Cluster6	0
+global	8	CFD02	Cluster6	0
+global	8	CFD03	Cluster6	0
+global	8	CFD04	Cluster6	0
+global	8	CFD05	Cluster6	0
+global	8	CFD06	Cluster6	0
+global	8	CFD07	Cluster6	0
+global	8	CFD09	Cluster6	0
+global	8	CFD10	Cluster6	0
+global	8	CFD11	Cluster6	0
+global	8	CFD12	Cluster6	0
+global	8	CFF01	Cluster6	0
+global	8	CFF02	Cluster6	0
+global	8	CFF03	Cluster6	0
+global	8	CFF04	Cluster6	0.430943396226415
+global	8	CFF05	Cluster6	0.453647058823529
+global	8	CFF06	Cluster6	0.612851063829787
+global	8	CFF07	Cluster6	0
+global	8	CFF08	Cluster6	0.320545454545454
+global	8	CFF09	Cluster6	0
+global	8	CFF10	Cluster6	0.867914285714286
+global	8	CFF12	Cluster6	0
+global	8	CFF13	Cluster6	0
+global	8	CFF15	Cluster6	0
+global	8	Par. Dent	Cluster7	0
+global	8	Par. Flint	Cluster7	0.166583333333333
+global	8	CFD01	Cluster7	0
+global	8	CFD02	Cluster7	0
+global	8	CFD03	Cluster7	0
+global	8	CFD04	Cluster7	0
+global	8	CFD05	Cluster7	0
+global	8	CFD06	Cluster7	0
+global	8	CFD07	Cluster7	0
+global	8	CFD09	Cluster7	0
+global	8	CFD10	Cluster7	0
+global	8	CFD11	Cluster7	0
+global	8	CFD12	Cluster7	0
+global	8	CFF01	Cluster7	0
+global	8	CFF02	Cluster7	0.00130252100840336
+global	8	CFF03	Cluster7	0
+global	8	CFF04	Cluster7	0.0380188679245283
+global	8	CFF05	Cluster7	0.0502352941176471
+global	8	CFF06	Cluster7	0.0268510638297872
+global	8	CFF07	Cluster7	0.925906976744185
+global	8	CFF08	Cluster7	0.0102987012987013
+global	8	CFF09	Cluster7	0.962796992481202
+global	8	CFF10	Cluster7	0.000533333333333333
+global	8	CFF12	Cluster7	0
+global	8	CFF13	Cluster7	1.76991150442478e-05
+global	8	CFF15	Cluster7	4.3859649122807e-05
+global	8	Par. Dent	Cluster8	0.2
+global	8	Par. Flint	Cluster8	0
+global	8	CFD01	Cluster8	0.457058823529412
+global	8	CFD02	Cluster8	0.456109589041096
+global	8	CFD03	Cluster8	0.156911764705882
+global	8	CFD04	Cluster8	0.179847619047619
+global	8	CFD05	Cluster8	0.55409090909091
+global	8	CFD06	Cluster8	0.425866666666667
+global	8	CFD07	Cluster8	0.0390185185185185
+global	8	CFD09	Cluster8	0.12315873015873
+global	8	CFD10	Cluster8	0.0777878787878788
+global	8	CFD11	Cluster8	0.999482352941176
+global	8	CFD12	Cluster8	0.2944
+global	8	CFF01	Cluster8	0.479316326530612
+global	8	CFF02	Cluster8	0
+global	8	CFF03	Cluster8	0
+global	8	CFF04	Cluster8	0.000886792452830189
+global	8	CFF05	Cluster8	0.000735294117647059
+global	8	CFF06	Cluster8	0.00129787234042553
+global	8	CFF07	Cluster8	0
+global	8	CFF08	Cluster8	0.000311688311688312
+global	8	CFF09	Cluster8	0
+global	8	CFF10	Cluster8	0
+global	8	CFF12	Cluster8	0
+global	8	CFF13	Cluster8	0
+global	8	CFF15	Cluster8	0
+dent	1	Par. Dent	Cluster1	1
+dent	1	Par. Flint	Cluster1	1
+dent	1	CFD01	Cluster1	1
+dent	1	CFD02	Cluster1	1
+dent	1	CFD03	Cluster1	1
+dent	1	CFD04	Cluster1	1
+dent	1	CFD05	Cluster1	1
+dent	1	CFD06	Cluster1	1
+dent	1	CFD07	Cluster1	1
+dent	1	CFD09	Cluster1	1
+dent	1	CFD10	Cluster1	1
+dent	1	CFD11	Cluster1	1
+dent	1	CFD12	Cluster1	1
+dent	2	Par. Dent	Cluster1	0.293666666666667
+dent	2	Par. Flint	Cluster1	0.00166666666666667
+dent	2	CFD01	Cluster1	0.301254901960784
+dent	2	CFD02	Cluster1	0.386607305936073
+dent	2	CFD03	Cluster1	0.784049019607843
+dent	2	CFD04	Cluster1	0.825644444444444
+dent	2	CFD05	Cluster1	0.423
+dent	2	CFD06	Cluster1	0.678139682539683
+dent	2	CFD07	Cluster1	0.375299382716049
+dent	2	CFD09	Cluster1	0.268486772486773
+dent	2	CFD10	Cluster1	0.708599326599327
+dent	2	CFD11	Cluster1	0.9972
+dent	2	CFD12	Cluster1	0.43655
+dent	2	Par. Dent	Cluster2	0.706333333333333
+dent	2	Par. Flint	Cluster2	0.998333333333333
+dent	2	CFD01	Cluster2	0.698745098039215
+dent	2	CFD02	Cluster2	0.613392694063927
+dent	2	CFD03	Cluster2	0.215950980392157
+dent	2	CFD04	Cluster2	0.174355555555556
+dent	2	CFD05	Cluster2	0.577
+dent	2	CFD06	Cluster2	0.321860317460317
+dent	2	CFD07	Cluster2	0.624700617283951
+dent	2	CFD09	Cluster2	0.731513227513227
+dent	2	CFD10	Cluster2	0.291400673400674
+dent	2	CFD11	Cluster2	0.0028
+dent	2	CFD12	Cluster2	0.56345
+dent	3	Par. Dent	Cluster1	0.389613636363636
+dent	3	Par. Flint	Cluster1	0.001
+dent	3	CFD01	Cluster1	0.057014705882353
+dent	3	CFD02	Cluster1	0.356907534246575
+dent	3	CFD03	Cluster1	0.942394607843138
+dent	3	CFD04	Cluster1	0.952383333333334
+dent	3	CFD05	Cluster1	0.304181818181818
+dent	3	CFD06	Cluster1	0.429547619047619
+dent	3	CFD07	Cluster1	0.703685185185185
+dent	3	CFD09	Cluster1	0.0596904761904762
+dent	3	CFD10	Cluster1	0.97559595959596
+dent	3	CFD11	Cluster1	0.00232352941176471
+dent	3	CFD12	Cluster1	0.247045
+dent	3	Par. Dent	Cluster2	0.401977272727273
+dent	3	Par. Flint	Cluster2	0.999
+dent	3	CFD01	Cluster2	0.825429411764706
+dent	3	CFD02	Cluster2	0.546465753424658
+dent	3	CFD03	Cluster2	0.00390686274509804
+dent	3	CFD04	Cluster2	0.00155238095238095
+dent	3	CFD05	Cluster2	0.57462012987013
+dent	3	CFD06	Cluster2	0.0264619047619047
+dent	3	CFD07	Cluster2	0.250125
+dent	3	CFD09	Cluster2	0.800888888888889
+dent	3	CFD10	Cluster2	0.00688888888888888
+dent	3	CFD11	Cluster2	0.000676470588235295
+dent	3	CFD12	Cluster2	0.6534625
+dent	3	Par. Dent	Cluster3	0.208318181818182
+dent	3	Par. Flint	Cluster3	0
+dent	3	CFD01	Cluster3	0.117576470588235
+dent	3	CFD02	Cluster3	0.0966404109589041
+dent	3	CFD03	Cluster3	0.0538112745098039
+dent	3	CFD04	Cluster3	0.0461071428571429
+dent	3	CFD05	Cluster3	0.121181818181818
+dent	3	CFD06	Cluster3	0.544
+dent	3	CFD07	Cluster3	0.0462083333333333
+dent	3	CFD09	Cluster3	0.139440476190476
+dent	3	CFD10	Cluster3	0.0175833333333333
+dent	3	CFD11	Cluster3	0.997182352941177
+dent	3	CFD12	Cluster3	0.0994925
+dent	4	Par. Dent	Cluster1	0.285227272727273
+dent	4	Par. Flint	Cluster1	0
+dent	4	CFD01	Cluster1	0.0307470588235294
+dent	4	CFD02	Cluster1	0.18622602739726
+dent	4	CFD03	Cluster1	0.898632352941177
+dent	4	CFD04	Cluster1	0.926885714285714
+dent	4	CFD05	Cluster1	0.28288961038961
+dent	4	CFD06	Cluster1	0.0253952380952381
+dent	4	CFD07	Cluster1	0.0983101851851852
+dent	4	CFD09	Cluster1	0.0416349206349206
+dent	4	CFD10	Cluster1	0.954646464646465
+dent	4	CFD11	Cluster1	0.000458823529411765
+dent	4	CFD12	Cluster1	0.21903
+dent	4	Par. Dent	Cluster2	0.326636363636364
+dent	4	Par. Flint	Cluster2	0.999
+dent	4	CFD01	Cluster2	0.783217647058824
+dent	4	CFD02	Cluster2	0.443034246575342
+dent	4	CFD03	Cluster2	0.0013921568627451
+dent	4	CFD04	Cluster2	0.00071904761904762
+dent	4	CFD05	Cluster2	0.532227272727273
+dent	4	CFD06	Cluster2	0.00788571428571428
+dent	4	CFD07	Cluster2	0.0170833333333333
+dent	4	CFD09	Cluster2	0.772714285714286
+dent	4	CFD10	Cluster2	0.00425757575757576
+dent	4	CFD11	Cluster2	2.35294117647059e-05
+dent	4	CFD12	Cluster2	0.61012
+dent	4	Par. Dent	Cluster3	0.181545454545455
+dent	4	Par. Flint	Cluster3	0
+dent	4	CFD01	Cluster3	0.156664705882353
+dent	4	CFD02	Cluster3	0.110684931506849
+dent	4	CFD03	Cluster3	0.0988725490196078
+dent	4	CFD04	Cluster3	0.0714761904761905
+dent	4	CFD05	Cluster3	0.169493506493507
+dent	4	CFD06	Cluster3	0.163166666666667
+dent	4	CFD07	Cluster3	0.0623472222222222
+dent	4	CFD09	Cluster3	0.138349206349206
+dent	4	CFD10	Cluster3	0.0375808080808081
+dent	4	CFD11	Cluster3	0.998447058823529
+dent	4	CFD12	Cluster3	0.16331
+dent	4	Par. Dent	Cluster4	0.206454545454545
+dent	4	Par. Flint	Cluster4	0.001
+dent	4	CFD01	Cluster4	0.0293529411764706
+dent	4	CFD02	Cluster4	0.260116438356164
+dent	4	CFD03	Cluster4	0.00122549019607843
+dent	4	CFD04	Cluster4	0.00111428571428572
+dent	4	CFD05	Cluster4	0.0154675324675325
+dent	4	CFD06	Cluster4	0.80364761904762
+dent	4	CFD07	Cluster4	0.822314814814815
+dent	4	CFD09	Cluster4	0.0473174603174603
+dent	4	CFD10	Cluster4	0.00361616161616162
+dent	4	CFD11	Cluster4	0.000452941176470588
+dent	4	CFD12	Cluster4	0.007525
+dent	5	Par. Dent	Cluster1	0.284818181818182
+dent	5	Par. Flint	Cluster1	0
+dent	5	CFD01	Cluster1	0.0353294117647059
+dent	5	CFD02	Cluster1	0.0149041095890411
+dent	5	CFD03	Cluster1	0.920382352941176
+dent	5	CFD04	Cluster1	0.950352380952381
+dent	5	CFD05	Cluster1	0.0921428571428571
+dent	5	CFD06	Cluster1	0.0768952380952381
+dent	5	CFD07	Cluster1	0.0264814814814815
+dent	5	CFD09	Cluster1	0.0333015873015873
+dent	5	CFD10	Cluster1	0.968626262626262
+dent	5	CFD11	Cluster1	2.35294117647059e-05
+dent	5	CFD12	Cluster1	0.27543
+dent	5	Par. Dent	Cluster2	0.169363636363636
+dent	5	Par. Flint	Cluster2	0.999
+dent	5	CFD01	Cluster2	0.779870588235294
+dent	5	CFD02	Cluster2	0.000328767123287671
+dent	5	CFD03	Cluster2	0.000127450980392157
+dent	5	CFD04	Cluster2	2.85714285714286e-05
+dent	5	CFD05	Cluster2	0.00316883116883117
+dent	5	CFD06	Cluster2	0.000838095238095238
+dent	5	CFD07	Cluster2	0.000166666666666667
+dent	5	CFD09	Cluster2	0.898142857142857
+dent	5	CFD10	Cluster2	0.000696969696969697
+dent	5	CFD11	Cluster2	0
+dent	5	CFD12	Cluster2	0.58834
+dent	5	Par. Dent	Cluster3	0.181636363636364
+dent	5	Par. Flint	Cluster3	0
+dent	5	CFD01	Cluster3	0.0988588235294118
+dent	5	CFD02	Cluster3	0.0745342465753425
+dent	5	CFD03	Cluster3	0.0742843137254902
+dent	5	CFD04	Cluster3	0.0484
+dent	5	CFD05	Cluster3	0.137584415584416
+dent	5	CFD06	Cluster3	0.0354190476190476
+dent	5	CFD07	Cluster3	0.0556018518518519
+dent	5	CFD09	Cluster3	0.0613650793650793
+dent	5	CFD10	Cluster3	0.0236464646464646
+dent	5	CFD11	Cluster3	0.998505882352941
+dent	5	CFD12	Cluster3	0.1057
+dent	5	Par. Dent	Cluster4	0.272636363636364
+dent	5	Par. Flint	Cluster4	0
+dent	5	CFD01	Cluster4	0.0765882352941176
+dent	5	CFD02	Cluster4	0.898
+dent	5	CFD03	Cluster4	0.00450980392156863
+dent	5	CFD04	Cluster4	0.000161904761904762
+dent	5	CFD05	Cluster4	0.765194805194805
+dent	5	CFD06	Cluster4	0.0046
+dent	5	CFD07	Cluster4	0.909
+dent	5	CFD09	Cluster4	0.00123809523809524
+dent	5	CFD10	Cluster4	0.0057979797979798
+dent	5	CFD11	Cluster4	1.17647058823529e-05
+dent	5	CFD12	Cluster4	0.02884
+dent	5	Par. Dent	Cluster5	0.0908181818181818
+dent	5	Par. Flint	Cluster5	0
+dent	5	CFD01	Cluster5	0.00925882352941177
+dent	5	CFD02	Cluster5	0.0121369863013699
+dent	5	CFD03	Cluster5	0.000205882352941177
+dent	5	CFD04	Cluster5	4e-04
+dent	5	CFD05	Cluster5	0.00188311688311688
+dent	5	CFD06	Cluster5	0.881809523809524
+dent	5	CFD07	Cluster5	0.00846296296296297
+dent	5	CFD09	Cluster5	0.00612698412698413
+dent	5	CFD10	Cluster5	0.000787878787878788
+dent	5	CFD11	Cluster5	0.000494117647058824
+dent	5	CFD12	Cluster5	0.0017
+dent	6	Par. Dent	Cluster1	0.303909090909091
+dent	6	Par. Flint	Cluster1	0
+dent	6	CFD01	Cluster1	0.0138352941176471
+dent	6	CFD02	Cluster1	0.201205479452055
+dent	6	CFD03	Cluster1	0.93428431372549
+dent	6	CFD04	Cluster1	0.963323809523809
+dent	6	CFD05	Cluster1	0.190766233766234
+dent	6	CFD06	Cluster1	0.0588761904761905
+dent	6	CFD07	Cluster1	0.00796296296296296
+dent	6	CFD09	Cluster1	0.0199206349206349
+dent	6	CFD10	Cluster1	0.974454545454545
+dent	6	CFD11	Cluster1	3.52941176470588e-05
+dent	6	CFD12	Cluster1	0.39649
+dent	6	Par. Dent	Cluster2	0.148909090909091
+dent	6	Par. Flint	Cluster2	0
+dent	6	CFD01	Cluster2	0.000705882352941177
+dent	6	CFD02	Cluster2	0.000232876712328767
+dent	6	CFD03	Cluster2	0
+dent	6	CFD04	Cluster2	1.90476190476191e-05
+dent	6	CFD05	Cluster2	7.79220779220779e-05
+dent	6	CFD06	Cluster2	0.000228571428571429
+dent	6	CFD07	Cluster2	0.00168518518518519
+dent	6	CFD09	Cluster2	0.930666666666666
+dent	6	CFD10	Cluster2	0.000222222222222222
+dent	6	CFD11	Cluster2	0
+dent	6	CFD12	Cluster2	0.44979
+dent	6	Par. Dent	Cluster3	0.181454545454545
+dent	6	Par. Flint	Cluster3	0
+dent	6	CFD01	Cluster3	0.0595529411764706
+dent	6	CFD02	Cluster3	0.0448767123287671
+dent	6	CFD03	Cluster3	0.0551960784313725
+dent	6	CFD04	Cluster3	0.0352095238095238
+dent	6	CFD05	Cluster3	0.0984935064935065
+dent	6	CFD06	Cluster3	0.0283047619047619
+dent	6	CFD07	Cluster3	0.0164722222222222
+dent	6	CFD09	Cluster3	0.0455079365079365
+dent	6	CFD10	Cluster3	0.0148181818181818
+dent	6	CFD11	Cluster3	0.998482352941176
+dent	6	CFD12	Cluster3	0.06999
+dent	6	Par. Dent	Cluster4	0.183
+dent	6	Par. Flint	Cluster4	0.999
+dent	6	CFD01	Cluster4	0.919764705882353
+dent	6	CFD02	Cluster4	0.724534246575343
+dent	6	CFD03	Cluster4	0.00427450980392157
+dent	6	CFD04	Cluster4	9.52380952380953e-05
+dent	6	CFD05	Cluster4	0.706935064935065
+dent	6	CFD06	Cluster4	0.0117809523809524
+dent	6	CFD07	Cluster4	0.00294444444444444
+dent	6	CFD09	Cluster4	0.00046031746031746
+dent	6	CFD10	Cluster4	0.00622222222222222
+dent	6	CFD11	Cluster4	1.17647058823529e-05
+dent	6	CFD12	Cluster4	0.05365
+dent	6	Par. Dent	Cluster5	0.0909090909090909
+dent	6	Par. Flint	Cluster5	0
+dent	6	CFD01	Cluster5	0.00282352941176471
+dent	6	CFD02	Cluster5	0.023
+dent	6	CFD03	Cluster5	0.000107843137254902
+dent	6	CFD04	Cluster5	0.000228571428571429
+dent	6	CFD05	Cluster5	0.00124675324675325
+dent	6	CFD06	Cluster5	0.881580952380952
+dent	6	CFD07	Cluster5	0.000231481481481482
+dent	6	CFD09	Cluster5	0.00125396825396825
+dent	6	CFD10	Cluster5	0.000686868686868687
+dent	6	CFD11	Cluster5	0.000529411764705882
+dent	6	CFD12	Cluster5	0.0012
+dent	6	Par. Dent	Cluster6	0.0912727272727273
+dent	6	Par. Flint	Cluster6	0
+dent	6	CFD01	Cluster6	0.00296470588235294
+dent	6	CFD02	Cluster6	0.00609589041095891
+dent	6	CFD03	Cluster6	0.00537254901960784
+dent	6	CFD04	Cluster6	0.000219047619047619
+dent	6	CFD05	Cluster6	0.00209090909090909
+dent	6	CFD06	Cluster6	0.0186666666666667
+dent	6	CFD07	Cluster6	0.96987037037037
+dent	6	CFD09	Cluster6	0.00158730158730159
+dent	6	CFD10	Cluster6	0.00290909090909091
+dent	6	CFD11	Cluster6	0
+dent	6	CFD12	Cluster6	0.02869
+dent	7	Par. Dent	Cluster1	0.272636363636364
+dent	7	Par. Flint	Cluster1	0
+dent	7	CFD01	Cluster1	0.0121176470588235
+dent	7	CFD02	Cluster1	0.152479452054795
+dent	7	CFD03	Cluster1	0.943637254901961
+dent	7	CFD04	Cluster1	0.96727619047619
+dent	7	CFD05	Cluster1	0.161285714285714
+dent	7	CFD06	Cluster1	0.073752380952381
+dent	7	CFD07	Cluster1	0.00768518518518518
+dent	7	CFD09	Cluster1	0.0070952380952381
+dent	7	CFD10	Cluster1	0.976080808080808
+dent	7	CFD11	Cluster1	3.52941176470588e-05
+dent	7	CFD12	Cluster1	0.05909
+dent	7	Par. Dent	Cluster2	0.0909090909090909
+dent	7	Par. Flint	Cluster2	0
+dent	7	CFD01	Cluster2	0.000647058823529412
+dent	7	CFD02	Cluster2	0.00010958904109589
+dent	7	CFD03	Cluster2	0
+dent	7	CFD04	Cluster2	9.52380952380953e-06
+dent	7	CFD05	Cluster2	0.00012987012987013
+dent	7	CFD06	Cluster2	0.000428571428571429
+dent	7	CFD07	Cluster2	0.00201851851851852
+dent	7	CFD09	Cluster2	0.952984126984127
+dent	7	CFD10	Cluster2	7.07070707070707e-05
+dent	7	CFD11	Cluster2	0
+dent	7	CFD12	Cluster2	2e-04
+dent	7	Par. Dent	Cluster3	0.181363636363636
+dent	7	Par. Flint	Cluster3	0
+dent	7	CFD01	Cluster3	0.0526823529411764
+dent	7	CFD02	Cluster3	0.0417397260273973
+dent	7	CFD03	Cluster3	0.0494117647058823
+dent	7	CFD04	Cluster3	0.0313428571428571
+dent	7	CFD05	Cluster3	0.0949220779220779
+dent	7	CFD06	Cluster3	0.0223523809523809
+dent	7	CFD07	Cluster3	0.0140740740740741
+dent	7	CFD09	Cluster3	0.0382380952380952
+dent	7	CFD10	Cluster3	0.0117171717171717
+dent	7	CFD11	Cluster3	0.998505882352941
+dent	7	CFD12	Cluster3	0.03017
+dent	7	Par. Dent	Cluster4	0.181454545454545
+dent	7	Par. Flint	Cluster4	0.999
+dent	7	CFD01	Cluster4	0.92824705882353
+dent	7	CFD02	Cluster4	0.770246575342465
+dent	7	CFD03	Cluster4	0.00222549019607843
+dent	7	CFD04	Cluster4	3.80952380952381e-05
+dent	7	CFD05	Cluster4	0.737961038961039
+dent	7	CFD06	Cluster4	0.00686666666666667
+dent	7	CFD07	Cluster4	0.00248148148148148
+dent	7	CFD09	Cluster4	0.000142857142857143
+dent	7	CFD10	Cluster4	0.00496969696969697
+dent	7	CFD11	Cluster4	1.17647058823529e-05
+dent	7	CFD12	Cluster4	0.01234
+dent	7	Par. Dent	Cluster5	0.0908181818181818
+dent	7	Par. Flint	Cluster5	0
+dent	7	CFD01	Cluster5	0.00224705882352941
+dent	7	CFD02	Cluster5	0.0244794520547945
+dent	7	CFD03	Cluster5	7.84313725490196e-05
+dent	7	CFD04	Cluster5	0.000142857142857143
+dent	7	CFD05	Cluster5	0.0012987012987013
+dent	7	CFD06	Cluster5	0.882133333333333
+dent	7	CFD07	Cluster5	0.000157407407407407
+dent	7	CFD09	Cluster5	0.000238095238095238
+dent	7	CFD10	Cluster5	0.000818181818181818
+dent	7	CFD11	Cluster5	0.000529411764705882
+dent	7	CFD12	Cluster5	6e-05
+dent	7	Par. Dent	Cluster6	0.0909090909090909
+dent	7	Par. Flint	Cluster6	0
+dent	7	CFD01	Cluster6	0.00221176470588235
+dent	7	CFD02	Cluster6	0.00534246575342466
+dent	7	CFD03	Cluster6	0.00349019607843137
+dent	7	CFD04	Cluster6	0.000123809523809524
+dent	7	CFD05	Cluster6	0.00131168831168831
+dent	7	CFD06	Cluster6	0.0136190476190476
+dent	7	CFD07	Cluster6	0.972611111111111
+dent	7	CFD09	Cluster6	0.000222222222222222
+dent	7	CFD10	Cluster6	0.00232323232323232
+dent	7	CFD11	Cluster6	0
+dent	7	CFD12	Cluster6	0.01958
+dent	7	Par. Dent	Cluster7	0.091
+dent	7	Par. Flint	Cluster7	0
+dent	7	CFD01	Cluster7	0.00137647058823529
+dent	7	CFD02	Cluster7	0.00521917808219178
+dent	7	CFD03	Cluster7	0.000156862745098039
+dent	7	CFD04	Cluster7	3.80952380952381e-05
+dent	7	CFD05	Cluster7	0.00255844155844156
+dent	7	CFD06	Cluster7	5.71428571428571e-05
+dent	7	CFD07	Cluster7	9.25925925925926e-05
+dent	7	CFD09	Cluster7	0.000158730158730159
+dent	7	CFD10	Cluster7	0.00311111111111111
+dent	7	CFD11	Cluster7	0
+dent	7	CFD12	Cluster7	0.87772
+dent	8	Par. Dent	Cluster1	0.272636363636364
+dent	8	Par. Flint	Cluster1	0
+dent	8	CFD01	Cluster1	0.00125882352941177
+dent	8	CFD02	Cluster1	0.00052054794520548
+dent	8	CFD03	Cluster1	0.559598039215686
+dent	8	CFD04	Cluster1	0.564285714285714
+dent	8	CFD05	Cluster1	0.0122597402597403
+dent	8	CFD06	Cluster1	0.000552380952380953
+dent	8	CFD07	Cluster1	0.00012962962962963
+dent	8	CFD09	Cluster1	4.76190476190476e-05
+dent	8	CFD10	Cluster1	0.623646464646465
+dent	8	CFD11	Cluster1	0
+dent	8	CFD12	Cluster1	0.05413
+dent	8	Par. Dent	Cluster2	0.0909090909090909
+dent	8	Par. Flint	Cluster2	0
+dent	8	CFD01	Cluster2	0.000305882352941177
+dent	8	CFD02	Cluster2	1.36986301369863e-05
+dent	8	CFD03	Cluster2	0
+dent	8	CFD04	Cluster2	9.52380952380953e-06
+dent	8	CFD05	Cluster2	2.5974025974026e-05
+dent	8	CFD06	Cluster2	7.61904761904762e-05
+dent	8	CFD07	Cluster2	2.77777777777778e-05
+dent	8	CFD09	Cluster2	0.669015873015873
+dent	8	CFD10	Cluster2	4.04040404040404e-05
+dent	8	CFD11	Cluster2	0
+dent	8	CFD12	Cluster2	0.00035
+dent	8	Par. Dent	Cluster3	0.0908181818181818
+dent	8	Par. Flint	Cluster3	0
+dent	8	CFD01	Cluster3	0.000305882352941177
+dent	8	CFD02	Cluster3	0.00010958904109589
+dent	8	CFD03	Cluster3	0.00249019607843137
+dent	8	CFD04	Cluster3	0.00212380952380952
+dent	8	CFD05	Cluster3	0.00306493506493507
+dent	8	CFD06	Cluster3	2e-04
+dent	8	CFD07	Cluster3	5.55555555555556e-05
+dent	8	CFD09	Cluster3	3.17460317460317e-05
+dent	8	CFD10	Cluster3	0.000858585858585859
+dent	8	CFD11	Cluster3	0.661129411764706
+dent	8	CFD12	Cluster3	0.0042
+dent	8	Par. Dent	Cluster4	0.0909090909090909
+dent	8	Par. Flint	Cluster4	0
+dent	8	CFD01	Cluster4	0.397341176470589
+dent	8	CFD02	Cluster4	0.457164383561644
+dent	8	CFD03	Cluster4	0.435343137254902
+dent	8	CFD04	Cluster4	0.432238095238095
+dent	8	CFD05	Cluster4	0.478883116883117
+dent	8	CFD06	Cluster4	0.241885714285714
+dent	8	CFD07	Cluster4	0.383490740740741
+dent	8	CFD09	Cluster4	0.329793650793651
+dent	8	CFD10	Cluster4	0.371222222222222
+dent	8	CFD11	Cluster4	0.337776470588235
+dent	8	CFD12	Cluster4	0.38983
+dent	8	Par. Dent	Cluster5	0.0907272727272727
+dent	8	Par. Flint	Cluster5	0
+dent	8	CFD01	Cluster5	0.00174117647058824
+dent	8	CFD02	Cluster5	0.000424657534246575
+dent	8	CFD03	Cluster5	5.88235294117647e-05
+dent	8	CFD04	Cluster5	8.57142857142857e-05
+dent	8	CFD05	Cluster5	0.00025974025974026
+dent	8	CFD06	Cluster5	0.755742857142857
+dent	8	CFD07	Cluster5	3.7037037037037e-05
+dent	8	CFD09	Cluster5	1.58730158730159e-05
+dent	8	CFD10	Cluster5	0.000282828282828283
+dent	8	CFD11	Cluster5	0.000329411764705882
+dent	8	CFD12	Cluster5	0.00124
+dent	8	Par. Dent	Cluster6	0.0908181818181818
+dent	8	Par. Flint	Cluster6	0
+dent	8	CFD01	Cluster6	0.00115294117647059
+dent	8	CFD02	Cluster6	0.000205479452054795
+dent	8	CFD03	Cluster6	0.000852941176470588
+dent	8	CFD04	Cluster6	1.90476190476191e-05
+dent	8	CFD05	Cluster6	0.00025974025974026
+dent	8	CFD06	Cluster6	0.000457142857142857
+dent	8	CFD07	Cluster6	0.615129629629629
+dent	8	CFD09	Cluster6	0
+dent	8	CFD10	Cluster6	0.000666666666666667
+dent	8	CFD11	Cluster6	0
+dent	8	CFD12	Cluster6	0.00281
+dent	8	Par. Dent	Cluster7	0.0907272727272727
+dent	8	Par. Flint	Cluster7	0.999
+dent	8	CFD01	Cluster7	0.595129411764706
+dent	8	CFD02	Cluster7	1.36986301369863e-05
+dent	8	CFD03	Cluster7	0.000215686274509804
+dent	8	CFD04	Cluster7	9.52380952380953e-06
+dent	8	CFD05	Cluster7	0.00051948051948052
+dent	8	CFD06	Cluster7	2.85714285714286e-05
+dent	8	CFD07	Cluster7	0
+dent	8	CFD09	Cluster7	0
+dent	8	CFD10	Cluster7	0.00106060606060606
+dent	8	CFD11	Cluster7	0
+dent	8	CFD12	Cluster7	0.54648
+dent	8	Par. Dent	Cluster8	0.181636363636364
+dent	8	Par. Flint	Cluster8	0
+dent	8	CFD01	Cluster8	0.002
+dent	8	CFD02	Cluster8	0.540506849315068
+dent	8	CFD03	Cluster8	0.000264705882352941
+dent	8	CFD04	Cluster8	1.90476190476191e-05
+dent	8	CFD05	Cluster8	0.503935064935065
+dent	8	CFD06	Cluster8	7.61904761904762e-05
+dent	8	CFD07	Cluster8	1.85185185185185e-05
+dent	8	CFD09	Cluster8	0
+dent	8	CFD10	Cluster8	0.00118181818181818
+dent	8	CFD11	Cluster8	0
+dent	8	CFD12	Cluster8	0.00037
+dent	9	Par. Dent	Cluster1	0.272454545454545
+dent	9	Par. Flint	Cluster1	0
+dent	9	CFD01	Cluster1	0.000211764705882353
+dent	9	CFD02	Cluster1	0.00026027397260274
+dent	9	CFD03	Cluster1	0.561333333333333
+dent	9	CFD04	Cluster1	0.566504761904762
+dent	9	CFD05	Cluster1	0.0119090909090909
+dent	9	CFD06	Cluster1	0.000485714285714286
+dent	9	CFD07	Cluster1	7.40740740740741e-05
+dent	9	CFD09	Cluster1	1.58730158730159e-05
+dent	9	CFD10	Cluster1	0.621333333333333
+dent	9	CFD11	Cluster1	0
+dent	9	CFD12	Cluster1	0.00028
+dent	9	Par. Dent	Cluster2	0.0909090909090909
+dent	9	Par. Flint	Cluster2	0
+dent	9	CFD01	Cluster2	0
+dent	9	CFD02	Cluster2	1.36986301369863e-05
+dent	9	CFD03	Cluster2	0
+dent	9	CFD04	Cluster2	0
+dent	9	CFD05	Cluster2	2.5974025974026e-05
+dent	9	CFD06	Cluster2	5.71428571428571e-05
+dent	9	CFD07	Cluster2	1.85185185185185e-05
+dent	9	CFD09	Cluster2	0.652809523809524
+dent	9	CFD10	Cluster2	2.02020202020202e-05
+dent	9	CFD11	Cluster2	0
+dent	9	CFD12	Cluster2	1e-05
+dent	9	Par. Dent	Cluster3	0.0908181818181818
+dent	9	Par. Flint	Cluster3	0
+dent	9	CFD01	Cluster3	2.35294117647059e-05
+dent	9	CFD02	Cluster3	4.10958904109589e-05
+dent	9	CFD03	Cluster3	0.00213725490196078
+dent	9	CFD04	Cluster3	0.00161904761904762
+dent	9	CFD05	Cluster3	0.00358441558441558
+dent	9	CFD06	Cluster3	0.000133333333333333
+dent	9	CFD07	Cluster3	5.55555555555556e-05
+dent	9	CFD09	Cluster3	1.58730158730159e-05
+dent	9	CFD10	Cluster3	0.000696969696969697
+dent	9	CFD11	Cluster3	0.650670588235294
+dent	9	CFD12	Cluster3	5e-05
+dent	9	Par. Dent	Cluster4	0.0909090909090909
+dent	9	Par. Flint	Cluster4	0
+dent	9	CFD01	Cluster4	0.396482352941176
+dent	9	CFD02	Cluster4	0.459958904109589
+dent	9	CFD03	Cluster4	0.434137254901961
+dent	9	CFD04	Cluster4	0.430514285714286
+dent	9	CFD05	Cluster4	0.478051948051948
+dent	9	CFD06	Cluster4	0.2354
+dent	9	CFD07	Cluster4	0.390796296296296
+dent	9	CFD09	Cluster4	0.345936507936508
+dent	9	CFD10	Cluster4	0.372646464646465
+dent	9	CFD11	Cluster4	0.348117647058824
+dent	9	CFD12	Cluster4	0.4179
+dent	9	Par. Dent	Cluster5	0.0907272727272727
+dent	9	Par. Flint	Cluster5	0
+dent	9	CFD01	Cluster5	8.23529411764706e-05
+dent	9	CFD02	Cluster5	0.000356164383561644
+dent	9	CFD03	Cluster5	3.92156862745098e-05
+dent	9	CFD04	Cluster5	8.57142857142857e-05
+dent	9	CFD05	Cluster5	0.000220779220779221
+dent	9	CFD06	Cluster5	0.762266666666667
+dent	9	CFD07	Cluster5	2.77777777777778e-05
+dent	9	CFD09	Cluster5	0
+dent	9	CFD10	Cluster5	0.000313131313131313
+dent	9	CFD11	Cluster5	4e-04
+dent	9	CFD12	Cluster5	2e-05
+dent	9	Par. Dent	Cluster6	0.0908181818181818
+dent	9	Par. Flint	Cluster6	0
+dent	9	CFD01	Cluster6	5.88235294117647e-05
+dent	9	CFD02	Cluster6	0.00010958904109589
+dent	9	CFD03	Cluster6	0.000558823529411765
+dent	9	CFD04	Cluster6	9.52380952380953e-06
+dent	9	CFD05	Cluster6	0.000194805194805195
+dent	9	CFD06	Cluster6	0.000466666666666667
+dent	9	CFD07	Cluster6	0.607888888888889
+dent	9	CFD09	Cluster6	0
+dent	9	CFD10	Cluster6	0.000535353535353536
+dent	9	CFD11	Cluster6	0
+dent	9	CFD12	Cluster6	0.00011
+dent	9	Par. Dent	Cluster7	0.0908181818181818
+dent	9	Par. Flint	Cluster7	0
+dent	9	CFD01	Cluster7	3.52941176470588e-05
+dent	9	CFD02	Cluster7	6.84931506849315e-05
+dent	9	CFD03	Cluster7	0.000147058823529412
+dent	9	CFD04	Cluster7	9.52380952380953e-06
+dent	9	CFD05	Cluster7	0.000337662337662338
+dent	9	CFD06	Cluster7	3.80952380952381e-05
+dent	9	CFD07	Cluster7	0
+dent	9	CFD09	Cluster7	0
+dent	9	CFD10	Cluster7	0.000828282828282828
+dent	9	CFD11	Cluster7	0
+dent	9	CFD12	Cluster7	0.58035
+dent	9	Par. Dent	Cluster8	0.181636363636364
+dent	9	Par. Flint	Cluster8	0
+dent	9	CFD01	Cluster8	7.05882352941177e-05
+dent	9	CFD02	Cluster8	0.538027397260274
+dent	9	CFD03	Cluster8	0.000176470588235294
+dent	9	CFD04	Cluster8	9.52380952380953e-06
+dent	9	CFD05	Cluster8	0.499116883116883
+dent	9	CFD06	Cluster8	5.71428571428571e-05
+dent	9	CFD07	Cluster8	9.25925925925926e-06
+dent	9	CFD09	Cluster8	0
+dent	9	CFD10	Cluster8	0.00096969696969697
+dent	9	CFD11	Cluster8	0
+dent	9	CFD12	Cluster8	2e-05
+dent	9	Par. Dent	Cluster9	0
+dent	9	Par. Flint	Cluster9	0.999
+dent	9	CFD01	Cluster9	0.601870588235294
+dent	9	CFD02	Cluster9	0
+dent	9	CFD03	Cluster9	0.000215686274509804
+dent	9	CFD04	Cluster9	0
+dent	9	CFD05	Cluster9	0.00546753246753247
+dent	9	CFD06	Cluster9	6.66666666666667e-05
+dent	9	CFD07	Cluster9	0
+dent	9	CFD09	Cluster9	0
+dent	9	CFD10	Cluster9	0.00160606060606061
+dent	9	CFD11	Cluster9	0
+dent	9	CFD12	Cluster9	5e-05
+dent	10	Par. Dent	Cluster1	0.272
+dent	10	Par. Flint	Cluster1	0
+dent	10	CFD01	Cluster1	9.41176470588235e-05
+dent	10	CFD02	Cluster1	0.000232876712328767
+dent	10	CFD03	Cluster1	0.53693137254902
+dent	10	CFD04	Cluster1	0.524419047619047
+dent	10	CFD05	Cluster1	0.00875324675324676
+dent	10	CFD06	Cluster1	9.52380952380953e-05
+dent	10	CFD07	Cluster1	0
+dent	10	CFD09	Cluster1	0
+dent	10	CFD10	Cluster1	0.581111111111111
+dent	10	CFD11	Cluster1	1.17647058823529e-05
+dent	10	CFD12	Cluster1	0.00019
+dent	10	Par. Dent	Cluster2	0.0909090909090909
+dent	10	Par. Flint	Cluster2	0
+dent	10	CFD01	Cluster2	0
+dent	10	CFD02	Cluster2	0
+dent	10	CFD03	Cluster2	0
+dent	10	CFD04	Cluster2	0
+dent	10	CFD05	Cluster2	0
+dent	10	CFD06	Cluster2	1.90476190476191e-05
+dent	10	CFD07	Cluster2	9.25925925925926e-06
+dent	10	CFD09	Cluster2	0.613095238095238
+dent	10	CFD10	Cluster2	2.02020202020202e-05
+dent	10	CFD11	Cluster2	0
+dent	10	CFD12	Cluster2	0
+dent	10	Par. Dent	Cluster3	0.0908181818181818
+dent	10	Par. Flint	Cluster3	0
+dent	10	CFD01	Cluster3	0
+dent	10	CFD02	Cluster3	2.73972602739726e-05
+dent	10	CFD03	Cluster3	0.000656862745098039
+dent	10	CFD04	Cluster3	0.000180952380952381
+dent	10	CFD05	Cluster3	0.0012987012987013
+dent	10	CFD06	Cluster3	5.71428571428571e-05
+dent	10	CFD07	Cluster3	0
+dent	10	CFD09	Cluster3	1.58730158730159e-05
+dent	10	CFD10	Cluster3	0.000131313131313131
+dent	10	CFD11	Cluster3	0.5926
+dent	10	CFD12	Cluster3	1e-05
+dent	10	Par. Dent	Cluster4	0.0908181818181818
+dent	10	Par. Flint	Cluster4	0
+dent	10	CFD01	Cluster4	0.226670588235294
+dent	10	CFD02	Cluster4	0.310917808219178
+dent	10	CFD03	Cluster4	0.298049019607843
+dent	10	CFD04	Cluster4	0.204314285714286
+dent	10	CFD05	Cluster4	0.245181818181818
+dent	10	CFD06	Cluster4	0.221095238095238
+dent	10	CFD07	Cluster4	0.234814814814815
+dent	10	CFD09	Cluster4	0.230809523809524
+dent	10	CFD10	Cluster4	0.213909090909091
+dent	10	CFD11	Cluster4	0.259870588235294
+dent	10	CFD12	Cluster4	0.23155
+dent	10	Par. Dent	Cluster5	0.0908181818181818
+dent	10	Par. Flint	Cluster5	0
+dent	10	CFD01	Cluster5	4.70588235294118e-05
+dent	10	CFD02	Cluster5	0.00010958904109589
+dent	10	CFD03	Cluster5	0
+dent	10	CFD04	Cluster5	0
+dent	10	CFD05	Cluster5	5.1948051948052e-05
+dent	10	CFD06	Cluster5	0.598704761904762
+dent	10	CFD07	Cluster5	0
+dent	10	CFD09	Cluster5	0
+dent	10	CFD10	Cluster5	7.07070707070707e-05
+dent	10	CFD11	Cluster5	0.000352941176470588
+dent	10	CFD12	Cluster5	1e-05
+dent	10	Par. Dent	Cluster6	0.0908181818181818
+dent	10	Par. Flint	Cluster6	0
+dent	10	CFD01	Cluster6	2.35294117647059e-05
+dent	10	CFD02	Cluster6	8.21917808219178e-05
+dent	10	CFD03	Cluster6	0.000225490196078431
+dent	10	CFD04	Cluster6	0
+dent	10	CFD05	Cluster6	0.000155844155844156
+dent	10	CFD06	Cluster6	0.000114285714285714
+dent	10	CFD07	Cluster6	0.576925925925926
+dent	10	CFD09	Cluster6	0
+dent	10	CFD10	Cluster6	0.000343434343434344
+dent	10	CFD11	Cluster6	0
+dent	10	CFD12	Cluster6	5e-05
+dent	10	Par. Dent	Cluster7	0.0912727272727273
+dent	10	Par. Flint	Cluster7	0
+dent	10	CFD01	Cluster7	0
+dent	10	CFD02	Cluster7	2.73972602739726e-05
+dent	10	CFD03	Cluster7	0.000127450980392157
+dent	10	CFD04	Cluster7	9.52380952380953e-06
+dent	10	CFD05	Cluster7	0.000142857142857143
+dent	10	CFD06	Cluster7	0
+dent	10	CFD07	Cluster7	0
+dent	10	CFD09	Cluster7	0
+dent	10	CFD10	Cluster7	0.000383838383838384
+dent	10	CFD11	Cluster7	0
+dent	10	CFD12	Cluster7	0.5396
+dent	10	Par. Dent	Cluster8	0.181636363636364
+dent	10	Par. Flint	Cluster8	0
+dent	10	CFD01	Cluster8	3.52941176470588e-05
+dent	10	CFD02	Cluster8	0.530356164383562
+dent	10	CFD03	Cluster8	9.80392156862745e-05
+dent	10	CFD04	Cluster8	0
+dent	10	CFD05	Cluster8	0.476025974025974
+dent	10	CFD06	Cluster8	1.90476190476191e-05
+dent	10	CFD07	Cluster8	9.25925925925926e-06
+dent	10	CFD09	Cluster8	0
+dent	10	CFD10	Cluster8	0.000555555555555556
+dent	10	CFD11	Cluster8	0
+dent	10	CFD12	Cluster8	1e-05
+dent	10	Par. Dent	Cluster9	0
+dent	10	Par. Flint	Cluster9	0.999
+dent	10	CFD01	Cluster9	0.582788235294118
+dent	10	CFD02	Cluster9	0
+dent	10	CFD03	Cluster9	0.000117647058823529
+dent	10	CFD04	Cluster9	0
+dent	10	CFD05	Cluster9	0.00272727272727273
+dent	10	CFD06	Cluster9	0
+dent	10	CFD07	Cluster9	0
+dent	10	CFD09	Cluster9	0
+dent	10	CFD10	Cluster9	0.00116161616161616
+dent	10	CFD11	Cluster9	0
+dent	10	CFD12	Cluster9	1e-05
+dent	10	Par. Dent	Cluster10	0
+dent	10	Par. Flint	Cluster10	0
+dent	10	CFD01	Cluster10	0.189117647058824
+dent	10	CFD02	Cluster10	0.156958904109589
+dent	10	CFD03	Cluster10	0.162441176470588
+dent	10	CFD04	Cluster10	0.269752380952381
+dent	10	CFD05	Cluster10	0.264519480519481
+dent	10	CFD06	Cluster10	0.17872380952381
+dent	10	CFD07	Cluster10	0.187018518518519
+dent	10	CFD09	Cluster10	0.154936507936508
+dent	10	CFD10	Cluster10	0.200868686868687
+dent	10	CFD11	Cluster10	0.146411764705882
+dent	10	CFD12	Cluster10	0.22738
+dent	11	Par. Dent	Cluster1	0.274090909090909
+dent	11	Par. Flint	Cluster1	0
+dent	11	CFD01	Cluster1	0.000211764705882353
+dent	11	CFD02	Cluster1	0.000191780821917808
+dent	11	CFD03	Cluster1	0.422950980392157
+dent	11	CFD04	Cluster1	0.427342857142857
+dent	11	CFD05	Cluster1	0.00516883116883117
+dent	11	CFD06	Cluster1	8.57142857142857e-05
+dent	11	CFD07	Cluster1	2.77777777777778e-05
+dent	11	CFD09	Cluster1	0
+dent	11	CFD10	Cluster1	0.487292929292929
+dent	11	CFD11	Cluster1	0
+dent	11	CFD12	Cluster1	0.00014
+dent	11	Par. Dent	Cluster2	0.0908181818181818
+dent	11	Par. Flint	Cluster2	0
+dent	11	CFD01	Cluster2	0
+dent	11	CFD02	Cluster2	1.36986301369863e-05
+dent	11	CFD03	Cluster2	0
+dent	11	CFD04	Cluster2	0
+dent	11	CFD05	Cluster2	0
+dent	11	CFD06	Cluster2	9.52380952380953e-06
+dent	11	CFD07	Cluster2	9.25925925925926e-06
+dent	11	CFD09	Cluster2	0.613031746031746
+dent	11	CFD10	Cluster2	3.03030303030303e-05
+dent	11	CFD11	Cluster2	0
+dent	11	CFD12	Cluster2	1e-05
+dent	11	Par. Dent	Cluster3	0.0908181818181818
+dent	11	Par. Flint	Cluster3	0
+dent	11	CFD01	Cluster3	3.52941176470588e-05
+dent	11	CFD02	Cluster3	0.000123287671232877
+dent	11	CFD03	Cluster3	0.0023921568627451
+dent	11	CFD04	Cluster3	0.000380952380952381
+dent	11	CFD05	Cluster3	0.003
+dent	11	CFD06	Cluster3	0.000104761904761905
+dent	11	CFD07	Cluster3	0
+dent	11	CFD09	Cluster3	9.52380952380952e-05
+dent	11	CFD10	Cluster3	0.000353535353535354
+dent	11	CFD11	Cluster3	0.656858823529412
+dent	11	CFD12	Cluster3	6e-05
+dent	11	Par. Dent	Cluster4	0.0457272727272727
+dent	11	Par. Flint	Cluster4	0
+dent	11	CFD01	Cluster4	0.148752941176471
+dent	11	CFD02	Cluster4	0.136698630136986
+dent	11	CFD03	Cluster4	0.234656862745098
+dent	11	CFD04	Cluster4	0.200161904761905
+dent	11	CFD05	Cluster4	0.151142857142857
+dent	11	CFD06	Cluster4	0.137952380952381
+dent	11	CFD07	Cluster4	0.165314814814815
+dent	11	CFD09	Cluster4	0.143650793650794
+dent	11	CFD10	Cluster4	0.159979797979798
+dent	11	CFD11	Cluster4	0.109294117647059
+dent	11	CFD12	Cluster4	0.15108
+dent	11	Par. Dent	Cluster5	0.0908181818181818
+dent	11	Par. Flint	Cluster5	0
+dent	11	CFD01	Cluster5	3.52941176470588e-05
+dent	11	CFD02	Cluster5	6.84931506849315e-05
+dent	11	CFD03	Cluster5	0
+dent	11	CFD04	Cluster5	1.90476190476191e-05
+dent	11	CFD05	Cluster5	7.79220779220779e-05
+dent	11	CFD06	Cluster5	0.536657142857143
+dent	11	CFD07	Cluster5	0
+dent	11	CFD09	Cluster5	0
+dent	11	CFD10	Cluster5	3.03030303030303e-05
+dent	11	CFD11	Cluster5	0.000176470588235294
+dent	11	CFD12	Cluster5	1e-05
+dent	11	Par. Dent	Cluster6	0.0908181818181818
+dent	11	Par. Flint	Cluster6	0
+dent	11	CFD01	Cluster6	3.52941176470588e-05
+dent	11	CFD02	Cluster6	0.000136986301369863
+dent	11	CFD03	Cluster6	0.000245098039215686
+dent	11	CFD04	Cluster6	1.90476190476191e-05
+dent	11	CFD05	Cluster6	0.000181818181818182
+dent	11	CFD06	Cluster6	7.61904761904762e-05
+dent	11	CFD07	Cluster6	0.522703703703704
+dent	11	CFD09	Cluster6	0
+dent	11	CFD10	Cluster6	0.000282828282828283
+dent	11	CFD11	Cluster6	0
+dent	11	CFD12	Cluster6	5e-05
+dent	11	Par. Dent	Cluster7	0.0908181818181818
+dent	11	Par. Flint	Cluster7	0
+dent	11	CFD01	Cluster7	3.52941176470588e-05
+dent	11	CFD02	Cluster7	0.00010958904109589
+dent	11	CFD03	Cluster7	0.000176470588235294
+dent	11	CFD04	Cluster7	9.52380952380953e-06
+dent	11	CFD05	Cluster7	0.00025974025974026
+dent	11	CFD06	Cluster7	0
+dent	11	CFD07	Cluster7	0
+dent	11	CFD09	Cluster7	0
+dent	11	CFD10	Cluster7	0.000454545454545455
+dent	11	CFD11	Cluster7	0
+dent	11	CFD12	Cluster7	0.51545
+dent	11	Par. Dent	Cluster8	0.18
+dent	11	Par. Flint	Cluster8	0
+dent	11	CFD01	Cluster8	0.000176470588235294
+dent	11	CFD02	Cluster8	0.502246575342466
+dent	11	CFD03	Cluster8	0.000245098039215686
+dent	11	CFD04	Cluster8	0
+dent	11	CFD05	Cluster8	0.461857142857143
+dent	11	CFD06	Cluster8	2.85714285714286e-05
+dent	11	CFD07	Cluster8	2.77777777777778e-05
+dent	11	CFD09	Cluster8	0
+dent	11	CFD10	Cluster8	0.000383838383838384
+dent	11	CFD11	Cluster8	0
+dent	11	CFD12	Cluster8	3e-05
+dent	11	Par. Dent	Cluster9	0
+dent	11	Par. Flint	Cluster9	0.999
+dent	11	CFD01	Cluster9	0.581094117647059
+dent	11	CFD02	Cluster9	0
+dent	11	CFD03	Cluster9	0.000107843137254902
+dent	11	CFD04	Cluster9	0
+dent	11	CFD05	Cluster9	0.00222077922077922
+dent	11	CFD06	Cluster9	0
+dent	11	CFD07	Cluster9	0
+dent	11	CFD09	Cluster9	0
+dent	11	CFD10	Cluster9	0.000292929292929293
+dent	11	CFD11	Cluster9	0
+dent	11	CFD12	Cluster9	2e-05
+dent	11	Par. Dent	Cluster10	0.0326363636363636
+dent	11	Par. Flint	Cluster10	0
+dent	11	CFD01	Cluster10	0.204576470588235
+dent	11	CFD02	Cluster10	0.096027397260274
+dent	11	CFD03	Cluster10	0.170450980392157
+dent	11	CFD04	Cluster10	0.203257142857143
+dent	11	CFD05	Cluster10	0.236350649350649
+dent	11	CFD06	Cluster10	0.138533333333333
+dent	11	CFD07	Cluster10	0.177851851851852
+dent	11	CFD09	Cluster10	0.131333333333333
+dent	11	CFD10	Cluster10	0.176020202020202
+dent	11	CFD11	Cluster10	0.148788235294118
+dent	11	CFD12	Cluster10	0.1933
+dent	11	Par. Dent	Cluster11	0.0124545454545455
+dent	11	Par. Flint	Cluster11	0
+dent	11	CFD01	Cluster11	0.0637529411764706
+dent	11	CFD02	Cluster11	0.263027397260274
+dent	11	CFD03	Cluster11	0.167343137254902
+dent	11	CFD04	Cluster11	0.16747619047619
+dent	11	CFD05	Cluster11	0.138623376623377
+dent	11	CFD06	Cluster11	0.185342857142857
+dent	11	CFD07	Cluster11	0.132675925925926
+dent	11	CFD09	Cluster11	0.110555555555556
+dent	11	CFD10	Cluster11	0.173494949494949
+dent	11	CFD11	Cluster11	0.0840117647058824
+dent	11	CFD12	Cluster11	0.13853
+dent	12	Par. Dent	Cluster1	0.0969090909090909
+dent	12	Par. Flint	Cluster1	0
+dent	12	CFD01	Cluster1	0.00291764705882353
+dent	12	CFD02	Cluster1	0.00189041095890411
+dent	12	CFD03	Cluster1	0.366588235294118
+dent	12	CFD04	Cluster1	0.0381523809523809
+dent	12	CFD05	Cluster1	0.0298051948051948
+dent	12	CFD06	Cluster1	0.00413333333333333
+dent	12	CFD07	Cluster1	0.000888888888888889
+dent	12	CFD09	Cluster1	0.000174603174603175
+dent	12	CFD10	Cluster1	0.494090909090909
+dent	12	CFD11	Cluster1	2.35294117647059e-05
+dent	12	CFD12	Cluster1	0.00801
+dent	12	Par. Dent	Cluster2	0.0908181818181818
+dent	12	Par. Flint	Cluster2	0
+dent	12	CFD01	Cluster2	0
+dent	12	CFD02	Cluster2	0
+dent	12	CFD03	Cluster2	0
+dent	12	CFD04	Cluster2	0
+dent	12	CFD05	Cluster2	1.2987012987013e-05
+dent	12	CFD06	Cluster2	1.90476190476191e-05
+dent	12	CFD07	Cluster2	9.25925925925926e-06
+dent	12	CFD09	Cluster2	0.631968253968254
+dent	12	CFD10	Cluster2	2.02020202020202e-05
+dent	12	CFD11	Cluster2	0
+dent	12	CFD12	Cluster2	1e-05
+dent	12	Par. Dent	Cluster3	0.0908181818181818
+dent	12	Par. Flint	Cluster3	0
+dent	12	CFD01	Cluster3	0
+dent	12	CFD02	Cluster3	2.73972602739726e-05
+dent	12	CFD03	Cluster3	0.000284313725490196
+dent	12	CFD04	Cluster3	9.52380952380953e-06
+dent	12	CFD05	Cluster3	0.00115584415584416
+dent	12	CFD06	Cluster3	3.80952380952381e-05
+dent	12	CFD07	Cluster3	9.25925925925926e-06
+dent	12	CFD09	Cluster3	0
+dent	12	CFD10	Cluster3	8.08080808080808e-05
+dent	12	CFD11	Cluster3	0.588129411764706
+dent	12	CFD12	Cluster3	4e-05
+dent	12	Par. Dent	Cluster4	0.00163636363636364
+dent	12	Par. Flint	Cluster4	0
+dent	12	CFD01	Cluster4	0.137870588235294
+dent	12	CFD02	Cluster4	0.107438356164384
+dent	12	CFD03	Cluster4	0.162549019607843
+dent	12	CFD04	Cluster4	0.120961904761905
+dent	12	CFD05	Cluster4	0.131376623376623
+dent	12	CFD06	Cluster4	0.0920190476190476
+dent	12	CFD07	Cluster4	0.16762962962963
+dent	12	CFD09	Cluster4	0.104730158730159
+dent	12	CFD10	Cluster4	0.149838383838384
+dent	12	CFD11	Cluster4	0.0912117647058823
+dent	12	CFD12	Cluster4	0.12134
+dent	12	Par. Dent	Cluster5	0.0908181818181818
+dent	12	Par. Flint	Cluster5	0
+dent	12	CFD01	Cluster5	2.35294117647059e-05
+dent	12	CFD02	Cluster5	9.58904109589041e-05
+dent	12	CFD03	Cluster5	2.94117647058824e-05
+dent	12	CFD04	Cluster5	0
+dent	12	CFD05	Cluster5	9.09090909090909e-05
+dent	12	CFD06	Cluster5	0.554095238095238
+dent	12	CFD07	Cluster5	0
+dent	12	CFD09	Cluster5	0
+dent	12	CFD10	Cluster5	8.08080808080808e-05
+dent	12	CFD11	Cluster5	0.000223529411764706
+dent	12	CFD12	Cluster5	0
+dent	12	Par. Dent	Cluster6	0.0908181818181818
+dent	12	Par. Flint	Cluster6	0
+dent	12	CFD01	Cluster6	1.17647058823529e-05
+dent	12	CFD02	Cluster6	0.00010958904109589
+dent	12	CFD03	Cluster6	0.000107843137254902
+dent	12	CFD04	Cluster6	0
+dent	12	CFD05	Cluster6	0.000155844155844156
+dent	12	CFD06	Cluster6	6.66666666666667e-05
+dent	12	CFD07	Cluster6	0.546296296296296
+dent	12	CFD09	Cluster6	0
+dent	12	CFD10	Cluster6	3.03030303030303e-05
+dent	12	CFD11	Cluster6	0
+dent	12	CFD12	Cluster6	6e-05
+dent	12	Par. Dent	Cluster7	0.0909090909090909
+dent	12	Par. Flint	Cluster7	0
+dent	12	CFD01	Cluster7	0
+dent	12	CFD02	Cluster7	8.21917808219178e-05
+dent	12	CFD03	Cluster7	0.000803921568627451
+dent	12	CFD04	Cluster7	0
+dent	12	CFD05	Cluster7	0.000285714285714286
+dent	12	CFD06	Cluster7	0
+dent	12	CFD07	Cluster7	0
+dent	12	CFD09	Cluster7	0
+dent	12	CFD10	Cluster7	0.000292929292929293
+dent	12	CFD11	Cluster7	0
+dent	12	CFD12	Cluster7	0.51112
+dent	12	Par. Dent	Cluster8	0.175545454545455
+dent	12	Par. Flint	Cluster8	0
+dent	12	CFD01	Cluster8	7.05882352941177e-05
+dent	12	CFD02	Cluster8	0.509630136986301
+dent	12	CFD03	Cluster8	0.000245098039215686
+dent	12	CFD04	Cluster8	0
+dent	12	CFD05	Cluster8	0.423272727272727
+dent	12	CFD06	Cluster8	3.80952380952381e-05
+dent	12	CFD07	Cluster8	3.7037037037037e-05
+dent	12	CFD09	Cluster8	0
+dent	12	CFD10	Cluster8	0.00162626262626263
+dent	12	CFD11	Cluster8	0
+dent	12	CFD12	Cluster8	2e-05
+dent	12	Par. Dent	Cluster9	0
+dent	12	Par. Flint	Cluster9	0.999
+dent	12	CFD01	Cluster9	0.5554
+dent	12	CFD02	Cluster9	0
+dent	12	CFD03	Cluster9	6.86274509803922e-05
+dent	12	CFD04	Cluster9	0
+dent	12	CFD05	Cluster9	0.00171428571428571
+dent	12	CFD06	Cluster9	0
+dent	12	CFD07	Cluster9	0
+dent	12	CFD09	Cluster9	0
+dent	12	CFD10	Cluster9	3.03030303030303e-05
+dent	12	CFD11	Cluster9	0
+dent	12	CFD12	Cluster9	0
+dent	12	Par. Dent	Cluster10	0.0319090909090909
+dent	12	Par. Flint	Cluster10	0
+dent	12	CFD01	Cluster10	0.195588235294118
+dent	12	CFD02	Cluster10	0.0940821917808219
+dent	12	CFD03	Cluster10	0.202313725490196
+dent	12	CFD04	Cluster10	0.171971428571429
+dent	12	CFD05	Cluster10	0.205272727272727
+dent	12	CFD06	Cluster10	0.134838095238095
+dent	12	CFD07	Cluster10	0.180287037037037
+dent	12	CFD09	Cluster10	0.100492063492063
+dent	12	CFD10	Cluster10	0.214363636363636
+dent	12	CFD11	Cluster10	0.151011764705882
+dent	12	CFD12	Cluster10	0.18133
+dent	12	Par. Dent	Cluster11	0.0573636363636364
+dent	12	Par. Flint	Cluster11	0
+dent	12	CFD01	Cluster11	0.106482352941176
+dent	12	CFD02	Cluster11	0.284520547945205
+dent	12	CFD03	Cluster11	0.140313725490196
+dent	12	CFD04	Cluster11	0.216704761904762
+dent	12	CFD05	Cluster11	0.193454545454545
+dent	12	CFD06	Cluster11	0.213257142857143
+dent	12	CFD07	Cluster11	0.103203703703704
+dent	12	CFD09	Cluster11	0.161269841269841
+dent	12	CFD10	Cluster11	0.0798484848484848
+dent	12	CFD11	Cluster11	0.168423529411765
+dent	12	CFD12	Cluster11	0.17615
+dent	12	Par. Dent	Cluster12	0.181363636363636
+dent	12	Par. Flint	Cluster12	0
+dent	12	CFD01	Cluster12	0.000176470588235294
+dent	12	CFD02	Cluster12	0.000671232876712329
+dent	12	CFD03	Cluster12	0.125313725490196
+dent	12	CFD04	Cluster12	0.450847619047619
+dent	12	CFD05	Cluster12	0.012012987012987
+dent	12	CFD06	Cluster12	9.52380952380953e-05
+dent	12	CFD07	Cluster12	0.000314814814814815
+dent	12	CFD09	Cluster12	3.17460317460317e-05
+dent	12	CFD10	Cluster12	0.0583131313131313
+dent	12	CFD11	Cluster12	0
+dent	12	CFD12	Cluster12	0.00046
+dent	13	Par. Dent	Cluster1	0.166636363636364
+dent	13	Par. Flint	Cluster1	0
+dent	13	CFD01	Cluster1	0.000129411764705882
+dent	13	CFD02	Cluster1	0.000136986301369863
+dent	13	CFD03	Cluster1	0.247274509803922
+dent	13	CFD04	Cluster1	0.000323809523809524
+dent	13	CFD05	Cluster1	0.0243636363636363
+dent	13	CFD06	Cluster1	6.66666666666667e-05
+dent	13	CFD07	Cluster1	5.55555555555556e-05
+dent	13	CFD09	Cluster1	0
+dent	13	CFD10	Cluster1	0.442212121212121
+dent	13	CFD11	Cluster1	0
+dent	13	CFD12	Cluster1	0.00019
+dent	13	Par. Dent	Cluster2	0.0908181818181818
+dent	13	Par. Flint	Cluster2	0
+dent	13	CFD01	Cluster2	0
+dent	13	CFD02	Cluster2	1.36986301369863e-05
+dent	13	CFD03	Cluster2	0
+dent	13	CFD04	Cluster2	0
+dent	13	CFD05	Cluster2	3.8961038961039e-05
+dent	13	CFD06	Cluster2	9.52380952380953e-06
+dent	13	CFD07	Cluster2	9.25925925925926e-06
+dent	13	CFD09	Cluster2	0.580968253968254
+dent	13	CFD10	Cluster2	0
+dent	13	CFD11	Cluster2	0
+dent	13	CFD12	Cluster2	0
+dent	13	Par. Dent	Cluster3	0.0908181818181818
+dent	13	Par. Flint	Cluster3	0
+dent	13	CFD01	Cluster3	1.17647058823529e-05
+dent	13	CFD02	Cluster3	0.000164383561643836
+dent	13	CFD03	Cluster3	0.00126470588235294
+dent	13	CFD04	Cluster3	3.80952380952381e-05
+dent	13	CFD05	Cluster3	0.00219480519480519
+dent	13	CFD06	Cluster3	0.000161904761904762
+dent	13	CFD07	Cluster3	9.25925925925926e-06
+dent	13	CFD09	Cluster3	9.52380952380952e-05
+dent	13	CFD10	Cluster3	2.02020202020202e-05
+dent	13	CFD11	Cluster3	0.68
+dent	13	CFD12	Cluster3	0.00015
+dent	13	Par. Dent	Cluster4	0.0261818181818182
+dent	13	Par. Flint	Cluster4	0
+dent	13	CFD01	Cluster4	0.102282352941176
+dent	13	CFD02	Cluster4	0.103383561643836
+dent	13	CFD03	Cluster4	0.159725490196078
+dent	13	CFD04	Cluster4	0.0916857142857143
+dent	13	CFD05	Cluster4	0.134831168831169
+dent	13	CFD06	Cluster4	0.0972285714285714
+dent	13	CFD07	Cluster4	0.171972222222222
+dent	13	CFD09	Cluster4	0.110380952380952
+dent	13	CFD10	Cluster4	0.159212121212121
+dent	13	CFD11	Cluster4	0.0835176470588235
+dent	13	CFD12	Cluster4	0.11194
+dent	13	Par. Dent	Cluster5	0.0908181818181818
+dent	13	Par. Flint	Cluster5	0
+dent	13	CFD01	Cluster5	2.35294117647059e-05
+dent	13	CFD02	Cluster5	0
+dent	13	CFD03	Cluster5	1.96078431372549e-05
+dent	13	CFD04	Cluster5	0
+dent	13	CFD05	Cluster5	5.1948051948052e-05
+dent	13	CFD06	Cluster5	0.549133333333333
+dent	13	CFD07	Cluster5	0
+dent	13	CFD09	Cluster5	0
+dent	13	CFD10	Cluster5	1.01010101010101e-05
+dent	13	CFD11	Cluster5	0.000129411764705882
+dent	13	CFD12	Cluster5	0
+dent	13	Par. Dent	Cluster6	0.0908181818181818
+dent	13	Par. Flint	Cluster6	0
+dent	13	CFD01	Cluster6	4.70588235294118e-05
+dent	13	CFD02	Cluster6	6.84931506849315e-05
+dent	13	CFD03	Cluster6	0.000166666666666667
+dent	13	CFD04	Cluster6	4.76190476190476e-05
+dent	13	CFD05	Cluster6	0.000103896103896104
+dent	13	CFD06	Cluster6	7.61904761904762e-05
+dent	13	CFD07	Cluster6	0.516138888888889
+dent	13	CFD09	Cluster6	0
+dent	13	CFD10	Cluster6	0
+dent	13	CFD11	Cluster6	0
+dent	13	CFD12	Cluster6	5e-05
+dent	13	Par. Dent	Cluster7	0.0908181818181818
+dent	13	Par. Flint	Cluster7	0
+dent	13	CFD01	Cluster7	1.17647058823529e-05
+dent	13	CFD02	Cluster7	5.47945205479452e-05
+dent	13	CFD03	Cluster7	0.000156862745098039
+dent	13	CFD04	Cluster7	0
+dent	13	CFD05	Cluster7	0.000246753246753247
+dent	13	CFD06	Cluster7	0
+dent	13	CFD07	Cluster7	0
+dent	13	CFD09	Cluster7	0
+dent	13	CFD10	Cluster7	3.03030303030303e-05
+dent	13	CFD11	Cluster7	0
+dent	13	CFD12	Cluster7	0.5018
+dent	13	Par. Dent	Cluster8	0.166272727272727
+dent	13	Par. Flint	Cluster8	0
+dent	13	CFD01	Cluster8	0.000105882352941177
+dent	13	CFD02	Cluster8	0.462794520547945
+dent	13	CFD03	Cluster8	3.92156862745098e-05
+dent	13	CFD04	Cluster8	0
+dent	13	CFD05	Cluster8	0.392337662337662
+dent	13	CFD06	Cluster8	1.90476190476191e-05
+dent	13	CFD07	Cluster8	9.25925925925926e-06
+dent	13	CFD09	Cluster8	0
+dent	13	CFD10	Cluster8	3.03030303030303e-05
+dent	13	CFD11	Cluster8	0
+dent	13	CFD12	Cluster8	1e-05
+dent	13	Par. Dent	Cluster9	0
+dent	13	Par. Flint	Cluster9	0.999
+dent	13	CFD01	Cluster9	0.571447058823529
+dent	13	CFD02	Cluster9	0
+dent	13	CFD03	Cluster9	2.94117647058824e-05
+dent	13	CFD04	Cluster9	0
+dent	13	CFD05	Cluster9	0.00377922077922078
+dent	13	CFD06	Cluster9	0
+dent	13	CFD07	Cluster9	0
+dent	13	CFD09	Cluster9	0
+dent	13	CFD10	Cluster9	0
+dent	13	CFD11	Cluster9	0
+dent	13	CFD12	Cluster9	1e-05
+dent	13	Par. Dent	Cluster10	0.0505454545454546
+dent	13	Par. Flint	Cluster10	0
+dent	13	CFD01	Cluster10	0.166447058823529
+dent	13	CFD02	Cluster10	0.0841506849315068
+dent	13	CFD03	Cluster10	0.110823529411765
+dent	13	CFD04	Cluster10	0.13307619047619
+dent	13	CFD05	Cluster10	0.202649350649351
+dent	13	CFD06	Cluster10	0.103866666666667
+dent	13	CFD07	Cluster10	0.127972222222222
+dent	13	CFD09	Cluster10	0.0908253968253968
+dent	13	CFD10	Cluster10	0.123888888888889
+dent	13	CFD11	Cluster10	0.140235294117647
+dent	13	CFD12	Cluster10	0.1621
+dent	13	Par. Dent	Cluster11	0.00527272727272727
+dent	13	Par. Flint	Cluster11	0
+dent	13	CFD01	Cluster11	0.0564235294117647
+dent	13	CFD02	Cluster11	0.189054794520548
+dent	13	CFD03	Cluster11	0.178588235294118
+dent	13	CFD04	Cluster11	0.139895238095238
+dent	13	CFD05	Cluster11	0.110857142857143
+dent	13	CFD06	Cluster11	0.160752380952381
+dent	13	CFD07	Cluster11	0.116925925925926
+dent	13	CFD09	Cluster11	0.0894285714285714
+dent	13	CFD10	Cluster11	0.132868686868687
+dent	13	CFD11	Cluster11	0.0567176470588235
+dent	13	CFD12	Cluster11	0.10601
+dent	13	Par. Dent	Cluster12	0.121181818181818
+dent	13	Par. Flint	Cluster12	0
+dent	13	CFD01	Cluster12	0.000188235294117647
+dent	13	CFD02	Cluster12	0.000246575342465754
+dent	13	CFD03	Cluster12	0.115980392156863
+dent	13	CFD04	Cluster12	0.437866666666667
+dent	13	CFD05	Cluster12	0.00862337662337662
+dent	13	CFD06	Cluster12	0.000171428571428571
+dent	13	CFD07	Cluster12	0.000407407407407407
+dent	13	CFD09	Cluster12	3.17460317460317e-05
+dent	13	CFD10	Cluster12	0.00902020202020202
+dent	13	CFD11	Cluster12	2.35294117647059e-05
+dent	13	CFD12	Cluster12	0.00023
+dent	13	Par. Dent	Cluster13	0.00881818181818182
+dent	13	Par. Flint	Cluster13	0
+dent	13	CFD01	Cluster13	0.101341176470588
+dent	13	CFD02	Cluster13	0.158232876712329
+dent	13	CFD03	Cluster13	0.1845
+dent	13	CFD04	Cluster13	0.195742857142857
+dent	13	CFD05	Cluster13	0.118597402597403
+dent	13	CFD06	Cluster13	0.0869714285714285
+dent	13	CFD07	Cluster13	0.0649814814814815
+dent	13	CFD09	Cluster13	0.12684126984127
+dent	13	CFD10	Cluster13	0.131
+dent	13	CFD11	Cluster13	0.0382470588235294
+dent	13	CFD12	Cluster13	0.11584
+flint	1	Par. Dent	Cluster1	1
+flint	1	Par. Flint	Cluster1	1
+flint	1	CFF01	Cluster1	1
+flint	1	CFF02	Cluster1	1
+flint	1	CFF03	Cluster1	1
+flint	1	CFF04	Cluster1	1
+flint	1	CFF05	Cluster1	1
+flint	1	CFF06	Cluster1	1
+flint	1	CFF07	Cluster1	1
+flint	1	CFF08	Cluster1	1
+flint	1	CFF09	Cluster1	1
+flint	1	CFF10	Cluster1	1
+flint	1	CFF12	Cluster1	1
+flint	1	CFF13	Cluster1	1
+flint	1	CFF15	Cluster1	1
+flint	2	Par. Dent	Cluster1	0.002
+flint	2	Par. Flint	Cluster1	0.276816666666667
+flint	2	CFF01	Cluster1	0.333736734693877
+flint	2	CFF02	Cluster1	0.38684537815126
+flint	2	CFF03	Cluster1	0.676934545454546
+flint	2	CFF04	Cluster1	0.334407547169811
+flint	2	CFF05	Cluster1	0.362382352941177
+flint	2	CFF06	Cluster1	0.298097872340426
+flint	2	CFF07	Cluster1	0.630762790697674
+flint	2	CFF08	Cluster1	0.594106493506494
+flint	2	CFF09	Cluster1	0.505436090225564
+flint	2	CFF10	Cluster1	0.319849523809524
+flint	2	CFF12	Cluster1	0.995214285714286
+flint	2	CFF13	Cluster1	0.997185840707965
+flint	2	CFF15	Cluster1	0.459259649122807
+flint	2	Par. Dent	Cluster2	0.998
+flint	2	Par. Flint	Cluster2	0.723183333333333
+flint	2	CFF01	Cluster2	0.666263265306122
+flint	2	CFF02	Cluster2	0.61315462184874
+flint	2	CFF03	Cluster2	0.323065454545455
+flint	2	CFF04	Cluster2	0.665592452830189
+flint	2	CFF05	Cluster2	0.637617647058824
+flint	2	CFF06	Cluster2	0.701902127659574
+flint	2	CFF07	Cluster2	0.369237209302326
+flint	2	CFF08	Cluster2	0.405893506493506
+flint	2	CFF09	Cluster2	0.494563909774436
+flint	2	CFF10	Cluster2	0.680150476190476
+flint	2	CFF12	Cluster2	0.00478571428571429
+flint	2	CFF13	Cluster2	0.0028141592920354
+flint	2	CFF15	Cluster2	0.540740350877193
+flint	3	Par. Dent	Cluster1	0.001
+flint	3	Par. Flint	Cluster1	0.255283333333333
+flint	3	CFF01	Cluster1	0.300971428571429
+flint	3	CFF02	Cluster1	0.270176470588235
+flint	3	CFF03	Cluster1	0.297221818181818
+flint	3	CFF04	Cluster1	0.285969811320755
+flint	3	CFF05	Cluster1	0.2978
+flint	3	CFF06	Cluster1	0.215872340425532
+flint	3	CFF07	Cluster1	0.0472279069767442
+flint	3	CFF08	Cluster1	0.384683116883117
+flint	3	CFF09	Cluster1	0.141019548872181
+flint	3	CFF10	Cluster1	0.198508571428571
+flint	3	CFF12	Cluster1	0.990062500000001
+flint	3	CFF13	Cluster1	0.995060176991151
+flint	3	CFF15	Cluster1	0.0859368421052631
+flint	3	Par. Dent	Cluster2	0.001
+flint	3	Par. Flint	Cluster2	0.242833333333333
+flint	3	CFF01	Cluster2	0.181608163265306
+flint	3	CFF02	Cluster2	0.28703025210084
+flint	3	CFF03	Cluster2	0.693230909090909
+flint	3	CFF04	Cluster2	0.189943396226415
+flint	3	CFF05	Cluster2	0.200017647058824
+flint	3	CFF06	Cluster2	0.248825531914894
+flint	3	CFF07	Cluster2	0.951747286821706
+flint	3	CFF08	Cluster2	0.393979220779221
+flint	3	CFF09	Cluster2	0.821699248120301
+flint	3	CFF10	Cluster2	0.326169523809524
+flint	3	CFF12	Cluster2	0.00870535714285714
+flint	3	CFF13	Cluster2	0.00424070796460177
+flint	3	CFF15	Cluster2	0.86781403508772
+flint	3	Par. Dent	Cluster3	0.999
+flint	3	Par. Flint	Cluster3	0.501916666666667
+flint	3	CFF01	Cluster3	0.517397959183674
+flint	3	CFF02	Cluster3	0.442756302521008
+flint	3	CFF03	Cluster3	0.00954
+flint	3	CFF04	Cluster3	0.524060377358491
+flint	3	CFF05	Cluster3	0.502182352941176
+flint	3	CFF06	Cluster3	0.535306382978724
+flint	3	CFF07	Cluster3	0.00121860465116279
+flint	3	CFF08	Cluster3	0.221332467532468
+flint	3	CFF09	Cluster3	0.0372586466165413
+flint	3	CFF10	Cluster3	0.475329523809524
+flint	3	CFF12	Cluster3	0.00130357142857143
+flint	3	CFF13	Cluster3	0.000900884955752213
+flint	3	CFF15	Cluster3	0.0462614035087719
+flint	4	Par. Dent	Cluster1	0
+flint	4	Par. Flint	Cluster1	0.159138888888889
+flint	4	CFF01	Cluster1	0.121571428571429
+flint	4	CFF02	Cluster1	0.155058823529412
+flint	4	CFF03	Cluster1	0.469060606060606
+flint	4	CFF04	Cluster1	0.24288679245283
+flint	4	CFF05	Cluster1	0.244039215686275
+flint	4	CFF06	Cluster1	0.0855460992907801
+flint	4	CFF07	Cluster1	0.0346485788113695
+flint	4	CFF08	Cluster1	0.576354978354978
+flint	4	CFF09	Cluster1	0.0626190476190476
+flint	4	CFF10	Cluster1	0.12848253968254
+flint	4	CFF12	Cluster1	0.976491071428572
+flint	4	CFF13	Cluster1	0.00109734513274336
+flint	4	CFF15	Cluster1	0.0445818713450292
+flint	4	Par. Dent	Cluster2	5e-04
+flint	4	Par. Flint	Cluster2	0.213055555555556
+flint	4	CFF01	Cluster2	0.141860544217687
+flint	4	CFF02	Cluster2	0.245563025210084
+flint	4	CFF03	Cluster2	0.486642424242424
+flint	4	CFF04	Cluster2	0.140786163522013
+flint	4	CFF05	Cluster2	0.122705882352941
+flint	4	CFF06	Cluster2	0.199851063829787
+flint	4	CFF07	Cluster2	0.896136950904393
+flint	4	CFF08	Cluster2	0.327021645021645
+flint	4	CFF09	Cluster2	0.798308270676692
+flint	4	CFF10	Cluster2	0.270746031746032
+flint	4	CFF12	Cluster2	0.0016577380952381
+flint	4	CFF13	Cluster2	0.000746312684365782
+flint	4	CFF15	Cluster2	0.895394736842105
+flint	4	Par. Dent	Cluster3	0.999
+flint	4	Par. Flint	Cluster3	0.461527777777778
+flint	4	CFF01	Cluster3	0.520775510204082
+flint	4	CFF02	Cluster3	0.44378431372549
+flint	4	CFF03	Cluster3	0.00418787878787879
+flint	4	CFF04	Cluster3	0.499220125786163
+flint	4	CFF05	Cluster3	0.485490196078432
+flint	4	CFF06	Cluster3	0.529141843971631
+flint	4	CFF07	Cluster3	0.000697674418604652
+flint	4	CFF08	Cluster3	0.0673809523809524
+flint	4	CFF09	Cluster3	0.0251278195488721
+flint	4	CFF10	Cluster3	0.471336507936508
+flint	4	CFF12	Cluster3	0.000241071428571429
+flint	4	CFF13	Cluster3	0
+flint	4	CFF15	Cluster3	0.0135058479532164
+flint	4	Par. Dent	Cluster4	0
+flint	4	Par. Flint	Cluster4	0.166166666666667
+flint	4	CFF01	Cluster4	0.215826530612245
+flint	4	CFF02	Cluster4	0.155577030812325
+flint	4	CFF03	Cluster4	0.0401787878787878
+flint	4	CFF04	Cluster4	0.117169811320755
+flint	4	CFF05	Cluster4	0.147705882352941
+flint	4	CFF06	Cluster4	0.185503546099291
+flint	4	CFF07	Cluster4	0.0685839793281654
+flint	4	CFF08	Cluster4	0.0291991341991342
+flint	4	CFF09	Cluster4	0.113989974937343
+flint	4	CFF10	Cluster4	0.1294
+flint	4	CFF12	Cluster4	0.0215386904761905
+flint	4	CFF13	Cluster4	0.998014749262537
+flint	4	CFF15	Cluster4	0.0465438596491228
+flint	5	Par. Dent	Cluster1	0
+flint	5	Par. Flint	Cluster1	0.12875
+flint	5	CFF01	Cluster1	0.109591836734694
+flint	5	CFF02	Cluster1	0.132344537815126
+flint	5	CFF03	Cluster1	0.0435
+flint	5	CFF04	Cluster1	0.213150943396226
+flint	5	CFF05	Cluster1	0.169647058823529
+flint	5	CFF06	Cluster1	0.0796382978723404
+flint	5	CFF07	Cluster1	0.0135426356589147
+flint	5	CFF08	Cluster1	0.519207792207792
+flint	5	CFF09	Cluster1	0.0674511278195488
+flint	5	CFF10	Cluster1	0.0875809523809524
+flint	5	CFF12	Cluster1	0.959080357142857
+flint	5	CFF13	Cluster1	0.00101769911504425
+flint	5	CFF15	Cluster1	0.0501052631578947
+flint	5	Par. Dent	Cluster2	0
+flint	5	Par. Flint	Cluster2	0.12625
+flint	5	CFF01	Cluster2	0.0763265306122449
+flint	5	CFF02	Cluster2	0.183705882352941
+flint	5	CFF03	Cluster2	0.0111636363636363
+flint	5	CFF04	Cluster2	0.0890377358490565
+flint	5	CFF05	Cluster2	0.0901176470588235
+flint	5	CFF06	Cluster2	0.193276595744681
+flint	5	CFF07	Cluster2	0.880976744186046
+flint	5	CFF08	Cluster2	0.20574025974026
+flint	5	CFF09	Cluster2	0.647105263157895
+flint	5	CFF10	Cluster2	0.194980952380952
+flint	5	CFF12	Cluster2	0.00627678571428572
+flint	5	CFF13	Cluster2	0.000761061946902655
+flint	5	CFF15	Cluster2	0.240473684210526
+flint	5	Par. Dent	Cluster3	0.998
+flint	5	Par. Flint	Cluster3	0.446333333333333
+flint	5	CFF01	Cluster3	0.464826530612245
+flint	5	CFF02	Cluster3	0.407512605042017
+flint	5	CFF03	Cluster3	0.000481818181818182
+flint	5	CFF04	Cluster3	0.447169811320755
+flint	5	CFF05	Cluster3	0.438029411764706
+flint	5	CFF06	Cluster3	0.486404255319149
+flint	5	CFF07	Cluster3	0.000248062015503876
+flint	5	CFF08	Cluster3	0.059064935064935
+flint	5	CFF09	Cluster3	0.0478045112781955
+flint	5	CFF10	Cluster3	0.430895238095238
+flint	5	CFF12	Cluster3	2.67857142857143e-05
+flint	5	CFF13	Cluster3	0
+flint	5	CFF15	Cluster3	0.0486052631578947
+flint	5	Par. Dent	Cluster4	0
+flint	5	Par. Flint	Cluster4	0.165166666666667
+flint	5	CFF01	Cluster4	0.166775510204082
+flint	5	CFF02	Cluster4	0.12481512605042
+flint	5	CFF03	Cluster4	0.0884272727272727
+flint	5	CFF04	Cluster4	0.0889811320754717
+flint	5	CFF05	Cluster4	0.128147058823529
+flint	5	CFF06	Cluster4	0.153574468085106
+flint	5	CFF07	Cluster4	0.0282790697674418
+flint	5	CFF08	Cluster4	0.0285064935064935
+flint	5	CFF09	Cluster4	0.09896992481203
+flint	5	CFF10	Cluster4	0.102142857142857
+flint	5	CFF12	Cluster4	0.0257410714285714
+flint	5	CFF13	Cluster4	0.997415929203541
+flint	5	CFF15	Cluster4	0.0415701754385965
+flint	5	Par. Dent	Cluster5	5e-04
+flint	5	Par. Flint	Cluster5	0.13275
+flint	5	CFF01	Cluster5	0.182551020408163
+flint	5	CFF02	Cluster5	0.151621848739496
+flint	5	CFF03	Cluster5	0.856381818181818
+flint	5	CFF04	Cluster5	0.161641509433962
+flint	5	CFF05	Cluster5	0.174
+flint	5	CFF06	Cluster5	0.0869787234042553
+flint	5	CFF07	Cluster5	0.0768759689922481
+flint	5	CFF08	Cluster5	0.187532467532467
+flint	5	CFF09	Cluster5	0.138691729323308
+flint	5	CFF10	Cluster5	0.1844
+flint	5	CFF12	Cluster5	0.00870535714285714
+flint	5	CFF13	Cluster5	0.00068141592920354
+flint	5	CFF15	Cluster5	0.619368421052632
+flint	6	Par. Dent	Cluster1	0
+flint	6	Par. Flint	Cluster1	0.09125
+flint	6	CFF01	Cluster1	0.104918367346939
+flint	6	CFF02	Cluster1	0.150075630252101
+flint	6	CFF03	Cluster1	0.00786363636363636
+flint	6	CFF04	Cluster1	0.0766603773584905
+flint	6	CFF05	Cluster1	0.0963823529411765
+flint	6	CFF06	Cluster1	0.0410851063829787
+flint	6	CFF07	Cluster1	0.0329147286821705
+flint	6	CFF08	Cluster1	0.304493506493506
+flint	6	CFF09	Cluster1	0.0745864661654135
+flint	6	CFF10	Cluster1	0.0985619047619048
+flint	6	CFF12	Cluster1	0.9795
+flint	6	CFF13	Cluster1	0.000513274336283186
+flint	6	CFF15	Cluster1	0.0493157894736842
+flint	6	Par. Dent	Cluster2	0
+flint	6	Par. Flint	Cluster2	0.184666666666667
+flint	6	CFF01	Cluster2	0.0443673469387755
+flint	6	CFF02	Cluster2	0.124487394957983
+flint	6	CFF03	Cluster2	0.000472727272727273
+flint	6	CFF04	Cluster2	0.0378867924528301
+flint	6	CFF05	Cluster2	0.0386470588235294
+flint	6	CFF06	Cluster2	0.110787234042553
+flint	6	CFF07	Cluster2	0.830643410852713
+flint	6	CFF08	Cluster2	0.116090909090909
+flint	6	CFF09	Cluster2	0.75715037593985
+flint	6	CFF10	Cluster2	0.155714285714286
+flint	6	CFF12	Cluster2	0.000419642857142857
+flint	6	CFF13	Cluster2	3.53982300884956e-05
+flint	6	CFF15	Cluster2	0.822719298245614
+flint	6	Par. Dent	Cluster3	0.999
+flint	6	Par. Flint	Cluster3	0.207083333333333
+flint	6	CFF01	Cluster3	0.541918367346939
+flint	6	CFF02	Cluster3	0.480252100840336
+flint	6	CFF03	Cluster3	0
+flint	6	CFF04	Cluster3	0.00245283018867925
+flint	6	CFF05	Cluster3	0.0126764705882353
+flint	6	CFF06	Cluster3	0.0408510638297872
+flint	6	CFF07	Cluster3	0.000147286821705426
+flint	6	CFF08	Cluster3	0.0028961038961039
+flint	6	CFF09	Cluster3	0.0256917293233082
+flint	6	CFF10	Cluster3	0.494190476190476
+flint	6	CFF12	Cluster3	0
+flint	6	CFF13	Cluster3	0
+flint	6	CFF15	Cluster3	0.0138333333333333
+flint	6	Par. Dent	Cluster4	0
+flint	6	Par. Flint	Cluster4	0.165
+flint	6	CFF01	Cluster4	0.150561224489796
+flint	6	CFF02	Cluster4	0.106126050420168
+flint	6	CFF03	Cluster4	0.0191
+flint	6	CFF04	Cluster4	0.123094339622642
+flint	6	CFF05	Cluster4	0.155205882352941
+flint	6	CFF06	Cluster4	0.164085106382979
+flint	6	CFF07	Cluster4	0.0438449612403101
+flint	6	CFF08	Cluster4	0.0605324675324675
+flint	6	CFF09	Cluster4	0.0617218045112782
+flint	6	CFF10	Cluster4	0.0857619047619048
+flint	6	CFF12	Cluster4	0.00974107142857143
+flint	6	CFF13	Cluster4	0.998415929203539
+flint	6	CFF15	Cluster4	0.0255
+flint	6	Par. Dent	Cluster5	0
+flint	6	Par. Flint	Cluster5	0.0845833333333333
+flint	6	CFF01	Cluster5	0.157795918367347
+flint	6	CFF02	Cluster5	0.138613445378151
+flint	6	CFF03	Cluster5	0.97189090909091
+flint	6	CFF04	Cluster5	0.100094339622641
+flint	6	CFF05	Cluster5	0.125852941176471
+flint	6	CFF06	Cluster5	0.078063829787234
+flint	6	CFF07	Cluster5	0.0919457364341085
+flint	6	CFF08	Cluster5	0.213272727272727
+flint	6	CFF09	Cluster5	0.0801729323308271
+flint	6	CFF10	Cluster5	0.164371428571429
+flint	6	CFF12	Cluster5	0.00970535714285714
+flint	6	CFF13	Cluster5	0.000168141592920354
+flint	6	CFF15	Cluster5	0.0881140350877193
+flint	6	Par. Dent	Cluster6	0
+flint	6	Par. Flint	Cluster6	0.266666666666667
+flint	6	CFF01	Cluster6	0.000520408163265307
+flint	6	CFF02	Cluster6	0.000478991596638656
+flint	6	CFF03	Cluster6	0
+flint	6	CFF04	Cluster6	0.65977358490566
+flint	6	CFF05	Cluster6	0.571411764705882
+flint	6	CFF06	Cluster6	0.565127659574468
+flint	6	CFF07	Cluster6	1.55038759689923e-05
+flint	6	CFF08	Cluster6	0.302766233766234
+flint	6	CFF09	Cluster6	0.000609022556390978
+flint	6	CFF10	Cluster6	0.00143809523809524
+flint	6	CFF12	Cluster6	0
+flint	6	CFF13	Cluster6	0
+flint	6	CFF15	Cluster6	0.000385964912280702
+flint	7	Par. Dent	Cluster1	0
+flint	7	Par. Flint	Cluster1	0.092
+flint	7	CFF01	Cluster1	0.0811326530612245
+flint	7	CFF02	Cluster1	0.114655462184874
+flint	7	CFF03	Cluster1	0.0167454545454545
+flint	7	CFF04	Cluster1	0.0616792452830188
+flint	7	CFF05	Cluster1	0.0670294117647059
+flint	7	CFF06	Cluster1	0.0355744680851064
+flint	7	CFF07	Cluster1	0.000426356589147287
+flint	7	CFF08	Cluster1	0.261337662337662
+flint	7	CFF09	Cluster1	0.0729473684210526
+flint	7	CFF10	Cluster1	0.062
+flint	7	CFF12	Cluster1	0.963267857142857
+flint	7	CFF13	Cluster1	0.00036283185840708
+flint	7	CFF15	Cluster1	0.0275263157894737
+flint	7	Par. Dent	Cluster2	0
+flint	7	Par. Flint	Cluster2	0.103916666666667
+flint	7	CFF01	Cluster2	0.0922448979591837
+flint	7	CFF02	Cluster2	0.225201680672269
+flint	7	CFF03	Cluster2	0.0555909090909091
+flint	7	CFF04	Cluster2	0.0737924528301886
+flint	7	CFF05	Cluster2	0.141794117647059
+flint	7	CFF06	Cluster2	0.182382978723404
+flint	7	CFF07	Cluster2	0.874751937984496
+flint	7	CFF08	Cluster2	0.232402597402597
+flint	7	CFF09	Cluster2	0.252187969924812
+flint	7	CFF10	Cluster2	0.182380952380952
+flint	7	CFF12	Cluster2	0.0165982142857143
+flint	7	CFF13	Cluster2	0.0011858407079646
+flint	7	CFF15	Cluster2	0.072719298245614
+flint	7	Par. Dent	Cluster3	0.999
+flint	7	Par. Flint	Cluster3	0.187416666666667
+flint	7	CFF01	Cluster3	0.527397959183673
+flint	7	CFF02	Cluster3	0.478243697478992
+flint	7	CFF03	Cluster3	9.09090909090909e-06
+flint	7	CFF04	Cluster3	0.00254716981132076
+flint	7	CFF05	Cluster3	0.0130882352941176
+flint	7	CFF06	Cluster3	0.037468085106383
+flint	7	CFF07	Cluster3	0.00466666666666667
+flint	7	CFF08	Cluster3	0.00209090909090909
+flint	7	CFF09	Cluster3	0.00937593984962405
+flint	7	CFF10	Cluster3	0.495047619047619
+flint	7	CFF12	Cluster3	0
+flint	7	CFF13	Cluster3	0
+flint	7	CFF15	Cluster3	5.26315789473684e-05
+flint	7	Par. Dent	Cluster4	0
+flint	7	Par. Flint	Cluster4	0.126833333333333
+flint	7	CFF01	Cluster4	0.119795918367347
+flint	7	CFF02	Cluster4	0.0595378151260504
+flint	7	CFF03	Cluster4	0.0310090909090909
+flint	7	CFF04	Cluster4	0.0998867924528302
+flint	7	CFF05	Cluster4	0.123088235294118
+flint	7	CFF06	Cluster4	0.128723404255319
+flint	7	CFF07	Cluster4	0.000410852713178295
+flint	7	CFF08	Cluster4	0.0325064935064935
+flint	7	CFF09	Cluster4	0.0397368421052631
+flint	7	CFF10	Cluster4	0.0521142857142857
+flint	7	CFF12	Cluster4	0.00773214285714286
+flint	7	CFF13	Cluster4	0.997159292035398
+flint	7	CFF15	Cluster4	0.0226315789473684
+flint	7	Par. Dent	Cluster5	0
+flint	7	Par. Flint	Cluster5	0.0836666666666667
+flint	7	CFF01	Cluster5	0.174459183673469
+flint	7	CFF02	Cluster5	0.11872268907563
+flint	7	CFF03	Cluster5	0.895545454545455
+flint	7	CFF04	Cluster5	0.135377358490566
+flint	7	CFF05	Cluster5	0.132235294117647
+flint	7	CFF06	Cluster5	0.0721489361702128
+flint	7	CFF07	Cluster5	0.11093023255814
+flint	7	CFF08	Cluster5	0.179636363636364
+flint	7	CFF09	Cluster5	0.125067669172932
+flint	7	CFF10	Cluster5	0.186419047619048
+flint	7	CFF12	Cluster5	0.0113928571428571
+flint	7	CFF13	Cluster5	0.00020353982300885
+flint	7	CFF15	Cluster5	0.0898070175438596
+flint	7	Par. Dent	Cluster6	0
+flint	7	Par. Flint	Cluster6	0.268416666666667
+flint	7	CFF01	Cluster6	0.000306122448979592
+flint	7	CFF02	Cluster6	0.000176470588235294
+flint	7	CFF03	Cluster6	0
+flint	7	CFF04	Cluster6	0.609358490566038
+flint	7	CFF05	Cluster6	0.519676470588235
+flint	7	CFF06	Cluster6	0.523829787234043
+flint	7	CFF07	Cluster6	7.75193798449612e-06
+flint	7	CFF08	Cluster6	0.278857142857143
+flint	7	CFF09	Cluster6	0.000285714285714286
+flint	7	CFF10	Cluster6	0.000885714285714286
+flint	7	CFF12	Cluster6	0
+flint	7	CFF13	Cluster6	0
+flint	7	CFF15	Cluster6	0
+flint	7	Par. Dent	Cluster7	0
+flint	7	Par. Flint	Cluster7	0.137166666666667
+flint	7	CFF01	Cluster7	0.00474489795918367
+flint	7	CFF02	Cluster7	0.00335294117647059
+flint	7	CFF03	Cluster7	0.000245454545454546
+flint	7	CFF04	Cluster7	0.0175094339622642
+flint	7	CFF05	Cluster7	0.00320588235294118
+flint	7	CFF06	Cluster7	0.0197659574468085
+flint	7	CFF07	Cluster7	0.00781395348837209
+flint	7	CFF08	Cluster7	0.0131428571428571
+flint	7	CFF09	Cluster7	0.50015037593985
+flint	7	CFF10	Cluster7	0.0212571428571428
+flint	7	CFF12	Cluster7	0.000125
+flint	7	CFF13	Cluster7	0
+flint	7	CFF15	Cluster7	0.786877192982456
+flint	8	Par. Dent	Cluster1	0
+flint	8	Par. Flint	Cluster1	0.104583333333333
+flint	8	CFF01	Cluster1	0.0223877551020408
+flint	8	CFF02	Cluster1	0.0184117647058823
+flint	8	CFF03	Cluster1	0.000627272727272728
+flint	8	CFF04	Cluster1	0.0210188679245283
+flint	8	CFF05	Cluster1	0.00729411764705882
+flint	8	CFF06	Cluster1	0.00542553191489362
+flint	8	CFF07	Cluster1	0.000449612403100775
+flint	8	CFF08	Cluster1	0.175857142857143
+flint	8	CFF09	Cluster1	0.0440827067669173
+flint	8	CFF10	Cluster1	0.0290952380952381
+flint	8	CFF12	Cluster1	0.666571428571429
+flint	8	CFF13	Cluster1	0.00015929203539823
+flint	8	CFF15	Cluster1	0.000219298245614035
+flint	8	Par. Dent	Cluster2	0
+flint	8	Par. Flint	Cluster2	0.08325
+flint	8	CFF01	Cluster2	0.335397959183674
+flint	8	CFF02	Cluster2	0.405680672268908
+flint	8	CFF03	Cluster2	0.3106
+flint	8	CFF04	Cluster2	0.328018867924528
+flint	8	CFF05	Cluster2	0.417264705882353
+flint	8	CFF06	Cluster2	0.362297872340425
+flint	8	CFF07	Cluster2	0.485162790697675
+flint	8	CFF08	Cluster2	0.40612987012987
+flint	8	CFF09	Cluster2	0.272947368421053
+flint	8	CFF10	Cluster2	0.278866666666667
+flint	8	CFF12	Cluster2	0.330803571428572
+flint	8	CFF13	Cluster2	0.203115044247788
+flint	8	CFF15	Cluster2	0.467350877192983
+flint	8	Par. Dent	Cluster3	0.9985
+flint	8	Par. Flint	Cluster3	0.042
+flint	8	CFF01	Cluster3	0.519071428571428
+flint	8	CFF02	Cluster3	0.508798319327731
+flint	8	CFF03	Cluster3	0
+flint	8	CFF04	Cluster3	0.000849056603773586
+flint	8	CFF05	Cluster3	0.000911764705882353
+flint	8	CFF06	Cluster3	0.00487234042553192
+flint	8	CFF07	Cluster3	0
+flint	8	CFF08	Cluster3	0.00157142857142857
+flint	8	CFF09	Cluster3	0.0026390977443609
+flint	8	CFF10	Cluster3	0.0232952380952381
+flint	8	CFF12	Cluster3	0
+flint	8	CFF13	Cluster3	0
+flint	8	CFF15	Cluster3	0
+flint	8	Par. Dent	Cluster4	0
+flint	8	Par. Flint	Cluster4	0.08325
+flint	8	CFF01	Cluster4	0.0627857142857143
+flint	8	CFF02	Cluster4	0.00934453781512605
+flint	8	CFF03	Cluster4	0.000836363636363637
+flint	8	CFF04	Cluster4	0.0471320754716981
+flint	8	CFF05	Cluster4	0.0219411764705882
+flint	8	CFF06	Cluster4	0.0504255319148936
+flint	8	CFF07	Cluster4	0.000418604651162791
+flint	8	CFF08	Cluster4	0.00881818181818182
+flint	8	CFF09	Cluster4	0.101766917293233
+flint	8	CFF10	Cluster4	0.066952380952381
+flint	8	CFF12	Cluster4	0.00127678571428571
+flint	8	CFF13	Cluster4	0.795663716814159
+flint	8	CFF15	Cluster4	5e-04
+flint	8	Par. Dent	Cluster5	0
+flint	8	Par. Flint	Cluster5	0.0845833333333333
+flint	8	CFF01	Cluster5	0.0371836734693877
+flint	8	CFF02	Cluster5	0.0233193277310924
+flint	8	CFF03	Cluster5	0.686809090909091
+flint	8	CFF04	Cluster5	0.0348301886792453
+flint	8	CFF05	Cluster5	0.0293529411764706
+flint	8	CFF06	Cluster5	0.0109574468085106
+flint	8	CFF07	Cluster5	0.00290697674418605
+flint	8	CFF08	Cluster5	0.0850909090909091
+flint	8	CFF09	Cluster5	0.0299022556390977
+flint	8	CFF10	Cluster5	0.0534
+flint	8	CFF12	Cluster5	0.000267857142857143
+flint	8	CFF13	Cluster5	1.76991150442478e-05
+flint	8	CFF15	Cluster5	0.000798245614035088
+flint	8	Par. Dent	Cluster6	0
+flint	8	Par. Flint	Cluster6	0.362166666666667
+flint	8	CFF01	Cluster6	0.000459183673469388
+flint	8	CFF02	Cluster6	5.88235294117647e-05
+flint	8	CFF03	Cluster6	0
+flint	8	CFF04	Cluster6	0.552660377358491
+flint	8	CFF05	Cluster6	0.512823529411765
+flint	8	CFF06	Cluster6	0.521936170212766
+flint	8	CFF07	Cluster6	0
+flint	8	CFF08	Cluster6	0.242207792207792
+flint	8	CFF09	Cluster6	0.000458646616541354
+flint	8	CFF10	Cluster6	0.4016
+flint	8	CFF12	Cluster6	0
+flint	8	CFF13	Cluster6	0
+flint	8	CFF15	Cluster6	0
+flint	8	Par. Dent	Cluster7	0
+flint	8	Par. Flint	Cluster7	0.155
+flint	8	CFF01	Cluster7	0.0198877551020408
+flint	8	CFF02	Cluster7	0.03190756302521
+flint	8	CFF03	Cluster7	1e-04
+flint	8	CFF04	Cluster7	0.0114905660377359
+flint	8	CFF05	Cluster7	0.00973529411764706
+flint	8	CFF06	Cluster7	0.0430212765957447
+flint	8	CFF07	Cluster7	0.509651162790698
+flint	8	CFF08	Cluster7	0.0784415584415585
+flint	8	CFF09	Cluster7	0.544458646616541
+flint	8	CFF10	Cluster7	0.127504761904762
+flint	8	CFF12	Cluster7	2.67857142857143e-05
+flint	8	CFF13	Cluster7	0
+flint	8	CFF15	Cluster7	0.000842105263157895
+flint	8	Par. Dent	Cluster8	0
+flint	8	Par. Flint	Cluster8	0.0840833333333333
+flint	8	CFF01	Cluster8	0.00274489795918367
+flint	8	CFF02	Cluster8	0.00217647058823529
+flint	8	CFF03	Cluster8	2.72727272727273e-05
+flint	8	CFF04	Cluster8	0.00413207547169811
+flint	8	CFF05	Cluster8	0.000705882352941177
+flint	8	CFF06	Cluster8	0.00102127659574468
+flint	8	CFF07	Cluster8	0.000364341085271318
+flint	8	CFF08	Cluster8	0.00187012987012987
+flint	8	CFF09	Cluster8	0.00358646616541354
+flint	8	CFF10	Cluster8	0.0193238095238095
+flint	8	CFF12	Cluster8	0
+flint	8	CFF13	Cluster8	0
+flint	8	CFF15	Cluster8	0.529289473684211
+flint	9	Par. Dent	Cluster1	0
+flint	9	Par. Flint	Cluster1	0.100083333333333
+flint	9	CFF01	Cluster1	0.00564285714285715
+flint	9	CFF02	Cluster1	0.0197226890756302
+flint	9	CFF03	Cluster1	0.000263636363636364
+flint	9	CFF04	Cluster1	0.0117924528301887
+flint	9	CFF05	Cluster1	0.00858823529411765
+flint	9	CFF06	Cluster1	0.00619148936170213
+flint	9	CFF07	Cluster1	0.000472868217054264
+flint	9	CFF08	Cluster1	0.143194805194805
+flint	9	CFF09	Cluster1	0.0525338345864662
+flint	9	CFF10	Cluster1	0.015647619047619
+flint	9	CFF12	Cluster1	0.653883928571429
+flint	9	CFF13	Cluster1	0.000115044247787611
+flint	9	CFF15	Cluster1	7.89473684210527e-05
+flint	9	Par. Dent	Cluster2	0
+flint	9	Par. Flint	Cluster2	0.08325
+flint	9	CFF01	Cluster2	0.363622448979592
+flint	9	CFF02	Cluster2	0.347588235294118
+flint	9	CFF03	Cluster2	0.373727272727273
+flint	9	CFF04	Cluster2	0.390962264150943
+flint	9	CFF05	Cluster2	0.459735294117647
+flint	9	CFF06	Cluster2	0.411978723404255
+flint	9	CFF07	Cluster2	0.497186046511628
+flint	9	CFF08	Cluster2	0.456207792207792
+flint	9	CFF09	Cluster2	0.348473684210527
+flint	9	CFF10	Cluster2	0.331561904761905
+flint	9	CFF12	Cluster2	0.344758928571429
+flint	9	CFF13	Cluster2	0.492982300884956
+flint	9	CFF15	Cluster2	0.48280701754386
+flint	9	Par. Dent	Cluster3	0.499
+flint	9	Par. Flint	Cluster3	0.0845
+flint	9	CFF01	Cluster3	0.000183673469387755
+flint	9	CFF02	Cluster3	0.570890756302521
+flint	9	CFF03	Cluster3	0
+flint	9	CFF04	Cluster3	0.00069811320754717
+flint	9	CFF05	Cluster3	0.00320588235294118
+flint	9	CFF06	Cluster3	0.0347234042553191
+flint	9	CFF07	Cluster3	5.42635658914729e-05
+flint	9	CFF08	Cluster3	0.000805194805194806
+flint	9	CFF09	Cluster3	0.00719548872180451
+flint	9	CFF10	Cluster3	0.547009523809523
+flint	9	CFF12	Cluster3	0
+flint	9	CFF13	Cluster3	0
+flint	9	CFF15	Cluster3	0
+flint	9	Par. Dent	Cluster4	0
+flint	9	Par. Flint	Cluster4	0.0834166666666667
+flint	9	CFF01	Cluster4	0.0101224489795918
+flint	9	CFF02	Cluster4	0.00631932773109244
+flint	9	CFF03	Cluster4	0.000118181818181818
+flint	9	CFF04	Cluster4	0.0190566037735849
+flint	9	CFF05	Cluster4	0.0142647058823529
+flint	9	CFF06	Cluster4	0.0218085106382979
+flint	9	CFF07	Cluster4	5.42635658914729e-05
+flint	9	CFF08	Cluster4	0.00216883116883117
+flint	9	CFF09	Cluster4	0.0490451127819549
+flint	9	CFF10	Cluster4	0.00730476190476191
+flint	9	CFF12	Cluster4	0.000133928571428571
+flint	9	CFF13	Cluster4	0.505929203539823
+flint	9	CFF15	Cluster4	7.01754385964912e-05
+flint	9	Par. Dent	Cluster5	0
+flint	9	Par. Flint	Cluster5	0.0838333333333333
+flint	9	CFF01	Cluster5	0.00457142857142857
+flint	9	CFF02	Cluster5	0.0307731092436975
+flint	9	CFF03	Cluster5	0.624618181818182
+flint	9	CFF04	Cluster5	0.0134528301886792
+flint	9	CFF05	Cluster5	0.00914705882352941
+flint	9	CFF06	Cluster5	0.00412765957446809
+flint	9	CFF07	Cluster5	0.0012015503875969
+flint	9	CFF08	Cluster5	0.0583636363636363
+flint	9	CFF09	Cluster5	0.018
+flint	9	CFF10	Cluster5	0.0289714285714285
+flint	9	CFF12	Cluster5	5.35714285714286e-05
+flint	9	CFF13	Cluster5	0
+flint	9	CFF15	Cluster5	0.000421052631578948
+flint	9	Par. Dent	Cluster6	0
+flint	9	Par. Flint	Cluster6	0.30675
+flint	9	CFF01	Cluster6	0
+flint	9	CFF02	Cluster6	0
+flint	9	CFF03	Cluster6	0
+flint	9	CFF04	Cluster6	0.548603773584905
+flint	9	CFF05	Cluster6	0.481852941176471
+flint	9	CFF06	Cluster6	0.464106382978723
+flint	9	CFF07	Cluster6	0
+flint	9	CFF08	Cluster6	0.26338961038961
+flint	9	CFF09	Cluster6	0.000135338345864662
+flint	9	CFF10	Cluster6	0.000247619047619048
+flint	9	CFF12	Cluster6	0
+flint	9	CFF13	Cluster6	0
+flint	9	CFF15	Cluster6	0
+flint	9	Par. Dent	Cluster7	0
+flint	9	Par. Flint	Cluster7	0.1565
+flint	9	CFF01	Cluster7	0.00635714285714286
+flint	9	CFF02	Cluster7	0.0224789915966386
+flint	9	CFF03	Cluster7	0
+flint	9	CFF04	Cluster7	0.0111698113207547
+flint	9	CFF05	Cluster7	0.0163235294117647
+flint	9	CFF06	Cluster7	0.049531914893617
+flint	9	CFF07	Cluster7	0.499449612403101
+flint	9	CFF08	Cluster7	0.070961038961039
+flint	9	CFF09	Cluster7	0.517601503759399
+flint	9	CFF10	Cluster7	0.0654
+flint	9	CFF12	Cluster7	8.92857142857143e-06
+flint	9	CFF13	Cluster7	0
+flint	9	CFF15	Cluster7	0.000324561403508772
+flint	9	Par. Dent	Cluster8	0
+flint	9	Par. Flint	Cluster8	0.0840833333333333
+flint	9	CFF01	Cluster8	0.000336734693877551
+flint	9	CFF02	Cluster8	0.000689075630252101
+flint	9	CFF03	Cluster8	9.09090909090909e-06
+flint	9	CFF04	Cluster8	0.00356603773584906
+flint	9	CFF05	Cluster8	0.000882352941176471
+flint	9	CFF06	Cluster8	0.000957446808510639
+flint	9	CFF07	Cluster8	0.000302325581395349
+flint	9	CFF08	Cluster8	0.00171428571428571
+flint	9	CFF09	Cluster8	0.00350375939849624
+flint	9	CFF10	Cluster8	0.00237142857142857
+flint	9	CFF12	Cluster8	0
+flint	9	CFF13	Cluster8	0
+flint	9	CFF15	Cluster8	0.514973684210526
+flint	9	Par. Dent	Cluster9	0.4995
+flint	9	Par. Flint	Cluster9	0.0168333333333333
+flint	9	CFF01	Cluster9	0.608224489795918
+flint	9	CFF02	Cluster9	0.000781512605042017
+flint	9	CFF03	Cluster9	0
+flint	9	CFF04	Cluster9	0.000377358490566038
+flint	9	CFF05	Cluster9	0.00555882352941176
+flint	9	CFF06	Cluster9	0.00617021276595745
+flint	9	CFF07	Cluster9	0
+flint	9	CFF08	Cluster9	0.00283116883116883
+flint	9	CFF09	Cluster9	0.00294736842105263
+flint	9	CFF10	Cluster9	0.00114285714285714
+flint	9	CFF12	Cluster9	0
+flint	9	CFF13	Cluster9	0
+flint	9	CFF15	Cluster9	0
+flint	10	Par. Dent	Cluster1	0
+flint	10	Par. Flint	Cluster1	0.08325
+flint	10	CFF01	Cluster1	0.0142244897959184
+flint	10	CFF02	Cluster1	0.0153529411764706
+flint	10	CFF03	Cluster1	1e-04
+flint	10	CFF04	Cluster1	0.00577358490566038
+flint	10	CFF05	Cluster1	0.00744117647058824
+flint	10	CFF06	Cluster1	0.0028936170212766
+flint	10	CFF07	Cluster1	2.32558139534884e-05
+flint	10	CFF08	Cluster1	0.00116883116883117
+flint	10	CFF09	Cluster1	0.00542857142857143
+flint	10	CFF10	Cluster1	0.0112761904761905
+flint	10	CFF12	Cluster1	0.595616071428571
+flint	10	CFF13	Cluster1	8.84955752212389e-06
+flint	10	CFF15	Cluster1	2.63157894736842e-05
+flint	10	Par. Dent	Cluster2	0
+flint	10	Par. Flint	Cluster2	0.08325
+flint	10	CFF01	Cluster2	0.365408163265306
+flint	10	CFF02	Cluster2	0.402756302521008
+flint	10	CFF03	Cluster2	0.437227272727273
+flint	10	CFF04	Cluster2	0.44022641509434
+flint	10	CFF05	Cluster2	0.493294117647059
+flint	10	CFF06	Cluster2	0.46031914893617
+flint	10	CFF07	Cluster2	0.539635658914728
+flint	10	CFF08	Cluster2	0.509727272727273
+flint	10	CFF09	Cluster2	0.465962406015038
+flint	10	CFF10	Cluster2	0.390990476190476
+flint	10	CFF12	Cluster2	0.40325
+flint	10	CFF13	Cluster2	0.495814159292035
+flint	10	CFF15	Cluster2	0.485254385964912
+flint	10	Par. Dent	Cluster3	0.9985
+flint	10	Par. Flint	Cluster3	0.0831666666666667
+flint	10	CFF01	Cluster3	0.554510204081633
+flint	10	CFF02	Cluster3	0.514823529411765
+flint	10	CFF03	Cluster3	0
+flint	10	CFF04	Cluster3	0.000264150943396227
+flint	10	CFF05	Cluster3	0.00294117647058824
+flint	10	CFF06	Cluster3	0.0133191489361702
+flint	10	CFF07	Cluster3	0
+flint	10	CFF08	Cluster3	0
+flint	10	CFF09	Cluster3	7.5187969924812e-06
+flint	10	CFF10	Cluster3	0.505266666666667
+flint	10	CFF12	Cluster3	0
+flint	10	CFF13	Cluster3	0
+flint	10	CFF15	Cluster3	0
+flint	10	Par. Dent	Cluster4	0
+flint	10	Par. Flint	Cluster4	0.08325
+flint	10	CFF01	Cluster4	0.0288469387755102
+flint	10	CFF02	Cluster4	0.00480672268907563
+flint	10	CFF03	Cluster4	5.45454545454546e-05
+flint	10	CFF04	Cluster4	0.00749056603773585
+flint	10	CFF05	Cluster4	0.00858823529411765
+flint	10	CFF06	Cluster4	0.00842553191489362
+flint	10	CFF07	Cluster4	0
+flint	10	CFF08	Cluster4	1.2987012987013e-05
+flint	10	CFF09	Cluster4	0.00116541353383459
+flint	10	CFF10	Cluster4	0.00357142857142857
+flint	10	CFF12	Cluster4	4.46428571428571e-05
+flint	10	CFF13	Cluster4	0.503327433628319
+flint	10	CFF15	Cluster4	4.3859649122807e-05
+flint	10	Par. Dent	Cluster5	0
+flint	10	Par. Flint	Cluster5	0.08325
+flint	10	CFF01	Cluster5	0.0181734693877551
+flint	10	CFF02	Cluster5	0.0274873949579832
+flint	10	CFF03	Cluster5	0.561436363636364
+flint	10	CFF04	Cluster5	0.00862264150943396
+flint	10	CFF05	Cluster5	0.00823529411764706
+flint	10	CFF06	Cluster5	0.00274468085106383
+flint	10	CFF07	Cluster5	3.10077519379845e-05
+flint	10	CFF08	Cluster5	6.49350649350649e-05
+flint	10	CFF09	Cluster5	0.00108270676691729
+flint	10	CFF10	Cluster5	0.0174
+flint	10	CFF12	Cluster5	1.78571428571429e-05
+flint	10	CFF13	Cluster5	0
+flint	10	CFF15	Cluster5	0.000149122807017544
+flint	10	Par. Dent	Cluster6	0
+flint	10	Par. Flint	Cluster6	0.249166666666667
+flint	10	CFF01	Cluster6	0
+flint	10	CFF02	Cluster6	8.40336134453782e-06
+flint	10	CFF03	Cluster6	0
+flint	10	CFF04	Cluster6	0.525188679245283
+flint	10	CFF05	Cluster6	0.453147058823529
+flint	10	CFF06	Cluster6	0.463829787234043
+flint	10	CFF07	Cluster6	0
+flint	10	CFF08	Cluster6	0
+flint	10	CFF09	Cluster6	0
+flint	10	CFF10	Cluster6	9.52380952380953e-05
+flint	10	CFF12	Cluster6	0
+flint	10	CFF13	Cluster6	0
+flint	10	CFF15	Cluster6	0
+flint	10	Par. Dent	Cluster7	0
+flint	10	Par. Flint	Cluster7	0.0834166666666667
+flint	10	CFF01	Cluster7	0.0120102040816326
+flint	10	CFF02	Cluster7	0.0285714285714285
+flint	10	CFF03	Cluster7	9.09090909090909e-06
+flint	10	CFF04	Cluster7	0.00639622641509434
+flint	10	CFF05	Cluster7	0.0187352941176471
+flint	10	CFF06	Cluster7	0.041531914893617
+flint	10	CFF07	Cluster7	0.459069767441861
+flint	10	CFF08	Cluster7	0.000103896103896104
+flint	10	CFF09	Cluster7	0.00228571428571429
+flint	10	CFF10	Cluster7	0.0463238095238095
+flint	10	CFF12	Cluster7	0
+flint	10	CFF13	Cluster7	0
+flint	10	CFF15	Cluster7	0.000114035087719298
+flint	10	Par. Dent	Cluster8	0
+flint	10	Par. Flint	Cluster8	0.08325
+flint	10	CFF01	Cluster8	0.0011530612244898
+flint	10	CFF02	Cluster8	0.00178151260504202
+flint	10	CFF03	Cluster8	9.09090909090909e-06
+flint	10	CFF04	Cluster8	0.00141509433962264
+flint	10	CFF05	Cluster8	0.000617647058823529
+flint	10	CFF06	Cluster8	0.000574468085106383
+flint	10	CFF07	Cluster8	0
+flint	10	CFF08	Cluster8	0
+flint	10	CFF09	Cluster8	0.000120300751879699
+flint	10	CFF10	Cluster8	0.00371428571428572
+flint	10	CFF12	Cluster8	0
+flint	10	CFF13	Cluster8	0
+flint	10	CFF15	Cluster8	0.513070175438597
+flint	10	Par. Dent	Cluster9	0
+flint	10	Par. Flint	Cluster9	0.0835
+flint	10	CFF01	Cluster9	0.00387755102040816
+flint	10	CFF02	Cluster9	0.00346218487394958
+flint	10	CFF03	Cluster9	0
+flint	10	CFF04	Cluster9	0.00149056603773585
+flint	10	CFF05	Cluster9	0.001
+flint	10	CFF06	Cluster9	0.00404255319148936
+flint	10	CFF07	Cluster9	7.75193798449612e-06
+flint	10	CFF08	Cluster9	0
+flint	10	CFF09	Cluster9	0.522646616541354
+flint	10	CFF10	Cluster9	0.018047619047619
+flint	10	CFF12	Cluster9	0
+flint	10	CFF13	Cluster9	0
+flint	10	CFF15	Cluster9	2.63157894736842e-05
+flint	10	Par. Dent	Cluster10	0
+flint	10	Par. Flint	Cluster10	0.0833333333333333
+flint	10	CFF01	Cluster10	0.00103061224489796
+flint	10	CFF02	Cluster10	0.000285714285714286
+flint	10	CFF03	Cluster10	0
+flint	10	CFF04	Cluster10	0.00245283018867925
+flint	10	CFF05	Cluster10	0.00555882352941177
+flint	10	CFF06	Cluster10	0.00129787234042553
+flint	10	CFF07	Cluster10	0
+flint	10	CFF08	Cluster10	0.48761038961039
+flint	10	CFF09	Cluster10	2.25563909774436e-05
+flint	10	CFF10	Cluster10	0.0026952380952381
+flint	10	CFF12	Cluster10	0
+flint	10	CFF13	Cluster10	0
+flint	10	CFF15	Cluster10	0
+flint	11	Par. Dent	Cluster1	0
+flint	11	Par. Flint	Cluster1	0.098
+flint	11	CFF01	Cluster1	0.00340816326530612
+flint	11	CFF02	Cluster1	0.00385714285714286
+flint	11	CFF03	Cluster1	5.45454545454546e-05
+flint	11	CFF04	Cluster1	0.00443396226415094
+flint	11	CFF05	Cluster1	0.00641176470588235
+flint	11	CFF06	Cluster1	0.00178723404255319
+flint	11	CFF07	Cluster1	1.55038759689923e-05
+flint	11	CFF08	Cluster1	0.124818181818182
+flint	11	CFF09	Cluster1	0.00586466165413534
+flint	11	CFF10	Cluster1	0.00403809523809524
+flint	11	CFF12	Cluster1	0.604375
+flint	11	CFF13	Cluster1	8.84955752212389e-06
+flint	11	CFF15	Cluster1	1.75438596491228e-05
+flint	11	Par. Dent	Cluster2	0
+flint	11	Par. Flint	Cluster2	0.08325
+flint	11	CFF01	Cluster2	0.385408163265306
+flint	11	CFF02	Cluster2	0.472436974789916
+flint	11	CFF03	Cluster2	0.436381818181818
+flint	11	CFF04	Cluster2	0.409849056603774
+flint	11	CFF05	Cluster2	0.467147058823529
+flint	11	CFF06	Cluster2	0.433765957446809
+flint	11	CFF07	Cluster2	0.540775193798449
+flint	11	CFF08	Cluster2	0.491597402597403
+flint	11	CFF09	Cluster2	0.466729323308271
+flint	11	CFF10	Cluster2	0.398276190476191
+flint	11	CFF12	Cluster2	0.394482142857143
+flint	11	CFF13	Cluster2	0.499699115044248
+flint	11	CFF15	Cluster2	0.484719298245614
+flint	11	Par. Dent	Cluster3	0.4995
+flint	11	Par. Flint	Cluster3	0.002
+flint	11	CFF01	Cluster3	2.04081632653061e-05
+flint	11	CFF02	Cluster3	0.51436974789916
+flint	11	CFF03	Cluster3	0
+flint	11	CFF04	Cluster3	0.000188679245283019
+flint	11	CFF05	Cluster3	0.000588235294117647
+flint	11	CFF06	Cluster3	0.00868085106382979
+flint	11	CFF07	Cluster3	0
+flint	11	CFF08	Cluster3	0.000337662337662338
+flint	11	CFF09	Cluster3	0
+flint	11	CFF10	Cluster3	9.52380952380953e-06
+flint	11	CFF12	Cluster3	0
+flint	11	CFF13	Cluster3	0
+flint	11	CFF15	Cluster3	0
+flint	11	Par. Dent	Cluster4	0
+flint	11	Par. Flint	Cluster4	0.08325
+flint	11	CFF01	Cluster4	0.00620408163265306
+flint	11	CFF02	Cluster4	0.00073109243697479
+flint	11	CFF03	Cluster4	1.81818181818182e-05
+flint	11	CFF04	Cluster4	0.0127358490566038
+flint	11	CFF05	Cluster4	0.0110882352941176
+flint	11	CFF06	Cluster4	0.0141063829787234
+flint	11	CFF07	Cluster4	0
+flint	11	CFF08	Cluster4	0.00150649350649351
+flint	11	CFF09	Cluster4	0.00118045112781955
+flint	11	CFF10	Cluster4	0.000438095238095238
+flint	11	CFF12	Cluster4	3.57142857142857e-05
+flint	11	CFF13	Cluster4	0.499336283185841
+flint	11	CFF15	Cluster4	3.50877192982456e-05
+flint	11	Par. Dent	Cluster5	0
+flint	11	Par. Flint	Cluster5	0.0833333333333333
+flint	11	CFF01	Cluster5	0.00157142857142857
+flint	11	CFF02	Cluster5	0.00370588235294118
+flint	11	CFF03	Cluster5	0.562318181818182
+flint	11	CFF04	Cluster5	0.00671698113207547
+flint	11	CFF05	Cluster5	0.00388235294117647
+flint	11	CFF06	Cluster5	0.00131914893617021
+flint	11	CFF07	Cluster5	1.55038759689923e-05
+flint	11	CFF08	Cluster5	0.0396623376623376
+flint	11	CFF09	Cluster5	0.00111278195488722
+flint	11	CFF10	Cluster5	0.00567619047619048
+flint	11	CFF12	Cluster5	8.92857142857143e-06
+flint	11	CFF13	Cluster5	0
+flint	11	CFF15	Cluster5	0.000114035087719298
+flint	11	Par. Dent	Cluster6	0
+flint	11	Par. Flint	Cluster6	0.303333333333333
+flint	11	CFF01	Cluster6	0
+flint	11	CFF02	Cluster6	0
+flint	11	CFF03	Cluster6	0
+flint	11	CFF04	Cluster6	0.553320754716981
+flint	11	CFF05	Cluster6	0.483588235294118
+flint	11	CFF06	Cluster6	0.481234042553192
+flint	11	CFF07	Cluster6	0
+flint	11	CFF08	Cluster6	0.278662337662338
+flint	11	CFF09	Cluster6	0
+flint	11	CFF10	Cluster6	0
+flint	11	CFF12	Cluster6	0
+flint	11	CFF13	Cluster6	0
+flint	11	CFF15	Cluster6	0
+flint	11	Par. Dent	Cluster7	0
+flint	11	Par. Flint	Cluster7	0.0834166666666667
+flint	11	CFF01	Cluster7	0.00724489795918368
+flint	11	CFF02	Cluster7	0.00315966386554622
+flint	11	CFF03	Cluster7	9.09090909090909e-06
+flint	11	CFF04	Cluster7	0.00535849056603774
+flint	11	CFF05	Cluster7	0.0178235294117647
+flint	11	CFF06	Cluster7	0.039063829787234
+flint	11	CFF07	Cluster7	0.457992248062016
+flint	11	CFF08	Cluster7	0.0231168831168831
+flint	11	CFF09	Cluster7	0.00196992481203008
+flint	11	CFF10	Cluster7	0.00537142857142857
+flint	11	CFF12	Cluster7	0
+flint	11	CFF13	Cluster7	0
+flint	11	CFF15	Cluster7	9.64912280701755e-05
+flint	11	Par. Dent	Cluster8	0
+flint	11	Par. Flint	Cluster8	0.08325
+flint	11	CFF01	Cluster8	0.00013265306122449
+flint	11	CFF02	Cluster8	4.20168067226891e-05
+flint	11	CFF03	Cluster8	9.09090909090909e-06
+flint	11	CFF04	Cluster8	0.00375471698113208
+flint	11	CFF05	Cluster8	0.000529411764705882
+flint	11	CFF06	Cluster8	0.000829787234042554
+flint	11	CFF07	Cluster8	0
+flint	11	CFF08	Cluster8	0.00144155844155844
+flint	11	CFF09	Cluster8	7.5187969924812e-05
+flint	11	CFF10	Cluster8	0.000180952380952381
+flint	11	CFF12	Cluster8	0
+flint	11	CFF13	Cluster8	0
+flint	11	CFF15	Cluster8	0.513631578947369
+flint	11	Par. Dent	Cluster9	0
+flint	11	Par. Flint	Cluster9	0.0934166666666667
+flint	11	CFF01	Cluster9	0.00039795918367347
+flint	11	CFF02	Cluster9	0.000151260504201681
+flint	11	CFF03	Cluster9	0
+flint	11	CFF04	Cluster9	0.00207547169811321
+flint	11	CFF05	Cluster9	0.000823529411764706
+flint	11	CFF06	Cluster9	0.00312765957446809
+flint	11	CFF07	Cluster9	7.75193798449612e-06
+flint	11	CFF08	Cluster9	0.0363116883116883
+flint	11	CFF09	Cluster9	0.521616541353383
+flint	11	CFF10	Cluster9	0.000761904761904762
+flint	11	CFF12	Cluster9	0
+flint	11	CFF13	Cluster9	0
+flint	11	CFF15	Cluster9	1.75438596491228e-05
+flint	11	Par. Dent	Cluster10	0
+flint	11	Par. Flint	Cluster10	0.0848333333333333
+flint	11	CFF01	Cluster10	0.000102040816326531
+flint	11	CFF02	Cluster10	0
+flint	11	CFF03	Cluster10	0
+flint	11	CFF04	Cluster10	0.000452830188679245
+flint	11	CFF05	Cluster10	0.00402941176470588
+flint	11	CFF06	Cluster10	0.0085531914893617
+flint	11	CFF07	Cluster10	0
+flint	11	CFF08	Cluster10	0.000766233766233767
+flint	11	CFF09	Cluster10	0
+flint	11	CFF10	Cluster10	0.583676190476191
+flint	11	CFF12	Cluster10	0
+flint	11	CFF13	Cluster10	0
+flint	11	CFF15	Cluster10	0
+flint	11	Par. Dent	Cluster11	0.4995
+flint	11	Par. Flint	Cluster11	0.00075
+flint	11	CFF01	Cluster11	0.594081632653062
+flint	11	CFF02	Cluster11	4.20168067226891e-05
+flint	11	CFF03	Cluster11	0
+flint	11	CFF04	Cluster11	0.000188679245283019
+flint	11	CFF05	Cluster11	0.00355882352941177
+flint	11	CFF06	Cluster11	0.00680851063829787
+flint	11	CFF07	Cluster11	0
+flint	11	CFF08	Cluster11	0.00138961038961039
+flint	11	CFF09	Cluster11	7.5187969924812e-06
+flint	11	CFF10	Cluster11	6.66666666666667e-05
+flint	11	CFF12	Cluster11	0
+flint	11	CFF13	Cluster11	0
+flint	11	CFF15	Cluster11	0
+flint	12	Par. Dent	Cluster1	0
+flint	12	Par. Flint	Cluster1	0.0969166666666667
+flint	12	CFF01	Cluster1	0.00263265306122449
+flint	12	CFF02	Cluster1	0.00131932773109244
+flint	12	CFF03	Cluster1	9.09090909090909e-06
+flint	12	CFF04	Cluster1	0.00277358490566038
+flint	12	CFF05	Cluster1	0.00529411764705882
+flint	12	CFF06	Cluster1	0.00134042553191489
+flint	12	CFF07	Cluster1	0
+flint	12	CFF08	Cluster1	0.120753246753247
+flint	12	CFF09	Cluster1	0.00324812030075188
+flint	12	CFF10	Cluster1	0.00203809523809524
+flint	12	CFF12	Cluster1	0.602482142857143
+flint	12	CFF13	Cluster1	0
+flint	12	CFF15	Cluster1	0
+flint	12	Par. Dent	Cluster2	0
+flint	12	Par. Flint	Cluster2	0.08325
+flint	12	CFF01	Cluster2	0.225673469387755
+flint	12	CFF02	Cluster2	0.30627731092437
+flint	12	CFF03	Cluster2	0.249727272727273
+flint	12	CFF04	Cluster2	0.171471698113208
+flint	12	CFF05	Cluster2	0.236588235294118
+flint	12	CFF06	Cluster2	0.237425531914894
+flint	12	CFF07	Cluster2	0.311046511627907
+flint	12	CFF08	Cluster2	0.306207792207792
+flint	12	CFF09	Cluster2	0.268887218045113
+flint	12	CFF10	Cluster2	0.219561904761905
+flint	12	CFF12	Cluster2	0.368089285714286
+flint	12	CFF13	Cluster2	0.501212389380531
+flint	12	CFF15	Cluster2	0.273149122807018
+flint	12	Par. Dent	Cluster3	0.4995
+flint	12	Par. Flint	Cluster3	0.00316666666666667
+flint	12	CFF01	Cluster3	1.02040816326531e-05
+flint	12	CFF02	Cluster3	0.500285714285714
+flint	12	CFF03	Cluster3	0
+flint	12	CFF04	Cluster3	0.000150943396226415
+flint	12	CFF05	Cluster3	0.000676470588235294
+flint	12	CFF06	Cluster3	0.0108085106382979
+flint	12	CFF07	Cluster3	0
+flint	12	CFF08	Cluster3	0.000402597402597403
+flint	12	CFF09	Cluster3	7.5187969924812e-06
+flint	12	CFF10	Cluster3	0
+flint	12	CFF12	Cluster3	0
+flint	12	CFF13	Cluster3	0
+flint	12	CFF15	Cluster3	0
+flint	12	Par. Dent	Cluster4	0
+flint	12	Par. Flint	Cluster4	0.08325
+flint	12	CFF01	Cluster4	0.00421428571428572
+flint	12	CFF02	Cluster4	0.000235294117647059
+flint	12	CFF03	Cluster4	9.09090909090909e-06
+flint	12	CFF04	Cluster4	0.00867924528301887
+flint	12	CFF05	Cluster4	0.00832352941176471
+flint	12	CFF06	Cluster4	0.0127659574468085
+flint	12	CFF07	Cluster4	0
+flint	12	CFF08	Cluster4	0.00116883116883117
+flint	12	CFF09	Cluster4	0.000458646616541353
+flint	12	CFF10	Cluster4	0.000190476190476191
+flint	12	CFF12	Cluster4	2.67857142857143e-05
+flint	12	CFF13	Cluster4	0.497185840707965
+flint	12	CFF15	Cluster4	1.75438596491228e-05
+flint	12	Par. Dent	Cluster5	0
+flint	12	Par. Flint	Cluster5	0.0891666666666667
+flint	12	CFF01	Cluster5	0.000530612244897959
+flint	12	CFF02	Cluster5	0.00208403361344538
+flint	12	CFF03	Cluster5	0.490554545454546
+flint	12	CFF04	Cluster5	0.00175471698113208
+flint	12	CFF05	Cluster5	0.00132352941176471
+flint	12	CFF06	Cluster5	0.000468085106382979
+flint	12	CFF07	Cluster5	0
+flint	12	CFF08	Cluster5	0.0192727272727273
+flint	12	CFF09	Cluster5	0.000646616541353384
+flint	12	CFF10	Cluster5	0.00124761904761905
+flint	12	CFF12	Cluster5	8.92857142857143e-06
+flint	12	CFF13	Cluster5	0
+flint	12	CFF15	Cluster5	6.14035087719298e-05
+flint	12	Par. Dent	Cluster6	0
+flint	12	Par. Flint	Cluster6	0.287583333333333
+flint	12	CFF01	Cluster6	0
+flint	12	CFF02	Cluster6	0
+flint	12	CFF03	Cluster6	0
+flint	12	CFF04	Cluster6	0.513396226415094
+flint	12	CFF05	Cluster6	0.447029411764706
+flint	12	CFF06	Cluster6	0.449170212765957
+flint	12	CFF07	Cluster6	0
+flint	12	CFF08	Cluster6	0.262220779220779
+flint	12	CFF09	Cluster6	0
+flint	12	CFF10	Cluster6	0
+flint	12	CFF12	Cluster6	0
+flint	12	CFF13	Cluster6	0
+flint	12	CFF15	Cluster6	0
+flint	12	Par. Dent	Cluster7	0
+flint	12	Par. Flint	Cluster7	0.0770833333333333
+flint	12	CFF01	Cluster7	0.00392857142857143
+flint	12	CFF02	Cluster7	0.00747058823529412
+flint	12	CFF03	Cluster7	9.09090909090909e-06
+flint	12	CFF04	Cluster7	0.00545283018867925
+flint	12	CFF05	Cluster7	0.0120294117647059
+flint	12	CFF06	Cluster7	0.031936170212766
+flint	12	CFF07	Cluster7	0.441232558139535
+flint	12	CFF08	Cluster7	0.0272077922077922
+flint	12	CFF09	Cluster7	0.00108270676691729
+flint	12	CFF10	Cluster7	0.00640952380952381
+flint	12	CFF12	Cluster7	8.92857142857143e-06
+flint	12	CFF13	Cluster7	0
+flint	12	CFF15	Cluster7	0.00012280701754386
+flint	12	Par. Dent	Cluster8	0
+flint	12	Par. Flint	Cluster8	0.084
+flint	12	CFF01	Cluster8	6.12244897959184e-05
+flint	12	CFF02	Cluster8	8.40336134453782e-06
+flint	12	CFF03	Cluster8	0
+flint	12	CFF04	Cluster8	0.00249056603773585
+flint	12	CFF05	Cluster8	0.000411764705882353
+flint	12	CFF06	Cluster8	0.000808510638297872
+flint	12	CFF07	Cluster8	0
+flint	12	CFF08	Cluster8	0.00125974025974026
+flint	12	CFF09	Cluster8	4.51127819548872e-05
+flint	12	CFF10	Cluster8	2.85714285714286e-05
+flint	12	CFF12	Cluster8	0
+flint	12	CFF13	Cluster8	0
+flint	12	CFF15	Cluster8	0.486254385964912
+flint	12	Par. Dent	Cluster9	0
+flint	12	Par. Flint	Cluster9	0.0915
+flint	12	CFF01	Cluster9	0.000489795918367347
+flint	12	CFF02	Cluster9	0.000117647058823529
+flint	12	CFF03	Cluster9	0
+flint	12	CFF04	Cluster9	0.000962264150943397
+flint	12	CFF05	Cluster9	0.000441176470588235
+flint	12	CFF06	Cluster9	0.00280851063829787
+flint	12	CFF07	Cluster9	0
+flint	12	CFF08	Cluster9	0.0341168831168831
+flint	12	CFF09	Cluster9	0.50709022556391
+flint	12	CFF10	Cluster9	0.000580952380952381
+flint	12	CFF12	Cluster9	0
+flint	12	CFF13	Cluster9	0
+flint	12	CFF15	Cluster9	0
+flint	12	Par. Dent	Cluster10	0
+flint	12	Par. Flint	Cluster10	0.10025
+flint	12	CFF01	Cluster10	1.02040816326531e-05
+flint	12	CFF02	Cluster10	0
+flint	12	CFF03	Cluster10	0
+flint	12	CFF04	Cluster10	0.000226415094339623
+flint	12	CFF05	Cluster10	0.00385294117647059
+flint	12	CFF06	Cluster10	0.00306382978723404
+flint	12	CFF07	Cluster10	0
+flint	12	CFF08	Cluster10	0.000545454545454546
+flint	12	CFF09	Cluster10	0
+flint	12	CFF10	Cluster10	0.510752380952381
+flint	12	CFF12	Cluster10	0
+flint	12	CFF13	Cluster10	0
+flint	12	CFF15	Cluster10	0
+flint	12	Par. Dent	Cluster11	0.4995
+flint	12	Par. Flint	Cluster11	0.00133333333333333
+flint	12	CFF01	Cluster11	0.545979591836735
+flint	12	CFF02	Cluster11	8.40336134453782e-06
+flint	12	CFF03	Cluster11	0
+flint	12	CFF04	Cluster11	5.66037735849057e-05
+flint	12	CFF05	Cluster11	0.00194117647058824
+flint	12	CFF06	Cluster11	0.00442553191489362
+flint	12	CFF07	Cluster11	0
+flint	12	CFF08	Cluster11	0.000844155844155844
+flint	12	CFF09	Cluster11	0
+flint	12	CFF10	Cluster11	0
+flint	12	CFF12	Cluster11	0
+flint	12	CFF13	Cluster11	0
+flint	12	CFF15	Cluster11	0
+flint	12	Par. Dent	Cluster12	0
+flint	12	Par. Flint	Cluster12	0.00175
+flint	12	CFF01	Cluster12	0.215142857142857
+flint	12	CFF02	Cluster12	0.180546218487395
+flint	12	CFF03	Cluster12	0.258563636363636
+flint	12	CFF04	Cluster12	0.291433962264151
+flint	12	CFF05	Cluster12	0.281382352941176
+flint	12	CFF06	Cluster12	0.244489361702128
+flint	12	CFF07	Cluster12	0.246519379844961
+flint	12	CFF08	Cluster12	0.225376623376623
+flint	12	CFF09	Cluster12	0.217082706766917
+flint	12	CFF10	Cluster12	0.257714285714286
+flint	12	CFF12	Cluster12	0.0282232142857143
+flint	12	CFF13	Cluster12	0.000672566371681416
+flint	12	CFF15	Cluster12	0.239070175438596
+flint	13	Par. Dent	Cluster1	0
+flint	13	Par. Flint	Cluster1	0.08325
+flint	13	CFF01	Cluster1	0.00237755102040816
+flint	13	CFF02	Cluster1	0.00065546218487395
+flint	13	CFF03	Cluster1	9.09090909090909e-06
+flint	13	CFF04	Cluster1	0.00364150943396227
+flint	13	CFF05	Cluster1	0.00608823529411765
+flint	13	CFF06	Cluster1	0.00176595744680851
+flint	13	CFF07	Cluster1	0
+flint	13	CFF08	Cluster1	0.000337662337662338
+flint	13	CFF09	Cluster1	0.00192481203007519
+flint	13	CFF10	Cluster1	0.00154285714285714
+flint	13	CFF12	Cluster1	0.582223214285714
+flint	13	CFF13	Cluster1	0
+flint	13	CFF15	Cluster1	8.7719298245614e-06
+flint	13	Par. Dent	Cluster2	0
+flint	13	Par. Flint	Cluster2	0.08325
+flint	13	CFF01	Cluster2	0.226397959183673
+flint	13	CFF02	Cluster2	0.307445378151261
+flint	13	CFF03	Cluster2	0.249445454545455
+flint	13	CFF04	Cluster2	0.194584905660377
+flint	13	CFF05	Cluster2	0.255264705882353
+flint	13	CFF06	Cluster2	0.256978723404255
+flint	13	CFF07	Cluster2	0.319720930232558
+flint	13	CFF08	Cluster2	0.309558441558442
+flint	13	CFF09	Cluster2	0.270691729323308
+flint	13	CFF10	Cluster2	0.2196
+flint	13	CFF12	Cluster2	0.389544642857143
+flint	13	CFF13	Cluster2	0.501699115044248
+flint	13	CFF15	Cluster2	0.273736842105263
+flint	13	Par. Dent	Cluster3	0.4995
+flint	13	Par. Flint	Cluster3	0.000666666666666667
+flint	13	CFF01	Cluster3	0
+flint	13	CFF02	Cluster3	0.500890756302521
+flint	13	CFF03	Cluster3	0
+flint	13	CFF04	Cluster3	7.54716981132076e-05
+flint	13	CFF05	Cluster3	0.000382352941176471
+flint	13	CFF06	Cluster3	0.00310638297872341
+flint	13	CFF07	Cluster3	0
+flint	13	CFF08	Cluster3	0
+flint	13	CFF09	Cluster3	0
+flint	13	CFF10	Cluster3	0
+flint	13	CFF12	Cluster3	0
+flint	13	CFF13	Cluster3	0
+flint	13	CFF15	Cluster3	0
+flint	13	Par. Dent	Cluster4	0
+flint	13	Par. Flint	Cluster4	0.08325
+flint	13	CFF01	Cluster4	0.00386734693877551
+flint	13	CFF02	Cluster4	0.000184873949579832
+flint	13	CFF03	Cluster4	0
+flint	13	CFF04	Cluster4	0.00430188679245283
+flint	13	CFF05	Cluster4	0.00305882352941176
+flint	13	CFF06	Cluster4	0.0065531914893617
+flint	13	CFF07	Cluster4	0
+flint	13	CFF08	Cluster4	0
+flint	13	CFF09	Cluster4	0.00037593984962406
+flint	13	CFF10	Cluster4	0.000171428571428571
+flint	13	CFF12	Cluster4	2.67857142857143e-05
+flint	13	CFF13	Cluster4	0.496796460176991
+flint	13	CFF15	Cluster4	8.7719298245614e-06
+flint	13	Par. Dent	Cluster5	0
+flint	13	Par. Flint	Cluster5	0.0833333333333333
+flint	13	CFF01	Cluster5	0.000418367346938776
+flint	13	CFF02	Cluster5	0.00198319327731092
+flint	13	CFF03	Cluster5	0.490563636363636
+flint	13	CFF04	Cluster5	0.00269811320754717
+flint	13	CFF05	Cluster5	0.00358823529411765
+flint	13	CFF06	Cluster5	0.000361702127659575
+flint	13	CFF07	Cluster5	0
+flint	13	CFF08	Cluster5	3.8961038961039e-05
+flint	13	CFF09	Cluster5	0.000481203007518797
+flint	13	CFF10	Cluster5	0.00116190476190476
+flint	13	CFF12	Cluster5	8.92857142857143e-06
+flint	13	CFF13	Cluster5	0
+flint	13	CFF15	Cluster5	2.63157894736842e-05
+flint	13	Par. Dent	Cluster6	0
+flint	13	Par. Flint	Cluster6	0.2405
+flint	13	CFF01	Cluster6	0
+flint	13	CFF02	Cluster6	0
+flint	13	CFF03	Cluster6	0
+flint	13	CFF04	Cluster6	0.495188679245283
+flint	13	CFF05	Cluster6	0.426676470588235
+flint	13	CFF06	Cluster6	0.451
+flint	13	CFF07	Cluster6	0
+flint	13	CFF08	Cluster6	0
+flint	13	CFF09	Cluster6	0
+flint	13	CFF10	Cluster6	0
+flint	13	CFF12	Cluster6	0
+flint	13	CFF13	Cluster6	0
+flint	13	CFF15	Cluster6	0
+flint	13	Par. Dent	Cluster7	0
+flint	13	Par. Flint	Cluster7	0.0831666666666667
+flint	13	CFF01	Cluster7	0.00292857142857143
+flint	13	CFF02	Cluster7	0.0057563025210084
+flint	13	CFF03	Cluster7	0
+flint	13	CFF04	Cluster7	0.00358490566037736
+flint	13	CFF05	Cluster7	0.0123529411764706
+flint	13	CFF06	Cluster7	0.0249787234042553
+flint	13	CFF07	Cluster7	0.447356589147287
+flint	13	CFF08	Cluster7	0.000116883116883117
+flint	13	CFF09	Cluster7	0.00109022556390977
+flint	13	CFF10	Cluster7	0.00437142857142857
+flint	13	CFF12	Cluster7	0
+flint	13	CFF13	Cluster7	0
+flint	13	CFF15	Cluster7	7.01754385964912e-05
+flint	13	Par. Dent	Cluster8	0
+flint	13	Par. Flint	Cluster8	0.08325
+flint	13	CFF01	Cluster8	4.08163265306122e-05
+flint	13	CFF02	Cluster8	8.40336134453782e-06
+flint	13	CFF03	Cluster8	0
+flint	13	CFF04	Cluster8	0.000754716981132076
+flint	13	CFF05	Cluster8	0.000264705882352941
+flint	13	CFF06	Cluster8	0.000361702127659575
+flint	13	CFF07	Cluster8	0
+flint	13	CFF08	Cluster8	0
+flint	13	CFF09	Cluster8	3.7593984962406e-05
+flint	13	CFF10	Cluster8	3.80952380952381e-05
+flint	13	CFF12	Cluster8	0
+flint	13	CFF13	Cluster8	0
+flint	13	CFF15	Cluster8	0.486763157894737
+flint	13	Par. Dent	Cluster9	0
+flint	13	Par. Flint	Cluster9	0.08325
+flint	13	CFF01	Cluster9	0.000428571428571429
+flint	13	CFF02	Cluster9	8.40336134453782e-05
+flint	13	CFF03	Cluster9	0
+flint	13	CFF04	Cluster9	0.000679245283018868
+flint	13	CFF05	Cluster9	0.000441176470588235
+flint	13	CFF06	Cluster9	0.00146808510638298
+flint	13	CFF07	Cluster9	0
+flint	13	CFF08	Cluster9	0
+flint	13	CFF09	Cluster9	0.50703007518797
+flint	13	CFF10	Cluster9	0.000390476190476191
+flint	13	CFF12	Cluster9	0
+flint	13	CFF13	Cluster9	0
+flint	13	CFF15	Cluster9	0
+flint	13	Par. Dent	Cluster10	0
+flint	13	Par. Flint	Cluster10	0.09075
+flint	13	CFF01	Cluster10	1.02040816326531e-05
+flint	13	CFF02	Cluster10	0
+flint	13	CFF03	Cluster10	0
+flint	13	CFF04	Cluster10	0.000150943396226415
+flint	13	CFF05	Cluster10	0.00170588235294118
+flint	13	CFF06	Cluster10	0.0014468085106383
+flint	13	CFF07	Cluster10	0
+flint	13	CFF08	Cluster10	0
+flint	13	CFF09	Cluster10	0
+flint	13	CFF10	Cluster10	0.5126
+flint	13	CFF12	Cluster10	0
+flint	13	CFF13	Cluster10	0
+flint	13	CFF15	Cluster10	0
+flint	13	Par. Dent	Cluster11	0.4995
+flint	13	Par. Flint	Cluster11	0.000833333333333333
+flint	13	CFF01	Cluster11	0.545693877551021
+flint	13	CFF02	Cluster11	8.40336134453782e-06
+flint	13	CFF03	Cluster11	0
+flint	13	CFF04	Cluster11	0
+flint	13	CFF05	Cluster11	0.00182352941176471
+flint	13	CFF06	Cluster11	0.00236170212765958
+flint	13	CFF07	Cluster11	0
+flint	13	CFF08	Cluster11	0
+flint	13	CFF09	Cluster11	7.5187969924812e-06
+flint	13	CFF10	Cluster11	0
+flint	13	CFF12	Cluster11	0
+flint	13	CFF13	Cluster11	0
+flint	13	CFF15	Cluster11	0
+flint	13	Par. Dent	Cluster12	0
+flint	13	Par. Flint	Cluster12	0
+flint	13	CFF01	Cluster12	0.216183673469388
+flint	13	CFF02	Cluster12	0.181151260504202
+flint	13	CFF03	Cluster12	0.258754545454546
+flint	13	CFF04	Cluster12	0.291283018867924
+flint	13	CFF05	Cluster12	0.281558823529412
+flint	13	CFF06	Cluster12	0.247553191489362
+flint	13	CFF07	Cluster12	0.231651162790698
+flint	13	CFF08	Cluster12	0.206805194805195
+flint	13	CFF09	Cluster12	0.216796992481203
+flint	13	CFF10	Cluster12	0.258352380952381
+flint	13	CFF12	Cluster12	0.0270267857142857
+flint	13	CFF13	Cluster12	0.00056637168141593
+flint	13	CFF15	Cluster12	0.23809649122807
+flint	13	Par. Dent	Cluster13	0
+flint	13	Par. Flint	Cluster13	0.0833333333333333
+flint	13	CFF01	Cluster13	4.08163265306122e-05
+flint	13	CFF02	Cluster13	0
+flint	13	CFF03	Cluster13	0
+flint	13	CFF04	Cluster13	0.00179245283018868
+flint	13	CFF05	Cluster13	0.00588235294117647
+flint	13	CFF06	Cluster13	0.000893617021276596
+flint	13	CFF07	Cluster13	0
+flint	13	CFF08	Cluster13	0.481766233766234
+flint	13	CFF09	Cluster13	7.5187969924812e-06
+flint	13	CFF10	Cluster13	1.90476190476191e-05
+flint	13	CFF12	Cluster13	0
+flint	13	CFF13	Cluster13	0
+flint	13	CFF15	Cluster13	0
+flint	14	Par. Dent	Cluster1	0
+flint	14	Par. Flint	Cluster1	0.0833333333333333
+flint	14	CFF01	Cluster1	0.000704081632653061
+flint	14	CFF02	Cluster1	0.000226890756302521
+flint	14	CFF03	Cluster1	9.09090909090909e-06
+flint	14	CFF04	Cluster1	0.000283018867924528
+flint	14	CFF05	Cluster1	0.000235294117647059
+flint	14	CFF06	Cluster1	0.000425531914893617
+flint	14	CFF07	Cluster1	7.75193798449612e-06
+flint	14	CFF08	Cluster1	0.0105844155844156
+flint	14	CFF09	Cluster1	0.000150375939849624
+flint	14	CFF10	Cluster1	0.00244761904761905
+flint	14	CFF12	Cluster1	0.502633928571429
+flint	14	CFF13	Cluster1	0
+flint	14	CFF15	Cluster1	0
+flint	14	Par. Dent	Cluster2	0
+flint	14	Par. Flint	Cluster2	0.0831666666666667
+flint	14	CFF01	Cluster2	0.0965204081632653
+flint	14	CFF02	Cluster2	0.156890756302521
+flint	14	CFF03	Cluster2	0.209818181818182
+flint	14	CFF04	Cluster2	0.0880566037735849
+flint	14	CFF05	Cluster2	0.128558823529412
+flint	14	CFF06	Cluster2	0.152063829787234
+flint	14	CFF07	Cluster2	0.214038759689922
+flint	14	CFF08	Cluster2	0.196233766233766
+flint	14	CFF09	Cluster2	0.147360902255639
+flint	14	CFF10	Cluster2	0.0864666666666667
+flint	14	CFF12	Cluster2	0.252151785714286
+flint	14	CFF13	Cluster2	0.329115044247788
+flint	14	CFF15	Cluster2	0.205517543859649
+flint	14	Par. Dent	Cluster3	0.4995
+flint	14	Par. Flint	Cluster3	0.00158333333333333
+flint	14	CFF01	Cluster3	0
+flint	14	CFF02	Cluster3	0.478655462184874
+flint	14	CFF03	Cluster3	0
+flint	14	CFF04	Cluster3	0.000169811320754717
+flint	14	CFF05	Cluster3	2.94117647058824e-05
+flint	14	CFF06	Cluster3	0.00074468085106383
+flint	14	CFF07	Cluster3	0
+flint	14	CFF08	Cluster3	0
+flint	14	CFF09	Cluster3	0
+flint	14	CFF10	Cluster3	0.000247619047619048
+flint	14	CFF12	Cluster3	0
+flint	14	CFF13	Cluster3	0
+flint	14	CFF15	Cluster3	0
+flint	14	Par. Dent	Cluster4	0
+flint	14	Par. Flint	Cluster4	0.08325
+flint	14	CFF01	Cluster4	0.00169387755102041
+flint	14	CFF02	Cluster4	0.000134453781512605
+flint	14	CFF03	Cluster4	9.09090909090909e-06
+flint	14	CFF04	Cluster4	0.00835849056603774
+flint	14	CFF05	Cluster4	0.00167647058823529
+flint	14	CFF06	Cluster4	0.00142553191489362
+flint	14	CFF07	Cluster4	7.75193798449612e-06
+flint	14	CFF08	Cluster4	0.000103896103896104
+flint	14	CFF09	Cluster4	3.7593984962406e-05
+flint	14	CFF10	Cluster4	0.000647619047619048
+flint	14	CFF12	Cluster4	0
+flint	14	CFF13	Cluster4	0.470176991150442
+flint	14	CFF15	Cluster4	8.7719298245614e-06
+flint	14	Par. Dent	Cluster5	0
+flint	14	Par. Flint	Cluster5	0.0836666666666667
+flint	14	CFF01	Cluster5	0.000275510204081633
+flint	14	CFF02	Cluster5	0.00110924369747899
+flint	14	CFF03	Cluster5	0.482836363636363
+flint	14	CFF04	Cluster5	0.000339622641509434
+flint	14	CFF05	Cluster5	0.00202941176470588
+flint	14	CFF06	Cluster5	0.00129787234042553
+flint	14	CFF07	Cluster5	0
+flint	14	CFF08	Cluster5	0.00264935064935065
+flint	14	CFF09	Cluster5	0.000203007518796993
+flint	14	CFF10	Cluster5	0.0044952380952381
+flint	14	CFF12	Cluster5	8.92857142857143e-06
+flint	14	CFF13	Cluster5	0
+flint	14	CFF15	Cluster5	5.26315789473684e-05
+flint	14	Par. Dent	Cluster6	0
+flint	14	Par. Flint	Cluster6	0.187
+flint	14	CFF01	Cluster6	0
+flint	14	CFF02	Cluster6	0
+flint	14	CFF03	Cluster6	0
+flint	14	CFF04	Cluster6	0.523528301886793
+flint	14	CFF05	Cluster6	0.125264705882353
+flint	14	CFF06	Cluster6	0.0025531914893617
+flint	14	CFF07	Cluster6	0
+flint	14	CFF08	Cluster6	0.384454545454545
+flint	14	CFF09	Cluster6	0
+flint	14	CFF10	Cluster6	2.85714285714286e-05
+flint	14	CFF12	Cluster6	0
+flint	14	CFF13	Cluster6	0
+flint	14	CFF15	Cluster6	0
+flint	14	Par. Dent	Cluster7	0
+flint	14	Par. Flint	Cluster7	0.0760833333333333
+flint	14	CFF01	Cluster7	0.00191836734693878
+flint	14	CFF02	Cluster7	0.00263025210084034
+flint	14	CFF03	Cluster7	0
+flint	14	CFF04	Cluster7	0.00137735849056604
+flint	14	CFF05	Cluster7	0.000735294117647059
+flint	14	CFF06	Cluster7	0.00797872340425532
+flint	14	CFF07	Cluster7	0.43862015503876
+flint	14	CFF08	Cluster7	0.00571428571428572
+flint	14	CFF09	Cluster7	0.00196240601503759
+flint	14	CFF10	Cluster7	0.00905714285714286
+flint	14	CFF12	Cluster7	0
+flint	14	CFF13	Cluster7	8.84955752212389e-06
+flint	14	CFF15	Cluster7	0.000131578947368421
+flint	14	Par. Dent	Cluster8	0
+flint	14	Par. Flint	Cluster8	0.0835
+flint	14	CFF01	Cluster8	5.10204081632653e-05
+flint	14	CFF02	Cluster8	1.68067226890756e-05
+flint	14	CFF03	Cluster8	0
+flint	14	CFF04	Cluster8	0.00177358490566038
+flint	14	CFF05	Cluster8	5.88235294117647e-05
+flint	14	CFF06	Cluster8	0.000234042553191489
+flint	14	CFF07	Cluster8	1.55038759689923e-05
+flint	14	CFF08	Cluster8	3.8961038961039e-05
+flint	14	CFF09	Cluster8	3.7593984962406e-05
+flint	14	CFF10	Cluster8	0.000561904761904762
+flint	14	CFF12	Cluster8	0
+flint	14	CFF13	Cluster8	0
+flint	14	CFF15	Cluster8	0.462885964912281
+flint	14	Par. Dent	Cluster9	0
+flint	14	Par. Flint	Cluster9	0.0834166666666667
+flint	14	CFF01	Cluster9	0.000173469387755102
+flint	14	CFF02	Cluster9	8.40336134453782e-05
+flint	14	CFF03	Cluster9	0
+flint	14	CFF04	Cluster9	0.00039622641509434
+flint	14	CFF05	Cluster9	8.82352941176471e-05
+flint	14	CFF06	Cluster9	0.000574468085106383
+flint	14	CFF07	Cluster9	1.55038759689923e-05
+flint	14	CFF08	Cluster9	0.000844155844155845
+flint	14	CFF09	Cluster9	0.495646616541354
+flint	14	CFF10	Cluster9	0.00465714285714286
+flint	14	CFF12	Cluster9	0
+flint	14	CFF13	Cluster9	0
+flint	14	CFF15	Cluster9	0
+flint	14	Par. Dent	Cluster10	0
+flint	14	Par. Flint	Cluster10	0.22725
+flint	14	CFF01	Cluster10	0
+flint	14	CFF02	Cluster10	0
+flint	14	CFF03	Cluster10	0
+flint	14	CFF04	Cluster10	7.54716981132076e-05
+flint	14	CFF05	Cluster10	0.318058823529412
+flint	14	CFF06	Cluster10	0.454
+flint	14	CFF07	Cluster10	0
+flint	14	CFF08	Cluster10	0
+flint	14	CFF09	Cluster10	0
+flint	14	CFF10	Cluster10	0.457704761904762
+flint	14	CFF12	Cluster10	0
+flint	14	CFF13	Cluster10	0
+flint	14	CFF15	Cluster10	0
+flint	14	Par. Dent	Cluster11	0.4995
+flint	14	Par. Flint	Cluster11	0.001
+flint	14	CFF01	Cluster11	0.499438775510204
+flint	14	CFF02	Cluster11	1.68067226890756e-05
+flint	14	CFF03	Cluster11	0
+flint	14	CFF04	Cluster11	5.66037735849057e-05
+flint	14	CFF05	Cluster11	0.000617647058823529
+flint	14	CFF06	Cluster11	0.000127659574468085
+flint	14	CFF07	Cluster11	0
+flint	14	CFF08	Cluster11	2.5974025974026e-05
+flint	14	CFF09	Cluster11	0
+flint	14	CFF10	Cluster11	0.000314285714285714
+flint	14	CFF12	Cluster11	0
+flint	14	CFF13	Cluster11	0
+flint	14	CFF15	Cluster11	0
+flint	14	Par. Dent	Cluster12	0
+flint	14	Par. Flint	Cluster12	8.33333333333333e-05
+flint	14	CFF01	Cluster12	0.145316326530612
+flint	14	CFF02	Cluster12	0.134613445378151
+flint	14	CFF03	Cluster12	0.253145454545455
+flint	14	CFF04	Cluster12	0.191698113207547
+flint	14	CFF05	Cluster12	0.175264705882353
+flint	14	CFF06	Cluster12	0.139531914893617
+flint	14	CFF07	Cluster12	0.143891472868217
+flint	14	CFF08	Cluster12	0.145558441558442
+flint	14	CFF09	Cluster12	0.159894736842105
+flint	14	CFF10	Cluster12	0.202571428571429
+flint	14	CFF12	Cluster12	0.0172857142857143
+flint	14	CFF13	Cluster12	0.000699115044247788
+flint	14	CFF15	Cluster12	0.206552631578947
+flint	14	Par. Dent	Cluster13	0
+flint	14	Par. Flint	Cluster13	0
+flint	14	CFF01	Cluster13	0.168071428571429
+flint	14	CFF02	Cluster13	0.11009243697479
+flint	14	CFF03	Cluster13	0.0266909090909091
+flint	14	CFF04	Cluster13	0.0830566037735849
+flint	14	CFF05	Cluster13	0.177794117647059
+flint	14	CFF06	Cluster13	0.129936170212766
+flint	14	CFF07	Cluster13	0.000503875968992248
+flint	14	CFF08	Cluster13	0.153974025974026
+flint	14	CFF09	Cluster13	0.0809548872180451
+flint	14	CFF10	Cluster13	0.107790476190476
+flint	14	CFF12	Cluster13	0.223053571428571
+flint	14	CFF13	Cluster13	0.198185840707965
+flint	14	CFF15	Cluster13	0.0119035087719298
+flint	14	Par. Dent	Cluster14	0
+flint	14	Par. Flint	Cluster14	0.00558333333333333
+flint	14	CFF01	Cluster14	0.0840102040816327
+flint	14	CFF02	Cluster14	0.113773109243697
+flint	14	CFF03	Cluster14	0.0261636363636363
+flint	14	CFF04	Cluster14	0.0990188679245283
+flint	14	CFF05	Cluster14	0.0682647058823529
+flint	14	CFF06	Cluster14	0.107723404255319
+flint	14	CFF07	Cluster14	0.201395348837209
+flint	14	CFF08	Cluster14	0.0981168831168831
+flint	14	CFF09	Cluster14	0.11206015037594
+flint	14	CFF10	Cluster14	0.121638095238095
+flint	14	CFF12	Cluster14	0.00349107142857143
+flint	14	CFF13	Cluster14	0.00088495575221239
+flint	14	CFF15	Cluster14	0.111526315789474

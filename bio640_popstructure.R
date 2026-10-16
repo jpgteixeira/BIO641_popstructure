@@ -25,8 +25,8 @@ arq_series <- file.path(dir_data, "GSE50558_series_matrix.txt.gz")
 arq_gpl    <- file.path(dir_data, "GPL17677_annotation.txt.gz")
 arq_pais   <- file.path(dir_data, "GSE50558_Parental_matrix_GEO.txt.gz")
 
-plink     <- "/usr/local/bin/plink"
-structure <- "/home/phenylalanine/structure/structure_linux_console/console/structure"
+plink     <- "/home/jpgt-avell/plink_linux_x86_64_20250819/plink"
+structure <- "/home/jpgt-avell/STRUCTURE/console/structure"
 
 # O PLINK assume genoma humano por padrão. O milho tem 10 cromossomos
 # autossômicos e nenhum cromossomo sexual.
@@ -57,7 +57,7 @@ rodar_plink <- function(...) {
 # por amostra). Interessam: o título (nome da linha), o status (parental ou DH)
 # e o pool (Dent ou Flint).
 
-cab <- readLines(arq_series, n = 80)
+cab <-  readLines(arq_series, n = 80)
 cab <- cab[startsWith(cab, "!Sample_")]
 campos <- strsplit(cab, "\t", fixed = TRUE)
 campos <- lapply(campos, function(x) gsub('"', "", x))
@@ -379,7 +379,7 @@ burnin    <- 10000
 numreps   <- 20000
 replicas  <- 1:3
 faixa_K   <- list(global = 1:6, dent = 1:12, flint = 1:14)
-n_nucleos <- 16
+n_nucleos <- 10
 
 dir_fase <- file.path(dir_str, fase)
 dir.create(dir_fase, showWarnings = FALSE)

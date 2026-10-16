@@ -13,6 +13,11 @@ dir_res  <- file.path("..", "results")
 dir_expl <- file.path(dir_res, "structure", "exploracao")
 dir_comp <- file.path(dir_res, "complementares")
 
+# Resultados do cluster da UFV (produção), analisados pelo bio640_resultados.R
+# (com fase <- "producao"). A apresentação só lê tabelas de results/, que são
+# versionadas no git: dá para renderizar sem os dados brutos.
+dir_prod   <- file.path(dir_res, "structure", "producao", "analise")
+
 # Letras grandes em todos os gráficos
 tema <- theme_minimal(base_size = 24) +
   theme(panel.grid.minor = element_blank(),
@@ -33,8 +38,11 @@ cores <- c("#1F78B4", "#E31A1C", "#33A02C", "#FF7F00", "#6A3D9A", "#FFD92F",
            "#1B9E77", "#E7298A", "#666666")
 names(cores) <- paste0("Cluster", seq_along(cores))
 
-amostras <- fread(file.path("..", "data", "processed", "amostras.tsv"))
-q_medio  <- fread(file.path(dir_expl, "analise", "q_medio.tsv.gz"))
+q_medio  <- fread(file.path(dir_prod, "q_medio.tsv.gz"))
+# Tabela de amostras (id, tipo, pool, família): o conjunto global com K = 1
+# tem todas as 2.269 amostras, uma linha cada
+amostras <- unique(q_medio[conjunto == "global" & K == 1,
+                           .(id, tipo, pool, familia)])
 
 # Gráfico de barras do STRUCTURE com ggplot: uma barra por indivíduo, um painel
 # por K (linhas) e por família (colunas). Dentro da família, os indivíduos
@@ -78,21 +86,6 @@ barras_parentais <- function(conj, Ks) {
           strip.text.y = element_text(angle = 0, size = rel(0.8)))
 }
 
-# Traço da MCMC a partir do .log de uma execução do STRUCTURE: a cada 100
-# iterações o programa imprime alfa e, depois do burn-in, o ln da
-# verossimilhança. As linhas do traço são as que têm Lambda = 1.00.
-ler_traco <- function(arq) {
-  l <- grep("^\\s*\\d+:\\s+1\\.00\\s", readLines(arq), value = TRUE)
-  campos <- strsplit(trimws(l), "\\s+")
-  data.table(
-    iteracao = as.integer(sub(":", "", sapply(campos, `[`, 1))),
-    alpha    = as.numeric(sapply(campos, `[`, 3)),
-    # no burn-in a última coluna é "--"; depois, ln da verossimilhança e um
-    # contador, nessa ordem
-    lnlike   = sapply(campos, function(x)
-      if (x[length(x)] == "--") NA_real_ else as.numeric(x[length(x) - 1]))
-  )[, fase := fifelse(is.na(lnlike), "burn-in", "amostragem")]
-}
 
 # Diagrama de caixas e setas desenhado com ggplot (fica igual no HTML e no PDF)
 #   caixas: data.table com id, x, y, rotulo e cor (preenchimento)

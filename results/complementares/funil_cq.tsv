@@ -1,0 +1,9 @@
+etapa	snps
+Chip (MaizeSNP50)	56110
+Com posição no genoma	55542
+GenTrain ≥ 0,7	38449
+Call rate ≥ 90%	35499
+MAF ≥ 1%	33430
+Poda por LD: global	2255
+Poda por LD: dent	780
+Poda por LD: flint	720
