@@ -64,11 +64,17 @@ bio640_popstructure.R    script principal (análise local)
                            Parte 1 (seções 1-5): GEO -> PLINK -> controle de qualidade
                            Parte 2 (seções 6-10): subamostra, 3 conjuntos, poda por LD,
                                                   parâmetros e execução do STRUCTURE
-                           Parte 3 (a fazer): pophelper (ΔK, gráficos de barras)
+bio640_resultados.R      Parte 3: pophelper. Lê os *_f de uma fase (exploracao ou
+                           producao), marca réplicas instáveis, ΔK de Evanno,
+                           alinha réplicas, gráficos de barras -> <fase>/analise/
+bio640_complementares.R  PCA, decaimento do LD, MAF, funil do CQ, estatísticas F
+                           (F_IS, F_ST, F_IT) -> results/complementares/
 bio640_cluster.R         monta o pacote para o cluster a partir dos dados após o CQ
 funcoes_popstructure.R   funções compartilhadas (PLINK, parâmetros, conjuntos)
                            -> contém os CAMINHOS do plink e do structure
 cluster/                 modelos dos scripts PBS (OpenPBS/UFV) e de compilação
+presentation/            apresentação em Quarto (reveal.js e PDF/beamer)
+  apresentacao.qmd         lê results/; renderizar com `quarto render`
 docs/
   estrutura_dos_dados.md   descrição dos dados e pontos de atenção
   cluster_ufv.md           guia para rodar no cluster da UFV
@@ -111,6 +117,9 @@ genótipos (conferido: 0 diferenças nos parentais).
 
 ```bash
 Rscript bio640_popstructure.R    # Partes 1 e 2; a exploração leva ~2 h com 16 núcleos
+Rscript bio640_resultados.R      # Parte 3 (~20 s): pophelper sobre a fase escolhida na seção 0
+Rscript bio640_complementares.R  # PCA, LD, estatísticas F (~1 min)
+cd presentation && quarto render apresentacao.qmd   # gera .html e .pdf
 Rscript bio640_cluster.R         # gera cluster/pacote/ para o cluster
 ```
 
@@ -134,6 +143,9 @@ puladas, então dá para interromper e retomar.
 | `RANDOMIZE 0` e sementes fixas | O padrão (`RANDOMIZE 1`) ignora a semente e impede reproduzir os resultados |
 | Subamostra de 30 DH por família na exploração | O tempo do STRUCTURE cresce com o número de indivíduos; mantém todas as 24 famílias e os controles |
 | Menos iterações que Caniato (1,1 milhão) | Com milhares de SNPs a cadeia converge mais rápido; a convergência será verificada |
+| Réplica **instável** (variância do ln da verossimilhança > 3× a mediana das réplicas do mesmo K) fica fora do ΔK e das médias | ln P(D|K) = média − variância/2: uma cadeia que não estabilizou distorce o ΔK. Na exploração: global K4 r1, dent K12 r2, flint K9 r1 |
+| Média só das réplicas do **modo principal** (semelhança ≥ 0,9 com a réplica de maior ln P(D|K)) | Réplicas que chegam a soluções diferentes "borram" a média; acima de K ≈ 3 quase cada réplica tem sua solução |
+| Média das réplicas e alinhamento entre K feitos no próprio script | `mergeQ()` do pophelper 2.3.1 falha no R 4.6; `alignK(type = "across")` troca as cores de grupos que não mudaram |
 
 ### Números da exploração (subamostra)
 
@@ -151,11 +163,13 @@ meiose: o LD se estende por blocos longos.
 - [x] Dados entendidos e documentados
 - [x] Controle de qualidade (Parte 1)
 - [x] Subamostra, conjuntos, poda por LD e exportação (Parte 2)
-- [ ] **Exploração local do STRUCTURE em andamento** (96 execuções)
-- [ ] Parte 3: pophelper. Curva ln P(D|K), ΔK de Evanno, alinhamento das réplicas, gráficos de barras ordenados por família, verificação de convergência
+- [x] Exploração local do STRUCTURE (96 execuções, ~6,5 h com 10 núcleos)
+- [x] Parte 3: pophelper (`bio640_resultados.R`). Curva ln P(D|K), ΔK de Evanno, alinhamento das réplicas, gráficos de barras ordenados por família, verificação de convergência
+- [ ] Interpretar os gráficos da exploração e escolher as faixas de K da produção
 - [ ] Refatorar o `bio640_popstructure.R` para usar o `funcoes_popstructure.R` (hoje parte do código está repetido)
-- [ ] Ajustar as faixas de K e rodar a produção no cluster da UFV
-- [ ] Análises complementares: PCA (`plink --pca`), F_ST entre *pools* e famílias (efeito Wahlund: H_T × H_S)
+- [x] Produção no cluster da UFV: 169 de 175 execuções (dent e flint completos; global sem 2 réplicas de K = 6 e 4 de K = 7). Terminar levaria ~14 dias; usamos o que ficou pronto, exportado em `data/exportacao_structure_R_20261015/` (entradas e parâmetros conferidos: idênticos aos do `bio640_cluster.R`)
+- [x] Análises complementares (`bio640_complementares.R`): PCA, LD, F_IS/F_ST/F_IT entre *pools* e entre famílias
+- [x] Apresentação (`presentation/apresentacao.qmd`)
 - [ ] `.qmd` explicando cada etapa, para o relatório e a apresentação
 
 ## Resultados esperados

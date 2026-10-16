@@ -1,6 +1,13 @@
 data/
 !data/.gitkeep
 cluster/pacote/
-results/
+# results/: só sobem as tabelas e figuras que a apresentação usa
+# (o resto é grande e pode ser regenerado pelos scripts)
+results/**
+!results/**/
+!results/structure/producao/analise/**
+!results/complementares/*.tsv
+!results/complementares/*.tsv.gz
+!results/complementares/pca.eigenvec
 seed.txt
 .Rhistory

@@ -16,6 +16,7 @@ format:
     fig-dpi: 150
     fig-align: center
     code-overflow: wrap
+    embed-resources: true
   beamer:
     theme: metropolis
     aspectratio: 169
@@ -388,9 +389,14 @@ mesma informação várias vezes e deixam o resultado confiante demais.
 ```{r}
 #| label: g-poda
 #| fig-height: 5.6
-poda <- fread(file.path(dir_comp, "funil_cq.tsv"))[5:8]
-poda[, etapa := factor(c("após filtros", "global", "dent", "flint"),
-                       c("após filtros", "global", "dent", "flint"))]
+# SNPs que entraram no STRUCTURE no cluster (todas as amostras)
+plano <- unique(fread(file.path(dir_prod, "evanno.tsv"))[
+  , .(etapa = conjunto, snps = loci)])
+poda <- rbind(fread(file.path(dir_comp, "funil_cq.tsv"))[5, .(etapa, snps)],
+              plano)
+poda[, etapa := factor(c("após filtros", "global", "dent", "flint")[
+  match(etapa, c("MAF ≥ 1%", "global", "dent", "flint"))],
+  c("após filtros", "global", "dent", "flint"))]
 ggplot(poda, aes(etapa, snps, fill = etapa)) +
   geom_col(width = 0.7) +
   geom_text(aes(label = format(snps, big.mark = ".")), vjust = -0.3, size = 9,
@@ -478,9 +484,10 @@ rodar_plink("--bfile", "cornfed_cq",
 ```
 
 ::: notes
-Três conjuntos de análise: global (todas as famílias), dent e flint. Para a
-exploração usamos 30 DH por família mais os 23 parentais (743 amostras no
-global), porque o tempo do STRUCTURE cresce com o número de indivíduos.
+Três conjuntos de análise: global (todas as famílias), dent e flint. Primeiro
+uma exploração local com 30 DH por família mais os 23 parentais (743 amostras
+no global), porque o tempo do STRUCTURE cresce com o número de indivíduos.
+Depois, a análise final com todas as 2.269 amostras no cluster da UFV.
 :::
 
 # STRUCTURE
@@ -544,20 +551,23 @@ Uma barra = um indivíduo · cores = fração do genoma
 
 ## Parâmetros
 
-| Parâmetro | Valor | Para quê |
-|---|---|---|
-| K | 1–6 · 1–12 · 1–14 | grupos testados |
-| réplicas | 3 por K | mesma resposta? |
-| BURNIN | 10.000 | descartadas |
-| NUMREPS | 20.000 | usadas |
-| NOADMIX | 0 | com mistura |
-| FREQSCORR | 1 | freq. correlacionadas |
-| RANDOMIZE | 0 + `-D` | reprodutível |
+| Parâmetro | Exploração | Cluster | Para quê |
+|---|---|---|---|
+| amostras | 743 | 2.269 | |
+| K | 1–6 · 1–12 · 1–14 | 1–8 · 1–13 · 1–14 | grupos testados |
+| réplicas | 3 | 5 | mesma resposta? |
+| BURNIN | 10.000 | 50.000 | descartadas |
+| NUMREPS | 20.000 | 100.000 | usadas |
+| NOADMIX, FREQSCORR | 0, 1 | 0, 1 | modelo |
+| RANDOMIZE | 0 + `-D` | 0 + `-D` | reprodutível |
 
 ::: notes
-Modelo com mistura e frequências correlacionadas, como em Caniato et al.
-2011. K vai além do número esperado de grupos (no dent há 11 famílias, testamos
-até 12). Atenção: com RANDOMIZE 1 (o padrão) o STRUCTURE ignora a semente.
+Duas etapas: uma exploração local rápida (subamostra, cadeias curtas) para
+escolher as faixas de K, e a análise final no cluster com todas as amostras e
+cadeias 5 vezes mais longas. Os resultados mostrados daqui em diante são os do
+cluster. Modelo com mistura e frequências correlacionadas, como em Caniato et
+al. 2011. K vai além do número esperado de grupos (no dent há 11 famílias,
+testamos até 13). Atenção: com RANDOMIZE 1 (o padrão) o STRUCTURE ignora a semente.
 Outro detalhe: no arquivo de parâmetros 100000 não pode virar 1e+05, que o
 STRUCTURE leria como 1.
 :::
@@ -567,57 +577,68 @@ STRUCTURE leria como 1.
 ```{r}
 #| label: g-traco
 #| fig-height: 6.2
-tr <- rbindlist(lapply(1:3, function(r) {
-  ler_traco(file.path(dir_expl, "global",
-                      sprintf("global_K04_r%d.log", r)))[, rep := paste("réplica", r)]
-}))
-ggplot(tr[fase == "amostragem"], aes(iteracao / 1000, lnlike / 1e6,
-                                     colour = rep)) +
-  geom_line(linewidth = 1.2) +
-  scale_colour_manual(values = c("#B22222", "grey30", "grey60"), name = NULL) +
-  labs(x = "iteração (mil)", y = "ln verossimilhança (×10⁶)",
-       title = "Global, K = 4: as três réplicas")
+tracos <- fread(file.path(dir_prod, "tracos.tsv.gz"))
+traco <- function(conj, k) {
+  tracos[conjunto == conj & K == k & fase == "amostragem"][
+    , rep := paste("réplica", rep)]
+}
+graf_traco <- function(d, titulo, destaque_r1) {
+  ggplot(d, aes(iteracao / 1000, lnlike / 1000, colour = rep)) +
+    geom_line(linewidth = 1) +
+    scale_colour_manual(values = c(if (destaque_r1) "#B22222" else "grey20",
+                                   "grey35", "grey50", "grey65", "grey80"),
+                        name = NULL) +
+    labs(x = "iteração (mil)", y = "ln verossimilhança (mil)", title = titulo) +
+    theme(legend.position = "none")
+}
+graf_traco(traco("flint", 14), "flint, K = 14", TRUE) +
+  graf_traco(traco("global", 4), "global, K = 4", FALSE)
 ```
 
 ::: destaque
-Réplica instável → fora do cálculo
+Salto → réplica instável · patamares diferentes → várias soluções
 :::
 
 ::: notes
 O STRUCTURE é uma cadeia de Markov (MCMC): começa num ponto aleatório e vai
-melhorando. O burn-in é a fase inicial, descartada. Depois dele, o ln da
-verossimilhança deveria oscilar em torno de um valor estável. A réplica 1 do
-K = 4 global mudou de patamar no meio da amostragem (iteração ~18 mil): a
-variância foi 2,4 milhões contra ~4 mil das outras. Critério usado: variância
-> 3× a mediana das réplicas do mesmo K; foram 3 casos em 96 execuções. Note
-também que as réplicas 2 e 3 pararam em patamares diferentes: com K = 4 há
-mais de uma solução parecida. Cadeias mais longas e mais réplicas (produção no
-cluster) ajudam a ver isso melhor.
+melhorando. O burn-in (50 mil iterações) é descartado; o gráfico mostra as 100
+mil seguintes. Dois problemas diferentes:
+(1) À esquerda, a réplica 1 do flint K = 14 muda de patamar perto da iteração
+97 mil: a cadeia ainda não tinha estabilizado. A variância do ln da
+verossimilhança dela é muito maior que a das outras (critério: > 3× a
+mediana das réplicas do mesmo K). Foi a única réplica instável em 169; ela sai
+do cálculo.
+(2) À direita, as cinco réplicas do global K = 4 estão estáveis, mas cada uma
+num patamar: cada cadeia encontrou uma solução diferente. Isso não é erro de
+programa; mostra que, com 4 grupos, há várias divisões quase igualmente boas.
 :::
 
-## Rodando: 96 execuções
+## Rodando: do notebook ao cluster
 
 ```r
-rodar_structure <- function(i) {
-  e <- execucoes[i]
-  system2(structure,
-    c("-m", "mainparams", "-e", "extraparams",
-      "-i", arquivo, "-o", e$saida,
-      "-K", e$K, "-D", e$semente))
-}
-parallel::mclapply(1:96, rodar_structure,
-                   mc.cores = 10)
+# local: várias execuções em paralelo, 1 núcleo cada
+parallel::mclapply(1:96, rodar_structure, mc.cores = 10)
+```
+
+```bash
+# cluster UFV (PBS): um job por conjunto × K × réplica
+qsub -N "$nome" -l walltime="$walltime" \
+     -v CONJ=$conj,K=$k,REP=$rep,SEMENTE=$semente \
+     structure_job.pbs
 ```
 
 ::: destaque
-10 núcleos · 6,5 horas
+Local: 96 execuções em 6,5 h · Cluster: 169 de 175 jobs
 :::
 
 ::: notes
-Cada execução do STRUCTURE usa um único núcleo. Por isso rodamos várias em
-paralelo com mclapply. As mais demoradas (conjunto global, K alto) começam
-primeiro. A produção final, com todas as 2.269 amostras e cadeias 5 vezes mais
-longas, vai para o cluster da UFV.
+Cada execução do STRUCTURE usa um único núcleo. Localmente rodamos 10 ao
+mesmo tempo com mclapply (exploração, 6,5 horas). No cluster da UFV, cada
+execução vira um job do PBS. O cluster levaria cerca de 14 dias para terminar
+tudo; usamos o que ficou pronto: dent e flint completos (65 e 70 execuções) e
+o global com 34 de 40 (faltam 2 réplicas de K = 6 e 4 de K = 7). Os arquivos
+de entrada e os parâmetros do cluster foram conferidos: são idênticos aos
+gerados pelo nosso script.
 :::
 
 ## A saída: matriz Q
@@ -682,7 +703,7 @@ outra. Por isso alinhamos as réplicas antes de tirar a média.
 ```{r}
 #| label: g-evanno
 #| fig-height: 6.4
-ev <- fread(file.path(dir_expl, "analise", "evanno.tsv"))
+ev <- fread(file.path(dir_prod, "evanno.tsv"))
 ev[, conjunto := factor(conjunto, c("global", "dent", "flint"))]
 p1 <- ggplot(ev, aes(k, elpdmean / 1e3)) +
   geom_line(linewidth = 1.2) + geom_point(size = 3) +
@@ -700,15 +721,57 @@ p1 / p2
 ```
 
 ::: destaque
-ΔK aponta K = 2 nos três conjuntos
+ΔK: K = 2 (global, flint) · K = 3 (dent)
 :::
 
 ::: notes
 ln P(D|K) sobe sempre com K: mais grupos sempre explicam melhor os dados.
 Evanno et al. 2005 propuseram olhar onde essa subida muda de ritmo: ΔK é a
-segunda derivada dividida pelo desvio-padrão entre réplicas. O pico em K = 2
-é comum: o ΔK pega o nível mais alto da hierarquia. Picos secundários: K = 3
-(nos três) e K = 9 no flint. Por isso olhamos também os gráficos de barras.
+segunda derivada dividida pelo desvio-padrão entre réplicas. No global
+(ΔK = 49 mil em K = 2) e no flint (3,9 mil em K = 2) o pico é claro. No dent
+o ΔK é baixo em todos os K (máximo 11, em K = 3, e 7 em K = 2): as réplicas
+do dent já discordam em K = 2 (próximo slide). O ΔK costuma apontar o nível
+mais alto da hierarquia; por isso olhamos também os gráficos de barras. No
+global, K = 7 tem uma réplica só e fica sem ΔK.
+:::
+
+## As réplicas concordam?
+
+```{r}
+#| label: g-modos
+#| fig-height: 5.8
+modos <- fread(file.path(dir_prod, "modos.tsv"))
+modos[, conjunto := factor(conjunto, c("global", "dent", "flint"))]
+# K com menos de 5 réplicas prontas (global K = 6 e 7, flint K = 14 sem a
+# instável) ficam em cinza: a proporção ali vale menos
+modos[, completo := replicas == 5]
+ggplot(modos[K > 1], aes(K, no_modo_principal / replicas, fill = completo)) +
+  geom_col(width = 0.75) +
+  geom_text(aes(label = no_modo_principal), vjust = -0.3, size = 6) +
+  scale_fill_manual(values = c(`TRUE` = "#1F3A5F", `FALSE` = "grey70"),
+                    labels = c(`TRUE` = "5 réplicas", `FALSE` = "menos de 5"),
+                    name = NULL) +
+  facet_wrap(~ conjunto, scales = "free_x") +
+  scale_x_continuous(breaks = function(l) seq(2, floor(l[2]), 2)) +
+  scale_y_continuous(labels = scales::percent, limits = c(0, 1.12),
+                     breaks = c(0, 0.5, 1)) +
+  labs(x = "K", y = "réplicas com a\nmesma solução")
+```
+
+::: destaque
+Só os K baixos se repetem
+:::
+
+::: notes
+Para cada K, comparamos as réplicas com a de maior ln P(D|K): duas réplicas
+têm "a mesma solução" quando atribuem, em média, mais de 90% do genoma de cada
+indivíduo aos mesmos grupos. O número sobre a barra é quantas réplicas estão
+nessa solução; em cinza, os K com menos de 5 réplicas prontas (no global, K = 7
+tem uma só, então o "100%" ali não quer dizer nada). No global e no flint, todas as réplicas
+concordam até K = 3. No dent, já em K = 2 só 3 de 5 concordam. Acima disso,
+quase cada réplica tem sua própria solução. Consequência prática: os gráficos
+de K alto mostram a solução de maior ln P(D|K), uma entre várias; os detalhes
+deles não devem ser levados ao pé da letra.
 :::
 
 ## Global, K = 2: dent × flint
@@ -724,9 +787,10 @@ CFD01, CFF01, CFF02: ~60/40, os pais vêm dos dois pools
 :::
 
 ::: notes
-Cada coluna é uma família, com 30 DH. O grupo vermelho reúne as famílias dent
-e o azul as flint. As três famílias de controle aparecem misturadas, como
-esperado pelo pedigree (a mistura fica perto de 60/40, não 50/50). Algumas
+Cada coluna é uma família (todas as DH; a largura é o número de linhas). O
+grupo vermelho reúne as famílias dent e o azul as flint. As três famílias de
+controle aparecem misturadas, como esperado pelo pedigree: CFD01 0,62/0,38,
+CFF01 0,60/0,40 e CFF02 0,63/0,37 (perto de 60/40, não 50/50). Algumas
 famílias flint (CFF04, 05, 06, 10) têm parte vermelha: as fundadoras delas
 não são tão "flint" quanto a central UH007.
 :::
@@ -739,11 +803,18 @@ não são tão "flint" quanto a central UH007.
 barras("global", 2:5)
 ```
 
+::: destaque
+K = 4 e 5: uma solução entre várias
+:::
+
 ::: notes
 Ao aumentar K, os novos grupos não aparecem como "populações", e sim como
-famílias ou conjuntos de famílias que compartilham a mesma fundadora ou
-fundadoras parecidas. Exemplo: em K = 4, CFD03, CFD04 e CFD10 formam um grupo
-próprio (verde).
+famílias ou conjuntos de famílias com fundadoras parecidas. K = 3 (verde):
+famílias cujas fundadoras são mais distantes das centrais (CFD06, 07, 09, 12;
+CFF04, 05, 06, 10). K = 4 (laranja): as famílias com B73 como fundadora (CFD02
+e CFF02) e CFD05. K = 5 (roxo): famílias flint como CFF07, CFF09 e CFF15.
+Lembrando o slide anterior: K = 2 e 3 se repetem nas 5 réplicas; K = 4 e 5,
+não.
 :::
 
 ## Os parentais
@@ -781,8 +852,8 @@ F353 (dent) e UH007 (flint) × as fundadoras
 ::: notes
 Dentro de cada pool, o primeiro grupo que o STRUCTURE separa não é um grupo de
 fundadoras: é a linha central. No dent, F353 (e UH304, muito parecida com ela)
-formam um grupo; todas as outras fundadoras, o outro. No flint, UH007 (com
-UH009 e UH006). Como toda DH tem metade do genoma da central, toda DH aparece
+formam um grupo; D06 e D09 ficam em parte nele; as outras fundadoras, no outro.
+No flint, UH007 (com UH009 e UH006). Como toda DH tem metade do genoma da central, toda DH aparece
 com ~50% de cada grupo no K = 2.
 :::
 
@@ -791,16 +862,16 @@ com ~50% de cada grupo no K = 2.
 ```{r}
 #| label: g-dent
 #| fig-height: 6.6
-barras("dent", c(2, 3, 6, 8))
+barras("dent", c(2, 3, 4, 6))
 ```
 
 ::: notes
 K = 2: azul = F353 (central), vermelho = fundadoras. CFD11 é toda azul porque
-a fundadora dela (UH304) é muito parecida com F353. A cada K a mais, outra
-família ou grupo de famílias ganha uma cor própria, e o azul da central
-continua em todas. Acima de K ≈ 10 as réplicas discordam muito entre si (ver
-exploração): sinal de que não há mais estrutura real para separar, ou de que
-as cadeias precisam ser mais longas.
+a fundadora dela (UH304) é muito parecida com F353; CFD03, 04 e 10 são quase
+todas azuis pelo mesmo motivo (D06, D09, UH250). K = 3: CFD11 ganha cor
+própria (verde). De K = 4 em diante, as famílias se separam uma a uma (CFD06,
+CFD07...). Atenção: no dent as réplicas já discordam em K = 2 (3 de 5) e, a
+partir de K = 5, cada réplica tem sua solução.
 :::
 
 ## Dentro do pool Flint
@@ -808,13 +879,15 @@ as cadeias precisam ser mais longas.
 ```{r}
 #| label: g-flint
 #| fig-height: 6.6
-barras("flint", c(2, 3, 6, 9))
+barras("flint", c(2, 3, 4, 6))
 ```
 
 ::: notes
-Mesma leitura do dent. K = 9 foi um pico secundário de ΔK no flint. CFF01
-(UH007 × F353, a central dent) e CFF02 (UH007 × B73) aparecem com grupos
-próprios: são as fundadoras mais diferentes da central.
+Mesma leitura do dent. K = 2: azul = UH007 (central); CFF12 e CFF13 são
+quase todas azuis (fundadoras UH006 e UH009, parecidas com UH007). K = 3
+(verde): as famílias cujas fundadoras são mais distantes da central, incluindo
+CFF01 (F353, a central dent) e CFF02 (B73, dent). K = 4: CFF13 se separa
+(laranja). Até K = 3 as 5 réplicas concordam; em K = 4, 3 de 5.
 :::
 
 ## PCA: outra forma de ver
@@ -952,9 +1025,9 @@ Estrutura ≠ só populações naturais: parentesco também é estrutura
 A pergunta do trabalho era: o que o STRUCTURE detecta quando a "população"
 foi construída por melhoristas? Resposta: no nível mais alto, a separação dos
 grupos heteróticos; abaixo dele, a estrutura de parentesco das famílias. O F_ST
-entre famílias maior que entre pools reforça isso. Próximo passo: rodar o
-conjunto completo (2.269 amostras, 5 réplicas, cadeias 5× mais longas) no
-cluster da UFV.
+entre famílias maior que entre pools reforça isso. Limitações: o global ficou
+sem 6 das 40 execuções (K = 6 e 7), e acima de K ≈ 3 as réplicas não chegam à
+mesma solução, então só os K baixos são conclusões firmes.
 :::
 
 ## Referências {.smaller}

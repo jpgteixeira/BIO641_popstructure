@@ -4,8 +4,8 @@
 #   bio640_cluster.R       (pacote para o cluster da UFV)
 # =============================================================================
 
-plink     <- "/usr/local/bin/plink"
-structure <- "/home/phenylalanine/structure/structure_linux_console/console/structure"
+plink     <- "/home/jpgt-avell/plink_linux_x86_64_20250819/plink"
+structure <- "/home/jpgt-avell/STRUCTURE/console/structure"
 
 # O PLINK assume genoma humano por padrão. O milho tem 10 cromossomos
 # autossômicos e nenhum cromossomo sexual.
@@ -117,4 +117,20 @@ preparar_conjunto <- function(bfile, amostras_conj, pref) {
   list(arquivo = paste0(pref, ".recode.strct_in"),
        n_ind   = length(ids),
        n_loci  = length(strsplit(linhas[1], " ")[[1]]))
+}
+
+# Traço da MCMC a partir do .log de uma execução do STRUCTURE: a cada 100
+# iterações o programa imprime alfa e, depois do burn-in, o ln da
+# verossimilhança. As linhas do traço são as que têm Lambda = 1.00.
+ler_traco <- function(arq) {
+  l <- grep("^\\s*\\d+:\\s+1\\.00\\s", readLines(arq), value = TRUE)
+  campos <- strsplit(trimws(l), "\\s+")
+  data.table(
+    iteracao = as.integer(sub(":", "", sapply(campos, `[`, 1))),
+    alpha    = as.numeric(sapply(campos, `[`, 3)),
+    # no burn-in a última coluna é "--"; depois, ln da verossimilhança e um
+    # contador, nessa ordem
+    lnlike   = sapply(campos, function(x)
+      if (x[length(x)] == "--") NA_real_ else as.numeric(x[length(x) - 1]))
+  )[, fase := fifelse(is.na(lnlike), "burn-in", "amostragem")]
 }
