@@ -1,11 +1,15 @@
 ---
-title: "Estrutura de populações"
-subtitle: "O que o STRUCTURE enxerga em populações feitas por melhoristas"
-author: "Nomes dos autores"
-institute: "BIO641 · Genética de Populações · UFV"
-lang: pt
+title: "Population structure"
+subtitle: "What STRUCTURE sees in populations built by breeders"
+author:
+  - "João Paulo Gusmão Teixeira"
+  - "Edgard Miranda Santos"
+  - "Rodrigo Consentino de Carvalho"
+  - "Guilherme Henrique da Rocha"
+lang: en
 format:
   revealjs:
+    # o curso aparece no topo do slide de título pelo estilo.scss
     theme: [default, estilo.scss]
     width: 1600
     height: 900
@@ -17,23 +21,6 @@ format:
     fig-align: center
     code-overflow: wrap
     embed-resources: true
-  beamer:
-    theme: metropolis
-    aspectratio: 169
-    fontsize: 14pt
-    pdf-engine: xelatex
-    mainfont: "DejaVu Sans"
-    sansfont: "DejaVu Sans"
-    monofont: "DejaVu Sans Mono"
-    fig-dpi: 200
-    fig-format: png
-    highlight-style: github
-    header-includes: |
-      \setbeamertemplate{navigation symbols}{}
-      \usepackage{etoolbox}
-      \AtBeginEnvironment{longtable}{\footnotesize}
-      \RecustomVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\},fontsize=\footnotesize}
-      \makeatletter\def\verbatim@font{\ttfamily\footnotesize}\makeatother
 execute:
   echo: false
   warning: false
@@ -51,9 +38,69 @@ source("_setup.R")
 set.seed(641)
 ```
 
-# O que é estrutura de populações?
+# What is population structure?
 
-## Populações não se cruzam ao acaso
+## Population structure in one slide
+
+- Individuals form **groups** with **different allele frequencies**
+- Causes: limited gene flow (distance, barriers), drift, selection, and the **breeder's choice of crosses**
+- Humans: genetic ancestry **follows geography**, from continents (Rosenberg et al. 2002) down to countries in Europe (Novembre et al. 2008)
+
+<!-- TODO: incluir aqui o exemplo do Rodrigo -->
+
+::: notes
+Population structure means that genotypes are not spread at random: there are
+groups of individuals that share allele frequencies more with each other than
+with the rest. It appears whenever mating is not random: geographic distance,
+physical barriers, genetic drift in small groups, selection and, in plants
+and animals, the breeder deciding who is crossed with whom. In humans, the
+classic examples are Rosenberg et al. (2002), where STRUCTURE splits 52
+worldwide populations into continental groups, and Novembre et al. (2008),
+where a PCA of European genotypes reproduces the map of Europe.
+:::
+
+## Human example: genes mirror geography
+
+```{r}
+#| label: g-humanos
+#| fig-height: 6
+set.seed(2008)
+# Simulação: indivíduos numa grade de "regiões"; a frequência de cada SNP
+# muda suavemente com a posição (isolamento por distância)
+regioes <- CJ(lon = 1:8, lat = 1:5)
+n_snp <- 400
+a <- rnorm(n_snp, 0, 0.35); b <- rnorm(n_snp, 0, 0.35); c0 <- rnorm(n_snp, 0, 1)
+ind <- regioes[rep(seq_len(.N), each = 6)]
+G <- t(sapply(seq_len(nrow(ind)), function(i)
+  rbinom(n_snp, 2, plogis(a * (ind$lon[i] - 4.5) + b * (ind$lat[i] - 3) + c0))))
+pc <- prcomp(G)$x
+# o sinal dos PCs é arbitrário: alinha com a orientação do mapa
+ind[, `:=`(PC1 = pc[, 1] * sign(cor(pc[, 1], lon)),
+           PC2 = pc[, 2] * sign(cor(pc[, 2], lat)))]
+ind[, cor := hcl(h = 15 + (lon - 1) * 40, c = 70, l = 30 + lat * 9)]
+ind[, `:=`(xj = lon + runif(.N, -0.3, 0.3), yj = lat + runif(.N, -0.3, 0.3))]
+(ggplot(ind, aes(xj, yj, colour = I(cor))) +
+   geom_point(size = 3.5) + coord_equal() + tema_vazio +
+   labs(title = "Where people live")) +
+  (ggplot(ind, aes(PC1, PC2, colour = I(cor))) +
+     geom_point(size = 3.5) + theme(axis.text = element_blank()) +
+     labs(title = "PCA of their genotypes"))
+```
+
+::: destaque
+Simulated, as in Novembre et al. 2008: the PCA redraws the map
+:::
+
+::: notes
+This is a simulation inspired by Novembre et al. (2008). People live on a
+map; each colour is a region. Allele frequencies change gradually with
+distance, because people tend to have children with neighbours. A PCA of the
+genotypes alone, without any information on location, places the individuals
+in the same arrangement as the map. Novembre et al. found exactly this with
+real data from about 1,400 Europeans.
+:::
+
+## Populations do not mate at random
 
 ```{r}
 #| label: g-panmixia
@@ -66,68 +113,109 @@ est <- rbind(
              alelo = sample(c("A", "a"), n / 2, TRUE, c(0.85, 0.15))),
   data.table(x = runif(n / 2, 0.15, 1), y = runif(n / 2, -1, 1),
              alelo = sample(c("A", "a"), n / 2, TRUE, c(0.15, 0.85)))
-)[, cenario := "Estruturada"]
-d <- rbind(pan, est)[, cenario := factor(cenario, c("Panmixia", "Estruturada"))]
+)[, cenario := "Structured"]
+d <- rbind(pan, est)[, cenario := factor(cenario, c("Panmixia", "Structured"))]
 
 ggplot(d, aes(x, y, colour = alelo)) +
   geom_point(size = 5) +
-  geom_vline(data = data.table(cenario = factor("Estruturada",
+  geom_vline(data = data.table(cenario = factor("Structured",
                                                 levels(d$cenario)), x = 0),
              aes(xintercept = x), linewidth = 2, colour = "grey40") +
   facet_wrap(~ cenario) +
-  scale_colour_manual(values = cor_alelo, name = "alelo") +
+  scale_colour_manual(values = cor_alelo, name = "allele") +
   labs(x = NULL, y = NULL) +
   theme(axis.text = element_blank(), panel.grid = element_blank(),
         strip.text = element_text(size = rel(1.2)))
 ```
 
 ::: destaque
-Subpopulações → frequências alélicas diferentes
+Subpopulations → different allele frequencies
 :::
 
 ::: notes
-Numa população panmítica, qualquer indivíduo pode cruzar com qualquer outro e
-as frequências alélicas são as mesmas em todo lugar. Quando há barreiras
-(geografia, seleção, o melhorista escolhendo os cruzamentos), cada
-subpopulação deriva para frequências próprias. Isso é estrutura: os genótipos
-não estão distribuídos ao acaso.
+In a panmictic population, any individual can mate with any other, and allele
+frequencies are the same everywhere. When there are barriers (geography,
+selection, a breeder choosing the crosses), each subpopulation drifts to its
+own frequencies. That is structure: genotypes are not distributed at random.
 :::
 
-## Por que isso importa?
+## Why does it matter?
 
-:::: {.columns}
-::: {.column width="33%"}
-### Melhoramento
-grupos heteróticos
-:::
-::: {.column width="33%"}
-### GWAS
-associação falsa
-:::
-::: {.column width="33%"}
-### Biologia
-história, fluxo gênico, conservação
-:::
-::::
+```{r}
+#| label: g-importancia
+#| fig-height: 5.8
+# Grão de milho desenhado como uma superelipse; o dent tem a depressão no topo
+grao <- function(tipo, cx) {
+  t <- seq(0, 2 * pi, length.out = 400)
+  x <- 0.42 * sign(cos(t)) * abs(cos(t))^0.7
+  y <- 0.55 * sign(sin(t)) * abs(sin(t))^0.9
+  if (tipo == "dent") {
+    x <- x * 1.1
+    y <- ifelse(y > 0, y - 0.18 * exp(-(x / 0.18)^2) * (y / 0.55), y)
+  } else {
+    y <- y * 0.92
+  }
+  data.table(x = x + cx, y = y, tipo = tipo)
+}
+graos <- rbind(grao("dent", 0), grao("flint", 1.3))
+p_melhoramento <- ggplot(graos, aes(x, y, group = tipo, fill = tipo)) +
+  geom_polygon(colour = "grey25", linewidth = 1) +
+  annotate("text", x = c(0, 1.3), y = -0.8, label = c("dent", "flint"),
+           size = 8) +
+  scale_fill_manual(values = c(dent = "#F2C94C", flint = "#E67E22"),
+                    guide = "none") +
+  coord_equal(clip = "off") + tema_vazio +
+  labs(title = "Breeding", subtitle = "heterotic groups")
+
+# Vicariância: um rio separa uma população em duas
+v <- rbind(data.table(x = runif(70, -1, -0.15), y = runif(70, -1, 1), pop = "a"),
+           data.table(x = runif(70, 0.15, 1), y = runif(70, -1, 1), pop = "b"))
+rio <- data.table(y = seq(-1.1, 1.1, length.out = 100))[, x := 0.07 * sin(y * 9)]
+p_biologia <- ggplot(v, aes(x, y)) +
+  geom_path(data = rio, colour = "#4A90D9", linewidth = 5) +
+  geom_point(aes(colour = pop), size = 3) +
+  scale_colour_manual(values = c(a = "#7B3294", b = "#008837"), guide = "none") +
+  coord_equal() + tema_vazio +
+  labs(title = "Biology", subtitle = "vicariance → speciation")
+
+# Manhattan plot simulado: picos que podem ser só estrutura
+m <- data.table(chr = rep(1:10, each = 300))[, pos := seq_len(.N), by = chr]
+m[, p := -log10(runif(.N))]
+m[chr %in% c(2, 5, 8), p := p + 9 * exp(-((pos - 150) / 12)^2)]
+m[, x := (chr - 1) * 330 + pos]
+p_gwas <- ggplot(m, aes(x, p, colour = factor(chr %% 2))) +
+  geom_point(size = 0.8) +
+  geom_hline(yintercept = 7.3, linetype = "dashed", colour = "#B22222") +
+  scale_colour_manual(values = c("grey30", "grey65"), guide = "none") +
+  scale_x_continuous(breaks = NULL) +
+  labs(x = "chromosome", y = "−log10 p", title = "GWAS",
+       subtitle = "spurious peaks") +
+  theme(panel.grid = element_blank(),
+        plot.subtitle = element_text(colour = "grey30"))
+
+p_melhoramento + p_biologia + p_gwas
+```
 
 ::: notes
-No melhoramento de milho, saber a qual grupo uma linha pertence define com
-quem ela deve ser cruzada para ter heterose. Em estudos de associação, ignorar
-a estrutura gera falsos positivos (próximo slide). Em biologia evolutiva e
-conservação, a estrutura conta a história das populações: migração,
-isolamento, gargalos.
+Three reasons. Breeding: maize hybrids come from crossing two heterotic
+groups (here, dent and flint kernels); knowing which group a line belongs to
+tells us what to cross it with. Biology: when a barrier (a river, a mountain)
+splits a population, the two halves diverge, and that can lead to
+speciation (vicariance); structure records this history. GWAS: in
+association studies, ignoring structure produces peaks that are not real
+(false positives), as the next slide shows.
 :::
 
-## Associação falsa: erro tipo I
+## Spurious association: type I error
 
 ```{r}
 #| label: g-associacao-falsa
 #| fig-height: 6.4
 n <- 200
 d <- rbind(
-  data.table(pop = "População 1", snp = rbinom(n, 2, 0.8),
+  data.table(pop = "Population 1", snp = rbinom(n, 2, 0.8),
              altura = rnorm(n, 2.4, 0.12)),
-  data.table(pop = "População 2", snp = rbinom(n, 2, 0.2),
+  data.table(pop = "Population 2", snp = rbinom(n, 2, 0.2),
              altura = rnorm(n, 2.0, 0.12))
 )
 ggplot(d, aes(snp, altura)) +
@@ -137,23 +225,24 @@ ggplot(d, aes(snp, altura)) +
   geom_smooth(method = "lm", se = FALSE, colour = "black", linewidth = 2.5) +
   scale_colour_manual(values = c("#7B3294", "#008837"), name = NULL) +
   scale_x_continuous(breaks = 0:2, labels = c("aa", "Aa", "AA")) +
-  labs(x = "genótipo do SNP", y = "altura da planta (m)")
+  labs(x = "SNP genotype", y = "plant height (m)")
 ```
 
 ::: destaque
-O SNP não tem efeito: a diferença vem da população
+The SNP has no effect: the difference comes from the population
 :::
 
 ::: notes
-Simulação: o SNP não afeta a altura. A população 1 é mais alta e tem mais o
-alelo A. Juntando tudo (linha preta), parece que o alelo A aumenta a altura.
-Dentro de cada população (linhas tracejadas), não há efeito nenhum. É por isso
-que GWAS corrige pela estrutura (matriz Q do STRUCTURE ou PCs como covariáveis).
+Simulation: the SNP does not affect height. Population 1 is taller and carries
+more of allele A. Pooling everything (black line), allele A seems to increase
+height. Within each population (dashed lines), there is no effect at all. This
+is why GWAS corrects for structure (STRUCTURE's Q matrix or PCs as
+covariates).
 :::
 
-# Os dados: painéis CornFed
+# The data: CornFed panels
 
-## Dent × Flint: dois grupos heteróticos
+## Dent × Flint: two heterotic groups
 
 ```{r}
 #| label: g-heterose
@@ -161,21 +250,21 @@ que GWAS corrige pela estrutura (matriz Q do STRUCTURE ou PCs como covariáveis)
 #| fig-height: 5.6
 diagrama(
   data.table(id = c("D", "F", "H"), x = c(0, 0, 4.2), y = c(1, -1, 0),
-             rotulo = c("Dent\nCorn Belt (EUA)\nB73, Mo17",
-                        "Flint\nEuropa\nprecoce, frio",
-                        "Híbrido\nheterose"),
+             rotulo = c("Dent\nCorn Belt (USA)\nB73, Mo17",
+                        "Flint\nEurope\nearly, cold-tolerant",
+                        "Hybrid\nheterosis"),
              cor = c(cor_pool[["Dent"]], cor_pool[["Flint"]], "#FF7F00")),
   data.table(de = c("D", "F"), para = c("H", "H")),
   largura = 3.4, altura = 1.6)
 ```
 
 ::: notes
-Os dois grupos foram mantidos separados por décadas para maximizar a heterose
-no híbrido dent × flint. Esperamos que essa seja a divisão mais forte nos
-dados (K = 2).
+The two groups have been kept apart for decades to maximise heterosis in the
+dent × flint hybrid. We expect this to be the strongest split in the data
+(K = 2).
 :::
 
-## Uma linha central × 10 a 12 fundadoras
+## One central line × 10 to 12 founders
 
 ```{r}
 #| label: g-desenho
@@ -207,8 +296,8 @@ ggplot(desenho) +
              colour = "white", size = 8, fontface = "bold") +
   facet_wrap(~ pool) +
   scale_colour_manual(values = c(`FALSE` = "grey35", `TRUE` = "#FF7F00"),
-                      labels = c("fundadora do mesmo pool",
-                                 "fundadora do outro pool"), name = NULL) +
+                      labels = c("founder from the same pool",
+                                 "founder from the other pool"), name = NULL) +
   scale_fill_manual(values = cor_pool, guide = "none") +
   coord_equal(clip = "off") +
   theme_void(base_size = 24) +
@@ -217,68 +306,78 @@ ggplot(desenho) +
 ```
 
 ::: notes
-Cada família vem do cruzamento da linha central do pool (F353 no dent, UH007
-no flint) com uma fundadora. Por isso as famílias de um pool são meio-irmãs.
-Três famílias têm pais dos dois pools (em laranja): CFD01 e CFF01 são o
-cruzamento entre as duas centrais e CFF02 tem B73 (dent) como fundadora. São os
-nossos controles: devem aparecer com ~50% de cada pool.
+Each family comes from crossing the pool's central line (F353 in dent, UH007
+in flint) with one founder. So the families within a pool are half-sibs.
+Three families have parents from both pools (orange): CFD01 and CFF01 are the
+cross between the two central lines, and CFF02 has B73 (dent) as founder.
+These are our controls: they should show ~50% of each pool.
 :::
 
-## Linhas duplo-haploides (DH)
+## Doubled haploid (DH) lines
 
 ```{r}
 #| label: g-dh
-#| fig-width: 12
-#| fig-height: 4.6
+#| fig-width: 13
+#| fig-height: 4.4
 diagrama(
   data.table(id = c("C", "Fu", "F1", "H", "DH"),
-             x = c(0, 0, 3.2, 7.6, 12), y = c(0.9, -0.9, 0, 0, 0),
-             rotulo = c("Central", "Fundadora", "F1", "Haploide\n(n)",
-                        "DH (2n)\nhomozigota"),
+             x = c(0, 0, 3.6, 7.6, 11.6), y = c(0.9, -0.9, 0, 0, 0),
+             rotulo = c("Central", "Founder", "F1", "Haploid\n(n)",
+                        "DH (2n)\nhomozygous"),
              cor = c("grey92", "grey92", "grey60", "grey60", "#1F3A5F")),
   data.table(de = c("C", "Fu", "F1", "H"), para = c("F1", "F1", "H", "DH"),
-             rotulo = c("", "", "indutor de\nhaploidia", "colchicina")),
-  largura = 2.2, altura = 1.2)
+             rotulo = c("", "", "haploid\ninducer", "colchicine"),
+             lx = c(NA, NA, 5.6, 9.6), ly = c(NA, NA, 0.95, 0.95)),
+  largura = 2.4, altura = 1.3, tamanho = 6.5, tamanho_rotulo = 5.5)
 ```
 
 ::: destaque
-Uma meiose · 50% central + 50% fundadora
+One meiosis · 50% central + 50% founder
 :::
 
 ::: notes
-A planta F1 é polinizada por um indutor de haploidia; os embriões haploides
-têm o cromossomo duplicado com colchicina. Resultado: linhas totalmente
-homozigotas em uma geração. Como houve só uma meiose (na F1), cada DH é um
-mosaico de grandes blocos da central e da fundadora. Isso vai aparecer no LD e
-no STRUCTURE.
+The F1 plant is pollinated by a haploid inducer; the chromosomes of the
+haploid embryos are doubled with colchicine. Result: fully homozygous lines in
+a single generation. Since there was only one meiosis (in the F1), each DH is
+a mosaic of large blocks from the central line and the founder. This will show
+up in LD and in STRUCTURE.
 :::
 
-## Os dados
+## The data
 
 ```{r}
 #| label: g-numeros
 #| fig-height: 4
-numeros(c("2.290", "24", "23", "56.110"),
-        c("linhas\ngenotipadas", "famílias\nDH", "parentais",
-          "SNPs\n(chip 50K)"))
+numeros(c("2,290", "24", "23", "56,110"),
+        c("genotyped\nlines", "DH\nfamilies", "parents",
+          "SNPs\n(50K chip)"))
 ```
 
 GEO **GSE50558** · Bauer et al. 2013 · Lehermeier et al. 2014
 
-# Dos SNPs aos dados limpos
+::: notes
+The GEO matrix contains both pools together. Lehermeier et al. (2014)
+analysed the dent and flint panels separately and also jointly (34,116 SNPs
+in the joint analysis); we do the same: a "global" dataset (dent + flint)
+and one dataset per pool. Lehermeier used 10 dent and 11 flint families; the
+GEO has 3 more (CFD01, CFF01, CFF02), the crosses between pools, which we use
+as controls.
+:::
 
-## O chip lê dois alelos: A e B
+# From SNPs to clean data
+
+## The chip reads two alleles: A and B
 
 ```{r}
 #| label: g-codigos
 #| fig-height: 5.8
 cod <- fread(file.path(dir_comp, "codigos_genotipo.tsv"))
 cod[, codigo := factor(codigo, c("AA", "BB", "AB", "NC"),
-                       c("AA", "BB", "AB", "sem chamada"))]
-cod[, tipo := factor(tipo, c("Parental", "DH"), c("Parentais", "DH"))]
+                       c("AA", "BB", "AB", "no call"))]
+cod[, tipo := factor(tipo, c("Parental", "DH"), c("Parents", "DH"))]
 ggplot(cod, aes(codigo, prop, fill = codigo == "AB")) +
   geom_col(width = 0.7) +
-  geom_text(aes(label = scales::percent(prop, 0.1, decimal.mark = ",")),
+  geom_text(aes(label = scales::percent(prop, 0.1)),
             vjust = -0.3, size = 7) +
   facet_wrap(~ tipo) +
   scale_fill_manual(values = c(`FALSE` = "grey60", `TRUE` = "#B22222"),
@@ -288,151 +387,29 @@ ggplot(cod, aes(codigo, prop, fill = codigo == "AB")) +
 ```
 
 ::: destaque
-DH quase sem AB → heterozigoto = erro → dado faltante
+DH almost without AB → heterozygote = error → missing data
 :::
 
 ::: notes
-SNP = uma posição do genoma com dois alelos. O chip Illumina chama AA, AB ou
-BB. Linhas DH e parentais endogâmicos deveriam ser 100% homozigotos; o pouco
-AB que aparece (0,3% nas DH) é erro de chamada ou heterozigose residual. Por
-isso tratamos AB como dado faltante.
+SNP = a genome position with two alleles. The Illumina chip calls AA, AB or
+BB. DH lines and inbred parents should be 100% homozygous; the little AB that
+shows up (0.3% in the DH) is a calling error or residual heterozygosity. That
+is why we treat AB as missing data.
 :::
 
-## SNPs têm erros: filtragem
-
-```{r}
-#| label: g-funil
-#| fig-height: 6.2
-funil <- fread(file.path(dir_comp, "funil_cq.tsv"))[1:5]
-funil[, etapa := factor(etapa, rev(etapa))]
-funil[, removidos := shift(snps) - snps]
-ggplot(funil, aes(snps, etapa)) +
-  geom_col(fill = "#1F3A5F", width = 0.7) +
-  geom_text(aes(label = format(snps, big.mark = ".", trim = TRUE)), hjust = 1.1,
-            colour = "white", size = 8, fontface = "bold") +
-  geom_text(aes(label = ifelse(is.na(removidos), "",
-                               paste0("− ", format(removidos, big.mark = ".",
-                                                   trim = TRUE)))),
-            hjust = -0.15, size = 7, colour = "#B22222") +
-  scale_x_continuous(expand = expansion(c(0, 0.25)), breaks = NULL) +
-  labs(x = NULL, y = NULL)
-```
-
-::: notes
-GenTrain: nota de qualidade do agrupamento das intensidades no chip (SNPs com
-nota < 0,7 têm chamadas pouco confiáveis). Call rate: SNP sem genótipo em mais
-de 10% das amostras sai. MAF: SNP quase monomórfico não informa sobre
-estrutura e é mais sujeito a erro. Mesmos critérios de Lehermeier et al. 2014
-(eles ficaram com 34.116 SNPs; nós com 33.430). Também saíram 21 DH com mais de
-10% de dados faltantes.
-:::
-
-## MAF: frequência do alelo raro
-
-```{r}
-#| label: g-maf
-#| fig-height: 6
-maf <- fread(file.path(dir_comp, "maf.tsv.gz"))
-maf[, conjunto := factor(conjunto, c("global", "dent", "flint"))]
-mono <- maf[, .(n = sum(maf == 0, na.rm = TRUE)), by = conjunto]
-ggplot(maf, aes(maf, fill = conjunto)) +
-  geom_histogram(breaks = seq(0, 0.5, 0.025), colour = "white") +
-  geom_text(data = mono[n > 0],
-            aes(x = 0.25, y = Inf, label = paste(format(n, big.mark = "."),
-                                                 "SNPs fixos")),
-            vjust = 1.5, size = 7, inherit.aes = FALSE) +
-  facet_wrap(~ conjunto) +
-  scale_fill_manual(values = c(global = "grey40", cor_pool[["Dent"]],
-                               cor_pool[["Flint"]]) |>
-                      setNames(c("global", "dent", "flint")), guide = "none") +
-  labs(x = "MAF", y = "SNPs")
-```
-
-::: destaque
-Filtros refeitos dentro de cada conjunto
-:::
-
-::: notes
-MAF = frequência do alelo menos comum. Um SNP que separa dent de flint é
-comum no total, mas pode ser fixo dentro de um pool (quase 2 mil no dent e 2,6
-mil no flint). Por isso MAF e call rate foram recalculados em cada conjunto
-analisado.
-:::
-
-## Desequilíbrio de ligação (LD)
-
-```{r}
-#| label: g-ld
-#| fig-height: 6.2
-ld <- fread(file.path(dir_comp, "ld_decaimento.tsv"))
-ggplot(ld[distancia_mb <= 10], aes(distancia_mb, r2, colour = grupo)) +
-  geom_hline(yintercept = 0.2, linetype = "dashed", linewidth = 1) +
-  annotate("text", x = 10, y = 0.215, label = "limite da poda (r² = 0,2)",
-           hjust = 1, vjust = 0, size = 7) +
-  geom_line(linewidth = 2) +
-  scale_colour_manual(values = c(`DH dent` = cor_pool[["Dent"]],
-                                 `DH flint` = cor_pool[["Flint"]],
-                                 Parentais = "grey40"), name = NULL) +
-  labs(x = "distância entre SNPs (Mb)", y = "r² médio")
-```
-
-::: notes
-LD = associação entre alelos de locos próximos: eles são herdados juntos. r²
-mede essa associação (0 = independentes, 1 = sempre juntos). Nas DH o LD é
-maior e cai devagar com a distância, porque houve uma única meiose. O
-STRUCTURE supõe locos independentes dentro de cada grupo; SNPs em LD contam a
-mesma informação várias vezes e deixam o resultado confiante demais.
-:::
-
-## Poda por LD
-
-```{r}
-#| label: g-poda
-#| fig-height: 5.6
-# SNPs que entraram no STRUCTURE no cluster (todas as amostras)
-plano <- unique(fread(file.path(dir_prod, "evanno.tsv"))[
-  , .(etapa = conjunto, snps = loci)])
-poda <- rbind(fread(file.path(dir_comp, "funil_cq.tsv"))[5, .(etapa, snps)],
-              plano)
-poda[, etapa := factor(c("após filtros", "global", "dent", "flint")[
-  match(etapa, c("MAF ≥ 1%", "global", "dent", "flint"))],
-  c("após filtros", "global", "dent", "flint"))]
-ggplot(poda, aes(etapa, snps, fill = etapa)) +
-  geom_col(width = 0.7) +
-  geom_text(aes(label = format(snps, big.mark = ".")), vjust = -0.3, size = 9,
-            fontface = "bold") +
-  scale_fill_manual(values = c("#1F3A5F", "grey40", cor_pool[["Dent"]],
-                               cor_pool[["Flint"]]), guide = "none") +
-  scale_y_continuous(breaks = NULL, expand = expansion(c(0, 0.15))) +
-  labs(x = NULL, y = NULL)
-```
-
-::: destaque
-Janela de 50 SNPs: de cada par com r² > 0,2, um sai
-:::
-
-::: notes
-A poda anda pelo genoma em janelas de 50 SNPs (passo de 5). Dentro da janela,
-para cada par com r² > 0,2, um dos SNPs é removido. Sobram poucos SNPs,
-principalmente dentro dos pools, onde o LD das DH é mais forte. Bônus: o
-STRUCTURE fica muito mais rápido.
-:::
-
-# Na prática: PLINK
-
-## PLINK: o canivete suíço dos SNPs
+## PLINK: the Swiss army knife for SNPs
 
 :::: {.columns}
 ::: {.column width="45%"}
-- formatos
-- filtros (CQ)
-- LD e poda
+- file formats
+- filters (QC)
+- LD and pruning
 - PCA, F~ST~
 :::
 ::: {.column width="55%"}
-Feito para **humanos**: 22 autossomos + X, Y
+Built for **humans**: 22 autosomes + X, Y
 
-**Milho**: 10 cromossomos, sem sexuais
+**Maize**: 10 chromosomes, no sex chromosomes
 
 ```r
 c("--chr-set", "10", "no-xy")
@@ -441,87 +418,366 @@ c("--chr-set", "10", "no-xy")
 ::::
 
 ::: notes
-O PLINK é o programa padrão para manipular dados de SNP. Por padrão ele
-supõe genoma humano e trataria os cromossomos de outro jeito (por exemplo,
-cromossomos sexuais). --chr-set 10 no-xy diz que são 10 autossomos e nenhum
-cromossomo sexual. Chamamos o PLINK de dentro do R com system2(), na função
-rodar_plink(), para todo o fluxo ficar num script só.
+PLINK is the standard program for handling SNP data, and we use it for all
+the filtering steps that follow. By default it assumes the human genome and
+would treat chromosomes differently (for example, sex chromosomes).
+--chr-set 10 no-xy says there are 10 autosomes and no sex chromosomes. We
+call PLINK from R with system2(), in the rodar_plink() function, so the whole
+workflow lives in a single script.
 :::
 
-## Filtros no PLINK
+## SNPs have errors: filtering
 
+:::: {.columns}
+::: {.column width="55%"}
+```{r}
+#| label: g-funil
+#| fig-width: 8
+#| fig-height: 6
+funil <- fread(file.path(dir_comp, "funil_cq.tsv"))[1:5]
+funil[, etapa := c("SNP chip", "With position", "GenTrain ≥ 0.7",
+                   "Call rate ≥ 90%", "MAF ≥ 1%")]
+funil[, etapa := factor(etapa, rev(etapa))]
+funil[, removidos := shift(snps) - snps]
+ggplot(funil, aes(snps, etapa)) +
+  geom_col(fill = "#1F3A5F", width = 0.7) +
+  geom_text(aes(label = format(snps, big.mark = ",", trim = TRUE)), hjust = 1.1,
+            colour = "white", size = 7, fontface = "bold") +
+  geom_text(aes(label = ifelse(is.na(removidos), "",
+                               paste0("− ", format(removidos, big.mark = ",",
+                                                   trim = TRUE)))),
+            hjust = -0.15, size = 6, colour = "#B22222") +
+  scale_x_continuous(expand = expansion(c(0, 0.35)), breaks = NULL) +
+  labs(x = NULL, y = NULL)
+```
+:::
+::: {.column width="45%"}
 ```r
 rodar_plink(
-  "--bfile",   "cornfed_bruto",
-  "--exclude", "gentrain_baixo.txt",  # GenTrain < 0,7
-  "--remove",  "dh_faltantes.txt",    # DH > 10% NA
-  "--geno",    "0.1",                 # call rate ≥ 90%
-  "--maf",     "0.01",                # MAF ≥ 1%
-  "--make-bed", "--out", "cornfed_cq")
+  "--bfile", "cornfed_bruto",
+  "--exclude",
+    "gentrain_baixo.txt",
+  "--remove",
+    "dh_faltantes.txt",
+  "--geno", "0.1",
+  "--maf",  "0.01",
+  "--make-bed",
+  "--out", "cornfed_cq")
 ```
 
 ```
-2950 variants removed (--geno)
-2069 variants removed (--maf)
-33430 variants and 2269 samples pass
+33430 variants and
+2269 samples pass
+```
+:::
+::::
+
+::: notes
+GenTrain: a quality score for how well the chip intensities cluster (SNPs
+scoring < 0.7 have unreliable calls; they are listed in gentrain_baixo.txt
+and removed with --exclude). Call rate (--geno 0.1): a SNP missing in more
+than 10% of the samples is removed. MAF (--maf 0.01): an almost monomorphic
+SNP says nothing about structure and is more error-prone. We also removed 21
+DH lines with more than 10% missing data (--remove). Same criteria as
+Lehermeier et al. 2014 (they kept 34,116 SNPs; we kept 33,430).
+:::
+
+## MAF: minor allele frequency
+
+```{r}
+#| label: g-maf
+#| fig-height: 6
+maf <- fread(file.path(dir_comp, "maf.tsv.gz"))
+maf[, conjunto := factor(conjunto, c("global", "dent", "flint"),
+                         c("global (dent + flint)", "dent", "flint"))]
+mono <- maf[, .(n = sum(maf == 0, na.rm = TRUE)), by = conjunto]
+ggplot(maf, aes(maf, fill = conjunto)) +
+  geom_histogram(breaks = seq(0, 0.5, 0.025), colour = "white") +
+  geom_text(data = mono[n > 0],
+            aes(x = 0.25, y = Inf, label = paste(format(n, big.mark = ","),
+                                                 "fixed SNPs")),
+            vjust = 1.5, size = 7, inherit.aes = FALSE) +
+  facet_wrap(~ conjunto) +
+  scale_fill_manual(values = c("grey40", cor_pool[["Dent"]],
+                               cor_pool[["Flint"]]) |>
+                      setNames(levels(maf$conjunto)), guide = "none") +
+  labs(x = "MAF", y = "SNPs")
 ```
 
-## Poda por LD e exportação
+::: destaque
+Filters recomputed within each dataset
+:::
 
-```r
-# 1. quais SNPs ficam (janela 50, passo 5, r² 0,2)
-rodar_plink("--bfile", "cornfed_cq",
-            "--keep", "dent.txt",
-            "--maf", "0.01", "--geno", "0.1",
-            "--indep-pairwise", "50", "5", "0.2",
-            "--out", "dent")
+::: notes
+MAF = frequency of the less common allele. A SNP that separates dent from
+flint is common overall but may be fixed within a pool (almost 2,000 in dent
+and 2,600 in flint). That is why MAF and call rate were recomputed in each
+dataset analysed. "Global" is the combined dataset with both pools, as in
+Lehermeier's joint analysis.
+:::
 
-# 2. exporta no formato do STRUCTURE
-rodar_plink("--bfile", "cornfed_cq",
-            "--keep", "dent.txt",
-            "--extract", "dent.prune.in",
-            "--recode", "structure", "--out", "dent")
+## Linkage disequilibrium (LD)
+
+```{r}
+#| label: g-ld
+#| fig-height: 6.2
+ld <- fread(file.path(dir_comp, "ld_decaimento.tsv"))
+ld[, grupo := factor(grupo, c("DH dent", "DH flint", "Parentais"),
+                     c("DH dent", "DH flint", "Parents"))]
+ggplot(ld[distancia_mb <= 10], aes(distancia_mb, r2, colour = grupo)) +
+  geom_hline(yintercept = 0.2, linetype = "dashed", linewidth = 1) +
+  annotate("text", x = 10, y = 0.215, label = "pruning threshold (r² = 0.2)",
+           hjust = 1, vjust = 0, size = 7) +
+  geom_line(linewidth = 2) +
+  scale_colour_manual(values = c(`DH dent` = cor_pool[["Dent"]],
+                                 `DH flint` = cor_pool[["Flint"]],
+                                 Parents = "grey40"), name = NULL) +
+  labs(x = "distance between SNPs (Mb)", y = "mean r²")
 ```
 
 ::: notes
-Três conjuntos de análise: global (todas as famílias), dent e flint. Primeiro
-uma exploração local com 30 DH por família mais os 23 parentais (743 amostras
-no global), porque o tempo do STRUCTURE cresce com o número de indivíduos.
-Depois, a análise final com todas as 2.269 amostras no cluster da UFV.
+LD = association between alleles at nearby loci: they are inherited together.
+r² measures it (0 = independent, 1 = always together). In the DH lines LD is
+higher and decays slowly with distance, because there was a single meiosis.
+STRUCTURE assumes independent loci within each group; SNPs in LD repeat the
+same information many times and make the result overconfident.
+:::
+
+## LD pruning
+
+:::: {.columns}
+::: {.column width="55%"}
+```{r}
+#| label: g-poda
+#| fig-width: 8
+#| fig-height: 6
+# SNPs que entraram no STRUCTURE no cluster (todas as amostras)
+plano <- unique(fread(file.path(dir_prod, "evanno.tsv"))[
+  , .(etapa = conjunto, snps = loci)])
+poda <- rbind(fread(file.path(dir_comp, "funil_cq.tsv"))[5, .(etapa, snps)],
+              plano)
+rotulos_poda <- c("after\nfilters", "global\n(dent + flint)", "dent", "flint")
+poda[, etapa := factor(rotulos_poda[
+  match(etapa, c("MAF ≥ 1%", "global", "dent", "flint"))], rotulos_poda)]
+ggplot(poda, aes(etapa, snps, fill = etapa)) +
+  geom_col(width = 0.7) +
+  geom_text(aes(label = format(snps, big.mark = ",")), vjust = -0.3, size = 8,
+            fontface = "bold") +
+  scale_fill_manual(values = c("#1F3A5F", "grey40", cor_pool[["Dent"]],
+                               cor_pool[["Flint"]]), guide = "none") +
+  scale_y_continuous(breaks = NULL, expand = expansion(c(0, 0.15))) +
+  labs(x = NULL, y = NULL)
+```
+:::
+::: {.column width="45%"}
+```r
+# window 50, step 5,
+# r² > 0.2 → one goes
+rodar_plink(
+  "--bfile", "cornfed_cq",
+  "--keep",  "dent.txt",
+  "--maf",   "0.01",
+  "--geno",  "0.1",
+  "--indep-pairwise",
+    "50", "5", "0.2",
+  "--out",   "dent")
+```
+:::
+::::
+
+::: notes
+Pruning slides along the genome in 50-SNP windows (step of 5). Within the
+window, for each pair with r² > 0.2, one SNP is removed. It is done
+separately in each dataset (global, dent, flint), always starting from the
+same 33,430 SNPs, so the three lists are mostly different SNPs and do not add
+up. Fewer SNPs remain within the pools because many SNPs become fixed there
+and because LD is stronger: all DH lines in a pool share the same central
+line. Bonus: STRUCTURE runs much faster.
 :::
 
 # STRUCTURE
 
-## A ideia do modelo
+## The idea of the model
 
 ```{r}
 #| label: g-modelo
-#| fig-width: 10
-#| fig-height: 4.4
+#| fig-width: 11
+#| fig-height: 4.6
 diagrama(
-  data.table(id = c("G1", "G2", "I"), x = c(0, 0, 4.5), y = c(0.9, -0.9, 0),
-             rotulo = c("Grupo 1\nfrequências p1", "Grupo 2\nfrequências p2",
-                        "Indivíduo\nQ = 0,7 | 0,3"),
+  data.table(id = c("G1", "G2", "I"), x = c(0, 0, 5), y = c(1, -1, 0),
+             rotulo = c("Group 1\nfrequencies p1", "Group 2\nfrequencies p2",
+                        "Individual\nQ = 0.7 | 0.3"),
              cor = c(cores[["Cluster2"]], cores[["Cluster1"]], "grey35")),
   data.table(de = c("G1", "G2"), para = c("I", "I"),
-             rotulo = c("70%", "30%")),
-  largura = 3.2, altura = 1.3)
+             rotulo = c("70%", "30%"),
+             lx = c(2.5, 2.5), ly = c(1.05, -1.05)),
+  largura = 3.2, altura = 1.3, tamanho_rotulo = 7)
 ```
 
 ::: destaque
-K grupos em Hardy-Weinberg · Q = fração de cada grupo
+K groups in Hardy-Weinberg · Q = fraction from each group
 :::
 
 ::: notes
-O STRUCTURE (Pritchard et al. 2000) supõe que existem K populações
-ancestrais, cada uma com suas frequências alélicas, em equilíbrio de
-Hardy-Weinberg e de ligação. Ele procura a divisão dos indivíduos (ou de
-partes do genoma deles, no modelo com mistura) que deixa cada grupo o mais
-próximo possível desse equilíbrio. Estima ao mesmo tempo as frequências de
-cada grupo (P) e as proporções de cada indivíduo (Q).
+STRUCTURE (Pritchard et al. 2000) assumes there are K ancestral populations,
+each with its own allele frequencies, in Hardy-Weinberg and linkage
+equilibrium. It looks for the partition of individuals (or of parts of their
+genomes, in the admixture model) that brings each group as close as possible
+to that equilibrium. It estimates the allele frequencies of each group (P)
+and the proportions of each individual (Q) at the same time. In the example,
+70% of the individual's genome comes from group 1 and 30% from group 2.
 :::
 
-## Como ler o gráfico
+## What STRUCTURE reads
+
+```r
+rodar_plink("--bfile", "cornfed_cq", "--keep", "dent.txt",
+            "--extract", "dent.prune.in",
+            "--recode", "structure", "--out", "dent")
+```
+
+```
+PZE-101000088 PZE-101000209 PZE-101000451 ...   ← SNP names
+-1 157033 604385 ...                            ← map distances (bp)
+F353      1  2 2  2 2  2 2  2 2 ...
+UH007     1  2 2  2 2  2 2  2 2 ...
+CFD06-002 7  0 0  1 1  0 0  2 2 ...             ← 0 0 = missing
+CFF15-141 25 2 2  2 2  1 1  2 2 ...
+```
+
+::: destaque
+One row per line · family code · 2 columns per SNP (alleles 1/2)
+:::
+
+::: notes
+PLINK exports the pruned SNPs in STRUCTURE's format (--recode structure).
+Row 1: SNP names. Row 2: distance to the previous SNP on the same chromosome
+(-1 = first SNP of a chromosome). Then one row per individual: its name, a
+number for its family (not used by the model; USEPOPINFO = 0), and two
+columns per SNP, one for each allele copy (1 or 2; 0 = missing). DH lines
+are homozygous, so the two columns are always equal (1 1 or 2 2). The global
+file has 2,269 rows of individuals and 2,226 SNPs, i.e. 4,454 columns.
+:::
+
+## Parameters
+
+| Parameter | Exploration | Cluster | Purpose |
+|---|---|---|---|
+| samples | 743 | 2,269 | |
+| K | 1–6 · 1–12 · 1–14 | 1–8 · 1–13 · 1–14 | groups tested |
+| replicates | 3 | 5 | same answer? |
+| BURNIN | 10,000 | 50,000 | discarded |
+| NUMREPS | 20,000 | 100,000 | used |
+| NOADMIX, FREQSCORR | 0, 1 | 0, 1 | model |
+| RANDOMIZE | 0 + `-D` | 0 + `-D` | reproducible |
+
+::: notes
+Two stages: a quick local exploration (subsample, short chains) to choose the
+K ranges, and the final analysis on the cluster with all samples and chains
+five times longer. From here on, the results shown are the cluster's.
+Admixture model with correlated allele frequencies, as in Caniato et al.
+2011. K goes beyond the expected number of groups (dent has 11 families; we
+tested up to 13). Watch out: with RANDOMIZE 1 (the default) STRUCTURE ignores
+the seed. Another detail: in the parameter file, 100000 must not become
+1e+05, which STRUCTURE would read as 1.
+:::
+
+## MCMC: burn-in and convergence
+
+```{r}
+#| label: g-traco
+#| fig-height: 6.2
+tracos <- fread(file.path(dir_prod, "tracos.tsv.gz"))
+traco <- function(conj, k) {
+  tracos[conjunto == conj & K == k & fase == "amostragem"][
+    , rep := paste("replicate", rep)]
+}
+graf_traco <- function(d, titulo, destaque_r1) {
+  ggplot(d, aes(iteracao / 1000, lnlike / 1000, colour = rep)) +
+    geom_line(linewidth = 1) +
+    scale_colour_manual(values = c(if (destaque_r1) "#B22222" else "grey20",
+                                   "grey35", "grey50", "grey65", "grey80"),
+                        name = NULL) +
+    labs(x = "iteration (thousands)", y = "ln likelihood (thousands)",
+         title = titulo) +
+    theme(legend.position = "none")
+}
+graf_traco(traco("flint", 14), "flint, K = 14", TRUE) +
+  graf_traco(traco("global", 4), "global, K = 4", FALSE)
+```
+
+::: destaque
+Jump → unstable replicate · different plateaus → several solutions
+:::
+
+::: notes
+STRUCTURE runs a Markov chain (MCMC): it starts at a random point and keeps
+improving. The burn-in (50,000 iterations) is discarded; the plot shows the
+following 100,000. Two different problems:
+(1) On the left, replicate 1 of flint K = 14 jumps to another plateau around
+iteration 97,000: the chain had not stabilised yet. Its variance of the ln
+likelihood is much larger than the others' (criterion: > 3× the median of the
+replicates of the same K). It was the only unstable replicate out of 169; it
+is left out.
+(2) On the right, the five replicates of global K = 4 are stable, but each on
+its own plateau: each chain found a different solution. This is not a bug; it
+shows that with 4 groups there are several almost equally good partitions.
+:::
+
+## Running it: from laptop to cluster
+
+```r
+# local: several runs in parallel, 1 core each
+parallel::mclapply(1:96, rodar_structure, mc.cores = 10)
+```
+
+```bash
+# UFV cluster (PBS): one job per dataset × K × replicate
+qsub -N "$nome" -l walltime="$walltime" \
+     -v CONJ=$conj,K=$k,REP=$rep,SEMENTE=$semente \
+     structure_job.pbs
+```
+
+::: destaque
+Local: 96 runs in 6.5 h · Cluster: 169 of 175 jobs
+:::
+
+::: notes
+Each STRUCTURE run uses a single core. Locally we ran 10 at a time with
+mclapply (exploration, 6.5 hours). On the UFV cluster, each run becomes a PBS
+job. Finishing everything would take about 14 days on the cluster, so we used
+what was ready: dent and flint complete (65 and 70 runs) and global with 34 of
+40 (2 replicates of K = 6 and 4 of K = 7 are missing). We checked the cluster
+input files and parameters: they are identical to those produced by our
+script.
+:::
+
+## The output: the Q matrix
+
+```{r}
+#| label: t-q
+exemplo <- q_medio[conjunto == "global" & K == 2 &
+                     id %in% c("B73", "UH007", "CFD03-008", "CFF09-010",
+                               "CFD01-021")]
+if (exemplo[, uniqueN(id)] < 5) {
+  # se algum desses ids não existir, pega o primeiro de cada família
+  ids <- q_medio[conjunto == "global" & K == 2 &
+                   familia %in% c("CFD03", "CFF09", "CFD01"), id[1], by = familia]$V1
+  exemplo <- q_medio[conjunto == "global" & K == 2 &
+                       id %in% c("B73", "UH007", ids)]
+}
+tab <- dcast(exemplo, id + familia ~ grupo, value.var = "fracao")
+tab[familia == "Parental", familia := "parent"]
+setnames(tab, c("individual", "family", "Q group 1", "Q group 2"))
+tab[, `:=`(`Q group 1` = round(`Q group 1`, 2), `Q group 2` = round(`Q group 2`, 2))]
+knitr::kable(tab, align = "llcc")
+```
+
+::: destaque
+One row per individual · sum = 1
+:::
+
+## How to read the plot
 
 ```{r}
 #| label: g-como-ler
@@ -531,143 +787,32 @@ ex <- data.table(ind = factor(1:6),
 ex <- melt(ex[, g2 := 1 - g1], id.vars = "ind", variable.name = "grupo",
            value.name = "q")
 rotulos <- data.table(ind = factor(c(1.5, 3, 4, 5.5)), x = c(1.5, 3, 4, 5.5),
-                      texto = c("puro\ngrupo 1", "50 / 50", "70 / 30",
-                                "puro\ngrupo 2"))
+                      texto = c("pure\ngroup 1", "50 / 50", "70 / 30",
+                                "pure\ngroup 2"))
 ggplot(ex, aes(ind, q, fill = grupo)) +
   geom_col(width = 0.97) +
   geom_text(data = rotulos, aes(x = x, y = 1.12, label = texto),
             inherit.aes = FALSE, size = 8, lineheight = 0.85) +
-  scale_fill_manual(values = unname(cores[2:1]), labels = c("grupo 1", "grupo 2"),
+  scale_fill_manual(values = unname(cores[2:1]), labels = c("group 1", "group 2"),
                     name = NULL) +
-  scale_y_continuous(breaks = c(0, 0.5, 1), labels = c("0", "0,5", "1"),
+  scale_y_continuous(breaks = c(0, 0.5, 1), labels = c("0", "0.5", "1"),
                      limits = c(0, 1.25)) +
-  labs(x = "indivíduos", y = "Q") +
+  labs(x = "individuals", y = "Q") +
   theme(panel.grid = element_blank(), axis.text.x = element_blank())
 ```
 
 ::: destaque
-Uma barra = um indivíduo · cores = fração do genoma
-:::
-
-## Parâmetros
-
-| Parâmetro | Exploração | Cluster | Para quê |
-|---|---|---|---|
-| amostras | 743 | 2.269 | |
-| K | 1–6 · 1–12 · 1–14 | 1–8 · 1–13 · 1–14 | grupos testados |
-| réplicas | 3 | 5 | mesma resposta? |
-| BURNIN | 10.000 | 50.000 | descartadas |
-| NUMREPS | 20.000 | 100.000 | usadas |
-| NOADMIX, FREQSCORR | 0, 1 | 0, 1 | modelo |
-| RANDOMIZE | 0 + `-D` | 0 + `-D` | reprodutível |
-
-::: notes
-Duas etapas: uma exploração local rápida (subamostra, cadeias curtas) para
-escolher as faixas de K, e a análise final no cluster com todas as amostras e
-cadeias 5 vezes mais longas. Os resultados mostrados daqui em diante são os do
-cluster. Modelo com mistura e frequências correlacionadas, como em Caniato et
-al. 2011. K vai além do número esperado de grupos (no dent há 11 famílias,
-testamos até 13). Atenção: com RANDOMIZE 1 (o padrão) o STRUCTURE ignora a semente.
-Outro detalhe: no arquivo de parâmetros 100000 não pode virar 1e+05, que o
-STRUCTURE leria como 1.
-:::
-
-## MCMC: burn-in e convergência
-
-```{r}
-#| label: g-traco
-#| fig-height: 6.2
-tracos <- fread(file.path(dir_prod, "tracos.tsv.gz"))
-traco <- function(conj, k) {
-  tracos[conjunto == conj & K == k & fase == "amostragem"][
-    , rep := paste("réplica", rep)]
-}
-graf_traco <- function(d, titulo, destaque_r1) {
-  ggplot(d, aes(iteracao / 1000, lnlike / 1000, colour = rep)) +
-    geom_line(linewidth = 1) +
-    scale_colour_manual(values = c(if (destaque_r1) "#B22222" else "grey20",
-                                   "grey35", "grey50", "grey65", "grey80"),
-                        name = NULL) +
-    labs(x = "iteração (mil)", y = "ln verossimilhança (mil)", title = titulo) +
-    theme(legend.position = "none")
-}
-graf_traco(traco("flint", 14), "flint, K = 14", TRUE) +
-  graf_traco(traco("global", 4), "global, K = 4", FALSE)
-```
-
-::: destaque
-Salto → réplica instável · patamares diferentes → várias soluções
+One bar = one individual · colours = fraction of the genome
 :::
 
 ::: notes
-O STRUCTURE é uma cadeia de Markov (MCMC): começa num ponto aleatório e vai
-melhorando. O burn-in (50 mil iterações) é descartado; o gráfico mostra as 100
-mil seguintes. Dois problemas diferentes:
-(1) À esquerda, a réplica 1 do flint K = 14 muda de patamar perto da iteração
-97 mil: a cadeia ainda não tinha estabilizado. A variância do ln da
-verossimilhança dela é muito maior que a das outras (critério: > 3× a
-mediana das réplicas do mesmo K). Foi a única réplica instável em 169; ela sai
-do cálculo.
-(2) À direita, as cinco réplicas do global K = 4 estão estáveis, mas cada uma
-num patamar: cada cadeia encontrou uma solução diferente. Isso não é erro de
-programa; mostra que, com 4 grupos, há várias divisões quase igualmente boas.
+Each row of the Q matrix becomes one bar: the height of each colour is the
+fraction of that individual's genome assigned to each group.
 :::
 
-## Rodando: do notebook ao cluster
+# R: tying it all together
 
-```r
-# local: várias execuções em paralelo, 1 núcleo cada
-parallel::mclapply(1:96, rodar_structure, mc.cores = 10)
-```
-
-```bash
-# cluster UFV (PBS): um job por conjunto × K × réplica
-qsub -N "$nome" -l walltime="$walltime" \
-     -v CONJ=$conj,K=$k,REP=$rep,SEMENTE=$semente \
-     structure_job.pbs
-```
-
-::: destaque
-Local: 96 execuções em 6,5 h · Cluster: 169 de 175 jobs
-:::
-
-::: notes
-Cada execução do STRUCTURE usa um único núcleo. Localmente rodamos 10 ao
-mesmo tempo com mclapply (exploração, 6,5 horas). No cluster da UFV, cada
-execução vira um job do PBS. O cluster levaria cerca de 14 dias para terminar
-tudo; usamos o que ficou pronto: dent e flint completos (65 e 70 execuções) e
-o global com 34 de 40 (faltam 2 réplicas de K = 6 e 4 de K = 7). Os arquivos
-de entrada e os parâmetros do cluster foram conferidos: são idênticos aos
-gerados pelo nosso script.
-:::
-
-## A saída: matriz Q
-
-```{r}
-#| label: t-q
-exemplo <- q_medio[conjunto == "global" & K == 2 &
-                     id %in% c("B73", "UH007", "CFD03-008", "CFF09-010",
-                               "CFD01-021")]
-if (exemplo[, uniqueN(id)] < 5) {
-  # se algum desses ids não estiver na subamostra, pega o primeiro de cada família
-  ids <- q_medio[conjunto == "global" & K == 2 &
-                   familia %in% c("CFD03", "CFF09", "CFD01"), id[1], by = familia]$V1
-  exemplo <- q_medio[conjunto == "global" & K == 2 &
-                       id %in% c("B73", "UH007", ids)]
-}
-tab <- dcast(exemplo, id + familia ~ grupo, value.var = "fracao")
-setnames(tab, c("indivíduo", "família", "Q grupo 1", "Q grupo 2"))
-tab[, `:=`(`Q grupo 1` = round(`Q grupo 1`, 2), `Q grupo 2` = round(`Q grupo 2`, 2))]
-knitr::kable(tab, align = "llcc")
-```
-
-::: destaque
-Uma linha por indivíduo · soma = 1
-:::
-
-# R: costurando tudo
-
-## Um fluxo, um script
+## One workflow, one script
 
 ```{r}
 #| label: g-fluxo
@@ -675,30 +820,30 @@ Uma linha por indivíduo · soma = 1
 #| fig-height: 2.6
 diagrama(
   data.table(id = c("A", "B", "C", "D"), x = c(0, 3.4, 6.8, 10.2), y = 0,
-             rotulo = c("R\nlê o GEO", "PLINK\nfiltros, LD",
-                        "STRUCTURE\nK = 1 ... 14", "R + pophelper\nΔK, gráficos"),
+             rotulo = c("R\nreads GEO", "PLINK\nfilters, LD",
+                        "STRUCTURE\nK = 1 ... 14", "R + pophelper\nΔK, plots"),
              cor = c("#1F3A5F", "grey45", "#B22222", "#1F3A5F")),
   data.table(de = c("A", "B", "C"), para = c("B", "C", "D")),
   largura = 2.7, altura = 1.3, tamanho = 7)
 ```
 
 ```r
-q  <- readQ(arquivos_f)              # lê as matrizes Q
+q  <- readQ(arquivos_f)              # read the Q matrices
 ev <- evannoMethodStructure(
-        summariseQ(tabulateQ(q)))    # ΔK de Evanno
-q  <- alignK(q, type = "within")     # alinha as réplicas
+        summariseQ(tabulateQ(q)))    # Evanno's ΔK
+q  <- alignK(q, type = "within")     # align the replicates
 ```
 
 ::: notes
-O R faz a leitura dos dados do GEO (data.table), chama o PLINK e o STRUCTURE
-e analisa os resultados com o pacote pophelper. Um detalhe: os grupos do
-STRUCTURE não têm nome, e o "grupo 1" de uma réplica pode ser o "grupo 3" de
-outra. Por isso alinhamos as réplicas antes de tirar a média.
+R reads the GEO data (data.table), calls PLINK and STRUCTURE, and analyses
+the results with the pophelper package. One detail: STRUCTURE's groups have
+no names, and "group 1" in one replicate may be "group 3" in another. That is
+why we align the replicates before averaging them.
 :::
 
-# Resultados
+# Results
 
-## Quantos grupos? ΔK de Evanno
+## How many groups? Evanno's ΔK
 
 ```{r}
 #| label: g-evanno
@@ -709,7 +854,7 @@ p1 <- ggplot(ev, aes(k, elpdmean / 1e3)) +
   geom_line(linewidth = 1.2) + geom_point(size = 3) +
   facet_wrap(~ conjunto, scales = "free") +
   scale_x_continuous(breaks = function(l) seq(1, floor(l[2]), 2)) +
-  labs(x = NULL, y = "ln P(D|K)\n(mil)")
+  labs(x = NULL, y = "ln P(D|K)\n(thousands)")
 p2 <- ggplot(ev[!is.na(deltaK)], aes(k, deltaK)) +
   geom_line(linewidth = 1.2, colour = "#B22222") +
   geom_point(size = 3, colour = "#B22222") +
@@ -725,17 +870,17 @@ p1 / p2
 :::
 
 ::: notes
-ln P(D|K) sobe sempre com K: mais grupos sempre explicam melhor os dados.
-Evanno et al. 2005 propuseram olhar onde essa subida muda de ritmo: ΔK é a
-segunda derivada dividida pelo desvio-padrão entre réplicas. No global
-(ΔK = 49 mil em K = 2) e no flint (3,9 mil em K = 2) o pico é claro. No dent
-o ΔK é baixo em todos os K (máximo 11, em K = 3, e 7 em K = 2): as réplicas
-do dent já discordam em K = 2 (próximo slide). O ΔK costuma apontar o nível
-mais alto da hierarquia; por isso olhamos também os gráficos de barras. No
-global, K = 7 tem uma réplica só e fica sem ΔK.
+ln P(D|K) always rises with K: more groups always explain the data a bit
+better. Evanno et al. 2005 proposed looking at where that rise changes pace:
+ΔK is the second derivative divided by the standard deviation across
+replicates. In global (ΔK = 49,000 at K = 2) and flint (3,900 at K = 2) the
+peak is clear. In dent, ΔK is low for every K (maximum 11, at K = 3, and 7 at
+K = 2): the dent replicates already disagree at K = 2 (next slide). ΔK tends
+to point to the top level of the hierarchy, which is why we also look at the
+bar plots. In global, K = 7 has a single replicate and therefore no ΔK.
 :::
 
-## As réplicas concordam?
+## Do the replicates agree?
 
 ```{r}
 #| label: g-modos
@@ -749,29 +894,30 @@ ggplot(modos[K > 1], aes(K, no_modo_principal / replicas, fill = completo)) +
   geom_col(width = 0.75) +
   geom_text(aes(label = no_modo_principal), vjust = -0.3, size = 6) +
   scale_fill_manual(values = c(`TRUE` = "#1F3A5F", `FALSE` = "grey70"),
-                    labels = c(`TRUE` = "5 réplicas", `FALSE` = "menos de 5"),
+                    labels = c(`TRUE` = "5 replicates", `FALSE` = "fewer than 5"),
                     name = NULL) +
   facet_wrap(~ conjunto, scales = "free_x") +
   scale_x_continuous(breaks = function(l) seq(2, floor(l[2]), 2)) +
   scale_y_continuous(labels = scales::percent, limits = c(0, 1.12),
                      breaks = c(0, 0.5, 1)) +
-  labs(x = "K", y = "réplicas com a\nmesma solução")
+  labs(x = "K", y = "replicates with\nthe same solution")
 ```
 
 ::: destaque
-Só os K baixos se repetem
+Only low K values are reproducible
 :::
 
 ::: notes
-Para cada K, comparamos as réplicas com a de maior ln P(D|K): duas réplicas
-têm "a mesma solução" quando atribuem, em média, mais de 90% do genoma de cada
-indivíduo aos mesmos grupos. O número sobre a barra é quantas réplicas estão
-nessa solução; em cinza, os K com menos de 5 réplicas prontas (no global, K = 7
-tem uma só, então o "100%" ali não quer dizer nada). No global e no flint, todas as réplicas
-concordam até K = 3. No dent, já em K = 2 só 3 de 5 concordam. Acima disso,
-quase cada réplica tem sua própria solução. Consequência prática: os gráficos
-de K alto mostram a solução de maior ln P(D|K), uma entre várias; os detalhes
-deles não devem ser levados ao pé da letra.
+For each K, we compare the replicates with the one with the highest
+ln P(D|K): two replicates have "the same solution" when, on average, they
+assign more than 90% of each individual's genome to the same groups. The
+number above each bar is how many replicates share that solution; in grey,
+the K values with fewer than 5 finished replicates (in global, K = 7 has only
+one, so its "100%" means nothing). In global and flint, all replicates agree
+up to K = 3. In dent, only 3 of 5 agree already at K = 2. Above that, almost
+every replicate has its own solution. Practical consequence: the high-K plots
+show the solution with the highest ln P(D|K), one among several; their
+details should not be taken literally.
 :::
 
 ## Global, K = 2: dent × flint
@@ -783,181 +929,146 @@ barras("global", 2)
 ```
 
 ::: destaque
-CFD01, CFF01, CFF02: ~60/40, os pais vêm dos dois pools
+CFD01, CFF01, CFF02: ~60/40, their parents come from both pools
 :::
 
 ::: notes
-Cada coluna é uma família (todas as DH; a largura é o número de linhas). O
-grupo vermelho reúne as famílias dent e o azul as flint. As três famílias de
-controle aparecem misturadas, como esperado pelo pedigree: CFD01 0,62/0,38,
-CFF01 0,60/0,40 e CFF02 0,63/0,37 (perto de 60/40, não 50/50). Algumas
-famílias flint (CFF04, 05, 06, 10) têm parte vermelha: as fundadoras delas
-não são tão "flint" quanto a central UH007.
+Each column is a family (all DH lines; the width is the number of lines). The
+red group gathers the dent families and the blue one the flint families. The
+three control families appear admixed, as expected from the pedigree: CFD01
+0.62/0.38, CFF01 0.60/0.40 and CFF02 0.63/0.37 (close to 60/40, not 50/50).
+Some flint families (CFF04, 05, 06, 10) have some red: their founders are not
+as "flint" as the central line UH007.
 :::
 
-## Global, K = 2 a 5
-
-```{r}
-#| label: g-global-k2-5
-#| fig-height: 6.8
-barras("global", 2:5)
-```
-
-::: destaque
-K = 4 e 5: uma solução entre várias
-:::
-
-::: notes
-Ao aumentar K, os novos grupos não aparecem como "populações", e sim como
-famílias ou conjuntos de famílias com fundadoras parecidas. K = 3 (verde):
-famílias cujas fundadoras são mais distantes das centrais (CFD06, 07, 09, 12;
-CFF04, 05, 06, 10). K = 4 (laranja): as famílias com B73 como fundadora (CFD02
-e CFF02) e CFD05. K = 5 (roxo): famílias flint como CFF07, CFF09 e CFF15.
-Lembrando o slide anterior: K = 2 e 3 se repetem nas 5 réplicas; K = 4 e 5,
-não.
-:::
-
-## Os parentais
-
-```{r}
-#| label: g-parentais
-#| fig-height: 6.4
-barras_parentais("global", 2:3)
-```
-
-::: destaque
-UH007 é 100% "flint"; várias fundadoras flint, não
-:::
-
-::: notes
-O grupo "flint" do K = 2 é, na prática, o grupo da linha central UH007:
-metade do genoma de toda DH flint vem dela. Fundadoras flint mais distantes
-dela (EP44, EZ5, F64) aparecem com quase 50% de "dent". O STRUCTURE está
-enxergando o pedigree montado pelo melhorista, não só a história dos pools.
-:::
-
-## Dentro do pool, K = 2 é a linha central
-
-```{r}
-#| label: g-centrais
-#| fig-height: 5.4
-(barras_parentais("dent", 2) + labs(title = "conjunto dent")) +
-  (barras_parentais("flint", 2) + labs(title = "conjunto flint"))
-```
-
-::: destaque
-F353 (dent) e UH007 (flint) × as fundadoras
-:::
-
-::: notes
-Dentro de cada pool, o primeiro grupo que o STRUCTURE separa não é um grupo de
-fundadoras: é a linha central. No dent, F353 (e UH304, muito parecida com ela)
-formam um grupo; D06 e D09 ficam em parte nele; as outras fundadoras, no outro.
-No flint, UH007 (com UH009 e UH006). Como toda DH tem metade do genoma da central, toda DH aparece
-com ~50% de cada grupo no K = 2.
-:::
-
-## Dentro do pool Dent
+## Within the Dent pool
 
 ```{r}
 #| label: g-dent
-#| fig-height: 6.6
+#| fig-height: 6
 barras("dent", c(2, 3, 4, 6))
 ```
 
-::: notes
-K = 2: azul = F353 (central), vermelho = fundadoras. CFD11 é toda azul porque
-a fundadora dela (UH304) é muito parecida com F353; CFD03, 04 e 10 são quase
-todas azuis pelo mesmo motivo (D06, D09, UH250). K = 3: CFD11 ganha cor
-própria (verde). De K = 4 em diante, as famílias se separam uma a uma (CFD06,
-CFD07...). Atenção: no dent as réplicas já discordam em K = 2 (3 de 5) e, a
-partir de K = 5, cada réplica tem sua solução.
+::: destaque
+D11 = F353 × UH304: both Iodent, the most similar pair (SM = 0.77)
 :::
 
-## Dentro do pool Flint
+::: notes
+K = 2: blue = the central line F353's group, red = founders. CFD11 is all
+blue, and CFD03, 04 and 10 almost all blue, because their founders (UH304,
+D06, D09, UH250) resemble F353.
+Why is D11 all green at K = 3? CFD11 comes from F353 × UH304, and both lines
+share an Iodent background. In Lehermeier et al. (2014, Table 1) this is the
+most similar parent pair in the dent panel (simple matching = 0.765, against
+0.61–0.67 for the others). Its DH lines are therefore very alike and form a
+large, homogeneous block, which STRUCTURE gives its own group (green),
+together with F353 and UH304 themselves.
+From K = 4 onwards, families split off one by one (CFD06, CFD07...). Note:
+in dent the replicates already disagree at K = 2 (3 of 5), and from K = 5 on
+each replicate has its own solution.
+:::
+
+## Within the Flint pool
 
 ```{r}
 #| label: g-flint
-#| fig-height: 6.6
+#| fig-height: 6
 barras("flint", c(2, 3, 4, 6))
 ```
 
-::: notes
-Mesma leitura do dent. K = 2: azul = UH007 (central); CFF12 e CFF13 são
-quase todas azuis (fundadoras UH006 e UH009, parecidas com UH007). K = 3
-(verde): as famílias cujas fundadoras são mais distantes da central, incluindo
-CFF01 (F353, a central dent) e CFF02 (B73, dent). K = 4: CFF13 se separa
-(laranja). Até K = 3 as 5 réplicas concordam; em K = 4, 3 de 5.
+::: destaque
+F12, F13: founders closest to UH007 (SM = 0.79 and 0.82)
 :::
 
-## PCA: outra forma de ver
+::: notes
+K = 2: blue = the central line UH007's group. Why are F12 and F13 blue? Their
+founders, UH006 (CFF12) and UH009 (CFF13), are the most similar to UH007 in
+the flint panel (simple matching = 0.791 and 0.815; Lehermeier et al. 2014,
+Table 1), so both families look like the central line.
+Why does F13 turn orange at K = 4? With 4 groups, STRUCTURE splits that
+"central-like" block in two: orange = UH007, UH009 and CFF13; blue = UH006
+and CFF12. K = 3 (green): the families whose founders are more distant from
+the central line, including CFF01 (F353, the dent central line) and CFF02
+(B73, dent). Up to K = 3 the 5 replicates agree; at K = 4, 3 of 5.
+:::
+
+## PCA: another view
 
 ```{r}
 #| label: g-pca
 #| fig-height: 6.6
 pca <- fread(file.path(dir_comp, "pca.eigenvec"))
 pca <- merge(pca, amostras[, .(IID = id, tipo, pool, familia)], by = "IID")
-pca[familia %in% c("CFD01", "CFF01", "CFF02"), destaque := "CFD01 · CFF01 · CFF02"]
+# DH: cor pelo pool; as três famílias com pais dos dois pools em laranja
+mistas <- "CFD01 · CFF01 · CFF02 (both pools)"
+pca[tipo == "DH", grupo_cor := fifelse(familia %in% c("CFD01", "CFF01", "CFF02"),
+                                       mistas, paste("DH", pool))]
+pca[, grupo_cor := factor(grupo_cor, c("DH Dent", "DH Flint", mistas))]
 ggplot(pca, aes(PC1, PC2)) +
-  geom_point(data = pca[tipo == "DH"], aes(colour = pool), size = 2,
-             alpha = 0.35) +
-  geom_point(data = pca[!is.na(destaque)], colour = "#FF7F00", size = 2.5) +
+  geom_point(data = pca[tipo == "DH" & grupo_cor != mistas],
+             aes(colour = grupo_cor), size = 2, alpha = 0.35) +
+  geom_point(data = pca[grupo_cor == mistas], aes(colour = grupo_cor),
+             size = 2.5) +
   geom_point(data = pca[tipo == "Parental"], aes(fill = pool), shape = 21,
              size = 6, colour = "black") +
   geom_text_repel(data = pca[tipo == "Parental"], aes(label = IID), size = 6,
                   max.overlaps = 30, seed = 1) +
-  scale_colour_manual(values = cor_pool, name = NULL) +
+  scale_colour_manual(values = setNames(c(cor_pool, "#FF7F00"),
+                                        c("DH Dent", "DH Flint", mistas)),
+                      name = NULL, drop = FALSE) +
   scale_fill_manual(values = cor_pool, guide = "none") +
   guides(colour = guide_legend(override.aes = list(size = 6, alpha = 1))) +
   theme(axis.text = element_blank())
 ```
 
 ::: notes
-A PCA não supõe modelo genético nenhum: resume a variação dos SNPs em poucos
-eixos. PC1 separa dent e flint, como o K = 2 do STRUCTURE. Os pontos laranja
-(famílias com pais dos dois pools) ficam no meio. As DH formam "nuvens" em
-torno do ponto médio entre a central e a sua fundadora. Todas as 2.269
-amostras, com os 2.255 SNPs podados do conjunto global.
+PCA assumes no genetic model at all: it summarises SNP variation in a few
+axes. PC1 separates dent and flint, like STRUCTURE's K = 2. The orange points
+(the three families with parents from both pools: CFD01, CFF01, CFF02) lie
+in between. The DH lines form "clouds" around the midpoint between the
+central line and their founder. The large circles with names are the
+parents. All 2,269 samples, with the 2,255 SNPs pruned for the global
+dataset.
 :::
 
-# Estatísticas F
+# F-statistics
 
-## Efeito Wahlund
+## Wahlund effect
 
 ```{r}
 #| label: g-wahlund
 #| fig-height: 5.6
 w <- data.table(
-  grupo = factor(c("Subpop. 1\np = 0,8", "Subpop. 2\np = 0,2", "Juntas\np̄ = 0,5"),
-                 c("Subpop. 1\np = 0,8", "Subpop. 2\np = 0,2", "Juntas\np̄ = 0,5")),
+  grupo = factor(c("Subpop. 1\np = 0.8", "Subpop. 2\np = 0.2", "Pooled\np̄ = 0.5"),
+                 c("Subpop. 1\np = 0.8", "Subpop. 2\np = 0.2", "Pooled\np̄ = 0.5")),
   H = c(0.32, 0.32, 0.5),
   tipo = c("H_S", "H_S", "H_T"))
 ggplot(w, aes(grupo, H, fill = tipo)) +
   geom_col(width = 0.6) +
   geom_hline(yintercept = 0.32, linetype = "dashed", linewidth = 1) +
-  geom_text(aes(label = format(H, decimal.mark = ",")), vjust = -0.3, size = 9) +
+  geom_text(aes(label = format(H)), vjust = -0.3, size = 9) +
   scale_fill_manual(values = c(H_S = "grey55", H_T = "#1F3A5F"), guide = "none") +
   scale_y_continuous(limits = c(0, 0.6), breaks = NULL) +
-  labs(x = NULL, y = "heterozigosidade\nesperada 2pq")
+  labs(x = NULL, y = "expected\nheterozygosity 2pq")
 ```
 
 ::: destaque
-Juntar subpopulações → "falta" de heterozigotos
+Pooling subpopulations → "missing" heterozygotes
 :::
 
 ::: notes
-Cada subpopulação em Hardy-Weinberg tem 2pq = 0,32 de heterozigotos. Se
-juntarmos as duas e calcularmos com a frequência média (0,5), esperaríamos
-0,5. Mas os heterozigotos reais continuam 0,32. Esse déficit, causado só pela
-subdivisão, é o efeito Wahlund. F_ST mede exatamente isso: 1 − H_S/H_T =
-1 − 0,32/0,5 = 0,36.
+Each subpopulation in Hardy-Weinberg has 2pq = 0.32 heterozygotes. If we pool
+the two and compute with the mean frequency (0.5), we would expect 0.5. But
+the actual heterozygotes are still 0.32. This deficit, caused only by the
+subdivision, is the Wahlund effect. F_ST measures exactly this:
+1 − H_S/H_T = 1 − 0.32/0.5 = 0.36.
 :::
 
-## F de Wright: três níveis
+## Wright's F: three levels
 
 $$
-\underbrace{F_{IS} = 1 - \frac{H_O}{H_S}}_{\text{dentro}} \qquad
-\underbrace{F_{ST} = 1 - \frac{H_S}{H_T}}_{\text{entre}} \qquad
+\underbrace{F_{IS} = 1 - \frac{H_O}{H_S}}_{\text{within}} \qquad
+\underbrace{F_{ST} = 1 - \frac{H_S}{H_T}}_{\text{between}} \qquad
 \underbrace{F_{IT} = 1 - \frac{H_O}{H_T}}_{\text{total}}
 $$
 
@@ -968,87 +1079,117 @@ $$
 $$
 
 ::: notes
-H_O: heterozigosidade observada (fração de AB). H_S: esperada em
-Hardy-Weinberg dentro de cada subpopulação, média entre elas. H_T: esperada
-no total, com a frequência média. F_IS mede endogamia dentro das
-subpopulações, F_ST a diferenciação entre elas e F_IT a endogamia total.
+H_O: observed heterozygosity (fraction of AB). H_S: expected under
+Hardy-Weinberg within each subpopulation, averaged across them. H_T: expected
+in the total, using the mean frequency. F_IS measures inbreeding within
+subpopulations, F_ST the differentiation among them and F_IT the total
+inbreeding.
 :::
 
-## F nos dados CornFed
+## F in the CornFed data
 
 ```{r}
 #| label: t-f
 f <- fread(file.path(dir_comp, "estatisticas_f.tsv"))
-f <- f[, .(`subpopulações` = nivel, `H_O` = H_O, `H_S` = H_S, `H_T` = H_T,
-           `F_IS` = F_IS, `F_ST` = F_ST, `F_IT` = F_IT)]
+f[, nivel := c(`Pools (dent x flint)` = "Pools (dent × flint)",
+               `Famílias dent` = "Dent families",
+               `Famílias flint` = "Flint families")[nivel]]
+f <- f[, .(nivel, H_O, H_S, H_T, F_IS, F_ST, F_IT)]
 num <- names(f)[-1]
-f[, (num) := lapply(.SD, function(x) formatC(x, format = "f", digits = 3,
-                                              decimal.mark = ",")),
+f[, (num) := lapply(.SD, function(x) formatC(x, format = "f", digits = 3)),
   .SDcols = num]
 knitr::kable(f, align = "lcccccc",
-             col.names = c("subpopulações", "H~O~", "H~S~", "H~T~",
+             col.names = c("subpopulations", "H~O~", "H~S~", "H~T~",
                            "F~IS~", "F~ST~", "F~IT~"))
 ```
 
 :::: {.columns}
 ::: {.column width="50%"}
-F~IS~ ≈ 1: DH são homozigotas
+F~IS~ ≈ 1: DH lines are homozygous
 :::
 ::: {.column width="50%"}
-F~ST~ famílias **>** F~ST~ pools
+F~ST~ families **>** F~ST~ pools
 :::
 ::::
 
 ::: notes
-F_IS ≈ 1 não é surpresa: DH são 100% homozigotas por construção (H_O ≈ 0,001).
-O interessante é o F_ST. Entre dent e flint ele é 0,20 (o PLINK, com o
-estimador de Weir & Cockerham, dá 0,22). Entre famílias dentro de um pool ele
-é maior, ~0,35: as famílias são mais diferentes entre si do que os dois pools
-heteróticos. Cada família é um cruzamento de dois pais, então tem só dois
-"haplótipos" possíveis em cada loco.
+F_IS ≈ 1 is no surprise: DH lines are 100% homozygous by construction
+(H_O ≈ 0.001). The interesting part is F_ST. Between dent and flint it is
+0.20 (PLINK, with the Weir & Cockerham estimator, gives 0.22). Among families
+within a pool it is higher, ~0.35: the families differ more from each other
+than the two heterotic pools do. Why? F_ST is the share of the total
+diversity that lies between groups. Each pool is very diverse inside (many
+founders, H_S = 0.25), so only ~20% of the diversity is between pools. Each
+family comes from a cross of just two inbred parents, so it is very uniform
+inside (H_S = 0.16–0.19), and most of the diversity lies between families.
 :::
 
-# Para levar
+# Take-home
 
-## O que o STRUCTURE encontrou
+## What STRUCTURE found
 
-1. **K = 2**: dent × flint, a divisão histórica
-2. Dentro do pool: **linha central** × fundadoras
-3. Acima disso: **famílias**, ou seja, o pedigree
-4. Em população feita por melhorista, **não existe "K verdadeiro"**
+1. **K = 2**: dent × flint, the historical split
+2. Within a pool: **central line** × founders
+3. Beyond that: **families**, i.e. the pedigree
+4. In a breeder-built population, **there is no "true K"**
 
 ::: destaque
-Estrutura ≠ só populações naturais: parentesco também é estrutura
+Structure ≠ only natural populations: relatedness is structure too
 :::
 
 ::: notes
-A pergunta do trabalho era: o que o STRUCTURE detecta quando a "população"
-foi construída por melhoristas? Resposta: no nível mais alto, a separação dos
-grupos heteróticos; abaixo dele, a estrutura de parentesco das famílias. O F_ST
-entre famílias maior que entre pools reforça isso. Limitações: o global ficou
-sem 6 das 40 execuções (K = 6 e 7), e acima de K ≈ 3 as réplicas não chegam à
-mesma solução, então só os K baixos são conclusões firmes.
+The question of this work was: what does STRUCTURE detect when the
+"population" was built by breeders? Answer: at the top level, the split
+between heterotic groups; below it, the relatedness structure of the
+families. F_ST among families being higher than between pools reinforces
+this. Limitations: global is missing 6 of its 40 runs (K = 6 and 7), and
+above K ≈ 3 the replicates do not reach the same solution, so only low K
+values are firm conclusions.
 :::
 
-## Referências {.smaller}
+## References {.smaller}
 
 :::: {.columns}
-::: {.column width="50%"}
+::: {.column width="33%"}
 ::: {.small}
-- Pritchard et al. 2000, *Genetics*
-- Falush et al. 2003, *Genetics*
-- Evanno et al. 2005, *Mol. Ecol.*
-- Weir & Cockerham 1984, *Evolution*
-- Yu et al. 2006, *Nat. Genet.*
+**STRUCTURE**
+
+- Pritchard 2000
+- Falush 2003
+- Evanno 2005
+- Francis 2017
 :::
 :::
-::: {.column width="50%"}
+::: {.column width="33%"}
 ::: {.small}
-- Bauer et al. 2013, *Genome Biol.*
-- Lehermeier et al. 2014, *Genetics*
-- Caniato et al. 2011, *PLoS ONE*
-- Chang et al. 2015, *GigaScience* (PLINK 1.9)
-- Francis 2017, *Mol. Ecol. Resour.* (pophelper)
+**Population genetics**
+
+- Weir & Cockerham 1984
+- Rosenberg 2002
+- Yu 2006
+- Novembre 2008
+:::
+:::
+::: {.column width="33%"}
+::: {.small}
+**Data and tools**
+
+- Caniato 2011
+- Bauer 2013
+- Lehermeier 2014
+- Chang 2015
 :::
 :::
 ::::
+
+::: notes
+Full references: Pritchard, Stephens & Donnelly 2000, Genetics 155: 945–959;
+Falush, Stephens & Pritchard 2003, Genetics 164: 1567–1587; Evanno, Regnaut &
+Goudet 2005, Molecular Ecology 14: 2611–2620; Francis 2017, Molecular Ecology
+Resources 17: 27–32 (pophelper); Weir & Cockerham 1984, Evolution 38:
+1358–1370; Rosenberg et al. 2002, Science 298: 2381–2385; Yu et al. 2006,
+Nature Genetics 38: 203–208; Novembre et al. 2008, Nature 456: 98–101;
+Caniato et al. 2011, PLoS ONE; Bauer et al. 2013, Genome Biology 14: R103;
+Lehermeier et al. 2014, Genetics 198: 3–16; Chang et al. 2015, GigaScience 4:
+7 (PLINK 1.9).
+:::

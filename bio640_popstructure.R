@@ -25,30 +25,15 @@ arq_series <- file.path(dir_data, "GSE50558_series_matrix.txt.gz")
 arq_gpl    <- file.path(dir_data, "GPL17677_annotation.txt.gz")
 arq_pais   <- file.path(dir_data, "GSE50558_Parental_matrix_GEO.txt.gz")
 
-plink     <- "/home/jpgt-avell/plink_linux_x86_64_20250819/plink"
-structure <- "/home/jpgt-avell/STRUCTURE/console/structure"
+# Programas externos (plink, structure) e funções compartilhadas: caminhos,
+# rodar_plink(), definir() e escrever_parametros() ficam em
+# funcoes_popstructure.R
+source("funcoes_popstructure.R")
 
-# O PLINK assume genoma humano por padrão. O milho tem 10 cromossomos
-# autossômicos e nenhum cromossomo sexual.
-plink_especie <- c("--chr-set", "10", "no-xy")
-
-# Função auxiliar: roda o PLINK, mostra o log e para se der erro
-rodar_plink <- function(...) {
-  args <- c(plink_especie, ...)
-  cat("\n$ plink", paste(args, collapse = " "), "\n")
-  saida <- system2(plink, args, stdout = TRUE, stderr = TRUE)
-  status <- attr(saida, "status")
-  if (!is.null(status) && status != 0) {
-    cat(saida, sep = "\n")
-    stop("PLINK terminou com erro.")
-  }
-  # mostra só as linhas com contagens, que são as informativas
-  # (removendo os indicadores de progresso "1%2%3%...")
-  saida_limpa <- sub("^.*%", "", saida)
-  cat(grep("variants|samples|people|pass|removed|loaded", saida_limpa,
-           value = TRUE), sep = "\n")
-  invisible(saida)
-}
+# Rodar o STRUCTURE na seção 10? A exploração local leva ~6,5 h com 10
+# núcleos; os resultados finais vieram do cluster (ver README). Para rodar,
+# defina executar_structure <- TRUE antes de chamar este script.
+if (!exists("executar_structure")) executar_structure <- FALSE
 
 # -----------------------------------------------------------------------------
 # 1. Metadados das amostras (cabeçalho do Series Matrix)
@@ -331,40 +316,7 @@ rbindlist(lapply(info_conjuntos, as.data.table), idcol = "conjunto")
 #                correlacionadas (FREQSCORR 1), como em Caniato et al. 2011,
 #                e RANDOMIZE 0 para que a semente (-D) seja respeitada
 
-definir <- function(linhas, parametro, valor) {
-  padrao <- paste0("^#define\\s+", parametro, "\\s+\\S+")
-  stopifnot(sum(grepl(padrao, linhas)) == 1)
-  sub(padrao, paste("#define", parametro, valor), linhas)
-}
-
-dir_modelos <- dirname(structure)
-
-escrever_parametros <- function(destino, burnin, numreps) {
-  mp <- readLines(file.path(dir_modelos, "mainparams"))
-  mp <- definir(mp, "BURNIN", burnin)
-  mp <- definir(mp, "NUMREPS", numreps)
-  mp <- definir(mp, "PLOIDY", 2)
-  mp <- definir(mp, "MISSING", 0)
-  mp <- definir(mp, "ONEROWPERIND", 1)
-  mp <- definir(mp, "LABEL", 1)
-  mp <- definir(mp, "POPDATA", 1)
-  mp <- definir(mp, "POPFLAG", 0)
-  mp <- definir(mp, "LOCDATA", 0)
-  mp <- definir(mp, "PHENOTYPE", 0)
-  mp <- definir(mp, "EXTRACOLS", 0)
-  mp <- definir(mp, "MARKERNAMES", 1)
-  mp <- definir(mp, "MAPDISTANCES", 1)
-  writeLines(mp, file.path(destino, "mainparams"))
-
-  ep <- readLines(file.path(dir_modelos, "extraparams"))
-  ep <- definir(ep, "NOADMIX", 0)
-  ep <- definir(ep, "LINKAGE", 0)
-  ep <- definir(ep, "USEPOPINFO", 0)
-  ep <- definir(ep, "FREQSCORR", 1)
-  ep <- definir(ep, "INFERALPHA", 1)
-  ep <- definir(ep, "RANDOMIZE", 0)
-  writeLines(ep, file.path(destino, "extraparams"))
-}
+# definir() e escrever_parametros() estão em funcoes_popstructure.R
 
 # -----------------------------------------------------------------------------
 # 10. Execução do STRUCTURE (fase exploratória, local)
@@ -372,48 +324,52 @@ escrever_parametros <- function(destino, burnin, numreps) {
 # Exploração: 10.000 de burn-in + 20.000 iterações, 3 réplicas por K.
 # Cada execução usa um núcleo; rodamos várias em paralelo.
 # Execuções que já terminaram (arquivo *_f existe) são puladas, então dá para
-# interromper e retomar.
+# interromper e retomar. Só roda com executar_structure = TRUE (seção 0).
 
-fase      <- "exploracao"
-burnin    <- 10000
-numreps   <- 20000
-replicas  <- 1:3
-faixa_K   <- list(global = 1:6, dent = 1:12, flint = 1:14)
-n_nucleos <- 10
+if (!executar_structure) {
+  cat("\nSTRUCTURE não executado (executar_structure = FALSE).\n")
+} else {
+  fase      <- "exploracao"
+  burnin    <- 10000
+  numreps   <- 20000
+  replicas  <- 1:3
+  faixa_K   <- list(global = 1:6, dent = 1:12, flint = 1:14)
+  n_nucleos <- 10
 
-dir_fase <- file.path(dir_str, fase)
-dir.create(dir_fase, showWarnings = FALSE)
-escrever_parametros(dir_fase, burnin, numreps)
+  dir_fase <- file.path(dir_str, fase)
+  dir.create(dir_fase, showWarnings = FALSE)
+  escrever_parametros(dir_fase, burnin, numreps)
 
-execucoes <- rbindlist(lapply(names(faixa_K), function(nome)
-  CJ(conjunto = nome, K = faixa_K[[nome]], rep = replicas)))
-# semente distinta e reprodutível para cada execução
-execucoes[, semente := 1e5 * match(conjunto, names(faixa_K)) + 100 * K + rep]
-execucoes[, saida := file.path(dir_fase, conjunto,
-                               sprintf("%s_K%02d_r%d", conjunto, K, rep))]
-# execuções mais longas primeiro, para distribuir melhor entre os núcleos
-execucoes[, custo := info_conjuntos[conjunto][[1]]$n_ind, by = conjunto]
-setorder(execucoes, -custo, -K)
+  execucoes <- rbindlist(lapply(names(faixa_K), function(nome)
+    CJ(conjunto = nome, K = faixa_K[[nome]], rep = replicas)))
+  # semente distinta e reprodutível para cada execução
+  execucoes[, semente := 1e5 * match(conjunto, names(faixa_K)) + 100 * K + rep]
+  execucoes[, saida := file.path(dir_fase, conjunto,
+                                 sprintf("%s_K%02d_r%d", conjunto, K, rep))]
+  # execuções mais longas primeiro, para distribuir melhor entre os núcleos
+  execucoes[, custo := info_conjuntos[conjunto][[1]]$n_ind, by = conjunto]
+  setorder(execucoes, -custo, -K)
 
-rodar_structure <- function(i) {
-  e <- execucoes[i]
-  if (file.exists(paste0(e$saida, "_f"))) return("pulada")
-  dir.create(dirname(e$saida), showWarnings = FALSE)
-  inf <- info_conjuntos[[e$conjunto]]
-  log <- system2(structure,
-                 c("-m", file.path(dir_fase, "mainparams"),
-                   "-e", file.path(dir_fase, "extraparams"),
-                   "-i", inf$arquivo, "-o", e$saida,
-                   "-N", inf$n_ind, "-L", inf$n_loci,
-                   "-K", e$K, "-D", e$semente),
-                 stdout = paste0(e$saida, ".log"), stderr = paste0(e$saida, ".log"))
-  if (log != 0) "erro" else "ok"
+  rodar_structure <- function(i) {
+    e <- execucoes[i]
+    if (file.exists(paste0(e$saida, "_f"))) return("pulada")
+    dir.create(dirname(e$saida), showWarnings = FALSE)
+    inf <- info_conjuntos[[e$conjunto]]
+    log <- system2(structure,
+                   c("-m", file.path(dir_fase, "mainparams"),
+                     "-e", file.path(dir_fase, "extraparams"),
+                     "-i", inf$arquivo, "-o", e$saida,
+                     "-N", inf$n_ind, "-L", inf$n_loci,
+                     "-K", e$K, "-D", e$semente),
+                   stdout = paste0(e$saida, ".log"), stderr = paste0(e$saida, ".log"))
+    if (log != 0) "erro" else "ok"
+  }
+
+  cat("\nExecuções do STRUCTURE:", nrow(execucoes), "\n")
+  inicio <- Sys.time()
+  status <- parallel::mclapply(seq_len(nrow(execucoes)), rodar_structure,
+                               mc.cores = n_nucleos, mc.preschedule = FALSE)
+  execucoes[, status := unlist(status)]
+  print(execucoes[, .N, by = .(conjunto, status)])
+  print(Sys.time() - inicio)
 }
-
-cat("\nExecuções do STRUCTURE:", nrow(execucoes), "\n")
-inicio <- Sys.time()
-status <- parallel::mclapply(seq_len(nrow(execucoes)), rodar_structure,
-                             mc.cores = n_nucleos, mc.preschedule = FALSE)
-execucoes[, status := unlist(status)]
-print(execucoes[, .N, by = .(conjunto, status)])
-print(Sys.time() - inicio)

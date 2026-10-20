@@ -4,8 +4,21 @@
 #   bio640_cluster.R       (pacote para o cluster da UFV)
 # =============================================================================
 
-plink     <- "/home/jpgt-avell/plink_linux_x86_64_20250819/plink"
-structure <- "/home/jpgt-avell/STRUCTURE/console/structure"
+# Caminhos dos programas externos. Procura, nesta ordem:
+#   1. variável de ambiente (PLINK, STRUCTURE), por exemplo no ~/.Renviron:
+#        PLINK=/caminho/para/plink
+#   2. o PATH do sistema;
+#   3. o caminho na máquina do autor do repositório.
+achar_programa <- function(variavel, nome, padrao) {
+  caminho <- Sys.getenv(variavel)
+  if (caminho == "") caminho <- unname(Sys.which(nome))
+  if (caminho == "") caminho <- padrao
+  caminho
+}
+plink     <- achar_programa("PLINK", "plink",
+                            "/home/jpgt-avell/plink_linux_x86_64_20250819/plink")
+structure <- achar_programa("STRUCTURE", "structure",
+                            "/home/jpgt-avell/STRUCTURE/console/structure")
 
 # O PLINK assume genoma humano por padrão. O milho tem 10 cromossomos
 # autossômicos e nenhum cromossomo sexual.

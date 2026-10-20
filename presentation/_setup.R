@@ -26,8 +26,8 @@ tema <- theme_minimal(base_size = 24) +
         strip.text = element_text(face = "bold"))
 theme_set(tema)
 
-# Vírgula como separador decimal nos eixos e rótulos
-options(OutDec = ",")
+# Apresentação em inglês: ponto como separador decimal (padrão do R)
+options(OutDec = ".")
 
 cor_pool <- c(Dent = "#E31A1C", Flint = "#1F78B4")
 cor_alelo <- c(A = "#F2B701", a = "#6A3D9A")
@@ -89,9 +89,11 @@ barras_parentais <- function(conj, Ks) {
 
 # Diagrama de caixas e setas desenhado com ggplot (fica igual no HTML e no PDF)
 #   caixas: data.table com id, x, y, rotulo e cor (preenchimento)
-#   setas:  data.table com de, para e rotulo (texto sobre a seta, opcional)
+#   setas:  data.table com de, para e rotulo (texto sobre a seta, opcional);
+#           colunas lx e ly (opcionais) dão a posição do rótulo; sem elas, o
+#           rótulo fica no meio da seta
 diagrama <- function(caixas, setas, largura = 2.4, altura = 1.3,
-                     tamanho = 8) {
+                     tamanho = 8, tamanho_rotulo = tamanho * 0.75) {
   s <- merge(setas, caixas[, .(de = id, x0 = x, y0 = y)], by = "de")
   s <- merge(s, caixas[, .(para = id, x1 = x, y1 = y)], by = "para")
   # a seta começa e termina na borda das caixas, não no centro
@@ -99,23 +101,30 @@ diagrama <- function(caixas, setas, largura = 2.4, altura = 1.3,
   s[, t := pmin((largura / 2 + 0.08) / abs(dx), (altura / 2 + 0.08) / abs(dy))]
   s[, `:=`(xa = x0 + t * dx, ya = y0 + t * dy, xb = x1 - t * dx, yb = y1 - t * dy)]
   if (!"rotulo" %in% names(s)) s[, rotulo := ""]
+  if (!"lx" %in% names(s)) s[, lx := (xa + xb) / 2]
+  if (!"ly" %in% names(s)) s[, ly := (ya + yb) / 2]
   ggplot() +
     geom_segment(data = s, aes(xa, ya, xend = xb, yend = yb), linewidth = 1.5,
                  colour = "grey35",
                  arrow = arrow(length = unit(0.35, "cm"), type = "closed")) +
-    geom_label(data = s[rotulo != ""], aes((xa + xb) / 2, (ya + yb) / 2,
-                                           label = rotulo),
-               size = tamanho * 0.75, label.size = 0, lineheight = 0.85,
-               colour = "grey25") +
     geom_tile(data = caixas, aes(x, y, fill = I(cor)), width = largura,
               height = altura, colour = "grey30", linewidth = 0.8) +
     geom_text(data = caixas, aes(x, y, label = rotulo), size = tamanho,
               lineheight = 0.9, colour = ifelse(caixas$cor %in% c("white", "grey92"),
                                                 "black", "white"),
               fontface = "bold") +
+    # rótulos das setas por último, para nunca ficarem escondidos
+    geom_label(data = s[rotulo != ""], aes(lx, ly, label = rotulo),
+               size = tamanho_rotulo, label.size = 0, lineheight = 0.85,
+               colour = "grey20", fontface = "bold") +
     coord_cartesian(clip = "off") +
     theme_void()
 }
+
+# Tema das ilustrações sem eixos (mesmo título dos demais gráficos)
+tema_vazio <- theme_void(base_size = 24) +
+  theme(plot.title = element_text(face = "bold"),
+        plot.subtitle = element_text(colour = "grey30"))
 
 # Números grandes com legenda, lado a lado
 numeros <- function(valores, legendas) {
@@ -128,10 +137,4 @@ numeros <- function(valores, legendas) {
     scale_y_continuous(limits = c(0, 1.4)) +
     scale_x_continuous(limits = c(0.5, length(valores) + 0.5)) +
     theme_void()
-}
-
-# No PDF (beamer) o slide é baixo: limita a altura das figuras para sobrar
-# espaço para o título e a frase de destaque
-if (knitr::is_latex_output()) {
-  knitr::opts_chunk$set(out.height = "0.66\\textheight", out.width = NULL)
 }

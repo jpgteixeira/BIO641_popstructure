@@ -9,6 +9,34 @@ com o **STRUCTURE**, como pedido pelo professor, e apresentar o tema
 > **Pergunta central:** o que o STRUCTURE detecta quando a "população" foi
 > construída por melhoristas?
 
+## Gerar os resultados (um comando)
+
+Depois de clonar o repositório, rode da raiz do projeto:
+
+```bash
+Rscript tools/gerar_resultados.R
+```
+
+O script [tools/gerar_resultados.R](tools/gerar_resultados.R) regenera os
+arquivos de `results/` usados na apresentação:
+
+1. instala os pacotes do R que faltarem (inclusive o `pophelper`, do GitHub);
+2. baixa os **resultados do STRUCTURE feitos no cluster da UFV**, publicados
+   na Release
+   [structure-cluster-20261015](https://github.com/jpgteixeira/BIO641_popstructure/releases/tag/structure-cluster-20261015)
+   (31 MB), e os descompacta em `data/`;
+3. analisa esses resultados (ΔK, réplicas, gráficos de barras) →
+   `results/structure/producao/analise/`;
+4. baixa os dados do GEO, refaz o controle de qualidade e as análises
+   complementares (PCA, LD, estatísticas F) → `results/complementares/`.
+   Esta etapa precisa do **PLINK 1.9** no `PATH` ou na variável `PLINK`
+   (por exemplo, `PLINK=/caminho/para/plink` no `~/.Renviron`); sem ele, é
+   pulada com um aviso.
+
+**O STRUCTURE não é executado**: a análise final levaria cerca de 14 dias no
+cluster. O script parte das saídas dele (`*_f` e `*.log`). Depois, a
+apresentação é gerada com `cd presentation && quarto render apresentacao.qmd`.
+
 ## Resumo do material
 
 - **Desenho do tipo NAM** com dois *pools* heteróticos. No **Dent**, a linha
@@ -72,14 +100,17 @@ bio640_complementares.R  PCA, decaimento do LD, MAF, funil do CQ, estatísticas 
 bio640_cluster.R         monta o pacote para o cluster a partir dos dados após o CQ
 funcoes_popstructure.R   funções compartilhadas (PLINK, parâmetros, conjuntos)
                            -> contém os CAMINHOS do plink e do structure
+tools/
+  gerar_resultados.R       regenera results/ a partir de um clone (ver acima)
 cluster/                 modelos dos scripts PBS (OpenPBS/UFV) e de compilação
-presentation/            apresentação em Quarto (reveal.js e PDF/beamer)
+presentation/            apresentação em Quarto (reveal.js, em inglês)
   apresentacao.qmd         lê results/; renderizar com `quarto render`
 docs/
   estrutura_dos_dados.md   descrição dos dados e pontos de atenção
   cluster_ufv.md           guia para rodar no cluster da UFV
 data/                    (não versionado) dados brutos e processados
-results/                 (não versionado) saídas do PLINK e do STRUCTURE
+results/                 saídas do PLINK e do STRUCTURE; só as tabelas e figuras
+                           usadas na apresentação são versionadas
 ```
 
 Os nomes `bio640_*` são intencionais (ainda que a disciplina seja BIO641).
@@ -94,10 +125,12 @@ Os nomes `bio640_*` são intencionais (ainda que a disciplina seja BIO641).
 | PLINK | 1.9 | sempre com `--chr-set 10 no-xy` (milho) |
 | STRUCTURE | 2.3.4 (console) | [site do Pritchard Lab](https://web.stanford.edu/group/pritchardlab/structure.html) |
 
-**Ajuste os caminhos** de `plink` e `structure` no início de
-`funcoes_popstructure.R` (e na seção 0 do `bio640_popstructure.R`). Os
-arquivos `mainparams`/`extraparams` são gerados a partir dos modelos que
-acompanham o STRUCTURE, na mesma pasta do executável.
+Os caminhos de `plink` e `structure` são procurados em
+`funcoes_popstructure.R`, nesta ordem: variáveis de ambiente `PLINK` e
+`STRUCTURE` (por exemplo, no `~/.Renviron`), o `PATH` do sistema e, por fim,
+o caminho na máquina do autor. Os arquivos `mainparams`/`extraparams` são
+gerados a partir dos modelos que acompanham o STRUCTURE, na mesma pasta do
+executável.
 
 ### 2. Dados (pasta `data/`, não versionada)
 
@@ -115,16 +148,21 @@ genótipos (conferido: 0 diferenças nos parentais).
 
 ### 3. Execução
 
+Para regenerar só os resultados, basta o `tools/gerar_resultados.R` (acima).
+Para rodar cada etapa à mão:
+
 ```bash
-Rscript bio640_popstructure.R    # Partes 1 e 2; a exploração leva ~2 h com 16 núcleos
+Rscript bio640_popstructure.R    # Partes 1 e 2 (sem o STRUCTURE; ver abaixo)
 Rscript bio640_resultados.R      # Parte 3 (~20 s): pophelper sobre a fase escolhida na seção 0
 Rscript bio640_complementares.R  # PCA, LD, estatísticas F (~1 min)
-cd presentation && quarto render apresentacao.qmd   # gera .html e .pdf
+cd presentation && quarto render apresentacao.qmd   # gera o .html
 Rscript bio640_cluster.R         # gera cluster/pacote/ para o cluster
 ```
 
-Rodar da raiz do projeto. As execuções do STRUCTURE já concluídas são
-puladas, então dá para interromper e retomar.
+Rodar da raiz do projeto. Para rodar também a exploração local do STRUCTURE
+(~6,5 h com 10 núcleos), use
+`Rscript -e 'executar_structure <- TRUE; source("bio640_popstructure.R")'`.
+As execuções já concluídas são puladas, então dá para interromper e retomar.
 
 ## Decisões tomadas (e por quê)
 
@@ -166,7 +204,8 @@ meiose: o LD se estende por blocos longos.
 - [x] Exploração local do STRUCTURE (96 execuções, ~6,5 h com 10 núcleos)
 - [x] Parte 3: pophelper (`bio640_resultados.R`). Curva ln P(D|K), ΔK de Evanno, alinhamento das réplicas, gráficos de barras ordenados por família, verificação de convergência
 - [ ] Interpretar os gráficos da exploração e escolher as faixas de K da produção
-- [ ] Refatorar o `bio640_popstructure.R` para usar o `funcoes_popstructure.R` (hoje parte do código está repetido)
+- [ ] Refatorar o `bio640_popstructure.R` para usar o `funcoes_popstructure.R` (já usa `rodar_plink()`, `definir()` e `escrever_parametros()`; as seções 7 e 8 ainda repetem `definir_conjuntos()` e `preparar_conjunto()`)
+- [x] `tools/gerar_resultados.R`: regenera `results/` a partir de um clone
 - [x] Produção no cluster da UFV: 169 de 175 execuções (dent e flint completos; global sem 2 réplicas de K = 6 e 4 de K = 7). Terminar levaria ~14 dias; usamos o que ficou pronto, exportado em `data/exportacao_structure_R_20261015/` (entradas e parâmetros conferidos: idênticos aos do `bio640_cluster.R`)
 - [x] Análises complementares (`bio640_complementares.R`): PCA, LD, F_IS/F_ST/F_IT entre *pools* e entre famílias
 - [x] Apresentação (`presentation/apresentacao.qmd`)
