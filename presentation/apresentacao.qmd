@@ -49,14 +49,15 @@ set.seed(641)
 <!-- TODO: incluir aqui o exemplo do Rodrigo -->
 
 ::: notes
-Population structure means that genotypes are not spread at random: there are
-groups of individuals that share allele frequencies more with each other than
-with the rest. It appears whenever mating is not random: geographic distance,
-physical barriers, genetic drift in small groups, selection and, in plants
-and animals, the breeder deciding who is crossed with whom. In humans, the
-classic examples are Rosenberg et al. (2002), where STRUCTURE splits 52
-worldwide populations into continental groups, and Novembre et al. (2008),
-where a PCA of European genotypes reproduces the map of Europe.
+Estrutura populacional significa que os genótipos não estão distribuídos ao
+acaso: há grupos de indivíduos que compartilham frequências alélicas mais
+entre si do que com o resto. Ela aparece sempre que os cruzamentos não são
+aleatórios: distância geográfica, barreiras físicas, deriva genética em grupos
+pequenos, seleção e, em plantas e animais, o melhorista decidindo quem cruza
+com quem. Em humanos, os exemplos clássicos são Rosenberg et al. (2002), em
+que o STRUCTURE separa 52 populações do mundo em grupos continentais, e
+Novembre et al. (2008), em que uma PCA dos genótipos de europeus reproduz o
+mapa da Europa.
 :::
 
 ## Human example: genes mirror geography
@@ -92,12 +93,12 @@ Simulated, as in Novembre et al. 2008: the PCA redraws the map
 :::
 
 ::: notes
-This is a simulation inspired by Novembre et al. (2008). People live on a
-map; each colour is a region. Allele frequencies change gradually with
-distance, because people tend to have children with neighbours. A PCA of the
-genotypes alone, without any information on location, places the individuals
-in the same arrangement as the map. Novembre et al. found exactly this with
-real data from about 1,400 Europeans.
+Simulação inspirada em Novembre et al. (2008). As pessoas vivem num mapa;
+cada cor é uma região. As frequências alélicas mudam aos poucos com a
+distância, porque as pessoas tendem a ter filhos com vizinhos. Uma PCA feita
+só com os genótipos, sem nenhuma informação de localização, coloca os
+indivíduos no mesmo arranjo do mapa. Novembre et al. encontraram exatamente
+isso com dados reais de cerca de 1.400 europeus.
 :::
 
 ## Populations do not mate at random
@@ -133,10 +134,11 @@ Subpopulations → different allele frequencies
 :::
 
 ::: notes
-In a panmictic population, any individual can mate with any other, and allele
-frequencies are the same everywhere. When there are barriers (geography,
-selection, a breeder choosing the crosses), each subpopulation drifts to its
-own frequencies. That is structure: genotypes are not distributed at random.
+Numa população panmítica, qualquer indivíduo pode cruzar com qualquer outro,
+e as frequências alélicas são as mesmas em todo lugar. Quando há barreiras
+(geografia, seleção, o melhorista escolhendo os cruzamentos), cada
+subpopulação deriva para frequências próprias. Isso é estrutura: os genótipos
+não estão distribuídos ao acaso.
 :::
 
 ## Why does it matter?
@@ -191,19 +193,21 @@ p_gwas <- ggplot(m, aes(x, p, colour = factor(chr %% 2))) +
   labs(x = "chromosome", y = "−log10 p", title = "GWAS",
        subtitle = "spurious peaks") +
   theme(panel.grid = element_blank(),
-        plot.subtitle = element_text(colour = "grey30"))
+        plot.subtitle = element_text(colour = "grey30", size = rel(0.9)))
 
-p_melhoramento + p_biologia + p_gwas
+# espaços em branco entre as figuras para uma não invadir a outra
+p_melhoramento + plot_spacer() + p_biologia + plot_spacer() + p_gwas +
+  plot_layout(widths = c(1, 0.25, 0.8, 0.35, 1.2))
 ```
 
 ::: notes
-Three reasons. Breeding: maize hybrids come from crossing two heterotic
-groups (here, dent and flint kernels); knowing which group a line belongs to
-tells us what to cross it with. Biology: when a barrier (a river, a mountain)
-splits a population, the two halves diverge, and that can lead to
-speciation (vicariance); structure records this history. GWAS: in
-association studies, ignoring structure produces peaks that are not real
-(false positives), as the next slide shows.
+Três motivos. Melhoramento: os híbridos de milho vêm do cruzamento de dois
+grupos heteróticos (aqui, grãos dent e flint); saber a qual grupo uma linha
+pertence diz com quem cruzá-la. Biologia: quando uma barreira (um rio, uma
+montanha) divide uma população, as duas metades divergem, e isso pode levar à
+especiação (vicariância); a estrutura registra essa história. GWAS: em
+estudos de associação, ignorar a estrutura produz picos que não são reais
+(falsos positivos), como mostra o próximo slide.
 :::
 
 ## Spurious association: type I error
@@ -233,11 +237,11 @@ The SNP has no effect: the difference comes from the population
 :::
 
 ::: notes
-Simulation: the SNP does not affect height. Population 1 is taller and carries
-more of allele A. Pooling everything (black line), allele A seems to increase
-height. Within each population (dashed lines), there is no effect at all. This
-is why GWAS corrects for structure (STRUCTURE's Q matrix or PCs as
-covariates).
+Simulação: o SNP não afeta a altura. A população 1 é mais alta e tem mais o
+alelo A. Juntando tudo (linha preta), parece que o alelo A aumenta a altura.
+Dentro de cada população (linhas tracejadas), não há efeito nenhum. Por isso
+o GWAS corrige pela estrutura (matriz Q do STRUCTURE ou PCs como
+covariáveis).
 :::
 
 # The data: CornFed panels
@@ -259,9 +263,9 @@ diagrama(
 ```
 
 ::: notes
-The two groups have been kept apart for decades to maximise heterosis in the
-dent × flint hybrid. We expect this to be the strongest split in the data
-(K = 2).
+Os dois grupos foram mantidos separados por décadas para maximizar a heterose
+no híbrido dent × flint. Esperamos que esta seja a divisão mais forte nos
+dados (K = 2).
 :::
 
 ## One central line × 10 to 12 founders
@@ -306,11 +310,11 @@ ggplot(desenho) +
 ```
 
 ::: notes
-Each family comes from crossing the pool's central line (F353 in dent, UH007
-in flint) with one founder. So the families within a pool are half-sibs.
-Three families have parents from both pools (orange): CFD01 and CFF01 are the
-cross between the two central lines, and CFF02 has B73 (dent) as founder.
-These are our controls: they should show ~50% of each pool.
+Cada família vem do cruzamento da linha central do pool (F353 no dent, UH007
+no flint) com uma fundadora. Por isso as famílias de um pool são meio-irmãs.
+Três famílias têm pais dos dois pools (em laranja): CFD01 e CFF01 são o
+cruzamento entre as duas linhas centrais, e CFF02 tem B73 (dent) como
+fundadora. São os nossos controles: devem aparecer com ~50% de cada pool.
 :::
 
 ## Doubled haploid (DH) lines
@@ -336,11 +340,11 @@ One meiosis · 50% central + 50% founder
 :::
 
 ::: notes
-The F1 plant is pollinated by a haploid inducer; the chromosomes of the
-haploid embryos are doubled with colchicine. Result: fully homozygous lines in
-a single generation. Since there was only one meiosis (in the F1), each DH is
-a mosaic of large blocks from the central line and the founder. This will show
-up in LD and in STRUCTURE.
+A planta F1 é polinizada por um indutor de haploidia; os cromossomos dos
+embriões haploides são duplicados com colchicina. Resultado: linhas
+totalmente homozigotas em uma geração. Como houve uma única meiose (na F1),
+cada DH é um mosaico de grandes blocos da linha central e da fundadora. Isso
+vai aparecer no LD e no STRUCTURE.
 :::
 
 ## The data
@@ -356,12 +360,12 @@ numeros(c("2,290", "24", "23", "56,110"),
 GEO **GSE50558** · Bauer et al. 2013 · Lehermeier et al. 2014
 
 ::: notes
-The GEO matrix contains both pools together. Lehermeier et al. (2014)
-analysed the dent and flint panels separately and also jointly (34,116 SNPs
-in the joint analysis); we do the same: a "global" dataset (dent + flint)
-and one dataset per pool. Lehermeier used 10 dent and 11 flint families; the
-GEO has 3 more (CFD01, CFF01, CFF02), the crosses between pools, which we use
-as controls.
+A matriz do GEO tem os dois pools juntos. Lehermeier et al. (2014) analisaram
+os painéis dent e flint separadamente e também em conjunto (34.116 SNPs na
+análise conjunta); fazemos o mesmo: um conjunto "global" (dent + flint) e um
+conjunto por pool. Lehermeier usou 10 famílias dent e 11 flint; o GEO tem 3 a
+mais (CFD01, CFF01, CFF02), os cruzamentos entre pools, que usamos como
+controles.
 :::
 
 # From SNPs to clean data
@@ -391,10 +395,10 @@ DH almost without AB → heterozygote = error → missing data
 :::
 
 ::: notes
-SNP = a genome position with two alleles. The Illumina chip calls AA, AB or
-BB. DH lines and inbred parents should be 100% homozygous; the little AB that
-shows up (0.3% in the DH) is a calling error or residual heterozygosity. That
-is why we treat AB as missing data.
+SNP = uma posição do genoma com dois alelos. O chip Illumina chama AA, AB ou
+BB. Linhas DH e parentais endogâmicos deveriam ser 100% homozigotos; o pouco
+de AB que aparece (0,3% nas DH) é erro de chamada ou heterozigose residual.
+Por isso tratamos AB como dado faltante.
 :::
 
 ## PLINK: the Swiss army knife for SNPs
@@ -418,12 +422,12 @@ c("--chr-set", "10", "no-xy")
 ::::
 
 ::: notes
-PLINK is the standard program for handling SNP data, and we use it for all
-the filtering steps that follow. By default it assumes the human genome and
-would treat chromosomes differently (for example, sex chromosomes).
---chr-set 10 no-xy says there are 10 autosomes and no sex chromosomes. We
-call PLINK from R with system2(), in the rodar_plink() function, so the whole
-workflow lives in a single script.
+O PLINK é o programa padrão para manipular dados de SNP, e é com ele que
+fazemos todas as etapas de filtragem a seguir. Por padrão ele supõe o genoma
+humano e trataria os cromossomos de outro jeito (por exemplo, os
+cromossomos sexuais). --chr-set 10 no-xy diz que são 10 autossomos e nenhum
+cromossomo sexual. Chamamos o PLINK de dentro do R com system2(), na função
+rodar_plink(), para todo o fluxo ficar num script só.
 :::
 
 ## SNPs have errors: filtering
@@ -473,13 +477,14 @@ rodar_plink(
 ::::
 
 ::: notes
-GenTrain: a quality score for how well the chip intensities cluster (SNPs
-scoring < 0.7 have unreliable calls; they are listed in gentrain_baixo.txt
-and removed with --exclude). Call rate (--geno 0.1): a SNP missing in more
-than 10% of the samples is removed. MAF (--maf 0.01): an almost monomorphic
-SNP says nothing about structure and is more error-prone. We also removed 21
-DH lines with more than 10% missing data (--remove). Same criteria as
-Lehermeier et al. 2014 (they kept 34,116 SNPs; we kept 33,430).
+GenTrain: nota de qualidade do agrupamento das intensidades no chip (SNPs com
+nota < 0,7 têm chamadas pouco confiáveis; ficam listados em
+gentrain_baixo.txt e saem com --exclude). Call rate (--geno 0.1): SNP sem
+genótipo em mais de 10% das amostras é removido. MAF (--maf 0.01): SNP quase
+monomórfico não informa sobre estrutura e é mais sujeito a erro. Também
+removemos 21 DH com mais de 10% de dados faltantes (--remove). Mesmos
+critérios de Lehermeier et al. 2014 (eles ficaram com 34.116 SNPs; nós com
+33.430).
 :::
 
 ## MAF: minor allele frequency
@@ -509,11 +514,11 @@ Filters recomputed within each dataset
 :::
 
 ::: notes
-MAF = frequency of the less common allele. A SNP that separates dent from
-flint is common overall but may be fixed within a pool (almost 2,000 in dent
-and 2,600 in flint). That is why MAF and call rate were recomputed in each
-dataset analysed. "Global" is the combined dataset with both pools, as in
-Lehermeier's joint analysis.
+MAF = frequência do alelo menos comum. Um SNP que separa dent de flint é
+comum no total, mas pode ser fixo dentro de um pool (quase 2.000 no dent e
+2.600 no flint). Por isso MAF e call rate foram recalculados em cada conjunto
+analisado. "Global" é o conjunto com os dois pools juntos, como na análise
+conjunta do Lehermeier.
 :::
 
 ## Linkage disequilibrium (LD)
@@ -536,11 +541,11 @@ ggplot(ld[distancia_mb <= 10], aes(distancia_mb, r2, colour = grupo)) +
 ```
 
 ::: notes
-LD = association between alleles at nearby loci: they are inherited together.
-r² measures it (0 = independent, 1 = always together). In the DH lines LD is
-higher and decays slowly with distance, because there was a single meiosis.
-STRUCTURE assumes independent loci within each group; SNPs in LD repeat the
-same information many times and make the result overconfident.
+LD = associação entre alelos de locos próximos: eles são herdados juntos. O
+r² mede isso (0 = independentes, 1 = sempre juntos). Nas DH o LD é maior e
+cai devagar com a distância, porque houve uma única meiose. O STRUCTURE
+supõe locos independentes dentro de cada grupo; SNPs em LD repetem a mesma
+informação várias vezes e deixam o resultado confiante demais.
 :::
 
 ## LD pruning
@@ -586,13 +591,13 @@ rodar_plink(
 ::::
 
 ::: notes
-Pruning slides along the genome in 50-SNP windows (step of 5). Within the
-window, for each pair with r² > 0.2, one SNP is removed. It is done
-separately in each dataset (global, dent, flint), always starting from the
-same 33,430 SNPs, so the three lists are mostly different SNPs and do not add
-up. Fewer SNPs remain within the pools because many SNPs become fixed there
-and because LD is stronger: all DH lines in a pool share the same central
-line. Bonus: STRUCTURE runs much faster.
+A poda anda pelo genoma em janelas de 50 SNPs (passo de 5). Dentro da
+janela, para cada par com r² > 0,2, um SNP é removido. Ela é feita
+separadamente em cada conjunto (global, dent, flint), sempre a partir dos
+mesmos 33.430 SNPs; por isso as três listas são, em grande parte, SNPs
+diferentes e não se somam. Dentro dos pools sobram menos SNPs porque muitos
+ficam fixos e porque o LD é mais forte: todas as DH de um pool compartilham a
+mesma linha central. Bônus: o STRUCTURE fica muito mais rápido.
 :::
 
 # STRUCTURE
@@ -619,13 +624,13 @@ K groups in Hardy-Weinberg · Q = fraction from each group
 :::
 
 ::: notes
-STRUCTURE (Pritchard et al. 2000) assumes there are K ancestral populations,
-each with its own allele frequencies, in Hardy-Weinberg and linkage
-equilibrium. It looks for the partition of individuals (or of parts of their
-genomes, in the admixture model) that brings each group as close as possible
-to that equilibrium. It estimates the allele frequencies of each group (P)
-and the proportions of each individual (Q) at the same time. In the example,
-70% of the individual's genome comes from group 1 and 30% from group 2.
+O STRUCTURE (Pritchard et al. 2000) supõe que existem K populações
+ancestrais, cada uma com suas frequências alélicas, em equilíbrio de
+Hardy-Weinberg e de ligação. Ele procura a divisão dos indivíduos (ou de
+partes do genoma deles, no modelo com mistura) que deixa cada grupo o mais
+próximo possível desse equilíbrio. Estima ao mesmo tempo as frequências
+alélicas de cada grupo (P) e as proporções de cada indivíduo (Q). No exemplo,
+70% do genoma do indivíduo vem do grupo 1 e 30% do grupo 2.
 :::
 
 ## What STRUCTURE reads
@@ -650,13 +655,14 @@ One row per line · family code · 2 columns per SNP (alleles 1/2)
 :::
 
 ::: notes
-PLINK exports the pruned SNPs in STRUCTURE's format (--recode structure).
-Row 1: SNP names. Row 2: distance to the previous SNP on the same chromosome
-(-1 = first SNP of a chromosome). Then one row per individual: its name, a
-number for its family (not used by the model; USEPOPINFO = 0), and two
-columns per SNP, one for each allele copy (1 or 2; 0 = missing). DH lines
-are homozygous, so the two columns are always equal (1 1 or 2 2). The global
-file has 2,269 rows of individuals and 2,226 SNPs, i.e. 4,454 columns.
+O PLINK exporta os SNPs podados no formato do STRUCTURE (--recode
+structure). Linha 1: nomes dos SNPs. Linha 2: distância até o SNP anterior no
+mesmo cromossomo (-1 = primeiro SNP do cromossomo). Depois, uma linha por
+indivíduo: o nome, um número para a família (não usado pelo modelo;
+USEPOPINFO = 0) e duas colunas por SNP, uma para cada cópia do alelo (1 ou
+2; 0 = faltante). As DH são homozigotas, então as duas colunas são sempre
+iguais (1 1 ou 2 2). O arquivo global tem 2.269 linhas de indivíduos e 2.226
+SNPs, ou seja, 4.454 colunas.
 :::
 
 ## Parameters
@@ -672,14 +678,14 @@ file has 2,269 rows of individuals and 2,226 SNPs, i.e. 4,454 columns.
 | RANDOMIZE | 0 + `-D` | 0 + `-D` | reproducible |
 
 ::: notes
-Two stages: a quick local exploration (subsample, short chains) to choose the
-K ranges, and the final analysis on the cluster with all samples and chains
-five times longer. From here on, the results shown are the cluster's.
-Admixture model with correlated allele frequencies, as in Caniato et al.
-2011. K goes beyond the expected number of groups (dent has 11 families; we
-tested up to 13). Watch out: with RANDOMIZE 1 (the default) STRUCTURE ignores
-the seed. Another detail: in the parameter file, 100000 must not become
-1e+05, which STRUCTURE would read as 1.
+Duas etapas: uma exploração local rápida (subamostra, cadeias curtas) para
+escolher as faixas de K, e a análise final no cluster com todas as amostras
+e cadeias cinco vezes mais longas. Daqui em diante, os resultados mostrados
+são os do cluster. Modelo com mistura e frequências alélicas correlacionadas,
+como em Caniato et al. 2011. K vai além do número esperado de grupos (o dent
+tem 11 famílias; testamos até 13). Atenção: com RANDOMIZE 1 (o padrão) o
+STRUCTURE ignora a semente. Outro detalhe: no arquivo de parâmetros, 100000
+não pode virar 1e+05, que o STRUCTURE leria como 1.
 :::
 
 ## MCMC: burn-in and convergence
@@ -711,17 +717,18 @@ Jump → unstable replicate · different plateaus → several solutions
 :::
 
 ::: notes
-STRUCTURE runs a Markov chain (MCMC): it starts at a random point and keeps
-improving. The burn-in (50,000 iterations) is discarded; the plot shows the
-following 100,000. Two different problems:
-(1) On the left, replicate 1 of flint K = 14 jumps to another plateau around
-iteration 97,000: the chain had not stabilised yet. Its variance of the ln
-likelihood is much larger than the others' (criterion: > 3× the median of the
-replicates of the same K). It was the only unstable replicate out of 169; it
-is left out.
-(2) On the right, the five replicates of global K = 4 are stable, but each on
-its own plateau: each chain found a different solution. This is not a bug; it
-shows that with 4 groups there are several almost equally good partitions.
+O STRUCTURE roda uma cadeia de Markov (MCMC): começa num ponto aleatório e
+vai melhorando. O burn-in (50.000 iterações) é descartado; o gráfico mostra
+as 100.000 seguintes. Dois problemas diferentes:
+(1) À esquerda, a réplica 1 do flint K = 14 salta para outro patamar perto da
+iteração 97.000: a cadeia ainda não tinha estabilizado. A variância do ln da
+verossimilhança dela é muito maior que a das outras (critério: > 3× a mediana
+das réplicas do mesmo K). Foi a única réplica instável em 169; ela fica de
+fora.
+(2) À direita, as cinco réplicas do global K = 4 estão estáveis, mas cada uma
+num patamar: cada cadeia encontrou uma solução diferente. Não é erro de
+programa; mostra que, com 4 grupos, há várias divisões quase igualmente
+boas.
 :::
 
 ## Running it: from laptop to cluster
@@ -743,13 +750,13 @@ Local: 96 runs in 6.5 h · Cluster: 169 of 175 jobs
 :::
 
 ::: notes
-Each STRUCTURE run uses a single core. Locally we ran 10 at a time with
-mclapply (exploration, 6.5 hours). On the UFV cluster, each run becomes a PBS
-job. Finishing everything would take about 14 days on the cluster, so we used
-what was ready: dent and flint complete (65 and 70 runs) and global with 34 of
-40 (2 replicates of K = 6 and 4 of K = 7 are missing). We checked the cluster
-input files and parameters: they are identical to those produced by our
-script.
+Cada execução do STRUCTURE usa um único núcleo. Localmente rodamos 10 ao
+mesmo tempo com mclapply (exploração, 6,5 horas). No cluster da UFV, cada
+execução vira um job do PBS. Terminar tudo levaria cerca de 14 dias no
+cluster; usamos o que ficou pronto: dent e flint completos (65 e 70
+execuções) e o global com 34 de 40 (faltam 2 réplicas de K = 6 e 4 de
+K = 7). Conferimos os arquivos de entrada e os parâmetros do cluster: são
+idênticos aos gerados pelo nosso script.
 :::
 
 ## The output: the Q matrix
@@ -806,8 +813,8 @@ One bar = one individual · colours = fraction of the genome
 :::
 
 ::: notes
-Each row of the Q matrix becomes one bar: the height of each colour is the
-fraction of that individual's genome assigned to each group.
+Cada linha da matriz Q vira uma barra: a altura de cada cor é a fração do
+genoma daquele indivíduo atribuída a cada grupo.
 :::
 
 # R: tying it all together
@@ -835,10 +842,10 @@ q  <- alignK(q, type = "within")     # align the replicates
 ```
 
 ::: notes
-R reads the GEO data (data.table), calls PLINK and STRUCTURE, and analyses
-the results with the pophelper package. One detail: STRUCTURE's groups have
-no names, and "group 1" in one replicate may be "group 3" in another. That is
-why we align the replicates before averaging them.
+O R lê os dados do GEO (data.table), chama o PLINK e o STRUCTURE e analisa
+os resultados com o pacote pophelper. Um detalhe: os grupos do STRUCTURE não
+têm nome, e o "grupo 1" de uma réplica pode ser o "grupo 3" de outra. Por
+isso alinhamos as réplicas antes de tirar a média.
 :::
 
 # Results
@@ -870,14 +877,14 @@ p1 / p2
 :::
 
 ::: notes
-ln P(D|K) always rises with K: more groups always explain the data a bit
-better. Evanno et al. 2005 proposed looking at where that rise changes pace:
-ΔK is the second derivative divided by the standard deviation across
-replicates. In global (ΔK = 49,000 at K = 2) and flint (3,900 at K = 2) the
-peak is clear. In dent, ΔK is low for every K (maximum 11, at K = 3, and 7 at
-K = 2): the dent replicates already disagree at K = 2 (next slide). ΔK tends
-to point to the top level of the hierarchy, which is why we also look at the
-bar plots. In global, K = 7 has a single replicate and therefore no ΔK.
+O ln P(D|K) sempre sobe com K: mais grupos sempre explicam os dados um pouco
+melhor. Evanno et al. 2005 propuseram olhar onde essa subida muda de ritmo: o
+ΔK é a segunda derivada dividida pelo desvio-padrão entre réplicas. No
+global (ΔK = 49.000 em K = 2) e no flint (3.900 em K = 2) o pico é claro. No
+dent, o ΔK é baixo em todos os K (máximo 11, em K = 3, e 7 em K = 2): as
+réplicas do dent já discordam em K = 2 (próximo slide). O ΔK tende a apontar
+o nível mais alto da hierarquia; por isso olhamos também os gráficos de
+barras. No global, K = 7 tem uma réplica só e por isso não tem ΔK.
 :::
 
 ## Do the replicates agree?
@@ -908,24 +915,34 @@ Only low K values are reproducible
 :::
 
 ::: notes
-For each K, we compare the replicates with the one with the highest
-ln P(D|K): two replicates have "the same solution" when, on average, they
-assign more than 90% of each individual's genome to the same groups. The
-number above each bar is how many replicates share that solution; in grey,
-the K values with fewer than 5 finished replicates (in global, K = 7 has only
-one, so its "100%" means nothing). In global and flint, all replicates agree
-up to K = 3. In dent, only 3 of 5 agree already at K = 2. Above that, almost
-every replicate has its own solution. Practical consequence: the high-K plots
-show the solution with the highest ln P(D|K), one among several; their
-details should not be taken literally.
+Para cada K, comparamos as réplicas com a de maior ln P(D|K): duas réplicas
+têm "a mesma solução" quando atribuem, em média, mais de 90% do genoma de cada
+indivíduo aos mesmos grupos. O número sobre cada barra é quantas réplicas
+compartilham essa solução; em cinza, os K com menos de 5 réplicas prontas (no
+global, K = 7 tem uma só, então o "100%" ali não quer dizer nada). No global
+e no flint, todas as réplicas concordam até K = 3. No dent, só 3 de 5
+concordam já em K = 2. Acima disso, quase cada réplica tem sua própria
+solução. Consequência prática: os gráficos de K alto mostram a solução de
+maior ln P(D|K), uma entre várias; os detalhes deles não devem ser levados ao
+pé da letra.
 :::
 
 ## Global, K = 2: dent × flint
 
 ```{r}
 #| label: g-global-k2
-#| fig-height: 4.8
-barras("global", 2)
+#| fig-height: 5.2
+# O STRUCTURE não dá nome aos grupos: o "dent" é o grupo com maior fração
+# média nas DH dent; o outro é o "flint"
+k2 <- q_medio[conjunto == "global" & K == 2 & tipo == "DH",
+              .(fracao = mean(fracao)), by = .(pool, grupo)]
+grupo_dent <- k2[pool == "Dent"][which.max(fracao), as.character(grupo)]
+grupo_flint <- setdiff(unique(as.character(k2$grupo)), grupo_dent)
+barras("global", 2) +
+  scale_fill_manual(values = cores, breaks = c(grupo_dent, grupo_flint),
+                    labels = c("dent", "flint"), name = NULL) +
+  theme(legend.position = "top", legend.text = element_text(size = rel(1.1)),
+        legend.key.size = unit(1, "cm"))
 ```
 
 ::: destaque
@@ -933,12 +950,15 @@ CFD01, CFF01, CFF02: ~60/40, their parents come from both pools
 :::
 
 ::: notes
-Each column is a family (all DH lines; the width is the number of lines). The
-red group gathers the dent families and the blue one the flint families. The
-three control families appear admixed, as expected from the pedigree: CFD01
-0.62/0.38, CFF01 0.60/0.40 and CFF02 0.63/0.37 (close to 60/40, not 50/50).
-Some flint families (CFF04, 05, 06, 10) have some red: their founders are not
-as "flint" as the central line UH007.
+Cada coluna é uma família (todas as DH; a largura é o número de linhas).
+Como saber qual cor é dent? O STRUCTURE não dá nome aos grupos; as cores são
+nossas. Olhamos onde caem as linhas de origem conhecida: a central dent F353
+e fundadoras dent como B73 e Mo17 são ~90–100% vermelhas; a central flint
+UH007 é 100% azul. Logo, vermelho = dent e azul = flint. As três famílias de
+controle aparecem misturadas, como esperado pelo pedigree: CFD01 0,62/0,38,
+CFF01 0,60/0,40 e CFF02 0,63/0,37 (perto de 60/40, não 50/50). Algumas
+famílias flint (CFF04, 05, 06, 10) têm um pouco de vermelho: as fundadoras
+delas não são tão "flint" quanto a linha central UH007.
 :::
 
 ## Within the Dent pool
@@ -954,18 +974,18 @@ D11 = F353 × UH304: both Iodent, the most similar pair (SM = 0.77)
 :::
 
 ::: notes
-K = 2: blue = the central line F353's group, red = founders. CFD11 is all
-blue, and CFD03, 04 and 10 almost all blue, because their founders (UH304,
-D06, D09, UH250) resemble F353.
-Why is D11 all green at K = 3? CFD11 comes from F353 × UH304, and both lines
-share an Iodent background. In Lehermeier et al. (2014, Table 1) this is the
-most similar parent pair in the dent panel (simple matching = 0.765, against
-0.61–0.67 for the others). Its DH lines are therefore very alike and form a
-large, homogeneous block, which STRUCTURE gives its own group (green),
-together with F353 and UH304 themselves.
-From K = 4 onwards, families split off one by one (CFD06, CFD07...). Note:
-in dent the replicates already disagree at K = 2 (3 of 5), and from K = 5 on
-each replicate has its own solution.
+K = 2: azul = grupo da linha central F353, vermelho = fundadoras. A CFD11 é
+toda azul, e CFD03, 04 e 10 quase todas azuis, porque as fundadoras delas
+(UH304, D06, D09, UH250) se parecem com a F353.
+Por que a D11 fica toda verde em K = 3? A CFD11 vem de F353 × UH304, e as
+duas linhas têm origem Iodent. Em Lehermeier et al. (2014, Tabela 1), é o par
+de pais mais parecido do painel dent (simple matching = 0,765, contra
+0,61–0,67 nos demais). Por isso as DH dessa família são muito parecidas entre
+si e formam um bloco grande e homogêneo, que o STRUCTURE separa num grupo
+próprio (verde), junto com a própria F353 e a UH304.
+De K = 4 em diante, as famílias se separam uma a uma (CFD06, CFD07...).
+Atenção: no dent as réplicas já discordam em K = 2 (3 de 5) e, a partir de
+K = 5, cada réplica tem sua própria solução.
 :::
 
 ## Within the Flint pool
@@ -981,15 +1001,15 @@ F12, F13: founders closest to UH007 (SM = 0.79 and 0.82)
 :::
 
 ::: notes
-K = 2: blue = the central line UH007's group. Why are F12 and F13 blue? Their
-founders, UH006 (CFF12) and UH009 (CFF13), are the most similar to UH007 in
-the flint panel (simple matching = 0.791 and 0.815; Lehermeier et al. 2014,
-Table 1), so both families look like the central line.
-Why does F13 turn orange at K = 4? With 4 groups, STRUCTURE splits that
-"central-like" block in two: orange = UH007, UH009 and CFF13; blue = UH006
-and CFF12. K = 3 (green): the families whose founders are more distant from
-the central line, including CFF01 (F353, the dent central line) and CFF02
-(B73, dent). Up to K = 3 the 5 replicates agree; at K = 4, 3 of 5.
+K = 2: azul = grupo da linha central UH007. Por que F12 e F13 são azuis? As
+fundadoras delas, UH006 (CFF12) e UH009 (CFF13), são as mais parecidas com a
+UH007 no painel flint (simple matching = 0,791 e 0,815; Lehermeier et al.
+2014, Tabela 1); por isso as duas famílias se parecem com a linha central.
+Por que a F13 vira laranja em K = 4? Com 4 grupos, o STRUCTURE divide esse
+bloco "parecido com a central" em dois: laranja = UH007, UH009 e CFF13; azul
+= UH006 e CFF12. K = 3 (verde): as famílias cujas fundadoras são mais
+distantes da central, incluindo CFF01 (F353, a central dent) e CFF02 (B73,
+dent). Até K = 3 as 5 réplicas concordam; em K = 4, 3 de 5.
 :::
 
 ## PCA: another view
@@ -1022,13 +1042,12 @@ ggplot(pca, aes(PC1, PC2)) +
 ```
 
 ::: notes
-PCA assumes no genetic model at all: it summarises SNP variation in a few
-axes. PC1 separates dent and flint, like STRUCTURE's K = 2. The orange points
-(the three families with parents from both pools: CFD01, CFF01, CFF02) lie
-in between. The DH lines form "clouds" around the midpoint between the
-central line and their founder. The large circles with names are the
-parents. All 2,269 samples, with the 2,255 SNPs pruned for the global
-dataset.
+A PCA não supõe nenhum modelo genético: ela resume a variação dos SNPs em
+poucos eixos. O PC1 separa dent e flint, como o K = 2 do STRUCTURE. Os pontos
+laranja (as três famílias com pais dos dois pools: CFD01, CFF01, CFF02)
+ficam no meio. As DH formam "nuvens" em torno do ponto médio entre a linha
+central e a sua fundadora. Os círculos grandes com nome são os parentais.
+Todas as 2.269 amostras, com os 2.255 SNPs podados do conjunto global.
 :::
 
 # F-statistics
@@ -1047,9 +1066,19 @@ ggplot(w, aes(grupo, H, fill = tipo)) +
   geom_col(width = 0.6) +
   geom_hline(yintercept = 0.32, linetype = "dashed", linewidth = 1) +
   geom_text(aes(label = format(H)), vjust = -0.3, size = 9) +
+  # linha tracejada: heterozigotos que existem de fato depois de juntar
+  annotate("text", x = 3.4, y = 0.30, hjust = 0, vjust = 1, size = 7,
+           lineheight = 0.9, label = "observed\nheterozygosity\n(0.32)") +
+  # diferença entre o observado e o esperado no total: o efeito Wahlund
+  annotate("segment", x = 3.42, xend = 3.42, y = 0.33, yend = 0.49,
+           linewidth = 1.2, colour = "#B22222",
+           arrow = arrow(ends = "both", length = unit(0.3, "cm"))) +
+  annotate("text", x = 3.5, y = 0.41, hjust = 0, size = 7, colour = "#B22222",
+           lineheight = 0.9, label = "deficit\n(Wahlund)") +
   scale_fill_manual(values = c(H_S = "grey55", H_T = "#1F3A5F"), guide = "none") +
+  scale_x_discrete(expand = expansion(add = c(0.6, 1.4))) +
   scale_y_continuous(limits = c(0, 0.6), breaks = NULL) +
-  labs(x = NULL, y = "expected\nheterozygosity 2pq")
+  labs(x = NULL, y = "heterozygosity")
 ```
 
 ::: destaque
@@ -1057,11 +1086,11 @@ Pooling subpopulations → "missing" heterozygotes
 :::
 
 ::: notes
-Each subpopulation in Hardy-Weinberg has 2pq = 0.32 heterozygotes. If we pool
-the two and compute with the mean frequency (0.5), we would expect 0.5. But
-the actual heterozygotes are still 0.32. This deficit, caused only by the
-subdivision, is the Wahlund effect. F_ST measures exactly this:
-1 − H_S/H_T = 1 − 0.32/0.5 = 0.36.
+Cada subpopulação em Hardy-Weinberg tem 2pq = 0,32 de heterozigotos. Se
+juntarmos as duas e calcularmos com a frequência média (0,5), esperaríamos
+0,5. Mas os heterozigotos reais continuam 0,32. Esse déficit, causado só pela
+subdivisão, é o efeito Wahlund. O F_ST mede exatamente isso:
+1 − H_S/H_T = 1 − 0,32/0,5 = 0,36.
 :::
 
 ## Wright's F: three levels
@@ -1079,11 +1108,30 @@ $$
 $$
 
 ::: notes
-H_O: observed heterozygosity (fraction of AB). H_S: expected under
-Hardy-Weinberg within each subpopulation, averaged across them. H_T: expected
-in the total, using the mean frequency. F_IS measures inbreeding within
-subpopulations, F_ST the differentiation among them and F_IT the total
-inbreeding.
+H_O: heterozigosidade observada (fração de AB). H_S: esperada em
+Hardy-Weinberg dentro de cada subpopulação, média entre elas. H_T: esperada no
+total, com a frequência média. F_IS mede a endogamia dentro das
+subpopulações, F_ST a diferenciação entre elas e F_IT a endogamia total.
+
+SE PERGUNTAREM: o que significa F_ST = 0 e F_ST = 1?
+- F_ST = 0: as subpopulações têm as mesmas frequências alélicas (H_S = H_T).
+  Não há diferenciação: toda a diversidade está dentro dos grupos, e saber o
+  grupo de um indivíduo não diz nada sobre o genótipo dele. Ex.: duas
+  amostras tiradas ao acaso da mesma população.
+- F_ST = 1: cada subpopulação está fixada num alelo diferente (H_S = 0).
+  Toda a diversidade está entre os grupos: dentro de cada um, todos são
+  iguais, e saber o grupo diz exatamente o genótipo. Ex.: duas linhas
+  endogâmicas que diferem num SNP.
+- No meio: o F_ST é a fração da diversidade total que está entre os grupos.
+  Guia clássico de Wright: 0–0,05 pouca diferenciação; 0,05–0,15 moderada;
+  0,15–0,25 grande; acima de 0,25 muito grande. Para comparar: entre
+  continentes, em humanos, o F_ST fica em torno de 0,1–0,15.
+- O F_ST nunca passa de 1 − H_S/H_T: se os grupos são muito diversos por
+  dentro (H_S alto), ele fica baixo mesmo que os grupos sejam bem distintos.
+
+E o F_IS? F_IS = 0: dentro de cada subpopulação, os heterozigotos estão no
+nível esperado por Hardy-Weinberg (cruzamento ao acaso). F_IS = 1: nenhum
+heterozigoto, ou seja, endogamia completa, como nas nossas DH.
 :::
 
 ## F in the CornFed data
@@ -1103,6 +1151,15 @@ knitr::kable(f, align = "lcccccc",
                            "F~IS~", "F~ST~", "F~IT~"))
 ```
 
+::: legenda
+**H~O~** observed heterozygosity (fraction of AB) ·
+**H~S~** expected 2pq within each subpopulation ·
+**H~T~** expected 2pq in the total<br>
+**F~IS~** = 1 − H~O~/H~S~ inbreeding within ·
+**F~ST~** = 1 − H~S~/H~T~ differentiation between ·
+**F~IT~** = 1 − H~O~/H~T~ total
+:::
+
 :::: {.columns}
 ::: {.column width="50%"}
 F~IS~ ≈ 1: DH lines are homozygous
@@ -1113,15 +1170,20 @@ F~ST~ families **>** F~ST~ pools
 ::::
 
 ::: notes
-F_IS ≈ 1 is no surprise: DH lines are 100% homozygous by construction
-(H_O ≈ 0.001). The interesting part is F_ST. Between dent and flint it is
-0.20 (PLINK, with the Weir & Cockerham estimator, gives 0.22). Among families
-within a pool it is higher, ~0.35: the families differ more from each other
-than the two heterotic pools do. Why? F_ST is the share of the total
-diversity that lies between groups. Each pool is very diverse inside (many
-founders, H_S = 0.25), so only ~20% of the diversity is between pools. Each
-family comes from a cross of just two inbred parents, so it is very uniform
-inside (H_S = 0.16–0.19), and most of the diversity lies between families.
+F_IS ≈ 1 não é surpresa: as DH são 100% homozigotas por construção
+(H_O ≈ 0,001). O interessante é o F_ST. Entre dent e flint ele é 0,20 (o
+PLINK, com o estimador de Weir & Cockerham, dá 0,22). Entre famílias dentro de
+um pool ele é maior, ~0,35: as famílias diferem mais entre si do que os dois
+pools heteróticos. Por quê? O F_ST é a fração da diversidade total que está
+entre os grupos. Cada pool é muito diverso por dentro (muitas fundadoras,
+H_S = 0,25), então só ~20% da diversidade está entre os pools. Cada família
+vem do cruzamento de apenas dois pais endogâmicos, então é muito uniforme por
+dentro (H_S = 0,16–0,19), e a maior parte da diversidade está entre
+famílias.
+Pelo guia de Wright (notas do slide anterior), 0,20 é diferenciação grande
+e 0,35, muito grande. Se perguntarem por que famílias > pools: cada pool
+reúne 12 linhas (a central e 11 fundadoras), então é diverso por dentro;
+cada família vem de só 2 linhas, então é quase uniforme por dentro.
 :::
 
 # Take-home
@@ -1138,13 +1200,22 @@ Structure ≠ only natural populations: relatedness is structure too
 :::
 
 ::: notes
-The question of this work was: what does STRUCTURE detect when the
-"population" was built by breeders? Answer: at the top level, the split
-between heterotic groups; below it, the relatedness structure of the
-families. F_ST among families being higher than between pools reinforces
-this. Limitations: global is missing 6 of its 40 runs (K = 6 and 7), and
-above K ≈ 3 the replicates do not reach the same solution, so only low K
-values are firm conclusions.
+A pergunta do trabalho era: o que o STRUCTURE detecta quando a "população"
+foi construída por melhoristas? Resposta: no nível mais alto, a separação
+entre os grupos heteróticos; abaixo dele, a estrutura de parentesco.
+Item 3: acima de K = 2 ou 3, cada grupo novo não é uma "população" no sentido
+clássico, e sim uma família ou um conjunto de famílias com fundadoras
+parecidas (a CFD11 em K = 3, a CFF13 em K = 4...). O STRUCTURE está separando
+as linhas por parentesco, ou seja, pelo pedigree que o melhorista montou.
+Item 4: o modelo supõe K populações ancestrais em equilíbrio, e o "K certo"
+seria esse número. Aqui não há uma divisão única, e sim uma hierarquia: 2
+pools → linha central × fundadoras → 24 famílias → os dois pais de cada
+família. Cada nível é real à sua maneira. Por isso o ΔK aponta K = 2 (o nível
+mais alto), mas K = 3, 4... também mostram estrutura real; e, acima de
+K ≈ 3, as réplicas nem chegam à mesma solução. A pergunta útil não é "qual é
+o K", e sim "o que cada K mostra". O F_ST entre famílias maior que entre
+pools reforça isso. Limitações: o global ficou sem 6 de suas 40 execuções
+(K = 6 e 7), e só os K baixos são conclusões firmes.
 :::
 
 ## References {.smaller}
@@ -1183,13 +1254,13 @@ values are firm conclusions.
 ::::
 
 ::: notes
-Full references: Pritchard, Stephens & Donnelly 2000, Genetics 155: 945–959;
-Falush, Stephens & Pritchard 2003, Genetics 164: 1567–1587; Evanno, Regnaut &
-Goudet 2005, Molecular Ecology 14: 2611–2620; Francis 2017, Molecular Ecology
-Resources 17: 27–32 (pophelper); Weir & Cockerham 1984, Evolution 38:
-1358–1370; Rosenberg et al. 2002, Science 298: 2381–2385; Yu et al. 2006,
-Nature Genetics 38: 203–208; Novembre et al. 2008, Nature 456: 98–101;
-Caniato et al. 2011, PLoS ONE; Bauer et al. 2013, Genome Biology 14: R103;
-Lehermeier et al. 2014, Genetics 198: 3–16; Chang et al. 2015, GigaScience 4:
-7 (PLINK 1.9).
+Referências completas: Pritchard, Stephens & Donnelly 2000, Genetics 155:
+945–959; Falush, Stephens & Pritchard 2003, Genetics 164: 1567–1587; Evanno,
+Regnaut & Goudet 2005, Molecular Ecology 14: 2611–2620; Francis 2017,
+Molecular Ecology Resources 17: 27–32 (pophelper); Weir & Cockerham 1984,
+Evolution 38: 1358–1370; Rosenberg et al. 2002, Science 298: 2381–2385; Yu
+et al. 2006, Nature Genetics 38: 203–208; Novembre et al. 2008, Nature 456:
+98–101; Caniato et al. 2011, PLoS ONE; Bauer et al. 2013, Genome Biology 14:
+R103; Lehermeier et al. 2014, Genetics 198: 3–16; Chang et al. 2015,
+GigaScience 4: 7 (PLINK 1.9).
 :::

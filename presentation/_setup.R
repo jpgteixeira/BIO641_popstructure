@@ -122,9 +122,11 @@ diagrama <- function(caixas, setas, largura = 2.4, altura = 1.3,
 }
 
 # Tema das ilustrações sem eixos (mesmo título dos demais gráficos)
+# Tamanhos iguais aos do `tema`, para os títulos ficarem alinhados quando uma
+# ilustração fica ao lado de um gráfico comum (slide "Why does it matter?")
 tema_vazio <- theme_void(base_size = 24) +
-  theme(plot.title = element_text(face = "bold"),
-        plot.subtitle = element_text(colour = "grey30"))
+  theme(plot.title = element_text(face = "bold", size = rel(1)),
+        plot.subtitle = element_text(colour = "grey30", size = rel(0.9)))
 
 # Números grandes com legenda, lado a lado
 numeros <- function(valores, legendas) {
