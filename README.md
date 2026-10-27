@@ -40,8 +40,9 @@ apresentação é gerada com `cd presentation && quarto render apresentacao.qmd`
 ## Resumo do material
 
 - **Desenho do tipo NAM** com dois *pools* heteróticos. No **Dent**, a linha
-  central F353 foi cruzada com 10–11 fundadoras (famílias CFD). No **Flint**,
-  a central UH007 foi cruzada com 11–12 fundadoras (famílias CFF).
+  central F353 foi cruzada com 10 fundadoras dent (famílias CFD). No **Flint**,
+  a central UH007 foi cruzada com 11 fundadoras flint (famílias CFF). Há
+  ainda 3 famílias com pais dos dois *pools* (ver abaixo).
 - Cada família é formada por **linhas duplo-haploides (DH)**, que são
   homozigotas e têm em média 50% do genoma da linha central e 50% da
   fundadora.

@@ -52,3 +52,8 @@ $code-block-font-size: 0.8em;
   line-height: 1.5;
   margin: 0.2em 0 0.8em 0;
 }
+
+/* tabelas com fonte menor (slides da saída do STRUCTURE e das derivadas) */
+.reveal .tabela-pequena table {
+  font-size: 0.7em;
+}

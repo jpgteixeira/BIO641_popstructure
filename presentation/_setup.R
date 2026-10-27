@@ -47,27 +47,51 @@ amostras <- unique(q_medio[conjunto == "global" & K == 1,
 # Gráfico de barras do STRUCTURE com ggplot: uma barra por indivíduo, um painel
 # por K (linhas) e por família (colunas). Dentro da família, os indivíduos
 # ficam na mesma ordem em todos os K (ordenados pelo grupo do primeiro K).
-barras <- function(conj, Ks, so_dh = TRUE, rotulo_familia = TRUE) {
+# K_destaque: um K para marcar como o "K provável" (pico do ΔK); a linha dele
+# ganha moldura e o rótulo "ΔK peak"
+barras <- function(conj, Ks, so_dh = TRUE, rotulo_familia = TRUE,
+                   K_destaque = NULL) {
   d <- q_medio[conjunto == conj & K %in% Ks]
   if (so_dh) d <- d[tipo == "DH"]
   # grupo majoritário de cada indivíduo no primeiro K
   ordem <- d[K == min(Ks), .SD[which.max(fracao)], by = .(familia, id)]
   ordem <- ordem[order(familia, grupo, -fracao)][, x := seq_len(.N), by = familia]
   d <- merge(d, ordem[, .(id, x)], by = "id")
-  d[, painel_K := factor(paste("K =", K), levels = paste("K =", sort(Ks)))]
+  rotulo_K <- function(k) ifelse(k %in% K_destaque,
+                                 paste0("K = ", k, "\nΔK peak"), paste("K =", k))
+  d[, painel_K := factor(rotulo_K(K), levels = rotulo_K(sort(Ks)))]
   d[, familia := sub("^CF", "", familia)]
+  moldura <- unique(d[K %in% K_destaque, .(painel_K, familia)])
+  # Rótulos dos K escritos ao lado da última família (em vez da faixa de
+  # faceta), para o K destacado poder ficar em vermelho
+  rotulos <- unique(d[, .(painel_K, K)])[, familia := max(d$familia)]
+  rotulos[, destaque := K %in% K_destaque]
   ggplot(d, aes(x, fracao, fill = grupo)) +
-    geom_col(width = 1) +
+    # contorno fino da mesma cor: tapa as frestas brancas que o PNG mostra
+    # entre barras coladas (efeito da suavização das bordas, antialiasing)
+    geom_col(aes(colour = grupo), width = 1, linewidth = 0.3) +
+    # moldura só quando há um K destacado
+    (if (nrow(moldura) > 0)
+      geom_rect(data = moldura, aes(xmin = -Inf, xmax = Inf, ymin = -Inf,
+                                    ymax = Inf), inherit.aes = FALSE,
+                fill = NA, colour = "grey10", linewidth = 1.6)) +
+    geom_text(data = rotulos, aes(x = Inf, y = 0.5, label = painel_K),
+              inherit.aes = FALSE, hjust = -0.15, size = 6.5,
+              fontface = "bold", lineheight = 0.9,
+              colour = ifelse(rotulos$destaque, "#B22222", "grey10")) +
     facet_grid(painel_K ~ familia, scales = "free_x", space = "free_x",
                switch = "x") +
     scale_fill_manual(values = cores, guide = "none") +
+    scale_colour_manual(values = cores, guide = "none") +
     scale_y_continuous(breaks = NULL, expand = c(0, 0)) +
     scale_x_continuous(breaks = NULL, expand = c(0, 0)) +
+    coord_cartesian(clip = "off") +
     labs(x = NULL, y = NULL) +
     theme(panel.spacing.x = unit(1.5, "pt"), panel.grid = element_blank(),
           strip.text.x = element_text(angle = 90, size = rel(0.7),
                                       hjust = 1),
-          strip.text.y = element_text(angle = 0, size = rel(0.8)))
+          strip.text.y = element_blank(),
+          plot.margin = margin(5, 120, 5, 5))
 }
 
 # Só os parentais, com o nome de cada linha

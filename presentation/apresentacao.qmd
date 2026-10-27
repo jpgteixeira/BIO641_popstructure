@@ -62,34 +62,10 @@ mapa da Europa.
 
 ## Human example: genes mirror geography
 
-```{r}
-#| label: g-humanos
-#| fig-height: 6
-set.seed(2008)
-# Simulação: indivíduos numa grade de "regiões"; a frequência de cada SNP
-# muda suavemente com a posição (isolamento por distância)
-regioes <- CJ(lon = 1:8, lat = 1:5)
-n_snp <- 400
-a <- rnorm(n_snp, 0, 0.35); b <- rnorm(n_snp, 0, 0.35); c0 <- rnorm(n_snp, 0, 1)
-ind <- regioes[rep(seq_len(.N), each = 6)]
-G <- t(sapply(seq_len(nrow(ind)), function(i)
-  rbinom(n_snp, 2, plogis(a * (ind$lon[i] - 4.5) + b * (ind$lat[i] - 3) + c0))))
-pc <- prcomp(G)$x
-# o sinal dos PCs é arbitrário: alinha com a orientação do mapa
-ind[, `:=`(PC1 = pc[, 1] * sign(cor(pc[, 1], lon)),
-           PC2 = pc[, 2] * sign(cor(pc[, 2], lat)))]
-ind[, cor := hcl(h = 15 + (lon - 1) * 40, c = 70, l = 30 + lat * 9)]
-ind[, `:=`(xj = lon + runif(.N, -0.3, 0.3), yj = lat + runif(.N, -0.3, 0.3))]
-(ggplot(ind, aes(xj, yj, colour = I(cor))) +
-   geom_point(size = 3.5) + coord_equal() + tema_vazio +
-   labs(title = "Where people live")) +
-  (ggplot(ind, aes(PC1, PC2, colour = I(cor))) +
-     geom_point(size = 3.5) + theme(axis.text = element_blank()) +
-     labs(title = "PCA of their genotypes"))
-```
+![](nature.webp){fig-align="center"}
 
 ::: destaque
-Simulated, as in Novembre et al. 2008: the PCA redraws the map
+Novembre et al. 2008: the PCA redraws the map
 :::
 
 ::: notes
@@ -193,11 +169,9 @@ p_gwas <- ggplot(m, aes(x, p, colour = factor(chr %% 2))) +
   labs(x = "chromosome", y = "−log10 p", title = "GWAS",
        subtitle = "spurious peaks") +
   theme(panel.grid = element_blank(),
-        plot.subtitle = element_text(colour = "grey30", size = rel(0.9)))
+        plot.subtitle = element_text(colour = "grey30"))
 
-# espaços em branco entre as figuras para uma não invadir a outra
-p_melhoramento + plot_spacer() + p_biologia + plot_spacer() + p_gwas +
-  plot_layout(widths = c(1, 0.25, 0.8, 0.35, 1.2))
+p_melhoramento + p_biologia + p_gwas
 ```
 
 ::: notes
@@ -268,7 +242,7 @@ no híbrido dent × flint. Esperamos que esta seja a divisão mais forte nos
 dados (K = 2).
 :::
 
-## One central line × 10 to 12 founders
+## One central line × 10–11 founders (+ 3 cross-pool families)
 
 ```{r}
 #| label: g-desenho
@@ -315,6 +289,53 @@ no flint) com uma fundadora. Por isso as famílias de um pool são meio-irmãs.
 Três famílias têm pais dos dois pools (em laranja): CFD01 e CFF01 são o
 cruzamento entre as duas linhas centrais, e CFF02 tem B73 (dent) como
 fundadora. São os nossos controles: devem aparecer com ~50% de cada pool.
+
+CONTAGEM: 10 fundadoras dent e 11 flint do próprio pool (como no Lehermeier:
+"10 diverse dent founder lines", "11 flint founder lines"), mais 3 famílias
+entre pools. Nos nossos dados: 11 famílias dent, 13 flint, 2.267 DH e 23
+parentais. Os nomes: CF = CornFed (o projeto), D = painel dent, F = painel
+flint, número = a família; CFD11-023 é a DH 23 da família 11. Faltam a CFD08
+(F353 × F98902: está nos fenótipos, mas não no GEO), a CFF11 e a CFF14.
+
+FAMÍLIAS DENT (central F353, INRA, França). SM = simple matching da
+fundadora com a central (Lehermeier 2014, Tabela 1): quanto mais alto, mais
+parecida.
+  CFD01  UH007 (central flint)   Hohenheim       86 DH   —
+  CFD02  B73                     Iowa, EUA       73 DH   SM 0,608
+  CFD03  D06                     Hohenheim      103 DH   SM 0,642
+  CFD04  D09                     Hohenheim      105 DH   SM 0,668
+  CFD05  EC169                   CIAM, Espanha   77 DH   SM 0,617
+  CFD06  F252                    INRA, França   105 DH   SM 0,671
+  CFD07  F618                    INRA, França   108 DH   SM 0,645
+  CFD09  Mo17                    Missouri, EUA   63 DH   SM 0,627
+  CFD10  UH250                   Hohenheim       99 DH   SM 0,634
+  CFD11  UH304                   Hohenheim       86 DH   SM 0,765 (a mais alta)
+  CFD12  W117                    Wisconsin, EUA 100 DH   SM 0,625
+
+FAMÍLIAS FLINT (central UH007, Universidade de Hohenheim, Alemanha):
+  CFF01  F353 (central dent)     INRA, França    99 DH   —
+  CFF02  B73 (fundadora dent)    Iowa, EUA      120 DH   —
+  CFF03  D152                    Hohenheim      112 DH   SM 0,749
+  CFF04  EC49A                   CIAM, Espanha   53 DH   SM 0,656
+  CFF05  EP44                    CSIC, Espanha   34 DH   SM 0,615
+  CFF06  EZ5                     CSIC, Espanha   50 DH   SM 0,613
+  CFF07  F03802                  INRA, França   129 DH   SM 0,753
+  CFF08  F2                      INRA, França    77 DH   SM 0,723
+  CFF09  F283                    INRA, França   134 DH   SM 0,716
+  CFF10  F64                     INRA, França   108 DH   SM 0,621
+  CFF12  UH006                   Hohenheim      114 DH   SM 0,791
+  CFF13  UH009                   Hohenheim      117 DH   SM 0,815 (a mais alta)
+  CFF15  DK105                   Hohenheim      115 DH   SM 0,738
+(Procedência = de onde vieram as sementes, segundo os metadados do GEO.
+EC169 está como flint no GEO, mas é fundadora dent; reclassificamos.)
+
+LIGAÇÃO COM OS RESULTADOS: quanto mais a fundadora se parece com a central,
+mais a família inteira se parece com a central. As quatro famílias flint de
+SM mais baixo (CFF04, 05, 06 e 10; três com fundadoras espanholas) são as
+que aparecem com um pouco de "dent" no K = 2 global. CFF12 e CFF13 (SM mais
+alto) ficam inteiras no grupo da UH007. No dent, CFD11 (F353 × UH304, ambas
+de origem Iodent) é a família mais homogênea e ganha um grupo próprio em
+K = 3.
 :::
 
 ## Doubled haploid (DH) lines
@@ -487,39 +508,6 @@ critérios de Lehermeier et al. 2014 (eles ficaram com 34.116 SNPs; nós com
 33.430).
 :::
 
-## MAF: minor allele frequency
-
-```{r}
-#| label: g-maf
-#| fig-height: 6
-maf <- fread(file.path(dir_comp, "maf.tsv.gz"))
-maf[, conjunto := factor(conjunto, c("global", "dent", "flint"),
-                         c("global (dent + flint)", "dent", "flint"))]
-mono <- maf[, .(n = sum(maf == 0, na.rm = TRUE)), by = conjunto]
-ggplot(maf, aes(maf, fill = conjunto)) +
-  geom_histogram(breaks = seq(0, 0.5, 0.025), colour = "white") +
-  geom_text(data = mono[n > 0],
-            aes(x = 0.25, y = Inf, label = paste(format(n, big.mark = ","),
-                                                 "fixed SNPs")),
-            vjust = 1.5, size = 7, inherit.aes = FALSE) +
-  facet_wrap(~ conjunto) +
-  scale_fill_manual(values = c("grey40", cor_pool[["Dent"]],
-                               cor_pool[["Flint"]]) |>
-                      setNames(levels(maf$conjunto)), guide = "none") +
-  labs(x = "MAF", y = "SNPs")
-```
-
-::: destaque
-Filters recomputed within each dataset
-:::
-
-::: notes
-MAF = frequência do alelo menos comum. Um SNP que separa dent de flint é
-comum no total, mas pode ser fixo dentro de um pool (quase 2.000 no dent e
-2.600 no flint). Por isso MAF e call rate foram recalculados em cada conjunto
-analisado. "Global" é o conjunto com os dois pools juntos, como na análise
-conjunta do Lehermeier.
-:::
 
 ## Linkage disequilibrium (LD)
 
@@ -631,6 +619,130 @@ partes do genoma deles, no modelo com mistura) que deixa cada grupo o mais
 próximo possível desse equilíbrio. Estima ao mesmo tempo as frequências
 alélicas de cada grupo (P) e as proporções de cada indivíduo (Q). No exemplo,
 70% do genoma do indivíduo vem do grupo 1 e 30% do grupo 2.
+:::
+
+## How STRUCTURE estimates P and Q
+
+:::: {.columns}
+::: {.column width="58%"}
+```{r}
+#| label: g-brinquedo
+#| fig-width: 8.5
+#| fig-height: 6
+# Exemplo de brinquedo: 4 linhas, 4 SNPs, K = 2, uma cópia por SNP
+brinquedo <- CJ(linha = c("A", "B", "C", "D"), snp = 1:4)
+brinquedo[, alelo := c(1, 1, 1, 1,  1, 1, 1, 2,  2, 2, 2, 2,  2, 2, 1, 2)]
+brinquedo[, grupo := c("G1", "G1", "G1", "G1",  "G1", "G1", "G1", "G2",
+                       "G2", "G2", "G2", "G2",  "G2", "G2", "G1", "G2")]
+brinquedo <- rbind(
+  brinquedo[, .(linha, snp, alelo, preenchimento = "dados", painel = "data (observed)")],
+  brinquedo[, .(linha, snp, alelo, preenchimento = grupo, painel = "Z (current guess)")])
+brinquedo[, painel := factor(painel, c("data (observed)", "Z (current guess)"))]
+ggplot(brinquedo, aes(snp, linha, fill = preenchimento)) +
+  geom_tile(colour = "white", linewidth = 2) +
+  geom_text(aes(label = alelo,
+                colour = preenchimento == "dados"), size = 10, fontface = "bold") +
+  facet_wrap(~ painel) +
+  scale_fill_manual(values = c(dados = "grey90", G1 = cores[["Cluster2"]],
+                               G2 = cores[["Cluster1"]]),
+                    breaks = c("G1", "G2"), name = NULL) +
+  scale_colour_manual(values = c(`TRUE` = "black", `FALSE` = "white"),
+                      guide = "none") +
+  scale_x_continuous(breaks = 1:4, labels = paste0("SNP", 1:4),
+                     position = "top") +
+  scale_y_discrete(limits = rev) +
+  labs(x = NULL, y = NULL) +
+  theme(panel.grid = element_blank())
+```
+:::
+::: {.column width="42%"}
+**P** from Z (SNP 3, allele 1)
+
+| | count | p |
+|---|---|---|
+| G1 | 3 of 3 | (3+1)/(3+2) = 0.80 |
+| G2 | 0 of 1 | (0+1)/(1+2) = 0.33 |
+
+**Q** from Z (copies in G1)
+
+| A | B | C | D |
+|---|---|---|---|
+| 1.00 | 0.75 | 0.00 | 0.25 |
+:::
+::::
+
+::: destaque
+Start: Z at random · Z → P and Q → Z → … (150,000 times)
+:::
+
+::: notes
+Exemplo de brinquedo: 4 linhas, 4 SNPs, K = 2, e uma cópia por SNP (como se
+fossem haploides). À esquerda, os dados: só o alelo de cada linha em cada
+SNP. É tudo o que o STRUCTURE observa.
+
+O que ele precisa descobrir é o Z: de qual grupo veio cada cópia de alelo
+(as cores). No começo o Z é sorteado ao acaso; a figura mostra um Z
+"atual", depois de algumas iterações.
+
+Com o Z, ele calcula as outras duas peças:
+- P, a frequência do alelo dentro de cada grupo: no SNP 3, as três cópias
+  que estão em G1 (A, B e D) são do alelo 1, e a única em G2 (C) é do alelo
+  2. Ele soma uma "cópia fictícia" de cada alelo (a priori), para a
+  frequência nunca dar 0 ou 1: p = (3+1)/(3+2) = 0,80 em G1 e
+  (0+1)/(1+2) = 0,33 em G2.
+- Q, a fração de cada linha em cada grupo: basta contar as cópias da linha
+  em cada cor. A tem 4 de 4 em G1 (1,00); B, 3 de 4 (0,75); C, nenhuma (0);
+  D, 1 de 4 (0,25).
+Na verdade o programa sorteia P e Q em torno desses valores, mas a ideia é
+essa. Ou seja: P e Q não vêm prontos dos dados; dependem de quem está em
+cada grupo, que é o Z.
+:::
+
+## Then Z is re-drawn from P and Q
+
+Each copy: chance of group k ∝ **q**(line, k) × **p**(k, allele)
+
+| copy | G1 | G2 | chance G1 / G2 |
+|---|---|---|---|
+| D, SNP 3, allele 1 | 0.25 × 0.80 = 0.20 | 0.75 × 0.33 = 0.25 | **44% / 56%** |
+| D, SNP 1, allele 2 | 0.25 × 0.25 = 0.06 | 0.75 × 0.75 = 0.56 | **10% / 90%** |
+
+<br>
+
+- Lines that share alleles **pull each other** into the same group
+- After burn-in: **output = average** of P and Q over the iterations
+
+::: destaque
+Real data: ~10 million allele copies per iteration
+:::
+
+::: notes
+Com o P e o Q atuais, o STRUCTURE refaz o Z, cópia por cópia. A chance de
+uma cópia ter vindo do grupo k é proporcional a q × p: o quanto a linha
+pertence ao grupo, vezes o quanto aquele alelo é comum no grupo.
+
+Cópia do SNP 3 da linha D (alelo 1): D é 25% G1, e o alelo 1 tem frequência
+0,80 em G1, então 0,25 × 0,80 = 0,20; em G2, 0,75 × 0,33 = 0,25. Dividindo
+pela soma (0,45): 44% G1 e 56% G2. Há uma "disputa": D é quase toda G2, mas
+esse alelo é típico de G1. O programa "joga um dado" com essas chances.
+
+Cópia do SNP 1 da linha D (alelo 2): no SNP 1, p(alelo 2) é 0,25 em G1 e
+0,75 em G2; então 0,25 × 0,25 = 0,06 contra 0,75 × 0,75 = 0,56: 90% G2.
+Quase sem dúvida.
+
+Com o novo Z, recalcula P e Q, depois Z de novo... 150 mil vezes. As linhas
+que compartilham alelos vão se "puxando" para o mesmo grupo, e o sistema se
+organiza; o burn-in (50 mil iterações) é esse período de organização. Depois
+dele, o programa tira a média de P e Q ao longo das 100 mil iterações
+seguintes: é isso que vai para o arquivo _f. Nos dados reais, cada iteração
+percorre cerca de 10 milhões de cópias de alelos (2.269 linhas × 2.226 SNPs
+× 2), e por isso o STRUCTURE é lento.
+
+Exemplo real (global, K = 2): a linha CFF10-061 terminou com Q = 0,727
+flint / 0,273 dent, e no SNP 3 o alelo 1 tem frequência 0,306 no grupo flint
+e 0,025 no dent. Numa iteração perto do fim, a cópia do SNP 3 dessa linha
+(alelo 1) teria 0,727 × 0,306 = 0,22 contra 0,273 × 0,025 = 0,007: 97% de
+chance de ir para o grupo flint.
 :::
 
 ## What STRUCTURE reads
@@ -850,26 +962,162 @@ isso alinhamos as réplicas antes de tirar a média.
 
 # Results
 
+## STRUCTURE output: global, K = 2
+
+:::: {.columns}
+::: {.column width="62%" .tabela-pequena}
+```{r}
+#| label: t-saida
+ex <- fread(file.path(dir_prod, "execucoes.tsv"))[conjunto == "global" & k == 2]
+setorder(ex, rep)
+fmt <- function(x, d = 1) formatC(x, format = "f", digits = d, big.mark = ",")
+tab <- ex[, .(replicate = as.character(rep), media = fmt(mvll),
+              variancia = fmt(vll), lnp = fmt(elpd))]
+# média e desvio-padrão entre as réplicas: o L(2) e o s(2) do ΔK
+tab <- rbind(tab, data.table(replicate = c("**mean**", "**SD**"),
+                             media = "", variancia = "",
+                             lnp = c(paste0("**", fmt(mean(ex$elpd)), "**"),
+                                     paste0("**", fmt(sd(ex$elpd), 2), "**"))))
+knitr::kable(tab, align = "lrrr",
+             col.names = c("replicate", "mean ln L", "var ln L",
+                           "ln P(D|K) = mean − var / 2"))
+```
+:::
+::: {.column width="38%"}
+**From replicates to ΔK**
+
+L(K) = **mean**, s(K) = **SD** of ln P(D|K)
+
+::: {style="font-size: 0.62em;"}
+$$
+\Delta K = \frac{|L(K{+}1) - 2\,L(K) + L(K{-}1)|}{s(K)}
+$$
+:::
+
+The next slide applies this formula to every K
+:::
+::::
+
+::: notes
+Esta é a saída do STRUCTURE para o conjunto global com K = 2, nas 5
+réplicas. Para cada réplica, depois do burn-in, ele guarda o ln da
+verossimilhança a cada iteração: "mean ln L" é a média e "var ln L" a
+variância. O ln P(D|K), o "placar" de cada K, é a média menos metade da
+variância (a variância penaliza cadeias instáveis). As 5 réplicas dão quase
+o mesmo valor: a média, −3.462.803, é o L(2) do ΔK, e o desvio-padrão,
+8,36, é o s(2). Daí o ΔK enorme do global em K = 2.
+
+Os números são enormes e negativos porque são o logaritmo de uma
+probabilidade minúscula: o produto da probabilidade de cerca de 10 milhões
+de cópias de alelos (2.269 linhas × 2.226 SNPs × 2). Por cópia, isso dá
+cerca de −0,34, ou seja, uma probabilidade de ~0,71 de "acertar" cada alelo.
+
+Modelo com mistura (NOADMIX = 0): o STRUCTURE atribui um grupo a cada cópia
+de alelo, não ao indivíduo inteiro; por isso partes do genoma de uma linha
+podem vir de grupos diferentes (as famílias CFD01, CFF01 e CFF02, por
+exemplo).
+
+Limitação: as DH são homozigotas, e cada SNP aparece como duas cópias
+idênticas (1 1 ou 2 2). O modelo diploide trata essas cópias como duas
+informações independentes, o que deixa o Q mais confiante do que deveria.
+Codificar as DH como haploides (PLOIDY = 1, uma coluna por SNP) seria mais
+fiel aos dados; não refizemos as análises assim.
+:::
+
+## From ln P(D|K) to ΔK: global
+
+::: tabela-pequena
+```{r}
+#| label: t-derivadas
+ev_g <- fread(file.path(dir_prod, "evanno.tsv"))[conjunto == "global"]
+fmt <- function(x, d = 0) ifelse(is.na(x), "",
+                                 formatC(x, format = "f", digits = d,
+                                         big.mark = ","))
+tab <- ev_g[, .(K = as.character(k), L = fmt(elpdmean), s = fmt(elpdsd, 1),
+                L1 = fmt(lnk1), L2 = fmt(lnk2),
+                # ΔK pequeno com 2 casas, para 0,012 não virar "0.0"
+                dK = vapply(deltaK, function(x) fmt(x, if (!is.na(x) && x < 10) 2 else 1),
+                            character(1)))]
+# destaca a linha do pico (K = 2)
+pico <- which.max(ev_g$deltaK)
+tab[pico, names(tab) := lapply(.SD, function(x) paste0("**", x, "**"))]
+knitr::kable(tab, align = "crrrrr",
+             col.names = c("K", "L(K)<br>mean", "s(K)<br>SD",
+                           "1st derivative<br>L(K) − L(K−1)<br>*gain*",
+                           "2nd derivative<br>|L′(K+1) − L′(K)|<br>*change in gain*",
+                           "ΔK<br>2nd deriv. / s(K)"),
+             escape = FALSE)
+```
+:::
+
+::: legenda
+Reminder · **admixture model**: each allele copy can come from a different
+group · **DH coded as diploid**: two identical copies → Q is
+**overconfident**; haploid coding (PLOIDY 1) would be more faithful
+:::
+
+::: notes
+Aqui a fórmula do slide anterior é aplicada a todos os K do conjunto global.
+L(K) é a média das 5 réplicas e s(K) o desvio-padrão (as duas últimas linhas
+da tabela anterior, para K = 2).
+
+Primeira derivada, L′(K) = L(K) − L(K−1): quanto o placar melhora ao passar
+de K−1 para K grupos (o "ganho", como a velocidade de um carro). De 1 para 2
+grupos o ganho é de 582 mil; de 2 para 3, só 169 mil; depois, em torno de
+110 mil.
+
+Segunda derivada, |L′(K+1) − L′(K)| = |L(K+1) − 2·L(K) + L(K−1)|: quanto
+esse ganho muda logo depois de K (a "freada"). A maior freada é em K = 2:
+o ganho cai de 582 mil para 169 mil, uma diferença de 413 mil.
+
+ΔK = segunda derivada / desvio-padrão. Em K = 2 as réplicas quase não
+discordam (s = 8,4), então a freada é confiável e o ΔK dispara: 413.355 /
+8,36 = 49.464. Em K = 4 ou 5 as réplicas discordam muito (s de dezenas de
+milhares), e o ΔK fica perto de zero. A segunda derivada não existe no
+primeiro nem no último K (precisa do vizinho dos dois lados); no K = 7 o
+ΔK também falta porque há uma réplica só (sem desvio-padrão).
+
+O próximo slide mostra o mesmo em gráfico, para os três conjuntos: em cima o
+L(K), embaixo o ΔK.
+
+Lembrete (rodapé do slide): modelo com mistura, cada cópia de alelo pode
+vir de um grupo diferente; as DH codificadas como diploides têm duas cópias
+idênticas, o que deixa o Q confiante demais; codificar como haploide
+(PLOIDY = 1) seria mais fiel, mas não refizemos as análises assim.
+:::
+
 ## How many groups? Evanno's ΔK
 
 ```{r}
 #| label: g-evanno
 #| fig-height: 6.4
 ev <- fread(file.path(dir_prod, "evanno.tsv"))
-ev[, conjunto := factor(conjunto, c("global", "dent", "flint"))]
-p1 <- ggplot(ev, aes(k, elpdmean / 1e3)) +
-  geom_line(linewidth = 1.2) + geom_point(size = 3) +
-  facet_wrap(~ conjunto, scales = "free") +
-  scale_x_continuous(breaks = function(l) seq(1, floor(l[2]), 2)) +
-  labs(x = NULL, y = "ln P(D|K)\n(thousands)")
-p2 <- ggplot(ev[!is.na(deltaK)], aes(k, deltaK)) +
-  geom_line(linewidth = 1.2, colour = "#B22222") +
-  geom_point(size = 3, colour = "#B22222") +
-  facet_wrap(~ conjunto, scales = "free") +
-  scale_x_continuous(breaks = function(l) seq(1, floor(l[2]), 2)) +
-  labs(x = "K", y = "ΔK") +
-  theme(strip.text = element_blank())
-p1 / p2
+
+# Uma coluna por conjunto: ln P(D|K) em cima e ΔK embaixo, com o MESMO eixo
+# x (de 1 ao maior K testado). O ΔK não existe no primeiro nem no último K;
+# o pico é rotulado para não haver dúvida sobre qual K ele é.
+coluna <- function(conj) {
+  d <- ev[conjunto == conj]
+  eixo_x <- scale_x_continuous(limits = c(1, max(d$k)),
+                               breaks = seq(1, max(d$k), 2))
+  pico <- d[which.max(deltaK)]
+  topo <- ggplot(d, aes(k, elpdmean / 1e3)) +
+    geom_line(linewidth = 1.2) + geom_point(size = 3) +
+    eixo_x +
+    labs(x = NULL, y = if (conj == "global") "ln P(D|K)\n(thousands)" else NULL,
+         title = conj) +
+    theme(plot.title = element_text(hjust = 0.5))
+  base <- ggplot(d[!is.na(deltaK)], aes(k, deltaK)) +
+    geom_line(linewidth = 1.2, colour = "#B22222") +
+    geom_point(size = 3, colour = "#B22222") +
+    geom_text(data = pico, aes(label = paste("K =", k)), hjust = -0.25,
+              vjust = 0.3, size = 7, colour = "#B22222", fontface = "bold") +
+    eixo_x +
+    scale_y_continuous(expand = expansion(c(0.05, 0.15))) +
+    labs(x = "K", y = if (conj == "global") "ΔK" else NULL)
+  topo / base
+}
+coluna("global") | coluna("dent") | coluna("flint")
 ```
 
 ::: destaque
@@ -885,6 +1133,37 @@ dent, o ΔK é baixo em todos os K (máximo 11, em K = 3, e 7 em K = 2): as
 réplicas do dent já discordam em K = 2 (próximo slide). O ΔK tende a apontar
 o nível mais alto da hierarquia; por isso olhamos também os gráficos de
 barras. No global, K = 7 tem uma réplica só e por isso não tem ΔK.
+
+O QUE É O ln P(D|K): uma estimativa da verossimilhança marginal do modelo
+com K grupos, ou seja, a probabilidade dos dados dado K, com P e Q
+"integrados". Não é a máxima verossimilhança nem a posteriori de K. O
+STRUCTURE a aproxima por: média do ln L − variância do ln L / 2, usando as
+iterações depois do burn-in.
+
+FÓRMULA DO ΔK (Evanno et al. 2005). Para cada K, as 5 réplicas dão 5 valores
+de ln P(D|K): L(K) é a média e s(K) o desvio-padrão desses 5 valores.
+  L′(K)  = L(K) − L(K−1)                  "1ª derivada": ganho ao somar um grupo
+  L″(K)  = L′(K+1) − L′(K)
+         = L(K+1) − 2·L(K) + L(K−1)       "2ª derivada": mudança desse ganho
+  ΔK     = |L″(K)| / s(K)
+O desvio-padrão (a) tira a escala (|L″| cresce com o tamanho dos dados) e
+(b) premia os K reprodutíveis: no K "certo" as réplicas concordam (s
+pequeno); acima dele cada réplica acha uma solução e s cresce.
+
+CONTAS DOS PICOS:
+- global, K = 2: L(1) = −4.045.235; L(2) = −3.462.803; L(3) = −3.293.726
+  L′(2) = 582.432; L′(3) = 169.077; |L″(2)| = 413.355
+  s(2) = 8,36  →  ΔK = 413.355 / 8,36 = 49.464
+- flint, K = 2: L(1) = −884.723; L(2) = −832.915; L(3) = −793.931
+  L′(2) = 51.808; L′(3) = 38.984; |L″(2)| = 12.824
+  s(2) = 3,29  →  ΔK = 12.824 / 3,29 = 3.903
+- dent, K = 3: L(2) = −772.016; L(3) = −737.713; L(4) = −711.287
+  L′(3) = 34.303; L′(4) = 26.426; |L″(3)| = 7.877
+  s(3) = 688,5  →  ΔK = 7.877 / 688,5 = 11,4
+Desvio-padrão entre réplicas em K = 2, 3, 4: global 8 / 1.651 / 21.225;
+flint 3 / 8 / 138; dent 631 / 689 / 1.564. No dent ele já é grande em
+K = 2, por isso o ΔK fica baixo. Não comparar o tamanho do ΔK entre
+conjuntos, só a posição do pico dentro de cada um.
 :::
 
 ## Do the replicates agree?
@@ -966,7 +1245,7 @@ delas não são tão "flint" quanto a linha central UH007.
 ```{r}
 #| label: g-dent
 #| fig-height: 6
-barras("dent", c(2, 3, 4, 6))
+barras("dent", c(2, 3, 4, 6), K_destaque = 3)
 ```
 
 ::: destaque
@@ -974,18 +1253,50 @@ D11 = F353 × UH304: both Iodent, the most similar pair (SM = 0.77)
 :::
 
 ::: notes
-K = 2: azul = grupo da linha central F353, vermelho = fundadoras. A CFD11 é
-toda azul, e CFD03, 04 e 10 quase todas azuis, porque as fundadoras delas
-(UH304, D06, D09, UH250) se parecem com a F353.
-Por que a D11 fica toda verde em K = 3? A CFD11 vem de F353 × UH304, e as
-duas linhas têm origem Iodent. Em Lehermeier et al. (2014, Tabela 1), é o par
-de pais mais parecido do painel dent (simple matching = 0,765, contra
-0,61–0,67 nos demais). Por isso as DH dessa família são muito parecidas entre
-si e formam um bloco grande e homogêneo, que o STRUCTURE separa num grupo
-próprio (verde), junto com a própria F353 e a UH304.
-De K = 4 em diante, as famílias se separam uma a uma (CFD06, CFD07...).
-Atenção: no dent as réplicas já discordam em K = 2 (3 de 5) e, a partir de
-K = 5, cada réplica tem sua própria solução.
+━━ RESUMO EM 1 FRASE ━━
+Dentro do pool, K = 2 não é dent × flint: é a linha central (F353) × as
+fundadoras. A cada K a mais, uma família ou um grupo de famílias de mesma
+origem ganha cor própria.
+
+━━ K PROVÁVEL: K = 3 (moldura) ━━
+Pico do ΔK (11,4), 4 de 5 réplicas concordam. Mas o ΔK do dent é baixo em
+todos os K: não há um K claramente melhor (ver slide do ΔK).
+
+━━ O QUE CADA COR É (pelos parentais) ━━
+K = 2  azul     = linhas parecidas com a F353 (F353, UH304, em parte D06,
+                  D09, UH250)
+       vermelho = as demais fundadoras
+K = 3  verde    = F353 + UH304 + toda a família D11  → núcleo IODENT
+       azul     = D06, D09, UH250 → famílias D03, D04, D10 (sementes de
+                  Hohenheim, Alemanha)
+       vermelho = B73, Mo17, W117, EC169, UH007
+K = 4  laranja  = F252 + F618 → famílias D06 e D07 (as duas do INRA, França)
+K = 6  laranja  = B73 + EC169 + UH007 → famílias D02, D05 e D01: justamente
+                  as fundadoras de fora do dent europeu típico (B73
+                  americana, EC169 espanhola, UH007 é flint)
+       roxo = D06 (F252) · amarelo = D07 (F618) · vermelho = D09 (Mo17) e
+       parte de D12 (W117)
+
+━━ SE PERGUNTAREM: por que a D11 vai de azul (K = 2) para verde (K = 3)? ━━
+Não é só a cor: o grupo muda. Em K = 2 o azul é um grupo amplo de "linhas
+parecidas com a F353". Em K = 3 ele se divide em dois: verde = F353 + UH304
++ D11 (Iodent) e azul = D06, D09, UH250 com D03, D04, D10. A D11 fica toda
+verde porque os dois pais são Iodent e muito parecidos (SM = 0,765, o par
+mais parecido do dent): cada DH é um mosaico de dois genomas quase iguais, e
+a família inteira é um bloco homogêneo.
+
+━━ CONFIABILIDADE ━━
+K = 2: 3 de 5 réplicas concordam · K = 3: 4 de 5 · K = 4: 2 de 5 ·
+K ≥ 5: cada réplica tem sua solução. K = 6 é uma solução entre várias:
+falar em "sugere", não em "prova".
+
+━━ FALA SUGERIDA (~50 s) ━━
+"Dentro do pool, K = 2 já não separa dent de flint: separa a linha central,
+em azul, das fundadoras, em vermelho. Como toda DH tem metade do genoma da
+F353, quase todas as famílias aparecem misturadas. A cada K a mais, uma
+família ganha cor própria: em K = 3, o pico do ΔK, a D11, cujos dois pais
+são de origem Iodent; em K = 4, a D06 e a D07, com fundadoras francesas.
+Nos K altos o STRUCTURE está separando famílias, não populações."
 :::
 
 ## Within the Flint pool
@@ -993,7 +1304,7 @@ K = 5, cada réplica tem sua própria solução.
 ```{r}
 #| label: g-flint
 #| fig-height: 6
-barras("flint", c(2, 3, 4, 6))
+barras("flint", c(2, 3, 4, 6), K_destaque = 2)
 ```
 
 ::: destaque
@@ -1001,15 +1312,49 @@ F12, F13: founders closest to UH007 (SM = 0.79 and 0.82)
 :::
 
 ::: notes
-K = 2: azul = grupo da linha central UH007. Por que F12 e F13 são azuis? As
-fundadoras delas, UH006 (CFF12) e UH009 (CFF13), são as mais parecidas com a
-UH007 no painel flint (simple matching = 0,791 e 0,815; Lehermeier et al.
-2014, Tabela 1); por isso as duas famílias se parecem com a linha central.
-Por que a F13 vira laranja em K = 4? Com 4 grupos, o STRUCTURE divide esse
-bloco "parecido com a central" em dois: laranja = UH007, UH009 e CFF13; azul
-= UH006 e CFF12. K = 3 (verde): as famílias cujas fundadoras são mais
-distantes da central, incluindo CFF01 (F353, a central dent) e CFF02 (B73,
-dent). Até K = 3 as 5 réplicas concordam; em K = 4, 3 de 5.
+━━ RESUMO EM 1 FRASE ━━
+Mesma lógica do dent: K = 2 é a linha central (UH007) × as fundadoras; nos K
+mais altos, famílias e fundadoras de mesma origem se agrupam.
+
+━━ K PROVÁVEL: K = 2 (moldura) ━━
+Pico claro do ΔK (3.904) e as 5 réplicas concordam. K = 3 também é forte
+(ΔK = 1.795, 5 de 5).
+
+━━ O QUE CADA COR É (pelos parentais) ━━
+K = 2  azul     = grupo da UH007 (central); F12 e F13 são inteiras azuis
+                  porque UH006 (SM 0,79) e UH009 (SM 0,82) são as fundadoras
+                  mais parecidas com a UH007
+       vermelho = as demais fundadoras
+K = 3  azul     = UH007 + UH006 + UH009 → todas com sementes de Hohenheim
+                  (Alemanha): o "núcleo" da central
+       verde    = EC49A, EP44, EZ5 (Espanha), F64, e as duas dent F353 e
+                  B73 → famílias F04, F05, F06, F10, F01, F02: as fundadoras
+                  MAIS DISTANTES da UH007 (as de menor SM)
+       vermelho = D152, DK105, F03802, F283 → F03, F07, F09, F15
+K = 4  laranja  = a família F13 (UH009) se separa
+K = 6  amarelo  = EC49A, EP44, EZ5 (as três com sementes da Espanha) e
+                  também F2 (França) → famílias F04, F05, F06 (e parte de F08)
+       roxo = F03 (D152) · laranja = UH007 + UH009 (F13) · azul = UH006 (F12)
+
+━━ PONTO NOVO PARA DESTACAR ━━
+Sem saber nada da origem das linhas, o STRUCTURE junta as fundadoras
+espanholas (EC49A, EP44, EZ5) no mesmo grupo em K = 6, e reúne as de
+Hohenheim (UH006, UH007, UH009) em K = 3. Ressalvas: "procedência" é de onde
+vieram as sementes, não necessariamente a origem genética; a F2 (França)
+também cai no grupo amarelo; e K = 6 é uma solução entre várias.
+
+━━ CONFIABILIDADE ━━
+K = 2 e K = 3: 5 de 5 réplicas concordam (conclusões firmes) · K = 4: 3 de 5
+· K ≥ 5: cada réplica tem sua solução.
+
+━━ FALA SUGERIDA (~50 s) ━━
+"No flint é a mesma lógica. Em K = 2, o pico do ΔK, F12 e F13 são inteiras
+azuis porque as fundadoras se parecem com a UH007. Em K = 3, o verde reúne as
+famílias com as fundadoras mais distantes da central, entre elas as
+espanholas e as duas dent. E em K = 6 as três fundadoras com sementes da
+Espanha caem no mesmo grupo: o programa reencontrou parte da origem das
+linhas só pelos genótipos. Como K = 6 é uma solução entre várias, isso é uma
+tendência."
 :::
 
 ## PCA: another view
@@ -1112,26 +1457,6 @@ H_O: heterozigosidade observada (fração de AB). H_S: esperada em
 Hardy-Weinberg dentro de cada subpopulação, média entre elas. H_T: esperada no
 total, com a frequência média. F_IS mede a endogamia dentro das
 subpopulações, F_ST a diferenciação entre elas e F_IT a endogamia total.
-
-SE PERGUNTAREM: o que significa F_ST = 0 e F_ST = 1?
-- F_ST = 0: as subpopulações têm as mesmas frequências alélicas (H_S = H_T).
-  Não há diferenciação: toda a diversidade está dentro dos grupos, e saber o
-  grupo de um indivíduo não diz nada sobre o genótipo dele. Ex.: duas
-  amostras tiradas ao acaso da mesma população.
-- F_ST = 1: cada subpopulação está fixada num alelo diferente (H_S = 0).
-  Toda a diversidade está entre os grupos: dentro de cada um, todos são
-  iguais, e saber o grupo diz exatamente o genótipo. Ex.: duas linhas
-  endogâmicas que diferem num SNP.
-- No meio: o F_ST é a fração da diversidade total que está entre os grupos.
-  Guia clássico de Wright: 0–0,05 pouca diferenciação; 0,05–0,15 moderada;
-  0,15–0,25 grande; acima de 0,25 muito grande. Para comparar: entre
-  continentes, em humanos, o F_ST fica em torno de 0,1–0,15.
-- O F_ST nunca passa de 1 − H_S/H_T: se os grupos são muito diversos por
-  dentro (H_S alto), ele fica baixo mesmo que os grupos sejam bem distintos.
-
-E o F_IS? F_IS = 0: dentro de cada subpopulação, os heterozigotos estão no
-nível esperado por Hardy-Weinberg (cruzamento ao acaso). F_IS = 1: nenhum
-heterozigoto, ou seja, endogamia completa, como nas nossas DH.
 :::
 
 ## F in the CornFed data
@@ -1180,10 +1505,8 @@ H_S = 0,25), então só ~20% da diversidade está entre os pools. Cada família
 vem do cruzamento de apenas dois pais endogâmicos, então é muito uniforme por
 dentro (H_S = 0,16–0,19), e a maior parte da diversidade está entre
 famílias.
-Pelo guia de Wright (notas do slide anterior), 0,20 é diferenciação grande
-e 0,35, muito grande. Se perguntarem por que famílias > pools: cada pool
-reúne 12 linhas (a central e 11 fundadoras), então é diverso por dentro;
-cada família vem de só 2 linhas, então é quase uniforme por dentro.
+
+
 :::
 
 # Take-home
