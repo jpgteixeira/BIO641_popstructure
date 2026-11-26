@@ -509,6 +509,8 @@ critérios de Lehermeier et al. 2014 (eles ficaram com 34.116 SNPs; nós com
 :::
 
 
+
+
 ## Linkage disequilibrium (LD)
 
 ```{r}

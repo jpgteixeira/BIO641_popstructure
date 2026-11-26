@@ -11,3 +11,7 @@ results/**
 !results/complementares/pca.eigenvec
 seed.txt
 .Rhistory
+cluster/*.tar.gz
+cluster/*.sha256
+cluster/bio641_structure_pacote/
+*.tar.gz
